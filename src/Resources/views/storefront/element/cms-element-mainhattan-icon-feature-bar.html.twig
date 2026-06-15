@@ -1,0 +1,82 @@
+{% block element_mainhattan_icon_feature_bar %}
+    {% set c = element.config %}
+    {% set items = element.data.items ?? [] %}
+
+    {% if items|length > 0 %}
+        <div
+            class="cms-element-mainhattan-icon-feature-bar"
+            style="background-color: {{ c.backgroundColor.value ?: '#ffffff' }}; padding: {{ c.paddingY.value ?: '24' }}px 0;"
+        >
+            <div
+                class="mainhattan-icon-feature-bar__grid"
+                style="grid-template-columns: repeat({{ items|length }}, 1fr);"
+            >
+                {% for item in items %}
+                    {% set isSvg = item.iconMedia is not null and item.iconMedia.mimeType == 'image/svg+xml' %}
+                    {% set hasColor = item.svgColor is not empty %}
+                    {% set iconSize = c.iconSize.value ?: '40' %}
+
+                    <div class="mainhattan-icon-feature-bar__item">
+                        {% if item.iconMedia is not null %}
+                            <div class="mainhattan-icon-feature-bar__icon-wrap">
+                                {% if isSvg and hasColor and item.svgContent is not empty %}
+                                    <span
+                                        class="mainhattan-icon-feature-bar__svg-inline"
+                                        style="color: {{ item.svgColor }}; width: {{ c.iconSize.value ?: '40' }}px; height: {{ c.iconSize.value ?: '40' }}px;"
+                                        aria-hidden="true"
+                                    >
+                                        {{ item.svgContent|raw }}
+                                    </span>
+                                {% elseif isSvg and hasColor %}
+                                    <span
+                                        class="mainhattan-icon-feature-bar__icon-img"
+                                        style="
+                                            width: {{ iconSize }}px;
+                                            height: {{ iconSize }}px;
+                                            display: inline-block;
+                                            background-color: {{ item.svgColor }};
+                                            -webkit-mask: url('{{ item.iconMedia.url }}') no-repeat center;
+                                            mask: url('{{ item.iconMedia.url }}') no-repeat center;
+                                            -webkit-mask-size: {{ iconSize }}px {{ iconSize }}px;
+                                            mask-size: {{ iconSize }}px {{ iconSize }}px;
+                                        "
+                                        aria-hidden="true"
+                                    ></span>
+                                {% else %}
+                                    <img
+                                        src="{{ item.iconMedia.url }}"
+                                        alt="{{ item.iconMedia.translated.alt ?: item.heading }}"
+                                        class="mainhattan-icon-feature-bar__icon-img"
+                                        width="{{ iconSize }}"
+                                        height="{{ iconSize }}"
+                                        loading="lazy"
+                                    />
+                                {% endif %}
+                            </div>
+                        {% endif %}
+
+                        <div class="mainhattan-icon-feature-bar__text">
+                            {% if item.heading is not empty %}
+                                <span
+                                    class="mainhattan-icon-feature-bar__heading"
+                                    style="color: {{ c.headingColor.value ?: '#1a1a2e' }}; font-size: {{ c.headingSize.value ?: '13' }}px;"
+                                >
+                                    {{ item.heading }}
+                                </span>
+                            {% endif %}
+
+                            {% if item.description is not empty %}
+                                <span
+                                    class="mainhattan-icon-feature-bar__description"
+                                    style="color: {{ c.descriptionColor.value ?: '#6b7280' }}; font-size: {{ c.descriptionSize.value ?: '12' }}px;"
+                                >
+                                    {{ item.description }}
+                                </span>
+                            {% endif %}
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    {% endif %}
+{% endblock %}

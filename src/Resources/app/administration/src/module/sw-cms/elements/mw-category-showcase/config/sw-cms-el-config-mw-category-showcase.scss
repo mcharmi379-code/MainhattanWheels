@@ -1,0 +1,34 @@
+.sw-cms-el-config-mw-category-showcase {
+    .sw-field,
+    .sw-entity-single-select,
+    .sw-single-select {
+        margin-bottom: 16px;
+    }
+
+    &__section-label {
+        font-weight: 600;
+        font-size: 13px;
+        margin: 20px 0 8px;
+        color: #52667a;
+        text-transform: uppercase;
+        letter-spacing: 0.04em;
+        border-bottom: 1px solid #e4e9ef;
+        padding-bottom: 4px;
+    }
+
+    &__row {
+        align-items: flex-start;
+    }
+
+    &__sub-row {
+        display: flex;
+        align-items: flex-end;
+        gap: 8px;
+        margin-bottom: 12px;
+
+        .sw-entity-single-select {
+            flex: 1;
+            margin-bottom: 0;
+        }
+    }
+}

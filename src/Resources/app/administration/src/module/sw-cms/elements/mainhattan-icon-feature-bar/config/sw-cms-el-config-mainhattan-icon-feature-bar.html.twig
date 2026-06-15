@@ -1,0 +1,159 @@
+{% block sw_cms_el_config_mainhattan_icon_feature_bar %}
+    <div class="sw-cms-el-config-mainhattan-icon-feature-bar">
+
+        {# ── Global styling ── #}
+        <sw-tabs default-item="styling">
+            <template #default="{ active }">
+                <sw-tabs-item name="styling" :active-tab="active">Styling</sw-tabs-item>
+                <sw-tabs-item name="items" :active-tab="active">Items</sw-tabs-item>
+            </template>
+
+            <template #content="{ active }">
+
+                {# Styling tab #}
+                <sw-container v-if="active === 'styling'" class="sw-cms-el-config-mainhattan-icon-feature-bar__styling">
+                    <sw-colorpicker
+                        v-model:value="element.config.backgroundColor.value"
+                        label="Background Color"
+                        color-output="hex"
+                        :z-index="1000"
+                        @update:value="onInput"
+                    />
+
+                    <mt-text-field
+                        v-model="element.config.paddingY.value"
+                        label="Vertical padding (px)"
+                        type="number"
+                        @update:model-value="onInput"
+                    />
+
+                    <mt-text-field
+                        v-model="element.config.iconSize.value"
+                        label="Icon size (px)"
+                        type="number"
+                        @update:model-value="onInput"
+                    />
+
+                    <div class="config-row-2">
+                        <sw-colorpicker
+                            v-model:value="element.config.headingColor.value"
+                            label="Heading color"
+                            color-output="hex"
+                            :z-index="1000"
+                            @update:value="onInput"
+                        />
+                        <mt-text-field
+                            v-model="element.config.headingSize.value"
+                            label="Heading size (px)"
+                            type="number"
+                            @update:model-value="onInput"
+                        />
+                    </div>
+
+                    <div class="config-row-2">
+                        <sw-colorpicker
+                            v-model:value="element.config.descriptionColor.value"
+                            label="Description color"
+                            color-output="hex"
+                            :z-index="1000"
+                            @update:value="onInput"
+                        />
+                        <mt-text-field
+                            v-model="element.config.descriptionSize.value"
+                            label="Description size (px)"
+                            type="number"
+                            @update:model-value="onInput"
+                        />
+                    </div>
+                </sw-container>
+
+                {# Items tab #}
+                <sw-container v-if="active === 'items'" class="sw-cms-el-config-mainhattan-icon-feature-bar__items">
+
+                    {# Item selector #}
+                    <div class="mifb-item-tabs">
+                        <button
+                            v-for="(item, index) in items"
+                            :key="index"
+                            class="mifb-item-tab"
+                            :class="{ 'is--active': activeItemIndex === index }"
+                            type="button"
+                            @click="selectItem(index)"
+                        >
+                            Item {{ index + 1 }}
+                            <span
+                                class="mifb-item-tab__remove"
+                                @click.stop="removeItem(index)"
+                            >✕</span>
+                        </button>
+
+                        <button
+                            v-if="items.length < 4"
+                            class="mifb-item-tab mifb-item-tab--add"
+                            type="button"
+                            @click="addItem"
+                        >
+                            + Add
+                        </button>
+                    </div>
+
+                    {# Active item config #}
+                    <template v-if="activeItem !== null">
+                        <mt-text-field
+                            :model-value="activeItem.heading"
+                            label="Heading"
+                            @update:model-value="updateActiveField('heading', $event)"
+                        />
+
+                        <mt-text-field
+                            :model-value="activeItem.description"
+                            label="Description"
+                            @update:model-value="updateActiveField('description', $event)"
+                        />
+
+                        <div class="mifb-upload-section">
+                            <p class="mifb-upload-label">Icon image (PNG, SVG, etc.)</p>
+                            <sw-media-upload-v2
+                                variant="regular"
+                                :upload-tag="uploadTag"
+                                :source="activeIconPreview"
+                                :allow-multi-select="false"
+                                :default-folder="cmsPageState.pageEntityName"
+                                :caption="$tc('sw-cms.elements.general.config.caption.mediaUpload')"
+                                @media-upload-sidebar-open="onOpenMediaModal"
+                                @media-upload-remove-image="onImageRemove"
+                            />
+                            <sw-upload-listener
+                                :upload-tag="uploadTag"
+                                auto-upload
+                                @media-upload-finish="onImageUpload"
+                            />
+                            <sw-media-modal-v2
+                                v-if="mediaModalIsOpen"
+                                variant="full"
+                                :caption="$tc('sw-cms.elements.general.config.caption.mediaUpload')"
+                                :allow-multi-select="false"
+                                @media-modal-selection-change="onMediaSelection"
+                                @modal-close="onCloseMediaModal"
+                            />
+                        </div>
+
+                        <sw-colorpicker
+                            v-if="isSvg"
+                            :value="activeItem.svgColor"
+                            label="SVG icon color"
+                            color-output="hex"
+                            :z-index="1000"
+                            @update:value="updateActiveField('svgColor', $event)"
+                        />
+                    </template>
+
+                    <p v-else class="mifb-empty-hint">
+                        Click "+ Add" to add up to 4 items.
+                    </p>
+                </sw-container>
+
+            </template>
+        </sw-tabs>
+    </div>
+{% endblock %}

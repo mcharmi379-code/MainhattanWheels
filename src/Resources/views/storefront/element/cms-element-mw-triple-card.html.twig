@@ -1,0 +1,198 @@
+{% block element_mw_triple_card %}
+    {% set c = element.config %}
+    {% set d = element.data %}
+
+    {# ── helpers ── #}
+    {% set leftBgUrl   = d.leftBgMediaUrl  ?? c.leftBgMediaUrl.value  ?? null %}
+    {% set midBgUrl    = d.midBgMediaUrl   ?? c.midBgMediaUrl.value   ?? null %}
+    {% set rightBgUrl  = d.rightBgMediaUrl ?? c.rightBgMediaUrl.value ?? null %}
+    {% set leftIcons   = d.leftIcons       ?? [] %}
+    {% set midIconUrl  = d.midIconUrl      ?? c.midIconUrl.value      ?? null %}
+    {% set midIconSvg  = d.midIconSvg      ?? null %}
+    {% set rightIconUrl = d.rightIconUrl   ?? c.rightIconUrl.value    ?? null %}
+    {% set rightIconSvg = d.rightIconSvg   ?? null %}
+
+    <div class="cms-element-mw-triple-card mw-triple-card">
+
+        {# ── LEFT CARD ── #}
+        <div
+            class="mw-triple-card__card mw-triple-card__left"
+            style="
+                background-color: {{ c.leftBgColor.value ?: '#1a1a1a' }};
+                {% if c.leftBgType.value == 'image' and leftBgUrl is not empty %}
+                    background-image: url('{{ leftBgUrl }}');
+                    background-size: cover;
+                    background-position: center;
+                {% endif %}
+            "
+        >
+            {% if c.leftHeadline.value is not empty %}
+                <h3 class="mw-triple-card__headline">{{ c.leftHeadline.value }}</h3>
+            {% endif %}
+
+            {% for item in leftIcons %}
+                {% if item.iconUrl is not empty or item.svgContent is not empty %}
+                    <div class="mw-triple-card__icon-item">
+                        {% if item.svgContent is not empty %}
+                            <span
+                                class="mw-triple-card__icon mw-triple-card__icon--svg"
+                                {% if item.iconColor is not empty %}style="color: {{ item.iconColor }};"{% endif %}
+                                aria-hidden="true"
+                            >{{ item.svgContent|raw }}</span>
+                        {% elseif item.iconUrl is not empty and item.iconUrl matches '/\\.svg(\\?.*)?$/' and item.iconColor is not empty %}
+                            <span
+                                class="mw-triple-card__icon"
+                                style="
+                                    width: 44px;
+                                    height: 44px;
+                                    display: inline-block;
+                                    background-color: {{ item.iconColor }};
+                                    -webkit-mask: url('{{ item.iconUrl }}') no-repeat center;
+                                    mask: url('{{ item.iconUrl }}') no-repeat center;
+                                    -webkit-mask-size: 44px 44px;
+                                    mask-size: 44px 44px;
+                                "
+                                aria-hidden="true"
+                            ></span>
+                        {% else %}
+                            <img src="{{ item.iconUrl }}" alt="" class="mw-triple-card__icon" loading="lazy" />
+                        {% endif %}
+                        {% if item.iconDesc is not empty %}
+                            <p class="mw-triple-card__icon-desc">{{ item.iconDesc }}</p>
+                        {% endif %}
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+
+        {# ── MIDDLE CARD ── #}
+        <div
+            class="mw-triple-card__card mw-triple-card__mid"
+            style="
+                background-color: {{ c.midBgColor.value ?: '#ff6600' }};
+                {% if c.midBgType.value == 'image' and midBgUrl is not empty %}
+                    background-image: url('{{ midBgUrl }}');
+                    background-size: cover;
+                    background-position: center;
+                {% endif %}
+            "
+        >
+            {% if c.midSubHeading.value is not empty %}
+                <p class="mw-triple-card__sub-heading">{{ c.midSubHeading.value }}</p>
+            {% endif %}
+
+            {% if c.midHeading.value is not empty %}
+                <h2 class="mw-triple-card__heading">{{ c.midHeading.value }}</h2>
+            {% endif %}
+
+            {% if c.midDescription.value is not empty %}
+                <p class="mw-triple-card__description">{{ c.midDescription.value }}</p>
+            {% endif %}
+
+            {% if c.midBtnLabel.value is not empty %}
+                <a
+                    href="{{ c.midBtnUrl.value ?: '#' }}"
+                    {% if c.midBtnNewTab.value %}target="_blank" rel="noopener noreferrer"{% endif %}
+                    class="mw-triple-card__btn"
+                    style="
+                        background-color: {{ c.midBtnBgColor.value ?: '#ffffff' }};
+                        color: {{ c.midBtnTextColor.value ?: '#ff6600' }};
+                        {% if c.midBtnBorderColor.value is not empty %}border: 2px solid {{ c.midBtnBorderColor.value }};{% endif %}
+                    "
+                >{{ c.midBtnLabel.value }}</a>
+            {% endif %}
+
+            {% if c.midIconText.value is not empty %}
+                <div class="mw-triple-card__after-btn">
+                    {% if midIconSvg is not empty %}
+                        <span
+                            class="mw-triple-card__small-icon mw-triple-card__small-icon--svg"
+                            {% if c.midIconColor.value is not empty %}style="color: {{ c.midIconColor.value }};"{% endif %}
+                            aria-hidden="true"
+                        >{{ midIconSvg|raw }}</span>
+                    {% elseif midIconUrl is not empty and midIconUrl matches '/\\.svg(\\?.*)?$/' and c.midIconColor.value is not empty %}
+                        <span
+                            class="mw-triple-card__small-icon"
+                            style="
+                                width: 16px;
+                                height: 16px;
+                                display: inline-block;
+                                background-color: {{ c.midIconColor.value }};
+                                -webkit-mask: url('{{ midIconUrl }}') no-repeat center;
+                                mask: url('{{ midIconUrl }}') no-repeat center;
+                                -webkit-mask-size: 16px 16px;
+                                mask-size: 16px 16px;
+                            "
+                            aria-hidden="true"
+                        ></span>
+                    {% elseif midIconUrl is not empty %}
+                        <img src="{{ midIconUrl }}" alt="" class="mw-triple-card__small-icon" loading="lazy" />
+                    {% endif %}
+                    <span {% if c.midIconColor.value is not empty %}style="color: {{ c.midIconColor.value }};"{% endif %}>
+                        {{ c.midIconText.value }}
+                    </span>
+                </div>
+            {% endif %}
+        </div>
+
+        {# ── RIGHT CARD ── #}
+        {% set rightCardTag = (c.rightLinkUrl.value is not empty) ? 'a' : 'div' %}
+        <{{ rightCardTag }}
+            class="mw-triple-card__card mw-triple-card__right"
+            {% if c.rightLinkUrl.value is not empty %}
+                href="{{ c.rightLinkUrl.value }}"
+                {% if c.rightLinkNewTab.value %}target="_blank" rel="noopener noreferrer"{% endif %}
+            {% endif %}
+            style="
+                background-color: {{ c.rightBgColor.value ?: '#222222' }};
+                {% if c.rightBgType.value == 'image' and rightBgUrl is not empty %}
+                    background-image: url('{{ rightBgUrl }}');
+                    background-size: cover;
+                    background-position: center;
+                {% endif %}
+                color: {{ c.rightTextColor.value ?: '#ffffff' }};
+            "
+        >
+            {% if c.rightHeading is defined and c.rightHeading.value is not empty %}
+                <h3 class="mw-triple-card__right-heading">{{ c.rightHeading.value }}</h3>
+            {% endif %}
+
+            {% if c.rightDescription.value is not empty %}
+                <p class="mw-triple-card__description">{{ c.rightDescription.value }}</p>
+            {% endif %}
+
+            {% if c.rightIconText.value is not empty %}
+                <div class="mw-triple-card__icon-text-row">
+                    <span {% if c.rightIconTextColor.value is not empty %}style="color: {{ c.rightIconTextColor.value }};"{% endif %}>
+                        {{ c.rightIconText.value }}
+                    </span>
+                    {% if rightIconSvg is not empty %}
+                        <span
+                            class="mw-triple-card__small-icon mw-triple-card__small-icon--svg"
+                            {% if c.rightIconColor.value is not empty %}style="color: {{ c.rightIconColor.value }};"{% endif %}
+                            aria-hidden="true"
+                        >{{ rightIconSvg|raw }}</span>
+                    {% elseif rightIconUrl is not empty and rightIconUrl matches '/\\.svg(\\?.*)?$/' and c.rightIconColor.value is not empty %}
+                        <span
+                            class="mw-triple-card__small-icon"
+                            style="
+                                width: 16px;
+                                height: 16px;
+                                display: inline-block;
+                                background-color: {{ c.rightIconColor.value }};
+                                -webkit-mask: url('{{ rightIconUrl }}') no-repeat center;
+                                mask: url('{{ rightIconUrl }}') no-repeat center;
+                                -webkit-mask-size: 16px 16px;
+                                mask-size: 16px 16px;
+                            "
+                            aria-hidden="true"
+                        ></span>
+                    {% elseif rightIconUrl is not empty %}
+                        <img src="{{ rightIconUrl }}" alt="" class="mw-triple-card__small-icon" loading="lazy" />
+                    {% endif %}
+                </div>
+            {% endif %}
+        </{{ rightCardTag }}>
+
+    </div>
+{% endblock %}

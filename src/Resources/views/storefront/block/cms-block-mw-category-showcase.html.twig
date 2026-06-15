@@ -1,0 +1,11 @@
+{% block block_mw_category_showcase %}
+    {% set element = block.slots.getSlot('showcase') %}
+
+    {% if element %}
+        <div class="cms-block-mw-category-showcase">
+            <div class="container">
+                {% sw_include '@Storefront/storefront/element/cms-element-' ~ element.type ~ '.html.twig' ignore missing with { element: element } %}
+            </div>
+        </div>
+    {% endif %}
+{% endblock %}

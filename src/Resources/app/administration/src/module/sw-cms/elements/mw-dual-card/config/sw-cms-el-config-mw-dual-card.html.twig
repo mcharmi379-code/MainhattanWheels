@@ -1,0 +1,284 @@
+{% block sw_cms_el_config_mw_dual_card %}
+<div class="sw-cms-el-config-mw-dual-card">
+    <sw-tabs default-item="left">
+        <template #default="{ active }">
+            <sw-tabs-item name="left" :active-tab="active">
+                {{ $tc('mw-cms.elements.mwDualCard.config.tabLeft') }}
+            </sw-tabs-item>
+            <sw-tabs-item name="right" :active-tab="active">
+                {{ $tc('mw-cms.elements.mwDualCard.config.tabRight') }}
+            </sw-tabs-item>
+        </template>
+
+        <template #content="{ active }">
+
+            {# ── LEFT CARD ── #}
+            <sw-container v-if="active === 'left'" class="mw-dc-config-section">
+                <mt-text-field
+                    v-model="c.leftHeading.value"
+                    :label="$tc('mw-cms.elements.mwDualCard.config.heading')"
+                    @update:model-value="onInput"
+                />
+                <mt-textarea
+                    v-model="c.leftDescription.value"
+                    :label="$tc('mw-cms.elements.mwDualCard.config.description')"
+                    @update:model-value="onInput"
+                />
+
+                <p class="mw-dc-section-title">{{ $tc('mw-cms.elements.mwDualCard.config.button') }}</p>
+                <mt-text-field
+                    v-model="c.leftBtnLabel.value"
+                    :label="$tc('mw-cms.elements.mwDualCard.config.btnLabel')"
+                    @update:model-value="onInput"
+                />
+                <mt-text-field
+                    v-model="c.leftBtnUrl.value"
+                    :label="$tc('mw-cms.elements.mwDualCard.config.btnUrl')"
+                    @update:model-value="onInput"
+                />
+                <sw-field
+                    type="checkbox"
+                    v-model="c.leftBtnNewTab.value"
+                    :label="$tc('mw-cms.elements.mwDualCard.config.btnNewTab')"
+                    @update:model-value="onInput"
+                />
+                <sw-single-select
+                    v-model:value="c.leftLinkType.value"
+                    :label="$tc('mw-cms.elements.mwDualCard.config.linkType')"
+                    :options="linkTypeOptions"
+                    @update:value="onLeftLinkTypeChange"
+                />
+                <sw-dynamic-url-field
+                    v-if="c.leftLinkType.value === 'internal'"
+                    v-model:value="c.leftLinkUrl.value"
+                    :label="$tc('mw-cms.elements.mwDualCard.config.linkTo')"
+                />
+                <mt-text-field
+                    v-else
+                    v-model="c.leftLinkUrl.value"
+                    :label="$tc('mw-cms.elements.mwDualCard.config.linkTo')"
+                    @update:model-value="onInput"
+                />
+                <sw-field
+                    type="checkbox"
+                    v-model="c.leftLinkNewTab.value"
+                    :label="$tc('mw-cms.elements.mwDualCard.config.btnNewTab')"
+                    @update:model-value="onInput"
+                />
+
+                <p class="mw-dc-section-title">{{ $tc('mw-cms.elements.mwDualCard.config.colors') }}</p>
+                <sw-colorpicker
+                    v-model:value="c.leftBgColor.value"
+                    :label="$tc('mw-cms.elements.mwDualCard.config.bgColor')"
+                    color-output="hex"
+                    :z-index="1000"
+                    @update:value="onInput"
+                />
+                <sw-colorpicker
+                    v-model:value="c.leftTextColor.value"
+                    :label="$tc('mw-cms.elements.mwDualCard.config.textColor')"
+                    color-output="hex"
+                    :z-index="1000"
+                    @update:value="onInput"
+                />
+                <sw-colorpicker
+                    v-model:value="c.leftBtnBgColor.value"
+                    :label="$tc('mw-cms.elements.mwDualCard.config.btnBgColor')"
+                    color-output="hex"
+                    :z-index="1000"
+                    @update:value="onInput"
+                />
+                <sw-colorpicker
+                    v-model:value="c.leftBtnTextColor.value"
+                    :label="$tc('mw-cms.elements.mwDualCard.config.btnTextColor')"
+                    color-output="hex"
+                    :z-index="1000"
+                    @update:value="onInput"
+                />
+                <sw-colorpicker
+                    v-model:value="c.leftBtnOutlineColor.value"
+                    :label="$tc('mw-cms.elements.mwDualCard.config.btnOutlineColor')"
+                    color-output="hex"
+                    :z-index="1000"
+                    @update:value="onInput"
+                />
+            </sw-container>
+
+            {# ── RIGHT CARD ── #}
+            <sw-container v-if="active === 'right'" class="mw-dc-config-section">
+                <mt-text-field
+                    v-model="c.rightHeading.value"
+                    :label="$tc('mw-cms.elements.mwDualCard.config.heading')"
+                    @update:model-value="onInput"
+                />
+
+                {# Features #}
+                <p class="mw-dc-section-title">{{ $tc('mw-cms.elements.mwDualCard.config.features') }}</p>
+                <div class="mw-dc-feature-tabs">
+                    <button
+                        v-for="(f, i) in rightFeatures"
+                        :key="i"
+                        type="button"
+                        class="mw-dc-feature-tab"
+                        :class="{ 'is--active': activeFeatureIndex === i }"
+                        @click="activeFeatureIndex = i"
+                    >
+                        #{{ i + 1 }}
+                        <span class="mw-dc-feature-tab__remove" @click.stop="removeFeature(i)">✕</span>
+                    </button>
+                    <button type="button" class="mw-dc-feature-tab mw-dc-feature-tab--add" @click="addFeature">+ {{ $tc('mw-cms.elements.mwDualCard.config.addFeature') }}</button>
+                </div>
+
+                <template v-if="activeFeature !== null">
+                    <mt-text-field
+                        :model-value="activeFeature.text"
+                        :label="$tc('mw-cms.elements.mwDualCard.config.featureText')"
+                        @update:model-value="updateFeature('text', $event)"
+                    />
+
+                    <p class="mw-dc-upload-label">{{ $tc('mw-cms.elements.mwDualCard.config.featureIcon') }}</p>
+                    <sw-media-upload-v2
+                        variant="regular"
+                        :upload-tag="featureUploadTag"
+                        :source="activeFeature.iconUrl"
+                        :allow-multi-select="false"
+                        :default-folder="cmsPageState.pageEntityName"
+                        :caption="$tc('sw-cms.elements.general.config.caption.mediaUpload')"
+                        @media-upload-sidebar-open="featureMediaModalOpen = true"
+                        @media-upload-remove-image="onFeatureIconRemove"
+                    />
+                    <sw-upload-listener
+                        :upload-tag="featureUploadTag"
+                        auto-upload
+                        @media-upload-finish="onFeatureIconUpload"
+                    />
+                    <sw-media-modal-v2
+                        v-if="featureMediaModalOpen"
+                        variant="full"
+                        :caption="$tc('sw-cms.elements.general.config.caption.mediaUpload')"
+                        :allow-multi-select="false"
+                        @media-modal-selection-change="onFeatureMediaSelect"
+                        @modal-close="featureMediaModalOpen = false"
+                    />
+
+                    <sw-colorpicker
+                        v-if="isFeatureSvg"
+                        :value="activeFeature.svgColor"
+                        :label="$tc('mw-cms.elements.mwDualCard.config.svgColor')"
+                        color-output="hex"
+                        :z-index="1000"
+                        @update:value="updateFeature('svgColor', $event)"
+                    />
+                </template>
+
+                {# Right BG #}
+                <p class="mw-dc-section-title">{{ $tc('mw-cms.elements.mwDualCard.config.rightBg') }}</p>
+                <sw-colorpicker
+                    v-model:value="c.rightBgColor.value"
+                    :label="$tc('mw-cms.elements.mwDualCard.config.bgColor')"
+                    color-output="hex"
+                    :z-index="1000"
+                    @update:value="onInput"
+                />
+                <p class="mw-dc-upload-label">{{ $tc('mw-cms.elements.mwDualCard.config.bgImage') }}</p>
+                <sw-media-upload-v2
+                    variant="regular"
+                    :upload-tag="rightBgUploadTag"
+                    :source="c.rightBgMediaUrl.value"
+                    :allow-multi-select="false"
+                    :default-folder="cmsPageState.pageEntityName"
+                    :caption="$tc('sw-cms.elements.general.config.caption.mediaUpload')"
+                    @media-upload-sidebar-open="rightBgMediaModalOpen = true"
+                    @media-upload-remove-image="onRightBgRemove"
+                />
+                <sw-upload-listener
+                    :upload-tag="rightBgUploadTag"
+                    auto-upload
+                    @media-upload-finish="onRightBgUpload"
+                />
+                <sw-media-modal-v2
+                    v-if="rightBgMediaModalOpen"
+                    variant="full"
+                    :caption="$tc('sw-cms.elements.general.config.caption.mediaUpload')"
+                    :allow-multi-select="false"
+                    @media-modal-selection-change="onRightBgMediaSelect"
+                    @modal-close="rightBgMediaModalOpen = false"
+                />
+
+                {# Right text / button colors #}
+                <p class="mw-dc-section-title">{{ $tc('mw-cms.elements.mwDualCard.config.button') }}</p>
+                <mt-text-field
+                    v-model="c.rightBtnLabel.value"
+                    :label="$tc('mw-cms.elements.mwDualCard.config.btnLabel')"
+                    @update:model-value="onInput"
+                />
+                <mt-text-field
+                    v-model="c.rightBtnUrl.value"
+                    :label="$tc('mw-cms.elements.mwDualCard.config.btnUrl')"
+                    @update:model-value="onInput"
+                />
+                <sw-field
+                    type="checkbox"
+                    v-model="c.rightBtnNewTab.value"
+                    :label="$tc('mw-cms.elements.mwDualCard.config.btnNewTab')"
+                    @update:model-value="onInput"
+                />
+                <sw-single-select
+                    v-model:value="c.rightLinkType.value"
+                    :label="$tc('mw-cms.elements.mwDualCard.config.linkType')"
+                    :options="linkTypeOptions"
+                    @update:value="onRightLinkTypeChange"
+                />
+                <sw-dynamic-url-field
+                    v-if="c.rightLinkType.value === 'internal'"
+                    v-model:value="c.rightLinkUrl.value"
+                    :label="$tc('mw-cms.elements.mwDualCard.config.linkTo')"
+                />
+                <mt-text-field
+                    v-else
+                    v-model="c.rightLinkUrl.value"
+                    :label="$tc('mw-cms.elements.mwDualCard.config.linkTo')"
+                    @update:model-value="onInput"
+                />
+                <sw-field
+                    type="checkbox"
+                    v-model="c.rightLinkNewTab.value"
+                    :label="$tc('mw-cms.elements.mwDualCard.config.btnNewTab')"
+                    @update:model-value="onInput"
+                />
+
+                <p class="mw-dc-section-title">{{ $tc('mw-cms.elements.mwDualCard.config.colors') }}</p>
+                <sw-colorpicker
+                    v-model:value="c.rightTextColor.value"
+                    :label="$tc('mw-cms.elements.mwDualCard.config.textColor')"
+                    color-output="hex"
+                    :z-index="1000"
+                    @update:value="onInput"
+                />
+                <sw-colorpicker
+                    v-model:value="c.rightBtnBgColor.value"
+                    :label="$tc('mw-cms.elements.mwDualCard.config.btnBgColor')"
+                    color-output="hex"
+                    :z-index="1000"
+                    @update:value="onInput"
+                />
+                <sw-colorpicker
+                    v-model:value="c.rightBtnTextColor.value"
+                    :label="$tc('mw-cms.elements.mwDualCard.config.btnTextColor')"
+                    color-output="hex"
+                    :z-index="1000"
+                    @update:value="onInput"
+                />
+                <sw-colorpicker
+                    v-model:value="c.rightBtnOutlineColor.value"
+                    :label="$tc('mw-cms.elements.mwDualCard.config.btnOutlineColor')"
+                    color-output="hex"
+                    :z-index="1000"
+                    @update:value="onInput"
+                />
+            </sw-container>
+
+        </template>
+    </sw-tabs>
+</div>
+{% endblock %}

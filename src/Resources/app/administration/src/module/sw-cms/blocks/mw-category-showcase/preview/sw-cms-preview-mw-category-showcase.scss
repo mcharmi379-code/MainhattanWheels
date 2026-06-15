@@ -1,0 +1,46 @@
+.sw-cms-preview-mw-category-showcase {
+    padding: 10px;
+    font-size: 10px;
+
+    &__header {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 8px;
+
+        span {
+            color: #e8611a;
+            border: 1px solid #e8611a;
+            padding: 2px 5px;
+            font-size: 9px;
+        }
+    }
+
+    &__row {
+        display: flex;
+        gap: 4px;
+    }
+
+    &__card {
+        flex: 1;
+    }
+
+    &__img {
+        background: #ccc;
+        height: 35px;
+        margin-bottom: 3px;
+    }
+
+    &__name {
+        font-weight: 700;
+        font-size: 8px;
+        margin-bottom: 2px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    &__link {
+        color: #e8611a;
+        font-size: 8px;
+    }
+}

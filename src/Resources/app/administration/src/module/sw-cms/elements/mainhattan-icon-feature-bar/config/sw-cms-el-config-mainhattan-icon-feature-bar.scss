@@ -1,0 +1,71 @@
+.sw-cms-el-config-mainhattan-icon-feature-bar {
+    .config-row-2 {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 8px;
+    }
+
+    .mifb-item-tabs {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 4px;
+        margin-bottom: 16px;
+    }
+
+    .mifb-item-tab {
+        padding: 4px 10px;
+        border: 1px solid #d1d5db;
+        border-radius: 4px;
+        background: #f9fafb;
+        cursor: pointer;
+        font-size: 12px;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+
+        &.is--active {
+            border-color: #0064ff;
+            background: #eff4ff;
+            color: #0064ff;
+            font-weight: 600;
+        }
+
+        &--add {
+            border-style: dashed;
+            color: #6b7280;
+
+            &:hover {
+                border-color: #0064ff;
+                color: #0064ff;
+            }
+        }
+
+        &__remove {
+            font-size: 10px;
+            color: #9ca3af;
+            line-height: 1;
+
+            &:hover {
+                color: #ef4444;
+            }
+        }
+    }
+
+    .mifb-upload-section {
+        margin-top: 8px;
+    }
+
+    .mifb-upload-label {
+        font-size: 12px;
+        font-weight: 600;
+        color: #374151;
+        margin-bottom: 4px;
+    }
+
+    .mifb-empty-hint {
+        color: #9ca3af;
+        font-size: 12px;
+        text-align: center;
+        margin-top: 16px;
+    }
+}

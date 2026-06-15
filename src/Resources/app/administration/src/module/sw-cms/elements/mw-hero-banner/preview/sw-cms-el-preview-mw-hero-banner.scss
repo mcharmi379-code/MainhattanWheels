@@ -1,0 +1,68 @@
+.sw-cms-el-preview-mw-hero-banner {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px;
+    background: #f0f0f0;
+    border-radius: 6px;
+    min-height: 110px;
+    border: 1px solid rgba(0, 0, 0, 0.06);
+
+    &__left {
+        flex: 0 0 58%;
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+    }
+
+    &__heading {
+        font-size: 9px;
+        font-weight: 800;
+        line-height: 1.2;
+        color: #1a1a1a;
+
+        span {
+            color: #e8540a;
+        }
+    }
+
+    &__description {
+        font-size: 7px;
+        color: #444;
+        line-height: 1.4;
+    }
+
+    &__actions {
+        display: flex;
+        gap: 6px;
+        margin-top: 4px;
+    }
+
+    &__btn {
+        padding: 3px 8px;
+        font-size: 6px;
+        font-weight: 700;
+        border-radius: 3px;
+        border: 1.5px solid transparent;
+
+        &--primary {
+            background: #e8540a;
+            color: #fff;
+            border-color: #e8540a;
+        }
+
+        &--outline {
+            background: transparent;
+            color: #1a1a1a;
+            border-color: #1a1a1a;
+        }
+    }
+
+    &__right {
+        flex: 0 0 42%;
+        height: 80px;
+        background: rgba(0, 0, 0, 0.08);
+        border-radius: 6px;
+        border: 1px dashed rgba(0, 0, 0, 0.2);
+    }
+}

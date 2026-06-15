@@ -1,0 +1,81 @@
+.sw-cms-el-mainhattan-icon-feature-bar {
+    width: 100%;
+    padding: 16px 0;
+
+    &__grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 0;
+    }
+
+    &__item {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 12px;
+        padding: 12px 16px;
+        border-right: 1px solid #e5e7eb;
+
+        &:last-child {
+            border-right: none;
+        }
+    }
+
+    &__icon-wrap {
+        flex-shrink: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #6b7280;
+    }
+
+    &__icon-img {
+        object-fit: contain;
+        display: block;
+    }
+
+    &__svg-inline {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+
+        svg {
+            width: 100%;
+            height: 100%;
+            fill: currentColor;
+
+            path, rect, circle, polygon, ellipse, line, polyline {
+                fill: currentColor;
+            }
+        }
+    }
+
+    &__placeholder-icon {
+        opacity: 0.4;
+    }
+
+    &__text {
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+        min-width: 0;
+    }
+
+    &__heading {
+        display: block;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.04em;
+        word-break: break-word;
+        overflow-wrap: break-word;
+        line-height: 1.3;
+    }
+
+    &__description {
+        display: block;
+        word-break: break-word;
+        overflow-wrap: break-word;
+        line-height: 1.4;
+    }
+}

@@ -1,0 +1,18 @@
+.sw-cms-el-mw-category-showcase {
+    background: #f5f5f5;
+    border: 1px dashed #ccc;
+    padding: 20px;
+    text-align: center;
+    min-height: 80px;
+
+    &__title {
+        font-weight: 600;
+        display: block;
+        margin-bottom: 4px;
+    }
+
+    &__body {
+        color: #888;
+        font-size: 12px;
+    }
+}

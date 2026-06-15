@@ -1,0 +1,15 @@
+{% block sw_cms_block_preview_mw_category_showcase %}
+<div class="sw-cms-preview-mw-category-showcase">
+    <div class="sw-cms-preview-mw-category-showcase__header">
+        <strong>KATEGORIE</strong>
+        <span>ALLE ANSEHEN →</span>
+    </div>
+    <div class="sw-cms-preview-mw-category-showcase__row">
+        <div class="sw-cms-preview-mw-category-showcase__card" v-for="n in 4" :key="n">
+            <div class="sw-cms-preview-mw-category-showcase__img"></div>
+            <div class="sw-cms-preview-mw-category-showcase__name">Kategorie {{ n }}</div>
+            <span class="sw-cms-preview-mw-category-showcase__link">MEHR →</span>
+        </div>
+    </div>
+</div>
+{% endblock %}

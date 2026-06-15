@@ -1,0 +1,59 @@
+{% block sw_cms_el_mainhattan_icon_feature_bar %}
+    <div
+        class="sw-cms-el-mainhattan-icon-feature-bar"
+        :style="{ backgroundColor: element.config.backgroundColor.value }"
+    >
+        <div class="sw-cms-el-mainhattan-icon-feature-bar__grid">
+            <div
+                v-for="(item, index) in items"
+                :key="index"
+                class="sw-cms-el-mainhattan-icon-feature-bar__item"
+            >
+                <div
+                    class="sw-cms-el-mainhattan-icon-feature-bar__icon-wrap"
+                    :style="{ color: (isSvgItem(item) && item.svgColor) ? item.svgColor : 'inherit' }"
+                >
+                    {% raw %}
+                    <!-- SVG uploaded: render inline so currentColor works -->
+                    <span
+                        v-if="isSvgItem(item) && getInlineSvg(item)"
+                        class="sw-cms-el-mainhattan-icon-feature-bar__svg-inline"
+                        :style="{ width: (element.config.iconSize.value || '40') + 'px', height: (element.config.iconSize.value || '40') + 'px' }"
+                        v-html="getInlineSvg(item)"
+                    ></span>
+                    <!-- SVG uploaded but not yet fetched: show <img> as fallback -->
+                    <img
+                        v-else-if="item.iconUrl"
+                        :src="item.iconUrl"
+                        alt=""
+                        class="sw-cms-el-mainhattan-icon-feature-bar__icon-img"
+                        :style="{ width: (element.config.iconSize.value || '40') + 'px', height: (element.config.iconSize.value || '40') + 'px' }"
+                    />
+                    <!-- No icon yet -->
+                    <sw-icon
+                        v-else
+                        name="regular-image"
+                        :style="{ width: (element.config.iconSize.value || '40') + 'px', height: (element.config.iconSize.value || '40') + 'px' }"
+                        class="sw-cms-el-mainhattan-icon-feature-bar__placeholder-icon"
+                    />
+                    {% endraw %}
+                </div>
+
+                <div class="sw-cms-el-mainhattan-icon-feature-bar__text">
+                    <span
+                        class="sw-cms-el-mainhattan-icon-feature-bar__heading"
+                        :style="{ color: element.config.headingColor.value, fontSize: (element.config.headingSize.value || '13') + 'px' }"
+                    >
+                        {{ item.heading || 'Heading' }}
+                    </span>
+                    <span
+                        class="sw-cms-el-mainhattan-icon-feature-bar__description"
+                        :style="{ color: element.config.descriptionColor.value, fontSize: (element.config.descriptionSize.value || '12') + 'px' }"
+                    >
+                        {{ item.description || 'Description' }}
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

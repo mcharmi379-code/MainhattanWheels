@@ -1,0 +1,14 @@
+{% block block_mw_triple_card %}
+    {% set element = block.slots.getSlot('tripleCard') %}
+
+    {% if element %}
+        <div class="cms-block-mw-triple-card">
+            <div data-cms-element-id="{{ element.id }}">
+                {% sw_include '@Storefront/storefront/element/cms-element-' ~ element.type ~ '.html.twig'
+                    ignore missing
+                    with { element: element }
+                %}
+            </div>
+        </div>
+    {% endif %}
+{% endblock %}

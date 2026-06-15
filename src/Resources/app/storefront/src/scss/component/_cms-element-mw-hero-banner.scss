@@ -1,0 +1,223 @@
+.cms-element-mw-hero-banner {
+    background-color: #f0f0f0;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    overflow: hidden;
+
+    &__container {
+        max-width: 1320px;
+        margin: 0 auto;
+        padding: 0 40px;
+        display: flex;
+        align-items: center;
+        gap: 32px;
+        min-height: 340px;
+    }
+
+    &__left {
+        flex: 0 0 52%;
+        max-width: 52%;
+        min-width: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        padding: 48px 0;
+    }
+
+    &__heading {
+        margin: 0;
+        font-size: clamp(26px, 3vw, 48px);
+        font-weight: 800;
+        line-height: 1.12;
+        word-break: break-word;
+        overflow-wrap: break-word;
+    }
+
+    &__description {
+        margin: 0;
+        font-size: 16px;
+        line-height: 1.6;
+        word-break: break-word;
+        overflow-wrap: break-word;
+    }
+
+    &__actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-top: 8px;
+    }
+
+    &__btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 48px;
+        padding: 11px 26px;
+        border-radius: 4px;
+        text-decoration: none;
+        font-weight: 700;
+        font-size: 14px;
+        letter-spacing: 0.04em;
+        border: 2px solid transparent;
+        transition: opacity 0.2s ease;
+        white-space: nowrap;
+        touch-action: manipulation;
+
+        &:hover,
+        &:focus {
+            opacity: 0.85;
+            text-decoration: none;
+        }
+
+        &--outline {
+            border-color: currentColor;
+        }
+    }
+
+    &__right {
+        flex: 0 0 48%;
+        max-width: 48%;
+        min-width: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    &__image {
+        display: block;
+        width: 100%;
+        height: auto;
+        max-height: 420px;
+        object-fit: contain;
+        object-position: center;
+    }
+}
+
+@include media-breakpoint-down(xl) {
+    .cms-element-mw-hero-banner {
+        &__container {
+            padding: 0 32px;
+            gap: 24px;
+        }
+
+        &__left {
+            flex: 0 0 54%;
+            max-width: 54%;
+        }
+
+        &__right {
+            flex: 0 0 46%;
+            max-width: 46%;
+        }
+
+        &__heading {
+            font-size: clamp(24px, 2.8vw, 40px);
+        }
+    }
+}
+
+@include media-breakpoint-down(lg) {
+    .cms-element-mw-hero-banner {
+        &__container {
+            padding: 0 24px;
+            gap: 20px;
+            min-height: 280px;
+        }
+
+        &__left {
+            flex: 0 0 55%;
+            max-width: 55%;
+            padding: 36px 0;
+        }
+
+        &__right {
+            flex: 0 0 45%;
+            max-width: 45%;
+        }
+
+        &__heading {
+            font-size: clamp(22px, 3vw, 34px);
+        }
+
+        &__description {
+            font-size: 15px;
+        }
+
+        &__image {
+            max-height: 320px;
+        }
+    }
+}
+
+@include media-breakpoint-down(md) {
+    .cms-element-mw-hero-banner {
+        &__container {
+            padding: 0 20px;
+            gap: 16px;
+            min-height: unset;
+        }
+
+        &__left {
+            flex: 0 0 58%;
+            max-width: 58%;
+            padding: 28px 0;
+            gap: 12px;
+        }
+
+        &__right {
+            flex: 0 0 42%;
+            max-width: 42%;
+        }
+
+        &__heading {
+            font-size: clamp(18px, 4.5vw, 28px);
+        }
+
+        &__description {
+            font-size: 14px;
+        }
+
+        &__btn {
+            min-height: 40px;
+            padding: 8px 16px;
+            font-size: 13px;
+        }
+
+        &__image {
+            max-height: 260px;
+        }
+    }
+}
+
+@include media-breakpoint-down(sm) {
+    .cms-element-mw-hero-banner {
+        &__container {
+            flex-direction: column;
+            padding: 0 16px;
+            gap: 0;
+            min-height: unset;
+        }
+
+        &__left {
+            flex: 1 1 auto;
+            max-width: 100%;
+            padding: 32px 0 16px;
+            gap: 12px;
+        }
+
+        &__right {
+            flex: 1 1 auto;
+            max-width: 100%;
+            justify-content: center;
+            padding-bottom: 24px;
+        }
+
+        &__image {
+            width: auto;
+            max-width: 100%;
+            max-height: 220px;
+        }
+    }
+}

@@ -1,0 +1,136 @@
+{% block sw_cms_element_config_mw_category_showcase %}
+<div class="sw-cms-el-config-mw-category-showcase">
+
+    <sw-tabs default-item="general">
+        <template #default="{ active }">
+            <sw-tabs-item name="general" :active-tab="active">
+                {{ $tc('mw-cms.elements.mwCategoryShowcase.config.tabGeneral') }}
+            </sw-tabs-item>
+            <sw-tabs-item name="cards" :active-tab="active">
+                {{ $tc('mw-cms.elements.mwCategoryShowcase.config.tabCards') }}
+            </sw-tabs-item>
+        </template>
+
+        <template #content="{ active }">
+
+            {# ══ TAB: General ══ #}
+            <sw-container v-if="active === 'general'" class="sw-cms-el-config-mw-category-showcase__general">
+
+                <sw-entity-single-select
+                    v-model:value="element.config.mainCategory.value"
+                    entity="category"
+                    :label="$tc('mw-cms.elements.mwCategoryShowcase.config.mainCategory')"
+                    :placeholder="$tc('mw-cms.elements.mwCategoryShowcase.config.mainCategoryPlaceholder')"
+                    :criteria="mainCategoryCriteria"
+                    show-clearable-button
+                    @update:value="emitUpdate"
+                />
+
+                <sw-single-select
+                    v-model:value="element.config.visibleCards.value"
+                    :label="$tc('mw-cms.elements.mwCategoryShowcase.config.visibleCards')"
+                    :options="visibleCardsOptions"
+                    @update:value="emitUpdate"
+                />
+
+                <p class="sw-cms-el-config-mw-category-showcase__section-label">
+                    {{ $tc('mw-cms.elements.mwCategoryShowcase.config.showAllSection') }}
+                </p>
+
+                <mt-text-field
+                    v-model="element.config.showAllLabel.value"
+                    :label="$tc('mw-cms.elements.mwCategoryShowcase.config.showAllLabel')"
+                    :placeholder="$tc('mw-cms.elements.mwCategoryShowcase.config.showAllLabelPlaceholder')"
+                    @update:model-value="emitUpdate"
+                />
+
+                <sw-colorpicker
+                    v-model:value="element.config.showAllColor.value"
+                    :label="$tc('mw-cms.elements.mwCategoryShowcase.config.showAllColor')"
+                    color-output="hex"
+                    :z-index="1000"
+                    @update:value="emitUpdate"
+                />
+
+                <p class="sw-cms-el-config-mw-category-showcase__section-label">
+                    {{ $tc('mw-cms.elements.mwCategoryShowcase.config.learnMoreSection') }}
+                </p>
+
+                <mt-text-field
+                    v-model="element.config.learnMoreLabel.value"
+                    :label="$tc('mw-cms.elements.mwCategoryShowcase.config.learnMoreLabel')"
+                    :placeholder="$tc('mw-cms.elements.mwCategoryShowcase.config.learnMoreLabelPlaceholder')"
+                    @update:model-value="emitUpdate"
+                />
+
+                <sw-colorpicker
+                    v-model:value="element.config.learnMoreColor.value"
+                    :label="$tc('mw-cms.elements.mwCategoryShowcase.config.learnMoreColor')"
+                    color-output="hex"
+                    :z-index="1000"
+                    @update:value="emitUpdate"
+                />
+
+                <p class="sw-cms-el-config-mw-category-showcase__section-label">
+                    {{ $tc('mw-cms.elements.mwCategoryShowcase.config.cardAppearanceSection') }}
+                </p>
+
+                <sw-colorpicker
+                    v-model:value="element.config.cardBgColor.value"
+                    :label="$tc('mw-cms.elements.mwCategoryShowcase.config.cardBgColor')"
+                    color-output="hex"
+                    :z-index="1000"
+                    @update:value="emitUpdate"
+                />
+
+                <sw-colorpicker
+                    v-model:value="element.config.cardBorderColor.value"
+                    :label="$tc('mw-cms.elements.mwCategoryShowcase.config.cardBorderColor')"
+                    color-output="hex"
+                    :z-index="1000"
+                    @update:value="emitUpdate"
+                />
+
+            </sw-container>
+
+            {# ══ TAB: Sub-Categories ══ #}
+            <sw-container v-if="active === 'cards'" class="sw-cms-el-config-mw-category-showcase__cards">
+
+                <div
+                    v-for="(subId, index) in subCategories"
+                    :key="index"
+                    class="sw-cms-el-config-mw-category-showcase__sub-row"
+                >
+                    <sw-entity-single-select
+                        :value="subId"
+                        entity="category"
+                        :label="$tc('mw-cms.elements.mwCategoryShowcase.config.subCategory') + ' ' + (index + 1)"
+                        :placeholder="$tc('mw-cms.elements.mwCategoryShowcase.config.subCategoryPlaceholder')"
+                        :criteria="mainCategoryCriteria"
+                        show-clearable-button
+                        @update:value="onSubCategoryChange($event, index)"
+                    />
+                    <sw-button
+                        variant="danger"
+                        size="small"
+                        @click="removeSubCategory(index)"
+                    >
+                        {{ $tc('mw-cms.elements.mwCategoryShowcase.config.removeSubCategory') }}
+                    </sw-button>
+                </div>
+
+                <sw-button
+                    variant="primary"
+                    size="small"
+                    @click="addSubCategory"
+                >
+                    {{ $tc('mw-cms.elements.mwCategoryShowcase.config.addSubCategory') }}
+                </sw-button>
+
+            </sw-container>
+
+        </template>
+    </sw-tabs>
+
+</div>
+{% endblock %}

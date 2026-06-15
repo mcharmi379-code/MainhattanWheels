@@ -1,0 +1,16 @@
+{% block block_mainhattan_icon_feature_bar %}
+    {% set element = block.slots.getSlot('iconFeatureBar') %}
+
+    {% if element %}
+        <div class="cms-block-mainhattan-icon-feature-bar">
+            <div class="cms-block-container">
+                <div data-cms-element-id="{{ element.id }}">
+                    {% sw_include '@Storefront/storefront/element/cms-element-' ~ element.type ~ '.html.twig'
+                        ignore missing
+                        with { element: element }
+                    %}
+                </div>
+            </div>
+        </div>
+    {% endif %}
+{% endblock %}

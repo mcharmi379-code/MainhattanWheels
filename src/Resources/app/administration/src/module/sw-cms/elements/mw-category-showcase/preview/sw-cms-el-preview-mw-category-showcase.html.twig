@@ -1,0 +1,17 @@
+{% block sw_cms_element_preview_mw_category_showcase %}
+<div class="sw-cms-el-preview-mw-category-showcase">
+    <div class="sw-cms-el-preview-mw-category-showcase__header">
+        <div class="sw-cms-el-preview-mw-category-showcase__title-bar">
+            <span class="sw-cms-el-preview-mw-category-showcase__category-title">KATEGORIE</span>
+            <span class="sw-cms-el-preview-mw-category-showcase__see-all">ALLE ANSEHEN →</span>
+        </div>
+    </div>
+    <div class="sw-cms-el-preview-mw-category-showcase__cards">
+        <div class="sw-cms-el-preview-mw-category-showcase__card" v-for="n in 3" :key="n">
+            <div class="sw-cms-el-preview-mw-category-showcase__card-img"></div>
+            <div class="sw-cms-el-preview-mw-category-showcase__card-name">Subkategorie {{ n }}</div>
+            <div class="sw-cms-el-preview-mw-category-showcase__card-link">MEHR ERFAHREN →</div>
+        </div>
+    </div>
+</div>
+{% endblock %}

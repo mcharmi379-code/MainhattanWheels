@@ -1,0 +1,421 @@
+{% block sw_cms_el_config_mw_triple_card %}
+<div class="sw-cms-el-config-mw-triple-card">
+    <sw-tabs default-item="left">
+        <template #default="{ active }">
+            <sw-tabs-item name="left" :active-tab="active">
+                {{ $tc('mw-cms.elements.mwTripleCard.config.tabLeft') }}
+            </sw-tabs-item>
+            <sw-tabs-item name="mid" :active-tab="active">
+                {{ $tc('mw-cms.elements.mwTripleCard.config.tabMid') }}
+            </sw-tabs-item>
+            <sw-tabs-item name="right" :active-tab="active">
+                {{ $tc('mw-cms.elements.mwTripleCard.config.tabRight') }}
+            </sw-tabs-item>
+        </template>
+
+        <template #content="{ active }">
+
+            {# ── LEFT CARD ── #}
+            <sw-container v-if="active === 'left'" class="mw-tc-config-section">
+
+                <p class="mw-tc-section-title">{{ $tc('mw-cms.elements.mwTripleCard.config.background') }}</p>
+                <sw-single-select
+                    v-model:value="c.leftBgType.value"
+                    :options="bgTypeOptions"
+                    :label="$tc('mw-cms.elements.mwTripleCard.config.bgType')"
+                    @update:value="onInput"
+                />
+                <sw-colorpicker
+                    v-if="c.leftBgType.value === 'color'"
+                    v-model:value="c.leftBgColor.value"
+                    :label="$tc('mw-cms.elements.mwTripleCard.config.bgColor')"
+                    color-output="hex"
+                    :z-index="1000"
+                    @update:value="onInput"
+                />
+                <template v-if="c.leftBgType.value === 'image'">
+                    <p class="mw-tc-upload-label">{{ $tc('mw-cms.elements.mwTripleCard.config.bgImage') }}</p>
+                    <sw-media-upload-v2
+                        variant="regular"
+                        :upload-tag="leftBgUploadTag"
+                        :source="c.leftBgMediaUrl.value"
+                        :allow-multi-select="false"
+                        :default-folder="cmsPageState.pageEntityName"
+                        :caption="$tc('sw-cms.elements.general.config.caption.mediaUpload')"
+                        @media-upload-sidebar-open="leftBgModalOpen = true"
+                        @media-upload-remove-image="onMediaRemove('leftBgMediaId', 'leftBgMediaUrl')"
+                    />
+                    <sw-upload-listener
+                        :upload-tag="leftBgUploadTag"
+                        auto-upload
+                        @media-upload-finish="onMediaUpload('leftBgMediaId', 'leftBgMediaUrl', $event)"
+                    />
+                    <sw-media-modal-v2
+                        v-if="leftBgModalOpen"
+                        variant="full"
+                        :caption="$tc('sw-cms.elements.general.config.caption.mediaUpload')"
+                        :allow-multi-select="false"
+                        @media-modal-selection-change="onMediaSelect('leftBgMediaId', 'leftBgMediaUrl', 'leftBgModalOpen', $event)"
+                        @modal-close="leftBgModalOpen = false"
+                    />
+                </template>
+
+                <p class="mw-tc-section-title">{{ $tc('mw-cms.elements.mwTripleCard.config.content') }}</p>
+                <mt-text-field
+                    v-model="c.leftHeadline.value"
+                    :label="$tc('mw-cms.elements.mwTripleCard.config.headline')"
+                    @update:model-value="onInput"
+                />
+                <sw-colorpicker
+                    v-model:value="c.leftHeadingColor.value"
+                    :label="$tc('mw-cms.elements.mwTripleCard.config.headingColor')"
+                    color-output="hex"
+                    :z-index="1000"
+                    @update:value="onInput"
+                />
+
+                <p class="mw-tc-section-title">{{ $tc('mw-cms.elements.mwTripleCard.config.icons') }}</p>
+                <div class="mw-tc-icon-tabs">
+                    <button
+                        v-for="(item, i) in leftIcons"
+                        :key="i"
+                        type="button"
+                        class="mw-tc-icon-tab"
+                        :class="{ 'is--active': activeLeftIconIndex === i }"
+                        @click="activeLeftIconIndex = i"
+                    >
+                        #{{ i + 1 }}
+                        <span class="mw-tc-icon-tab__remove" @click.stop="removeLeftIcon(i)">✕</span>
+                    </button>
+                    <button type="button" class="mw-tc-icon-tab mw-tc-icon-tab--add" @click="addLeftIcon">
+                        + {{ $tc('mw-cms.elements.mwTripleCard.config.addIcon') }}
+                    </button>
+                </div>
+
+                <template v-if="activeLeftIcon !== null">
+                    <p class="mw-tc-upload-label">{{ $tc('mw-cms.elements.mwTripleCard.config.icon') }}</p>
+                    <sw-media-upload-v2
+                        variant="regular"
+                        :upload-tag="leftIconUploadTag"
+                        :source="activeLeftIcon.iconUrl"
+                        :allow-multi-select="false"
+                        :default-folder="cmsPageState.pageEntityName"
+                        :caption="$tc('sw-cms.elements.general.config.caption.mediaUpload')"
+                        @media-upload-sidebar-open="leftIconModalOpen = true"
+                        @media-upload-remove-image="onLeftIconRemove"
+                    />
+                    <sw-upload-listener
+                        :upload-tag="leftIconUploadTag"
+                        auto-upload
+                        @media-upload-finish="onLeftIconUpload"
+                    />
+                    <sw-media-modal-v2
+                        v-if="leftIconModalOpen"
+                        variant="full"
+                        :caption="$tc('sw-cms.elements.general.config.caption.mediaUpload')"
+                        :allow-multi-select="false"
+                        @media-modal-selection-change="onLeftIconMediaSelect"
+                        @modal-close="leftIconModalOpen = false"
+                    />
+                    <mt-text-field
+                        :model-value="activeLeftIcon.iconDesc"
+                        :label="$tc('mw-cms.elements.mwTripleCard.config.iconDesc')"
+                        @update:model-value="updateLeftIcon('iconDesc', $event)"
+                    />
+                    <sw-colorpicker
+                        v-if="activeLeftIcon?.iconMimeType === 'image/svg+xml'"
+                        :value="activeLeftIcon.iconColor"
+                        :label="$tc('mw-cms.elements.mwTripleCard.config.iconColor')"
+                        color-output="hex"
+                        :z-index="1000"
+                        @update:value="updateLeftIcon('iconColor', $event)"
+                    />
+                </template>
+            </sw-container>
+
+            {# ── MIDDLE CARD ── #}
+            <sw-container v-if="active === 'mid'" class="mw-tc-config-section">
+
+                <p class="mw-tc-section-title">{{ $tc('mw-cms.elements.mwTripleCard.config.background') }}</p>
+                <sw-single-select
+                    v-model:value="c.midBgType.value"
+                    :options="bgTypeOptions"
+                    :label="$tc('mw-cms.elements.mwTripleCard.config.bgType')"
+                    @update:value="onInput"
+                />
+                <sw-colorpicker
+                    v-if="c.midBgType.value === 'color'"
+                    v-model:value="c.midBgColor.value"
+                    :label="$tc('mw-cms.elements.mwTripleCard.config.bgColor')"
+                    color-output="hex"
+                    :z-index="1000"
+                    @update:value="onInput"
+                />
+                <template v-if="c.midBgType.value === 'image'">
+                    <p class="mw-tc-upload-label">{{ $tc('mw-cms.elements.mwTripleCard.config.bgImage') }}</p>
+                    <sw-media-upload-v2
+                        variant="regular"
+                        :upload-tag="midBgUploadTag"
+                        :source="c.midBgMediaUrl.value"
+                        :allow-multi-select="false"
+                        :default-folder="cmsPageState.pageEntityName"
+                        :caption="$tc('sw-cms.elements.general.config.caption.mediaUpload')"
+                        @media-upload-sidebar-open="midBgModalOpen = true"
+                        @media-upload-remove-image="onMediaRemove('midBgMediaId', 'midBgMediaUrl')"
+                    />
+                    <sw-upload-listener
+                        :upload-tag="midBgUploadTag"
+                        auto-upload
+                        @media-upload-finish="onMediaUpload('midBgMediaId', 'midBgMediaUrl', $event)"
+                    />
+                    <sw-media-modal-v2
+                        v-if="midBgModalOpen"
+                        variant="full"
+                        :caption="$tc('sw-cms.elements.general.config.caption.mediaUpload')"
+                        :allow-multi-select="false"
+                        @media-modal-selection-change="onMediaSelect('midBgMediaId', 'midBgMediaUrl', 'midBgModalOpen', $event)"
+                        @modal-close="midBgModalOpen = false"
+                    />
+                </template>
+
+                <p class="mw-tc-section-title">{{ $tc('mw-cms.elements.mwTripleCard.config.content') }}</p>
+                <mt-text-field
+                    v-model="c.midSubHeading.value"
+                    :label="$tc('mw-cms.elements.mwTripleCard.config.subHeading')"
+                    @update:model-value="onInput"
+                />
+                <mt-text-field
+                    v-model="c.midHeading.value"
+                    :label="$tc('mw-cms.elements.mwTripleCard.config.heading')"
+                    @update:model-value="onInput"
+                />
+                <mt-textarea
+                    v-model="c.midDescription.value"
+                    :label="$tc('mw-cms.elements.mwTripleCard.config.description')"
+                    @update:model-value="onInput"
+                />
+
+                <p class="mw-tc-section-title">{{ $tc('mw-cms.elements.mwTripleCard.config.button') }}</p>
+                <mt-text-field
+                    v-model="c.midBtnLabel.value"
+                    :label="$tc('mw-cms.elements.mwTripleCard.config.btnLabel')"
+                    @update:model-value="onInput"
+                />
+                <mt-text-field
+                    v-model="c.midBtnUrl.value"
+                    :label="$tc('mw-cms.elements.mwTripleCard.config.btnUrl')"
+                    @update:model-value="onInput"
+                />
+                <sw-field
+                    type="checkbox"
+                    v-model="c.midBtnNewTab.value"
+                    :label="$tc('mw-cms.elements.mwTripleCard.config.btnNewTab')"
+                    @update:model-value="onInput"
+                />
+                <sw-colorpicker
+                    v-model:value="c.midBtnBgColor.value"
+                    :label="$tc('mw-cms.elements.mwTripleCard.config.btnBgColor')"
+                    color-output="hex"
+                    :z-index="1000"
+                    @update:value="onInput"
+                />
+                <sw-colorpicker
+                    v-model:value="c.midBtnBorderColor.value"
+                    :label="$tc('mw-cms.elements.mwTripleCard.config.btnBorderColor')"
+                    color-output="hex"
+                    :z-index="1000"
+                    @update:value="onInput"
+                />
+                <sw-colorpicker
+                    v-model:value="c.midBtnTextColor.value"
+                    :label="$tc('mw-cms.elements.mwTripleCard.config.btnTextColor')"
+                    color-output="hex"
+                    :z-index="1000"
+                    @update:value="onInput"
+                />
+
+                <p class="mw-tc-section-title">{{ $tc('mw-cms.elements.mwTripleCard.config.afterButton') }}</p>
+                <p class="mw-tc-upload-label">{{ $tc('mw-cms.elements.mwTripleCard.config.icon') }}</p>
+                <sw-media-upload-v2
+                    variant="regular"
+                    :upload-tag="midIconUploadTag"
+                    :source="c.midIconUrl.value"
+                    :allow-multi-select="false"
+                    :default-folder="cmsPageState.pageEntityName"
+                    :caption="$tc('sw-cms.elements.general.config.caption.mediaUpload')"
+                    @media-upload-sidebar-open="midIconModalOpen = true"
+                    @media-upload-remove-image="onMediaRemove('midIconId', 'midIconUrl')"
+                />
+                <sw-upload-listener
+                    :upload-tag="midIconUploadTag"
+                    auto-upload
+                    @media-upload-finish="onMediaUpload('midIconId', 'midIconUrl', $event)"
+                />
+                <sw-media-modal-v2
+                    v-if="midIconModalOpen"
+                    variant="full"
+                    :caption="$tc('sw-cms.elements.general.config.caption.mediaUpload')"
+                    :allow-multi-select="false"
+                    @media-modal-selection-change="onMediaSelect('midIconId', 'midIconUrl', 'midIconModalOpen', $event)"
+                    @modal-close="midIconModalOpen = false"
+                />
+                <mt-text-field
+                    v-model="c.midIconText.value"
+                    :label="$tc('mw-cms.elements.mwTripleCard.config.iconText')"
+                    @update:model-value="onInput"
+                />
+                <sw-colorpicker
+                    v-model:value="c.midIconTextColor.value"
+                    :label="$tc('mw-cms.elements.mwTripleCard.config.iconTextColor')"
+                    color-output="hex"
+                    :z-index="1000"
+                    @update:value="onInput"
+                />
+                <sw-colorpicker
+                    v-if="c.midIconUrl.value"
+                    v-model:value="c.midIconColor.value"
+                    :label="$tc('mw-cms.elements.mwTripleCard.config.iconColor')"
+                    color-output="hex"
+                    :z-index="1000"
+                    @update:value="onInput"
+                />
+            </sw-container>
+
+            {# ── RIGHT CARD ── #}
+            <sw-container v-if="active === 'right'" class="mw-tc-config-section">
+
+                <p class="mw-tc-section-title">{{ $tc('mw-cms.elements.mwTripleCard.config.background') }}</p>
+                <sw-single-select
+                    v-model:value="c.rightBgType.value"
+                    :options="bgTypeOptions"
+                    :label="$tc('mw-cms.elements.mwTripleCard.config.bgType')"
+                    @update:value="onInput"
+                />
+                <sw-colorpicker
+                    v-if="c.rightBgType.value === 'color'"
+                    v-model:value="c.rightBgColor.value"
+                    :label="$tc('mw-cms.elements.mwTripleCard.config.bgColor')"
+                    color-output="hex"
+                    :z-index="1000"
+                    @update:value="onInput"
+                />
+                <template v-if="c.rightBgType.value === 'image'">
+                    <p class="mw-tc-upload-label">{{ $tc('mw-cms.elements.mwTripleCard.config.bgImage') }}</p>
+                    <sw-media-upload-v2
+                        variant="regular"
+                        :upload-tag="rightBgUploadTag"
+                        :source="c.rightBgMediaUrl.value"
+                        :allow-multi-select="false"
+                        :default-folder="cmsPageState.pageEntityName"
+                        :caption="$tc('sw-cms.elements.general.config.caption.mediaUpload')"
+                        @media-upload-sidebar-open="rightBgModalOpen = true"
+                        @media-upload-remove-image="onMediaRemove('rightBgMediaId', 'rightBgMediaUrl')"
+                    />
+                    <sw-upload-listener
+                        :upload-tag="rightBgUploadTag"
+                        auto-upload
+                        @media-upload-finish="onMediaUpload('rightBgMediaId', 'rightBgMediaUrl', $event)"
+                    />
+                    <sw-media-modal-v2
+                        v-if="rightBgModalOpen"
+                        variant="full"
+                        :caption="$tc('sw-cms.elements.general.config.caption.mediaUpload')"
+                        :allow-multi-select="false"
+                        @media-modal-selection-change="onMediaSelect('rightBgMediaId', 'rightBgMediaUrl', 'rightBgModalOpen', $event)"
+                        @modal-close="rightBgModalOpen = false"
+                    />
+                </template>
+
+                <p class="mw-tc-section-title">{{ $tc('mw-cms.elements.mwTripleCard.config.content') }}</p>
+                <sw-colorpicker
+                    v-model:value="c.rightTextColor.value"
+                    :label="$tc('mw-cms.elements.mwTripleCard.config.textColor')"
+                    color-output="hex"
+                    :z-index="1000"
+                    @update:value="onInput"
+                />
+                <mt-text-field
+                    v-model="c.rightHeading.value"
+                    :label="$tc('mw-cms.elements.mwTripleCard.config.heading')"
+                    @update:model-value="onInput"
+                />
+                <mt-textarea
+                    v-model="c.rightDescription.value"
+                    :label="$tc('mw-cms.elements.mwTripleCard.config.description')"
+                    @update:model-value="onInput"
+                />
+
+                <p class="mw-tc-section-title">{{ $tc('mw-cms.elements.mwTripleCard.config.iconTextLink') }}</p>
+                <p class="mw-tc-upload-label">{{ $tc('mw-cms.elements.mwTripleCard.config.icon') }}</p>
+                <sw-media-upload-v2
+                    variant="regular"
+                    :upload-tag="rightIconUploadTag"
+                    :source="c.rightIconUrl.value"
+                    :allow-multi-select="false"
+                    :default-folder="cmsPageState.pageEntityName"
+                    :caption="$tc('sw-cms.elements.general.config.caption.mediaUpload')"
+                    @media-upload-sidebar-open="rightIconModalOpen = true"
+                    @media-upload-remove-image="onMediaRemove('rightIconId', 'rightIconUrl')"
+                />
+                <sw-upload-listener
+                    :upload-tag="rightIconUploadTag"
+                    auto-upload
+                    @media-upload-finish="onMediaUpload('rightIconId', 'rightIconUrl', $event)"
+                />
+                <sw-media-modal-v2
+                    v-if="rightIconModalOpen"
+                    variant="full"
+                    :caption="$tc('sw-cms.elements.general.config.caption.mediaUpload')"
+                    :allow-multi-select="false"
+                    @media-modal-selection-change="onMediaSelect('rightIconId', 'rightIconUrl', 'rightIconModalOpen', $event)"
+                    @modal-close="rightIconModalOpen = false"
+                />
+                <mt-text-field
+                    v-model="c.rightIconText.value"
+                    :label="$tc('mw-cms.elements.mwTripleCard.config.iconText')"
+                    @update:model-value="onInput"
+                />
+                <sw-colorpicker
+                    v-model:value="c.rightIconTextColor.value"
+                    :label="$tc('mw-cms.elements.mwTripleCard.config.iconTextColor')"
+                    color-output="hex"
+                    :z-index="1000"
+                    @update:value="onInput"
+                />
+                <sw-colorpicker
+                    v-if="c.rightIconUrl.value"
+                    v-model:value="c.rightIconColor.value"
+                    :label="$tc('mw-cms.elements.mwTripleCard.config.iconColor')"
+                    color-output="hex"
+                    :z-index="1000"
+                    @update:value="onInput"
+                />
+                <sw-single-select
+                    v-model:value="c.rightLinkType.value"
+                    :label="$tc('mw-cms.elements.mwTripleCard.config.linkType')"
+                    :options="linkTypeOptions"
+                    @update:value="onRightLinkTypeChange"
+                />
+                <sw-dynamic-url-field
+                    v-if="c.rightLinkType.value === 'internal'"
+                    v-model:value="c.rightLinkUrl.value"
+                    :label="$tc('mw-cms.elements.mwTripleCard.config.linkTo')"
+                />
+                <mt-text-field
+                    v-else
+                    v-model="c.rightLinkUrl.value"
+                    :label="$tc('mw-cms.elements.mwTripleCard.config.linkTo')"
+                    @update:model-value="onInput"
+                />
+                <sw-field
+                    type="checkbox"
+                    v-model="c.rightLinkNewTab.value"
+                    :label="$tc('mw-cms.elements.mwTripleCard.config.btnNewTab')"
+                    @update:model-value="onInput"
+                />
+            </sw-container>
+
+        </template>
+    </sw-tabs>
+</div>
+{% endblock %}

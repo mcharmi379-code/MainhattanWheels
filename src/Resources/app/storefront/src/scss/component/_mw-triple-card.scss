@@ -1,0 +1,218 @@
+// MW Triple Card Element
+.mw-triple-card {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 0;
+
+    @media (max-width: 991.98px) {
+        grid-template-columns: 1fr;
+    }
+
+    // ── Shared card ────────────────────────────────────────────
+    &__card {
+        display: flex;
+        flex-direction: column;
+        padding: 40px 32px;
+        min-height: 280px;
+        gap: 20px;
+        color: #ffffff;
+
+        @media (max-width: 1199.98px) {
+            padding: 32px 24px;
+        }
+
+        @media (max-width: 767.98px) {
+            padding: 28px 20px;
+            min-height: 0;
+        }
+
+        @media (max-width: 575.98px) {
+            padding: 24px 16px;
+        }
+    }
+
+    // ── Left card ──────────────────────────────────────────────
+    &__left {
+        justify-content: center;
+        align-items: flex-start;
+    }
+
+    &__headline {
+        font-size: 1.35rem;
+        font-weight: 800;
+        letter-spacing: 0.03em;
+        text-transform: uppercase;
+        margin: 0;
+        line-height: 1.2;
+        color: inherit;
+
+        @media (max-width: 575.98px) {
+            font-size: 1.1rem;
+        }
+    }
+
+    // icon + description side by side
+    &__icon-item {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 14px;
+    }
+
+    &__icon {
+        width: 44px;
+        height: 44px;
+        object-fit: contain;
+        flex-shrink: 0;
+
+        &--svg {
+            display: inline-flex;
+            align-items: center;
+            width: 44px;
+            height: 44px;
+
+            svg {
+                width: 100%;
+                height: 100%;
+            }
+        }
+    }
+
+    &__icon-desc {
+        margin: 0;
+        font-size: 0.95rem;
+        font-weight: 500;
+        line-height: 1.45;
+        color: inherit;
+    }
+
+    // ── Middle card ────────────────────────────────────────────
+    &__mid {
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+    }
+
+    &__sub-heading {
+        margin: 0;
+        font-size: 0.75rem;
+        font-weight: 600;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: inherit;
+        opacity: 0.9;
+    }
+
+    &__heading {
+        margin: 0;
+        font-size: 1.85rem;
+        font-weight: 800;
+        letter-spacing: 0.02em;
+        line-height: 1.15;
+        color: inherit;
+
+        @media (max-width: 575.98px) {
+            font-size: 1.4rem;
+        }
+    }
+
+    &__description {
+        margin: 0;
+        font-size: 0.95rem;
+        line-height: 1.6;
+        color: inherit;
+        opacity: 0.95;
+    }
+
+    &__btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 12px 28px;
+        font-size: 0.82rem;
+        font-weight: 700;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        text-decoration: none;
+        border-radius: 2px;
+        min-height: 44px;
+        touch-action: manipulation;
+        transition: opacity 0.2s ease;
+
+        &:hover,
+        &:focus-visible {
+            opacity: 0.85;
+            outline: none;
+        }
+
+        @media (max-width: 575.98px) {
+            width: 100%;
+            justify-content: center;
+        }
+    }
+
+    &__after-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: inherit;
+    }
+
+    // ── Right card ─────────────────────────────────────────────
+    &__right {
+        justify-content: center;
+        align-items: flex-start;
+        text-decoration: none;
+        transition: opacity 0.2s ease;
+
+        &:is(a):hover,
+        &:is(a):focus-visible {
+            opacity: 0.85;
+            outline: none;
+        }
+    }
+
+    &__right-heading {
+        margin: 0;
+        font-size: 1.25rem;
+        font-weight: 800;
+        letter-spacing: 0.02em;
+        line-height: 1.2;
+        color: inherit;
+
+        @media (max-width: 575.98px) {
+            font-size: 1.05rem;
+        }
+    }
+
+    &__icon-text-row {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 0.95rem;
+        font-weight: 600;
+        color: inherit;
+    }
+
+    &__small-icon {
+        width: 22px;
+        height: 22px;
+        object-fit: contain;
+        flex-shrink: 0;
+
+        &--svg {
+            display: inline-flex;
+            align-items: center;
+            width: 22px;
+            height: 22px;
+
+            svg {
+                width: 100%;
+                height: 100%;
+            }
+        }
+    }
+}

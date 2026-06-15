@@ -1,0 +1,156 @@
+{
+  "mw-cms": {
+    "blocks": {
+      "mwCategoryShowcase": {
+        "label": "MW Kategorie-Showcase"
+      },
+      "mainhattanIconFeatureBar": {
+        "label": "Mainhattan Icon Feature Bar"
+      },
+      "mwDualCard": {
+        "label": "MW Dual-Karte"
+      },
+      "mwTripleCard": {
+        "label": "MW Drei-Karten"
+      },
+      "mwHeroBanner": {
+        "label": "MW Hero Banner"
+      }
+    },
+    "elements": {
+      "mwDualCard": {
+        "label": "MW Dual-Karte",
+        "config": {
+          "tabLeft": "Linke Karte",
+          "tabRight": "Rechte Karte",
+          "heading": "Überschrift",
+          "description": "Beschreibung",
+          "button": "Button",
+          "btnLabel": "Button-Beschriftung",
+          "btnUrl": "Button-URL",
+          "btnNewTab": "In neuem Tab öffnen",
+          "colors": "Farben",
+          "bgColor": "Hintergrundfarbe",
+          "textColor": "Textfarbe",
+          "btnBgColor": "Button-Hintergrund",
+          "btnTextColor": "Button-Textfarbe",
+          "btnOutlineColor": "Button-Rahmenfarbe",
+          "features": "Features",
+          "featureText": "Feature-Text",
+          "featureIcon": "Feature-Icon (PNG / SVG)",
+          "svgColor": "SVG-Icon-Farbe",
+          "addFeature": "Feature hinzufügen",
+          "rightBg": "Hintergrund rechte Karte",
+          "bgImage": "Hintergrundbild"
+        }
+      },
+      "mwTripleCard": {
+        "label": "MW Drei-Karten",
+        "config": {
+          "tabLeft": "Linke Karte",
+          "tabMid": "Mittlere Karte",
+          "tabRight": "Rechte Karte",
+          "background": "Hintergrund",
+          "bgType": "Hintergrundtyp",
+          "bgTypeColor": "Farbe",
+          "bgTypeImage": "Bild",
+          "bgColor": "Hintergrundfarbe",
+          "bgImage": "Hintergrundbild",
+          "content": "Inhalt",
+          "headline": "Überschrift",
+          "headingColor": "Überschrift-Farbe",
+          "subHeading": "Unterüberschrift",
+          "heading": "Hauptüberschrift",
+          "description": "Beschreibung",
+          "textColor": "Textfarbe",
+          "icon": "Icon (PNG / SVG)",
+          "icons": "Icons",
+          "addIcon": "Icon hinzufügen",
+          "iconDesc": "Icon-Beschreibung",
+          "iconText": "Icon-Text",
+          "iconColor": "Icon-Farbe",
+          "iconTextColor": "Icon-Text-Farbe",
+          "button": "Button",
+          "btnLabel": "Button-Beschriftung",
+          "btnUrl": "Button-URL",
+          "btnNewTab": "In neuem Tab öffnen",
+          "btnBgColor": "Button-Hintergrund",
+          "btnBorderColor": "Button-Rahmenfarbe",
+          "btnTextColor": "Button-Textfarbe",
+          "afterButton": "Nach dem Button",
+          "iconTextLink": "Icon + Text + Link",
+          "linkUrl": "Link-URL",
+          "linkType": "Link-Typ",
+          "linkTo": "Link zu",
+          "linkTypeExternal": "Extern",
+          "linkTypeInternal": "Intern"
+        }
+      },
+      "mwHeroBanner": {
+        "label": "MW Hero Banner",
+        "config": {
+          "content": "Inhalt",
+          "buttons": "Buttons",
+          "background": "Hintergrund",
+          "heading": "Überschrift (HTML erlaubt)",
+          "headingColor": "Überschrift-Farbe",
+          "description": "Beschreibung",
+          "descriptionColor": "Beschreibung-Farbe",
+          "primaryButton": "Primärer Button",
+          "secondaryButton": "Sekundärer Button",
+          "buttonText": "Button-Text",
+          "buttonUrl": "URL",
+          "buttonTarget": "Ziel",
+          "sameTab": "Gleicher Tab",
+          "newTab": "Neuer Tab",
+          "textColor": "Textfarbe",
+          "backgroundColor": "Hintergrundfarbe",
+          "rightImage": "Rechtes Bild"
+        }
+      },
+      "mwCategoryShowcase": {
+        "label": "MW Kategorie-Showcase",
+        "previewHint": "Konfigurieren Sie Hauptkategorie und Unterkategorien in den Einstellungen.",
+        "config": {
+          "mainCategory": "Hauptkategorie",
+          "mainCategoryPlaceholder": "Hauptkategorie wählen…",
+          "tabGeneral": "Allgemein",
+          "tabCards": "Unterkategorien",
+          "colorPlaceholder": "Farbe wählen…",
+          "showAllSection": "\"Alle ansehen\" Button",
+          "showAllLabel": "Beschriftung",
+          "showAllLabelPlaceholder": "z. B. ALLE ANSEHEN",
+          "showAllColor": "Farbe (Text & Pfeil)",
+          "learnMoreSection": "\"Mehr erfahren\" Link",
+          "learnMoreLabel": "Beschriftung",
+          "learnMoreLabelPlaceholder": "z. B. MEHR ERFAHREN",
+          "learnMoreColor": "Farbe (Text & Pfeil)",
+          "cardAppearanceSection": "Karten-Erscheinungsbild",
+          "cardBgColor": "Karten-Hintergrundfarbe",
+          "cardBorderColor": "Karten-Rahmenfarbe",
+          "visibleCards": "Anzahl anzuzeigender Karten (max.)",
+          "subCategoriesLabel": "Unterkategorien (Karten)",
+          "subCategory": "Unterkategorie",
+          "subCategoryPlaceholder": "Unterkategorie wählen…",
+          "addSubCategory": "+ Unterkategorie hinzufügen",
+          "removeSubCategory": "Entfernen"
+        }
+      }
+    }
+  },
+  "sw-cms": {
+    "blocks": {
+      "mainhattanTextimage": {
+        "label": "Mian-hattan-wheels Text und Bild"
+      },
+      "ictHeroSection": {
+        "label": "ICT Hero-Bereich"
+      }
+    },
+    "elements": {
+      "ictHeroSection": {
+        "label": "ICT Hero-Bereich"
+      }
+    }
+  }
+}

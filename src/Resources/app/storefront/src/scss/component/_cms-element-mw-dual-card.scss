@@ -1,0 +1,131 @@
+.cms-element-mw-dual-card {
+    display: flex;
+    flex-direction: row;
+    gap: 0;
+    width: 100%;
+    min-height: 200px;
+
+    .mw-dual-card__left,
+    .mw-dual-card__right {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 16px;
+        padding: 32px 28px;
+    }
+
+    .mw-dual-card__left {
+        flex: 0 0 35%;
+        max-width: 35%;
+    }
+
+    .mw-dual-card__right {
+        flex: 0 0 65%;
+        max-width: 65%;
+        background-repeat: no-repeat;
+    }
+
+    .mw-dual-card__heading {
+        font-size: clamp(1.1rem, 2vw, 1.6rem);
+        font-weight: 700;
+        line-height: 1.2;
+        margin: 0;
+        text-transform: uppercase;
+        color: inherit;
+    }
+
+    .mw-dual-card__description {
+        font-size: 0.9rem;
+        line-height: 1.6;
+        margin: 0;
+        color: inherit;
+    }
+
+    .mw-dual-card__btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 10px 22px;
+        font-size: 0.85rem;
+        font-weight: 700;
+        text-decoration: none;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        cursor: pointer;
+        border-radius: 2px;
+        transition: opacity 0.2s ease;
+        align-self: flex-start;
+        touch-action: manipulation;
+        -webkit-tap-highlight-color: transparent;
+
+        &:hover,
+        &:focus {
+            opacity: 0.85;
+            text-decoration: none;
+        }
+    }
+
+    .mw-dual-card__features {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .mw-dual-card__feature-item {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 0.9rem;
+        color: inherit;
+    }
+
+    .mw-dual-card__feature-icon {
+        width: 18px;
+        height: 18px;
+        flex-shrink: 0;
+
+        &--svg {
+            display: inline-flex;
+            align-items: center;
+
+            svg {
+                width: 18px;
+                height: 18px;
+                fill: currentColor;
+            }
+        }
+    }
+
+    .mw-dual-card__feature-check {
+        font-size: 14px;
+        flex-shrink: 0;
+    }
+
+    // Tablet: stack cards vertically
+    @media (max-width: 768px) {
+        flex-direction: column;
+
+        .mw-dual-card__left,
+        .mw-dual-card__right {
+            flex: 1 1 auto;
+            max-width: 100%;
+            padding: 24px 20px;
+        }
+    }
+
+    // Mobile: slightly tighter padding
+    @media (max-width: 480px) {
+        .mw-dual-card__left,
+        .mw-dual-card__right {
+            padding: 20px 16px;
+        }
+
+        .mw-dual-card__btn {
+            width: 100%;
+            justify-content: center;
+        }
+    }
+}

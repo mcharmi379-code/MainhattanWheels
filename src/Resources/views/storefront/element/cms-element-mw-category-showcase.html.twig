@@ -1,0 +1,91 @@
+{% block element_mw_category_showcase %}
+    {% set data = element.data ?? {} %}
+    {% set mainCategory = data.mainCategory ?? null %}
+    {% set subCategories = data.subCategories ?? [] %}
+    {% set visibleCards = data.visibleCards ?? 5 %}
+    {% set showAllLabel = data.showAllLabel is not empty ? data.showAllLabel : 'mw-cms.showcase.showAll'|trans %}
+    {% set learnMoreLabel = data.learnMoreLabel is not empty ? data.learnMoreLabel : 'mw-cms.showcase.learnMore'|trans %}
+
+    {# Build inline style only for values the user actually set #}
+    {% set inlineStyles = '--mw-visible-cards: ' ~ visibleCards ~ ';' %}
+    {% if data.showAllColor is not empty %}
+        {% set inlineStyles = inlineStyles ~ ' --mw-show-all-color: ' ~ data.showAllColor ~ ';' %}
+    {% endif %}
+    {% if data.learnMoreColor is not empty %}
+        {% set inlineStyles = inlineStyles ~ ' --mw-learn-more-color: ' ~ data.learnMoreColor ~ ';' %}
+    {% endif %}
+    {% if data.cardBorderColor is not empty %}
+        {% set inlineStyles = inlineStyles ~ ' --mw-card-border: ' ~ data.cardBorderColor ~ ';' %}
+    {% endif %}
+    {% if data.cardBgColor is not empty %}
+        {% set inlineStyles = inlineStyles ~ ' --mw-card-bg: ' ~ data.cardBgColor ~ ';' %}
+    {% endif %}
+
+    {% if mainCategory or subCategories|length > 0 %}
+        <div class="mw-category-showcase" style="{{ inlineStyles }}">
+
+            {# ── Header ── #}
+            <div class="mw-category-showcase__header">
+                {% if mainCategory %}
+                    <h2 class="mw-category-showcase__main-title">
+                        {{ mainCategory.translated.name|upper }}
+                    </h2>
+                    <a
+                        class="mw-category-showcase__see-all"
+                        href="{{ category_url(mainCategory) }}"
+                        aria-label="{{ showAllLabel }} {{ mainCategory.translated.name }}"
+                    >
+                        {{ showAllLabel }}&nbsp;<span class="mw-category-showcase__see-all-arrow" aria-hidden="true">→</span>
+                    </a>
+                {% endif %}
+            </div>
+
+            {# ── Cards ── #}
+            {% if subCategories|length > 0 %}
+                <div class="mw-category-showcase__cards" role="list">
+                    {% for category in subCategories|slice(0, visibleCards) %}
+                        {% if category %}
+                            <div class="mw-category-showcase__card" role="listitem">
+                                <a
+                                    class="mw-category-showcase__card-link"
+                                    href="{{ category_url(category) }}"
+                                    title="{{ category.translated.name|striptags }}"
+                                >
+                                    {% if category.media %}
+                                        <div class="mw-category-showcase__card-media">
+                                            {% sw_thumbnails 'mw-showcase-thumbnails' with {
+                                                media: category.media,
+                                                sizes: { default: '300px' },
+                                                attributes: {
+                                                    class: 'mw-category-showcase__card-img',
+                                                    alt: (category.media.translated.alt ?: category.translated.name),
+                                                    title: (category.media.translated.title ?: category.translated.name),
+                                                    loading: 'lazy'
+                                                }
+                                            } %}
+                                        </div>
+                                    {% endif %}
+
+                                    <div class="mw-category-showcase__card-body">
+                                        <p class="mw-category-showcase__card-name">
+                                            {{ category.translated.name|upper }}
+                                        </p>
+                                        {% if category.translated.description %}
+                                            <p class="mw-category-showcase__card-desc">
+                                                {{ category.translated.description|striptags|slice(0, 60) }}
+                                            </p>
+                                        {% endif %}
+                                        <span class="mw-category-showcase__card-more">
+                                            {{ learnMoreLabel }}&nbsp;<span aria-hidden="true">→</span>
+                                        </span>
+                                    </div>
+                                </a>
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            {% endif %}
+
+        </div>
+    {% endif %}
+{% endblock %}

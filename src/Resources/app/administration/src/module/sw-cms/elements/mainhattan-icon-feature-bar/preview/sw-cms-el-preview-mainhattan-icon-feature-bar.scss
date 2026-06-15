@@ -1,0 +1,51 @@
+.sw-cms-el-preview-mainhattan-icon-feature-bar {
+    display: flex;
+    flex-direction: row;
+    gap: 0;
+    padding: 8px 0;
+
+    &__item {
+        flex: 1;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 6px;
+        padding: 6px 8px;
+        border-right: 1px solid #e5e7eb;
+
+        &:last-child {
+            border-right: none;
+        }
+    }
+
+    &__icon {
+        width: 20px;
+        height: 20px;
+        flex-shrink: 0;
+        border-radius: 3px;
+        background: #adb5bd;
+    }
+
+    &__text {
+        display: flex;
+        flex-direction: column;
+        gap: 3px;
+        flex: 1;
+    }
+
+    &__heading {
+        display: block;
+        height: 5px;
+        background: #343a40;
+        border-radius: 2px;
+        width: 85%;
+    }
+
+    &__desc {
+        display: block;
+        height: 4px;
+        background: #ced4da;
+        border-radius: 2px;
+        width: 55%;
+    }
+}

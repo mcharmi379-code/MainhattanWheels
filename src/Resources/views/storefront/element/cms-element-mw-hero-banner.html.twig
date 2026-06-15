@@ -1,0 +1,62 @@
+{% block element_mw_hero_banner %}
+    {% set c = element.config %}
+    {% set bgUrl = element.data.backgroundMedia.url ?? '' %}
+
+    <section
+        class="cms-element-mw-hero-banner"
+        {% if bgUrl %}style="background-image:url('{{ bgUrl }}');"{% endif %}
+    >
+        <div class="cms-element-mw-hero-banner__container">
+            <div class="cms-element-mw-hero-banner__left">
+                <h2
+                    class="cms-element-mw-hero-banner__heading"
+                    style="color:{{ c.headingColor.value ?: '#1a1a1a' }};"
+                >
+                    {{ c.headingText.value|raw }}
+                </h2>
+
+                <p
+                    class="cms-element-mw-hero-banner__description"
+                    style="color:{{ c.descriptionColor.value ?: '#444444' }};"
+                >
+                    {{ c.descriptionText.value }}
+                </p>
+
+                <div class="cms-element-mw-hero-banner__actions">
+                    {% if c.primaryButtonText.value %}
+                        <a
+                            href="{{ c.primaryButtonUrl.value ?: '#' }}"
+                            target="{{ c.primaryButtonTarget.value ?: '_self' }}"
+                            class="cms-element-mw-hero-banner__btn"
+                            style="color:{{ c.primaryButtonTextColor.value ?: '#ffffff' }};background-color:{{ c.primaryButtonBgColor.value ?: '#e8540a' }};"
+                        >
+                            {{ c.primaryButtonText.value }}
+                        </a>
+                    {% endif %}
+
+                    {% if c.secondaryButtonText.value %}
+                        <a
+                            href="{{ c.secondaryButtonUrl.value ?: '#' }}"
+                            target="{{ c.secondaryButtonTarget.value ?: '_self' }}"
+                            class="cms-element-mw-hero-banner__btn cms-element-mw-hero-banner__btn--outline"
+                            style="color:{{ c.secondaryButtonTextColor.value ?: '#1a1a1a' }};background-color:{{ c.secondaryButtonBgColor.value ?: 'transparent' }};border-color:{{ c.secondaryButtonTextColor.value ?: '#1a1a1a' }};"
+                        >
+                            {{ c.secondaryButtonText.value }}
+                        </a>
+                    {% endif %}
+                </div>
+            </div>
+
+            <div class="cms-element-mw-hero-banner__right">
+                {% if element.data.rightMedia.url %}
+                    <img
+                        src="{{ element.data.rightMedia.url }}"
+                        alt="{{ element.data.rightMedia.translated.alt ?: '' }}"
+                        class="cms-element-mw-hero-banner__image"
+                        loading="lazy"
+                    />
+                {% endif %}
+            </div>
+        </div>
+    </section>
+{% endblock %}

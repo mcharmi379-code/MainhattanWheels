@@ -1,0 +1,53 @@
+{% block sw_cms_el_mw_hero_banner %}
+    <div
+        class="sw-cms-el-mw-hero-banner"
+        :style="{ backgroundImage: bgImageUrl }"
+    >
+        <div class="sw-cms-el-mw-hero-banner__left">
+            <h2
+                class="sw-cms-el-mw-hero-banner__heading"
+                :style="{ color: element.config.headingColor.value }"
+                v-html="element.config.headingText.value"
+            ></h2>
+
+            <p
+                class="sw-cms-el-mw-hero-banner__description"
+                :style="{ color: element.config.descriptionColor.value }"
+            >
+                {{ element.config.descriptionText.value }}
+            </p>
+
+            <div class="sw-cms-el-mw-hero-banner__actions">
+                <button
+                    class="sw-cms-el-mw-hero-banner__btn"
+                    :style="{
+                        color: element.config.primaryButtonTextColor.value,
+                        backgroundColor: element.config.primaryButtonBgColor.value,
+                    }"
+                >
+                    {{ element.config.primaryButtonText.value }}
+                </button>
+                <button
+                    class="sw-cms-el-mw-hero-banner__btn sw-cms-el-mw-hero-banner__btn--outline"
+                    :style="{
+                        color: element.config.secondaryButtonTextColor.value,
+                        backgroundColor: element.config.secondaryButtonBgColor.value,
+                        borderColor: element.config.secondaryButtonTextColor.value,
+                    }"
+                >
+                    {{ element.config.secondaryButtonText.value }}
+                </button>
+            </div>
+        </div>
+
+        <div class="sw-cms-el-mw-hero-banner__right">
+            <img
+                v-if="element.data && element.data.rightMedia && element.data.rightMedia.url"
+                :src="element.data.rightMedia.url"
+                alt=""
+                class="sw-cms-el-mw-hero-banner__image"
+            />
+            <div v-else class="sw-cms-el-mw-hero-banner__image-placeholder">🖼</div>
+        </div>
+    </div>
+{% endblock %}

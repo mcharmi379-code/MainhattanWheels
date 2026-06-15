@@ -1,0 +1,57 @@
+.sw-cms-el-config-mw-triple-card {
+    .mw-tc-section-title {
+        font-weight: 600;
+        font-size: 12px;
+        margin: 12px 0 4px;
+        color: #52525b;
+    }
+
+    .mw-tc-upload-label {
+        font-size: 12px;
+        margin: 8px 0 4px;
+        color: #52525b;
+    }
+
+    .mw-tc-config-section {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+        padding-top: 8px;
+    }
+
+    .mw-tc-icon-tabs {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 4px;
+        margin-bottom: 8px;
+    }
+
+    .mw-tc-icon-tab {
+        padding: 4px 10px;
+        border: 1px solid #d1d5db;
+        background: #f9fafb;
+        cursor: pointer;
+        border-radius: 3px;
+        font-size: 12px;
+
+        &.is--active {
+            background: #189eff;
+            color: #fff;
+            border-color: #189eff;
+        }
+
+        &--add {
+            background: #e6f7ff;
+            border-color: #189eff;
+            color: #189eff;
+        }
+
+        &__remove {
+            margin-left: 4px;
+            font-size: 10px;
+            opacity: 0.6;
+
+            &:hover { opacity: 1; }
+        }
+    }
+}

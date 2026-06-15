@@ -1,0 +1,64 @@
+{% block sw_cms_el_mw_dual_card %}
+    <div class="sw-cms-el-mw-dual-card">
+        <div
+            class="sw-cms-el-mw-dual-card__left"
+            :style="{ backgroundColor: c.leftBgColor.value, color: c.leftTextColor.value }"
+        >
+            <h3 class="mw-dc-heading">{{ c.leftHeading.value || 'Left Heading' }}</h3>
+            <p class="mw-dc-desc">{{ c.leftDescription.value || 'Description…' }}</p>
+            <span
+                v-if="c.leftBtnLabel.value"
+                class="mw-dc-btn"
+                :style="{
+                    backgroundColor: c.leftBtnBgColor.value,
+                    color: c.leftBtnTextColor.value,
+                    border: c.leftBtnOutlineColor.value ? ('2px solid ' + c.leftBtnOutlineColor.value) : 'none'
+                }"
+            >{{ c.leftBtnLabel.value }}</span>
+        </div>
+
+        <div
+            class="sw-cms-el-mw-dual-card__right"
+            :style="{
+                backgroundColor: c.rightBgColor.value,
+                backgroundImage: c.rightBgMediaUrl.value ? ('url(' + c.rightBgMediaUrl.value + ')') : 'none',
+                backgroundSize: 'cover',
+                backgroundPosition: 'center',
+                color: c.rightTextColor.value
+            }"
+        >
+            <h3 class="mw-dc-heading">{{ c.rightHeading.value || 'Right Heading' }}</h3>
+            <ul class="mw-dc-features">
+                <li v-for="(f, i) in rightFeatures" :key="i" class="mw-dc-feature-item">
+                    <span
+                        v-if="f.iconMimeType === 'image/svg+xml' && inlineSvg(f.iconUrl)"
+                        class="mw-dc-feature-icon"
+                        :style="{ color: f.svgColor || 'inherit' }"
+                        v-html="inlineSvg(f.iconUrl)"
+                    ></span>
+                    <img
+                        v-else-if="f.iconUrl"
+                        :src="f.iconUrl"
+                        alt=""
+                        class="mw-dc-feature-icon-img"
+                    />
+                    <sw-icon
+                        v-else
+                        name="regular-checkmark-circle"
+                        class="mw-dc-feature-icon-default"
+                    />
+                    <span>{{ f.text || 'Feature' }}</span>
+                </li>
+            </ul>
+            <span
+                v-if="c.rightBtnLabel.value"
+                class="mw-dc-btn"
+                :style="{
+                    backgroundColor: c.rightBtnBgColor.value,
+                    color: c.rightBtnTextColor.value,
+                    border: c.rightBtnOutlineColor.value ? ('2px solid ' + c.rightBtnOutlineColor.value) : 'none'
+                }"
+            >{{ c.rightBtnLabel.value }}</span>
+        </div>
+    </div>
+{% endblock %}

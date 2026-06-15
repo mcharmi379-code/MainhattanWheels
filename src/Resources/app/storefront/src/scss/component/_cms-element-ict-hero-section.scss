@@ -1,0 +1,243 @@
+.cms-element-ict-hero-section {
+    overflow: hidden;
+
+    &__container {
+        max-width: 1320px;
+        margin: 0 auto;
+        padding: 0 40px;
+        display: flex;
+        align-items: center;        // keep left & right vertically centered
+        gap: 32px;
+        min-height: 340px;
+    }
+
+    &__left {
+        flex: 0 0 52%;
+        max-width: 52%;
+        min-width: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        padding: 48px 0;
+    }
+
+    &__label {
+        display: inline-block;
+        width: fit-content;
+        padding: 6px 14px;
+        border: 1px solid transparent;
+        border-radius: 999px;
+        font-size: 12px;
+        font-weight: 600;
+        line-height: 1.4;
+    }
+
+    &__headline {
+        margin: 0;
+        font-size: clamp(26px, 3vw, 48px);
+        line-height: 1.12;
+        font-weight: 800;
+        word-break: break-word;
+        overflow-wrap: break-word;
+    }
+
+    &__description {
+        font-size: 16px;
+        line-height: 1.6;
+        word-break: break-word;
+        overflow-wrap: break-word;
+
+        p {
+            margin-bottom: 0;
+        }
+
+        p:not(:last-child) {
+            margin-bottom: 8px;
+        }
+    }
+
+    &__actions {
+        margin-top: 8px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+    }
+
+    // No hardcoded colors — all from inline style in twig
+    &__button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 48px;
+        padding: 11px 26px;
+        border-radius: 6px;
+        text-decoration: none;
+        font-weight: 700;
+        font-size: 14px;
+        border: 2px solid transparent;
+        transition: opacity 0.2s ease;
+        white-space: nowrap;
+
+        &:hover {
+            opacity: 0.85;
+            text-decoration: none;
+        }
+
+        &--secondary {
+            border-color: currentColor;
+        }
+    }
+
+    &__right {
+        flex: 0 0 48%;
+        max-width: 48%;
+        min-width: 0;
+        display: flex;
+        align-items: center;        // centered — eliminates the top gap
+        justify-content: center;
+    }
+
+    &__image {
+        display: block;
+        width: 100%;
+        height: auto;
+        max-height: 420px;
+        object-fit: contain;
+        object-position: center;
+    }
+}
+
+// ── 992px–1199px (between lg and xl): shrink font a little ───────────────────
+@include media-breakpoint-down(xl) {
+    .cms-element-ict-hero-section {
+        &__container {
+            padding: 0 32px;
+            gap: 24px;
+        }
+
+        &__left {
+            flex: 0 0 54%;
+            max-width: 54%;
+        }
+
+        &__right {
+            flex: 0 0 46%;
+            max-width: 46%;
+        }
+
+        &__headline {
+            font-size: clamp(24px, 2.8vw, 40px);
+        }
+    }
+}
+
+// ── < 992px: iPad Pro landscape, small laptops ────────────────────────────────
+@include media-breakpoint-down(lg) {
+    .cms-element-ict-hero-section {
+        &__container {
+            padding: 0 24px;
+            gap: 20px;
+            min-height: 280px;
+        }
+
+        &__left {
+            flex: 0 0 55%;
+            max-width: 55%;
+            padding: 36px 0;
+            gap: 14px;
+        }
+
+        &__right {
+            flex: 0 0 45%;
+            max-width: 45%;
+        }
+
+        &__headline {
+            font-size: clamp(22px, 3vw, 34px);
+        }
+
+        &__description {
+            font-size: 15px;
+        }
+
+        &__image {
+            max-height: 320px;
+        }
+    }
+}
+
+// ── < 768px: iPad Mini portrait, large phones ─────────────────────────────────
+@include media-breakpoint-down(md) {
+    .cms-element-ict-hero-section {
+        &__container {
+            padding: 0 20px;
+            gap: 16px;
+            min-height: unset;
+        }
+
+        &__left {
+            flex: 0 0 58%;
+            max-width: 58%;
+            padding: 28px 0;
+            gap: 12px;
+        }
+
+        &__right {
+            flex: 0 0 42%;
+            max-width: 42%;
+        }
+
+        &__headline {
+            font-size: clamp(18px, 4.5vw, 28px);
+        }
+
+        &__description {
+            font-size: 14px;
+        }
+
+        &__button {
+            min-height: 40px;
+            padding: 8px 16px;
+            font-size: 13px;
+        }
+
+        &__image {
+            max-height: 260px;
+        }
+    }
+}
+
+// ── < 576px: phones ───────────────────────────────────────────────────────────
+@include media-breakpoint-down(sm) {
+    .cms-element-ict-hero-section {
+        &__container {
+            flex-direction: column;
+            padding: 0 16px;
+            gap: 0;
+            min-height: unset;
+        }
+
+        &__left {
+            flex: 1 1 auto;
+            max-width: 100%;
+            padding: 32px 0 16px;
+            gap: 12px;
+        }
+
+        &__right {
+            flex: 1 1 auto;
+            max-width: 100%;
+            justify-content: center;
+        }
+
+        &__description {
+            font-size: 15px;
+        }
+
+        &__image {
+            width: auto;
+            max-width: 100%;
+            max-height: 200px;
+        }
+    }
+}

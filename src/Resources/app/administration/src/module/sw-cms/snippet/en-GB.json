@@ -1,0 +1,156 @@
+{
+  "mw-cms": {
+    "blocks": {
+      "mwCategoryShowcase": {
+        "label": "MW Category Showcase"
+      },
+      "mainhattanIconFeatureBar": {
+        "label": "Mainhattan Icon Feature Bar"
+      },
+      "mwDualCard": {
+        "label": "MW Dual Card"
+      },
+      "mwTripleCard": {
+        "label": "MW Triple Card"
+      },
+      "mwHeroBanner": {
+        "label": "MW Hero Banner"
+      }
+    },
+    "elements": {
+      "mwDualCard": {
+        "label": "MW Dual Card",
+        "config": {
+          "tabLeft": "Left Card",
+          "tabRight": "Right Card",
+          "heading": "Heading",
+          "description": "Description",
+          "button": "Button",
+          "btnLabel": "Button Label",
+          "btnUrl": "Button URL",
+          "btnNewTab": "Open in new tab",
+          "colors": "Colors",
+          "bgColor": "Background Color",
+          "textColor": "Text Color",
+          "btnBgColor": "Button Background",
+          "btnTextColor": "Button Text Color",
+          "btnOutlineColor": "Button Outline Color",
+          "features": "Features",
+          "featureText": "Feature Text",
+          "featureIcon": "Feature Icon (PNG / SVG)",
+          "svgColor": "SVG Icon Color",
+          "addFeature": "Add Feature",
+          "rightBg": "Right Card Background",
+          "bgImage": "Background Image"
+        }
+      },
+      "mwTripleCard": {
+        "label": "MW Triple Card",
+        "config": {
+          "tabLeft": "Left Card",
+          "tabMid": "Middle Card",
+          "tabRight": "Right Card",
+          "background": "Background",
+          "bgType": "Background Type",
+          "bgTypeColor": "Color",
+          "bgTypeImage": "Image",
+          "bgColor": "Background Color",
+          "bgImage": "Background Image",
+          "content": "Content",
+          "headline": "Headline",
+          "headingColor": "Heading Color",
+          "subHeading": "Sub Heading",
+          "heading": "Heading",
+          "description": "Description",
+          "textColor": "Text Color",
+          "icon": "Icon (PNG / SVG)",
+          "icons": "Icons",
+          "addIcon": "Add Icon",
+          "iconDesc": "Icon Description",
+          "iconText": "Icon Text",
+          "iconColor": "Icon Color",
+          "iconTextColor": "Icon Text Color",
+          "button": "Button",
+          "btnLabel": "Button Label",
+          "btnUrl": "Button URL",
+          "btnNewTab": "Open in new tab",
+          "btnBgColor": "Button Background",
+          "btnBorderColor": "Button Border Color",
+          "btnTextColor": "Button Text Color",
+          "afterButton": "After Button",
+          "iconTextLink": "Icon + Text + Link",
+          "linkUrl": "Link URL",
+          "linkType": "Link Type",
+          "linkTo": "Link to",
+          "linkTypeExternal": "External",
+          "linkTypeInternal": "Internal"
+        }
+      },
+      "mwHeroBanner": {
+        "label": "MW Hero Banner",
+        "config": {
+          "content": "Content",
+          "buttons": "Buttons",
+          "background": "Background",
+          "heading": "Heading (HTML allowed)",
+          "headingColor": "Heading Color",
+          "description": "Description",
+          "descriptionColor": "Description Color",
+          "primaryButton": "Primary Button",
+          "secondaryButton": "Secondary Button",
+          "buttonText": "Button Text",
+          "buttonUrl": "URL",
+          "buttonTarget": "Target",
+          "sameTab": "Same tab",
+          "newTab": "New tab",
+          "textColor": "Text Color",
+          "backgroundColor": "Background Color",
+          "rightImage": "Right Image"
+        }
+      },
+      "mwCategoryShowcase": {
+        "label": "MW Category Showcase",
+        "previewHint": "Configure main category and sub-categories in settings.",
+        "config": {
+          "mainCategory": "Main Category",
+          "mainCategoryPlaceholder": "Select main category…",
+          "tabGeneral": "General",
+          "tabCards": "Sub-Categories",
+          "colorPlaceholder": "Pick a colour…",
+          "showAllSection": "\"View All\" Button",
+          "showAllLabel": "Label",
+          "showAllLabelPlaceholder": "e.g. VIEW ALL",
+          "showAllColor": "Color (text & arrow)",
+          "learnMoreSection": "\"Learn More\" Link",
+          "learnMoreLabel": "Label",
+          "learnMoreLabelPlaceholder": "e.g. LEARN MORE",
+          "learnMoreColor": "Color (text & arrow)",
+          "cardAppearanceSection": "Card Appearance",
+          "cardBgColor": "Card Background Color",
+          "cardBorderColor": "Card Border Color",
+          "visibleCards": "Number of Cards to Show (max)",
+          "subCategoriesLabel": "Sub-Categories (cards)",
+          "subCategory": "Sub-Category",
+          "subCategoryPlaceholder": "Select sub-category…",
+          "addSubCategory": "+ Add Sub-Category",
+          "removeSubCategory": "Remove"
+        }
+      }
+    }
+  },
+  "sw-cms": {
+    "blocks": {
+      "mainhattanTextimage": {
+        "label": "Mian-hattan-wheels Text and Image"
+      },
+      "ictHeroSection": {
+        "label": "ICT Hero Section"
+      }
+    },
+    "elements": {
+      "ictHeroSection": {
+        "label": "ICT Hero Section"
+      }
+    }
+  }
+}

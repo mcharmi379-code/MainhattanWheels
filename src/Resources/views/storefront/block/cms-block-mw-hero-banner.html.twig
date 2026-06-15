@@ -1,0 +1,7 @@
+{% block cms_block_mw_hero_banner %}
+    <div class="cms-block-mw-hero-banner">
+        {% for element in block.slots %}
+            {% sw_include "@Storefront/storefront/element/cms-element-" ~ element.type ~ ".html.twig" ignore missing %}
+        {% endfor %}
+    </div>
+{% endblock %}
