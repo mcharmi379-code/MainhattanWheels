@@ -31,6 +31,7 @@ Shopware.Service('cmsService').registerCmsElement({
         midHeading:     { source: 'static', value: '' },
         midDescription: { source: 'static', value: '' },
         midBtnLabel:    { source: 'static', value: '' },
+        midBtnLinkType: { source: 'static', value: 'external' },
         midBtnUrl:      { source: 'static', value: '' },
         midBtnNewTab:   { source: 'static', value: false },
         midBtnBgColor:  { source: 'static', value: '#ffffff' },

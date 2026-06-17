@@ -1,12 +1,43 @@
 {% block sw_cms_element_mw_category_showcase %}
-<div class="sw-cms-el-mw-category-showcase">
+<div class="sw-cms-el-mw-category-showcase" :style="inlineStyles">
     <div class="sw-cms-el-mw-category-showcase__header">
-        <span class="sw-cms-el-mw-category-showcase__title">
-            {{ $tc('mw-cms.elements.mwCategoryShowcase.label') }}
+        <h2 class="sw-cms-el-mw-category-showcase__main-title">
+            {{ mainCategoryName }}
+        </h2>
+        <span class="sw-cms-el-mw-category-showcase__see-all" :style="{ color: showAllColor }">
+            {{ showAllLabel }}&nbsp;<span class="sw-cms-el-mw-category-showcase__see-all-arrow">→</span>
         </span>
     </div>
-    <div class="sw-cms-el-mw-category-showcase__body">
-        {{ $tc('mw-cms.elements.mwCategoryShowcase.previewHint') }}
+
+    <div class="sw-cms-el-mw-category-showcase__cards">
+        <div 
+            v-for="(category, index) in displayCategories"
+            :key="category.id || index"
+            class="sw-cms-el-mw-category-showcase__card"
+        >
+            <div class="sw-cms-el-mw-category-showcase__card-media">
+                <img
+                    v-if="category.mediaUrl"
+                    :src="category.mediaUrl"
+                    class="sw-cms-el-mw-category-showcase__card-img"
+                    alt=""
+                />
+                <div v-else class="sw-cms-el-mw-category-showcase__card-img-placeholder">
+                    <span>🖼</span>
+                </div>
+            </div>
+            <div class="sw-cms-el-mw-category-showcase__card-body">
+                <p class="sw-cms-el-mw-category-showcase__card-name">
+                    {{ category.name }}
+                </p>
+                <p v-if="category.description" class="sw-cms-el-mw-category-showcase__card-desc">
+                    {{ category.description }}
+                </p>
+                <span class="sw-cms-el-mw-category-showcase__card-more" :style="{ color: learnMoreColor }">
+                    {{ learnMoreLabel }}&nbsp;<span>→</span>
+                </span>
+            </div>
+        </div>
     </div>
 </div>
 {% endblock %}

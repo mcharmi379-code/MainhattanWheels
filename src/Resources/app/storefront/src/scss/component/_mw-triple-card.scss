@@ -168,10 +168,20 @@
         text-decoration: none;
         transition: opacity 0.2s ease;
 
+        &:is(a) {
+            text-decoration: none;
+        }
+
         &:is(a):hover,
+        &:is(a):focus,
         &:is(a):focus-visible {
             opacity: 0.85;
             outline: none;
+            text-decoration: none !important;
+
+            * {
+                text-decoration: none !important;
+            }
         }
     }
 

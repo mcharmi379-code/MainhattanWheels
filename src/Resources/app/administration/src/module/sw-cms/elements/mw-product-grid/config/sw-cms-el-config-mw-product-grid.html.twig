@@ -1,0 +1,34 @@
+{% block sw_cms_el_config_mw_product_grid %}
+<div class="sw-cms-el-config-mw-product-grid">
+    <sw-single-select v-model:value="element.config.columns.value" label="Columns" :options="columnsOptions" @update:value="onInput" />
+    <sw-single-select v-model:value="element.config.layoutType.value" label="Layout type" :options="layoutOptions" @update:value="onInput" />
+    <sw-field type="checkbox" v-model="element.config.showDetails.value" label="Show details button" @update:model-value="onInput" />
+    <sw-colorpicker v-model:value="element.config.buttonColor.value" label="Add to cart button color" color-output="hex" :z-index="1000" @update:value="onInput" />
+    <sw-colorpicker v-model:value="element.config.hoverColor.value" label="Hover Highlight Color" color-output="hex" :z-index="1000" @update:value="onInput" />
+
+    <div class="sw-cms-el-config-mw-product-grid__actions">
+        <sw-button variant="primary" size="small" @click="addCard">Add Card</sw-button>
+    </div>
+
+    <div v-for="(card, index) in cards" :key="index" class="sw-cms-el-config-mw-product-grid__accordion">
+        <button type="button" class="sw-cms-el-config-mw-product-grid__accordion-header" @click="updateCard(index, 'open', !card.open)">
+            <span>Card {{ index + 1 }}</span>
+            <span>{{ card.open ? '−' : '+' }}</span>
+        </button>
+
+        <div v-if="card.open" class="sw-cms-el-config-mw-product-grid__accordion-body">
+            <sw-button variant="ghost-danger" size="small" @click.stop="removeCard(index)">Remove</sw-button>
+            <mt-text-field :model-value="card.title" label="Title" @update:model-value="updateCard(index, 'title', $event)" />
+            <sw-entity-single-select
+                entity="product"
+                :repository="productRepository"
+                :criteria="criteria"
+                :value="card.productId"
+                label="Product"
+                show-clearable-button
+                @update:value="updateCard(index, 'productId', $event)"
+            />
+        </div>
+    </div>
+</div>
+{% endblock %}

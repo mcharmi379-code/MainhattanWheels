@@ -1,0 +1,62 @@
+{% block element_mw_card_grid %}
+    {% set c = element.config %}
+    {% set cards = c.cards.value ?? [] %}
+    {% set columns = c.columns.value ?? 4 %}
+
+    <div class="cms-element-mw-card-grid mw-card-grid" style="--mw-card-grid-columns: {{ columns }};">
+        {% for card in cards %}
+            {% set index = loop.index %}
+            {% set iconUrl = card.iconUrl ?? null %}
+            {% set iconMimeType = card.iconMimeType ?? null %}
+            {% set iconColor = card.iconColor ?? '' %}
+            {% set heading = card.heading ?? '' %}
+            {% set headingColor = card.headingColor ?? '' %}
+            {% set subheading = card.subheading ?? '' %}
+            {% set subheadingColor = card.subheadingColor ?? '' %}
+            {% set linkType = card.linkType ?? 'internal' %}
+            {% set linkUrl = card.linkUrl ?? '' %}
+            {% set linkNewTab = card.linkNewTab ?? false %}
+            {% set hoverColor = card.hoverColor ?? '#ff6600' %}
+            {% set isSvg = iconUrl is not empty and (iconMimeType == 'image/svg+xml' or iconUrl matches '/\\.svg(\\?.*)?$/') %}
+            {% set href = linkUrl %}
+            {% if linkType == 'external' and href != '#' and href is not empty and not (href starts with '#') and not (href starts with 'http://') and not (href starts with 'https://') and not (href starts with '//') and not (href starts with 'mailto:') and not (href starts with 'tel:') %}
+                {% set href = 'https://' ~ href %}
+            {% endif %}
+            {% set target = linkNewTab ? '_blank' : null %}
+
+            <a
+                class="mw-card-grid__card"
+                href="{{ href ?: '#' }}"
+                {% if target %}target="{{ target }}" rel="noopener noreferrer"{% endif %}
+                style="--mw-card-grid-hover-color: {{ hoverColor }};"
+            >
+                <div class="mw-card-grid__top">
+                    <span class="mw-card-grid__badge">{{ '%02d'|format(index) }}</span>
+
+                    {% if iconUrl %}
+                        {% if isSvg and iconColor is not empty %}
+                            <span
+                                class="mw-card-grid__icon mw-card-grid__icon--mask"
+                                style="background-color: {{ iconColor }}; -webkit-mask-image: url('{{ iconUrl }}'); mask-image: url('{{ iconUrl }}');"
+                                aria-hidden="true"
+                            ></span>
+                        {% else %}
+                            <img class="mw-card-grid__icon" src="{{ iconUrl }}" alt="" loading="lazy">
+                        {% endif %}
+                    {% endif %}
+                </div>
+
+                {% if heading is not empty %}
+                    <h3 class="mw-card-grid__heading" {% if headingColor is not empty %}style="color: {{ headingColor }};"{% endif %}>{{ heading }}</h3>
+                {% endif %}
+
+                {% if subheading is not empty %}
+                    <span class="mw-card-grid__subheading" {% if subheadingColor is not empty %}style="color: {{ subheadingColor }};"{% endif %}>
+                        {{ subheading }}
+                        <span class="mw-card-grid__arrow" aria-hidden="true">→</span>
+                    </span>
+                {% endif %}
+            </a>
+        {% endfor %}
+    </div>
+{% endblock %}

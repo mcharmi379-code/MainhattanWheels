@@ -15,6 +15,15 @@
       },
       "mwHeroBanner": {
         "label": "MW Hero Banner"
+      },
+      "mwCardGrid": {
+        "label": "MW Card Grid"
+      },
+      "mwButtons": {
+        "label": "MW Buttons"
+      },
+      "mwProductGrid": {
+        "label": "MW Product Grid"
       }
     },
     "elements": {
@@ -41,7 +50,11 @@
           "svgColor": "SVG Icon Color",
           "addFeature": "Add Feature",
           "rightBg": "Right Card Background",
-          "bgImage": "Background Image"
+          "bgImage": "Background Image",
+          "linkType": "Link Type",
+          "linkTo": "Link to",
+          "linkTypeExternal": "External",
+          "linkTypeInternal": "Internal"
         }
       },
       "mwTripleCard": {
@@ -108,6 +121,25 @@
           "rightImage": "Right Image"
         }
       },
+      "mwCardGrid": {
+        "label": "MW Card Grid",
+        "config": {
+          "cardTab": "Card {index}",
+          "cardSection": "Card {index}",
+          "icon": "Icon (PNG / SVG)",
+          "iconColor": "Icon Color",
+          "heading": "Heading",
+          "headingColor": "Heading Color",
+          "subheading": "Subheading / Link Text",
+          "subheadingColor": "Subheading / Link Color",
+          "linkType": "Link Type",
+          "linkTo": "Link to",
+          "linkTypeInternal": "Internal",
+          "linkTypeExternal": "External",
+          "linkNewTab": "Open in new tab",
+          "hoverColor": "Hover Highlight Color"
+        }
+      },
       "mwCategoryShowcase": {
         "label": "MW Category Showcase",
         "previewHint": "Configure main category and sub-categories in settings.",
@@ -135,16 +167,103 @@
           "addSubCategory": "+ Add Sub-Category",
           "removeSubCategory": "Remove"
         }
+      },
+      "mwButtons": {
+        "label": "MW Buttons",
+        "config": {
+          "label": "Button Text",
+          "variant": "Variant",
+          "variantSolid": "Solid",
+          "variantOutline": "Outline",
+          "textColor": "Text Color",
+          "bgColor": "Background Color",
+          "linkType": "Link Type",
+          "linkTo": "Link to",
+          "linkTypeInternal": "Internal",
+          "linkTypeExternal": "External",
+          "linkNewTab": "Open in new tab",
+          "icon": "Icon (PNG / SVG)"
+        }
+      },
+      "mwProductGrid": {
+        "label": "MW Product Grid",
+        "config": {
+          "title": "Title",
+          "product": "Product",
+          "layout": "Layout",
+          "columns": "Columns",
+          "showDetails": "Show Details",
+          "buttonColor": "Button Color",
+          "hoverColor": "Hover Color",
+          "addCard": "+ Add Card",
+          "removeCard": "Remove Card",
+          "cardIndex": "Card {index}"
+        }
+      }
+    }
+  },
+  "ict-cms-bundle-element": {
+    "cms": {
+      "blocks": {
+        "ictAccordion": {
+          "label": "ICT Accordion"
+        }
+      },
+      "elements": {
+        "ictAccordion": {
+          "label": "ICT Accordion",
+          "config": {
+            "tabs": {
+              "entries": "Accordion Items",
+              "settings": "Settings"
+            },
+            "entry": {
+              "title": "Title",
+              "titlePlaceholder": "Enter item title...",
+              "expanded": "Initially Expanded",
+              "content": "Content",
+              "add": "Add Accordion Item"
+            },
+            "title": "Accordion Section Title",
+            "titlePlaceholder": "Enter section title...",
+            "description": "Accordion Section Description",
+            "descriptionPlaceholder": "Enter section description...",
+            "displayMode": "Display Mode",
+            "displayModeSingle": "Single (Only one item open at a time)",
+            "displayModeMultiple": "Multiple (Allow multiple items open simultaneously)"
+          }
+        }
+      }
+    }
+  },
+  "apps": {
+    "sw-cms": {
+      "detail": {
+        "label": {
+          "blockCategory": {
+            "ict-cms-elements": "ICT CMS Elements"
+          }
+        }
       }
     }
   },
   "sw-cms": {
+    "detail": {
+      "label": {
+        "blockCategory": {
+          "ict-cms-elements": "ICT CMS Elements"
+        }
+      }
+    },
     "blocks": {
       "mainhattanTextimage": {
         "label": "Mian-hattan-wheels Text and Image"
       },
       "ictHeroSection": {
         "label": "ICT Hero Section"
+      },
+      "mainhattanIconFeatureBar": {
+        "label": "Mainhattan Icon Feature Bar"
       }
     },
     "elements": {

@@ -1,0 +1,71 @@
+{% block element_mw_product_grid %}
+    {% set c = element.config %}
+    {% set cards = element.data.cards ?? [] %}
+
+    <div class="cms-element-mw-product-grid mw-product-grid" style="--mw-product-grid-columns: {{ c.columns.value ?? 4 }}; --mw-product-grid-button-color: {{ c.buttonColor.value ?? '#ff6600' }};">
+        {% for card in cards %}
+            {% set product = card.product ?? null %}
+            {% if product is null %}
+                {% continue %}
+            {% endif %}
+            {% set isBig = (c.layoutType.value ?? 'standard') == 'big-image' and (c.columns.value ?? 4) == 2 %}
+            {% set image = product.cover.media ?? null %}
+            {% set hoverColor = c.hoverColor.value ?? '#ff6600' %}
+            
+            {% set isAvailable = not product.isCloseout or (product.stock >= product.minPurchase) %}
+            {% set displayFrom = product.calculatedPrices.count > 1 %}
+            {% set displayBuyButton = isAvailable and not displayFrom and product.childCount <= 0 %}
+
+            <div class="mw-product-grid__card {% if isBig %}is--big{% endif %}" style="--mw-product-grid-hover-color: {{ hoverColor }};">
+                <a href="{{ seoUrl('frontend.detail.page', { productId: product.id }) }}" class="mw-product-grid__link">
+                    <div class="mw-product-grid__media">
+                        {% if image %}
+                            {% sw_thumbnails 'product-card-image-thumbnails' with { media: image } %}
+                        {% endif %}
+                    </div>
+
+                    <div class="mw-product-grid__content">
+                        {% if card.title is not empty %}
+                            <div class="mw-product-grid__title">{{ card.title }}</div>
+                        {% endif %}
+                        <div class="mw-product-grid__name">{{ product.translated.name }}</div>
+                        {% if product.translated.description %}
+                            <div class="mw-product-grid__description">
+                                {{ product.translated.description|striptags }}
+                            </div>
+                        {% endif %}
+                    </div>
+                </a>
+
+                <div class="mw-product-grid__actions">
+                    <div class="mw-product-grid__price">
+                        {% if product.calculatedPrice %}
+                            {{ product.calculatedPrice.unitPrice|currency }}
+                        {% endif %}
+                    </div>
+                    <div class="mw-product-grid__buttons">
+                        {% if c.showDetails.value %}
+                            <a class="mw-product-grid__details" href="{{ seoUrl('frontend.detail.page', { productId: product.id }) }}">Details</a>
+                        {% endif %}
+                        
+                        {% if displayBuyButton %}
+                            <form action="{{ path('frontend.checkout.line-item.add') }}" method="post" class="mw-product-grid__buy buy-widget" data-add-to-cart="true">
+                                <input type="hidden" name="redirectTo" value="frontend.detail.page">
+                                <input type="hidden" name="redirectParameters" data-redirect-parameters="true" value="{{ { productId: product.id }|json_encode }}">
+                                <input type="hidden" name="lineItems[{{ product.id }}][id]" value="{{ product.id }}">
+                                <input type="hidden" name="lineItems[{{ product.id }}][referencedId]" value="{{ product.id }}">
+                                <input type="hidden" name="lineItems[{{ product.id }}][type]" value="product">
+                                <input type="hidden" name="lineItems[{{ product.id }}][stackable]" value="1">
+                                <input type="hidden" name="lineItems[{{ product.id }}][removable]" value="1">
+                                <input type="hidden" name="lineItems[{{ product.id }}][quantity]" value="1">
+                                <button class="mw-product-grid__buy-btn" type="submit">Add to cart</button>
+                            </form>
+                        {% else %}
+                            <a href="{{ seoUrl('frontend.detail.page', { productId: product.id }) }}" class="mw-product-grid__buy-btn" style="text-decoration: none; text-align: center; display: inline-flex; justify-content: center; align-items: center;">Details</a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

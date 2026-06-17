@@ -19,8 +19,12 @@
             {% endif %}
 
             {% if c.leftBtnLabel.value is not empty %}
+                {% set leftUrl = c.leftLinkUrl.value ?: c.leftBtnUrl.value ?: '#' %}
+                {% if c.leftLinkType.value == 'external' and leftUrl != '#' and not (leftUrl starts with 'http://') and not (leftUrl starts with 'https://') and not (leftUrl starts with '//') and not (leftUrl starts with 'mailto:') and not (leftUrl starts with 'tel:') %}
+                    {% set leftUrl = 'https://' ~ leftUrl %}
+                {% endif %}
                 <a
-                    href="{{ c.leftLinkUrl.value ?: c.leftBtnUrl.value ?: '#' }}"
+                    href="{{ leftUrl }}"
                     {% if c.leftBtnNewTab.value %}target="_blank" rel="noopener noreferrer"{% endif %}
                     class="mw-dual-card__btn"
                     style="
@@ -96,8 +100,12 @@
             {% endif %}
 
             {% if c.rightBtnLabel.value is not empty %}
+                {% set rightUrl = c.rightLinkUrl.value ?: c.rightBtnUrl.value ?: '#' %}
+                {% if c.rightLinkType.value == 'external' and rightUrl != '#' and not (rightUrl starts with 'http://') and not (rightUrl starts with 'https://') and not (rightUrl starts with '//') and not (rightUrl starts with 'mailto:') and not (rightUrl starts with 'tel:') %}
+                    {% set rightUrl = 'https://' ~ rightUrl %}
+                {% endif %}
                 <a
-                    href="{{ c.rightLinkUrl.value ?: c.rightBtnUrl.value ?: '#' }}"
+                    href="{{ rightUrl }}"
                     {% if c.rightBtnNewTab.value %}target="_blank" rel="noopener noreferrer"{% endif %}
                     class="mw-dual-card__btn"
                     style="

@@ -15,6 +15,15 @@
       },
       "mwHeroBanner": {
         "label": "MW Hero Banner"
+      },
+      "mwCardGrid": {
+        "label": "MW Kartenraster"
+      },
+      "mwButtons": {
+        "label": "MW Buttons"
+      },
+      "mwProductGrid": {
+        "label": "MW Produkt-Raster"
       }
     },
     "elements": {
@@ -108,6 +117,25 @@
           "rightImage": "Rechtes Bild"
         }
       },
+      "mwCardGrid": {
+        "label": "MW Kartenraster",
+        "config": {
+          "cardTab": "Karte {index}",
+          "cardSection": "Karte {index}",
+          "icon": "Icon (PNG / SVG)",
+          "iconColor": "Icon-Farbe",
+          "heading": "Überschrift",
+          "headingColor": "Überschrift-Farbe",
+          "subheading": "Unterzeile / Link-Text",
+          "subheadingColor": "Unterzeile / Link-Farbe",
+          "linkType": "Link-Typ",
+          "linkTo": "Link zu",
+          "linkTypeInternal": "Intern",
+          "linkTypeExternal": "Extern",
+          "linkNewTab": "In neuem Tab öffnen",
+          "hoverColor": "Hover-Hervorhebungsfarbe"
+        }
+      },
       "mwCategoryShowcase": {
         "label": "MW Kategorie-Showcase",
         "previewHint": "Konfigurieren Sie Hauptkategorie und Unterkategorien in den Einstellungen.",
@@ -135,16 +163,103 @@
           "addSubCategory": "+ Unterkategorie hinzufügen",
           "removeSubCategory": "Entfernen"
         }
+      },
+      "mwButtons": {
+        "label": "MW Buttons",
+        "config": {
+          "label": "Button-Text",
+          "variant": "Variante",
+          "variantSolid": "Gefüllt",
+          "variantOutline": "Umrandet",
+          "textColor": "Textfarbe",
+          "bgColor": "Hintergrundfarbe",
+          "linkType": "Link-Typ",
+          "linkTo": "Link zu",
+          "linkTypeInternal": "Intern",
+          "linkTypeExternal": "Extern",
+          "linkNewTab": "In neuem Tab öffnen",
+          "icon": "Icon (PNG / SVG)"
+        }
+      },
+      "mwProductGrid": {
+        "label": "MW Produkt-Raster",
+        "config": {
+          "title": "Titel",
+          "product": "Produkt",
+          "layout": "Layout",
+          "columns": "Spalten",
+          "showDetails": "Details anzeigen",
+          "buttonColor": "Button-Farbe",
+          "hoverColor": "Hover-Farbe",
+          "addCard": "+ Karte hinzufügen",
+          "removeCard": "Karte entfernen",
+          "cardIndex": "Karte {index}"
+        }
+      }
+    }
+  },
+  "ict-cms-bundle-element": {
+    "cms": {
+      "blocks": {
+        "ictAccordion": {
+          "label": "ICT Akkordeon"
+        }
+      },
+      "elements": {
+        "ictAccordion": {
+          "label": "ICT Akkordeon",
+          "config": {
+            "tabs": {
+              "entries": "Akkordeon-Einträge",
+              "settings": "Einstellungen"
+            },
+            "entry": {
+              "title": "Titel",
+              "titlePlaceholder": "Eintragstitel eingeben...",
+              "expanded": "Anfangs geöffnet",
+              "content": "Inhalt",
+              "add": "Akkordeon-Eintrag hinzufügen"
+            },
+            "title": "Akkordeon Bereichstitel",
+            "titlePlaceholder": "Bereichstitel eingeben...",
+            "description": "Akkordeon Bereichsbeschreibung",
+            "descriptionPlaceholder": "Bereichsbeschreibung eingeben...",
+            "displayMode": "Anzeigemodus",
+            "displayModeSingle": "Einzeln (Nur ein Eintrag gleichzeitig geöffnet)",
+            "displayModeMultiple": "Mehrfach (Mehrere Einträge gleichzeitig geöffnet erlauben)"
+          }
+        }
+      }
+    }
+  },
+  "apps": {
+    "sw-cms": {
+      "detail": {
+        "label": {
+          "blockCategory": {
+            "ict-cms-elements": "ICT CMS-Elemente"
+          }
+        }
       }
     }
   },
   "sw-cms": {
+    "detail": {
+      "label": {
+        "blockCategory": {
+          "ict-cms-elements": "ICT CMS-Elemente"
+        }
+      }
+    },
     "blocks": {
       "mainhattanTextimage": {
         "label": "Mian-hattan-wheels Text und Bild"
       },
       "ictHeroSection": {
         "label": "ICT Hero-Bereich"
+      },
+      "mainhattanIconFeatureBar": {
+        "label": "Mainhattan Icon Feature Bar"
       }
     },
     "elements": {

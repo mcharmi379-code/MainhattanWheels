@@ -116,6 +116,10 @@ Shopware.Service('cmsService').registerCmsElement({
         media: {
             source: 'static',
             value: null,
+            required: true,
+            entity: {
+                name: 'media',
+            },
         },
     },
     defaultData: {

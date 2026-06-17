@@ -3,10 +3,9 @@
         class="sw-cms-el-ict-hero-section"
         :style="{
             minHeight: element.config.minHeight.value,
-            backgroundColor: element.config.backgroundType.value === 'color' ? element.config.backgroundColor.value : '',
-            background: element.config.backgroundType.value === 'gbColor'
-                ? `linear-gradient(135deg, ${element.config.backgroundGradientColor1.value}, ${element.config.backgroundGradientColor2.value})`
-                : ''
+            background: element.config.backgroundType.value === 'color'
+                ? element.config.backgroundColor.value
+                : `linear-gradient(135deg, ${element.config.backgroundGradientColor1.value}, ${element.config.backgroundGradientColor2.value})`
         }"
     >
         <div class="sw-cms-el-ict-hero-section__left">

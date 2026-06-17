@@ -1,0 +1,33 @@
+.sw-cms-preview-mw-buttons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 24px;
+    background: #ffffff;
+    border: 1px dashed #d9d9d9;
+    border-radius: 4px;
+    width: 100%;
+
+    .mw-preview-btn-solid {
+        font-size: 11px;
+        font-weight: 600;
+        padding: 6px 14px;
+        border-radius: 4px;
+        background-color: #ff6600;
+        color: #ffffff;
+        border: 1px solid #ff6600;
+        white-space: nowrap;
+    }
+
+    .mw-preview-btn-outline {
+        font-size: 11px;
+        font-weight: 600;
+        padding: 6px 14px;
+        border-radius: 4px;
+        background-color: transparent;
+        color: #ff6600;
+        border: 1px solid #ff6600;
+        white-space: nowrap;
+    }
+}

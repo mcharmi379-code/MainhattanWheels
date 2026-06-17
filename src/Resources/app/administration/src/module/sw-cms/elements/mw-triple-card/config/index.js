@@ -131,6 +131,11 @@ export default {
             this.onInput();
         },
 
+        onMidLinkTypeChange() {
+            this.c.midBtnUrl.value = '';
+            this.onInput();
+        },
+
         // ── Generic single-media helpers ──────────────────────
         async onMediaUpload(mediaIdField, mediaUrlField, { targetId }) {
             const media = await this.mediaRepository.get(targetId);

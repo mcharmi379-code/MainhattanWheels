@@ -1,0 +1,103 @@
+{% block sw_cms_el_config_mw_card_grid %}
+<div class="sw-cms-el-config-mw-card-grid">
+    <sw-single-select
+        v-model:value="element.config.columns.value"
+        label="Columns"
+        :options="columnsOptions"
+        @update:value="onInput"
+    />
+
+    <div class="sw-cms-el-config-mw-card-grid__actions">
+        <sw-button variant="primary" size="small" @click="addCard">Add Card</sw-button>
+    </div>
+
+    <div
+        v-for="(card, index) in cards"
+        :key="index"
+        class="sw-cms-el-config-mw-card-grid__accordion"
+    >
+        <button
+            type="button"
+            class="sw-cms-el-config-mw-card-grid__accordion-header"
+            :class="{ 'is--open': activeCardIndex === index }"
+            @click="activeCardIndex = activeCardIndex === index ? -1 : index"
+        >
+            <span>Card {{ index + 1 }}</span>
+            <span class="sw-cms-el-config-mw-card-grid__accordion-icon">{{ activeCardIndex === index ? '−' : '+' }}</span>
+        </button>
+
+        <div v-if="activeCardIndex === index" class="sw-cms-el-config-mw-card-grid__accordion-body">
+            <div class="sw-cms-el-config-mw-card-grid__remove">
+                <sw-button variant="ghost-danger" size="small" @click.stop="removeCard(index)">Remove</sw-button>
+            </div>
+
+            <p class="sw-cms-el-config-mw-card-grid__label">Icon</p>
+            <sw-media-upload-v2
+                variant="regular"
+                :upload-tag="`mw-card-grid-icon-${index}`"
+                :source="card.iconUrl"
+                :allow-multi-select="false"
+                :default-folder="cmsPageState.pageEntityName"
+                :caption="$tc('sw-cms.elements.general.config.caption.mediaUpload')"
+                @media-upload-sidebar-open="openMediaModal(index)"
+                @media-upload-remove-image="removeMedia(index)"
+            />
+            <sw-upload-listener
+                :upload-tag="`mw-card-grid-icon-${index}`"
+                auto-upload
+                @media-upload-finish="onMediaUpload(index, $event)"
+            />
+            <sw-media-modal-v2
+                v-if="mediaModalIndex === index"
+                variant="full"
+                :caption="$tc('sw-cms.elements.general.config.caption.mediaUpload')"
+                :allow-multi-select="false"
+                @media-modal-selection-change="onMediaSelect(index, $event)"
+                @modal-close="mediaModalIndex = null"
+            />
+
+            <sw-colorpicker
+                v-if="isSvg(index)"
+                :value="card.iconColor"
+                label="Icon Color"
+                color-output="hex"
+                :z-index="1000"
+                @update:value="updateCard(index, 'iconColor', $event)"
+            />
+
+            <mt-text-field :model-value="card.heading" label="Heading" @update:model-value="updateCard(index, 'heading', $event)" />
+            <sw-colorpicker :value="card.headingColor" label="Heading Color" color-output="hex" :z-index="1000" @update:value="updateCard(index, 'headingColor', $event)" />
+
+            <mt-text-field :model-value="card.subheading" label="Subheading / Link Text" @update:model-value="updateCard(index, 'subheading', $event)" />
+            <sw-colorpicker :value="card.subheadingColor" label="Subheading / Link Color" color-output="hex" :z-index="1000" @update:value="updateCard(index, 'subheadingColor', $event)" />
+
+            <sw-single-select v-model:value="card.linkType" label="Link Type" :options="linkTypeOptions" @update:value="onInput" />
+            <sw-dynamic-url-field
+                v-if="card.linkType === 'internal'"
+                v-model:value="card.linkUrl"
+                label="Link to"
+                @update:value="onInput"
+            />
+            <mt-text-field
+                v-else
+                v-model="card.linkUrl"
+                label="Link to"
+                @update:model-value="onInput"
+            />
+            <sw-field
+                type="checkbox"
+                v-model="card.linkNewTab"
+                label="Open in new tab"
+                @update:model-value="onInput"
+            />
+            <sw-colorpicker
+                :value="card.hoverColor"
+                label="Hover Highlight Color"
+                color-output="hex"
+                :z-index="1000"
+                @update:value="updateCard(index, 'hoverColor', $event)"
+            />
+        </div>
+    </div>
+</div>
+{% endblock %}

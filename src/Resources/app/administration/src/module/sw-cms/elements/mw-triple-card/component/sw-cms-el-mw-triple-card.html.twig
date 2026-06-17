@@ -21,7 +21,7 @@
                         :style="{ color: item.iconColor || 'inherit' }"
                     />
                     <span v-else class="tc-el-icon-placeholder">⚙</span>
-                    <span v-if="item.iconDesc" class="tc-el-desc">{{ item.iconDesc }}</span>
+                    <span v-if="item.iconDesc" class="tc-el-desc" :style="{ color: item.iconTextColor || 'inherit' }">{{ item.iconDesc }}</span>
                 </div>
             </template>
             <template v-else>

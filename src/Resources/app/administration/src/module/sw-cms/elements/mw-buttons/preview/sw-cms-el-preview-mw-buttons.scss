@@ -1,0 +1,30 @@
+.sw-cms-el-preview-mw-buttons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 15px;
+    background: #f8f9fb;
+    border-radius: 4px;
+    width: 100%;
+
+    .mw-prev-btn {
+        font-size: 10px;
+        font-weight: 600;
+        padding: 6px 12px;
+        border-radius: 4px;
+        white-space: nowrap;
+
+        &--solid {
+            background-color: #ff6600;
+            color: #ffffff;
+            border: 1px solid #ff6600;
+        }
+
+        &--outline {
+            background-color: transparent;
+            color: #ff6600;
+            border: 1px solid #ff6600;
+        }
+    }
+}

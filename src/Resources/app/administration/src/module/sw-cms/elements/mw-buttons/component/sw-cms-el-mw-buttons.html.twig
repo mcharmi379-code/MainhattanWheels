@@ -1,0 +1,24 @@
+{% block sw_cms_element_mw_buttons %}
+    <div class="sw-cms-el-mw-buttons" :style="{ '--mw-buttons-alignment': alignment === 'center' ? 'center' : (alignment === 'right' ? 'flex-end' : 'flex-start') }">
+        <div
+            v-for="(btn, index) in buttons"
+            :key="index"
+            class="sw-cms-el-mw-buttons__btn"
+            :class="['is--' + btn.variant]"
+            :style="{
+                '--mw-btn-bg-color': btn.bgColor,
+                '--mw-btn-text-color': btn.textColor
+            }"
+        >
+            <span class="sw-cms-el-mw-buttons__btn-text">
+                {{ btn.label || 'Button ' + (index + 1) }}
+            </span>
+
+            <span v-if="btn.iconUrl" class="sw-cms-el-mw-buttons__btn-icon">
+                <span v-if="btn.iconMimeType === 'image/svg+xml' && inlineSvg(btn.iconUrl)" v-html="inlineSvg(btn.iconUrl)"></span>
+                <img v-else :src="btn.iconUrl" alt="" />
+            </span>
+            <span v-else class="sw-cms-el-mw-buttons__btn-icon-default">→</span>
+        </div>
+    </div>
+{% endblock %}

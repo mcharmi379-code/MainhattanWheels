@@ -1,0 +1,11 @@
+{% block block_mw_buttons %}
+    {% set element = block.slots.getSlot('buttonsSlot') %}
+
+    {% if element %}
+        <div class="cms-block-mw-buttons">
+            <div data-cms-element-id="{{ element.id }}">
+                {% sw_include '@Storefront/storefront/element/cms-element-' ~ element.type ~ '.html.twig' ignore missing with { element: element } %}
+            </div>
+        </div>
+    {% endif %}
+{% endblock %}

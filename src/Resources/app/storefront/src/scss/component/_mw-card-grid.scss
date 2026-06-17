@@ -1,0 +1,142 @@
+.mw-card-grid {
+    display: grid;
+    grid-template-columns: repeat(var(--mw-card-grid-columns, 4), minmax(0, 1fr));
+    gap: 16px;
+    padding-top: 4px;
+    padding-bottom: 4px;
+
+    @media (max-width: 991.98px) {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    @media (max-width: 575.98px) {
+        grid-template-columns: 1fr;
+    }
+
+    &__card {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        min-height: 196px;
+        padding: 20px 20px 18px;
+        border: 1px solid #e2e2e2;
+        border-radius: 18px;
+        background: #fff;
+        color: #111;
+        text-decoration: none;
+        transition: border-color .2s ease, box-shadow .2s ease, transform .2s ease;
+        overflow: hidden;
+
+        &:hover,
+        &:focus-visible,
+        &:visited,
+        &:active {
+            text-decoration: none;
+        }
+
+        &:hover,
+        &:focus-visible {
+            border-color: var(--mw-card-grid-hover-color, #ff6600);
+            box-shadow: 0 0 32px rgba(255, 102, 0, 0.16);
+            transform: translateY(-2px);
+            outline: none;
+        }
+    }
+
+    &__top {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 12px;
+        min-height: 28px;
+    }
+
+    &__badge {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 42px;
+        height: 42px;
+        border-radius: 10px;
+        border: 1px solid #e4e4e4;
+        font-weight: 700;
+        font-size: 14px;
+        line-height: 1;
+        background: #fff;
+        margin-bottom: 0;
+        transition: background-color .2s ease, color .2s ease, border-color .2s ease;
+    }
+
+    &__icon {
+        width: 28px;
+        height: 28px;
+        object-fit: contain;
+        flex: 0 0 auto;
+
+        &--mask {
+            display: block;
+            -webkit-mask-repeat: no-repeat;
+            mask-repeat: no-repeat;
+            -webkit-mask-position: center;
+            mask-position: center;
+            -webkit-mask-size: contain;
+            mask-size: contain;
+        }
+    }
+
+    &__heading {
+        margin: 28px 0 16px;
+        font-size: 1.15rem;
+        line-height: 1.2;
+        font-weight: 700;
+    }
+
+    &__subheading {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        margin-top: auto;
+        color: #ff6600;
+        font-size: 0.8rem;
+        line-height: 1.2;
+        letter-spacing: 0.03em;
+        text-transform: uppercase;
+        font-weight: 700;
+        text-decoration: none;
+    }
+
+    &__arrow {
+        font-size: 1.15em;
+        line-height: 1;
+        transition: transform .2s ease;
+    }
+
+    &__card:hover &__arrow,
+    &__card:focus-visible &__arrow {
+        transform: translateX(2px);
+    }
+
+    &__card:hover &__icon--mask,
+    &__card:focus-visible &__icon--mask {
+        background-color: var(--mw-card-grid-hover-color, #ff6600);
+    }
+
+    &__card:hover &__icon,
+    &__card:focus-visible &__icon {
+        filter: brightness(0) saturate(100%) invert(43%) sepia(95%) saturate(1551%) hue-rotate(1deg) brightness(104%) contrast(102%);
+    }
+
+    &__card:hover &__badge,
+    &__card:focus-visible &__badge {
+        background-color: var(--mw-card-grid-hover-color, #ff6600);
+        color: #fff;
+        border-color: var(--mw-card-grid-hover-color, #ff6600);
+    }
+
+    &__card:hover &__heading,
+    &__card:focus-visible &__heading,
+    &__card:hover &__subheading,
+    &__card:focus-visible &__subheading {
+        text-decoration: none;
+    }
+}

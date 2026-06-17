@@ -1,0 +1,32 @@
+{% block sw_cms_element_mw_card_grid %}
+    <div class="sw-cms-el-mw-card-grid" :style="gridStyle">
+        <div
+            v-for="(card, index) in cards"
+            :key="index"
+            class="sw-cms-el-mw-card-grid__card"
+        >
+            <div class="sw-cms-el-mw-card-grid__top">
+                <span class="sw-cms-el-mw-card-grid__badge">{{ String(index + 1).padStart(2, '0') }}</span>
+                <span
+                    v-if="card.iconUrl"
+                    class="sw-cms-el-mw-card-grid__icon"
+                    :class="{ 'sw-cms-el-mw-card-grid__icon--mask': card.iconMimeType === 'image/svg+xml' && card.iconColor }"
+                    :style="card.iconMimeType === 'image/svg+xml' && card.iconColor ? {
+                        'background-color': card.iconColor,
+                        '-webkit-mask-image': `url(${card.iconUrl})`,
+                        'mask-image': `url(${card.iconUrl})`
+                    } : {}"
+                >
+                    <img v-if="!(card.iconMimeType === 'image/svg+xml' && card.iconColor)" :src="card.iconUrl" alt="" />
+                </span>
+            </div>
+            <h3 class="sw-cms-el-mw-card-grid__heading" :style="{ color: card.headingColor || '#1a1a1a' }">
+                {{ card.heading || ('Card ' + (index + 1)) }}
+            </h3>
+            <span class="sw-cms-el-mw-card-grid__subheading" :style="{ color: card.subheadingColor || '#ff6600' }">
+                {{ card.subheading || 'LINK TEXT' }}
+                <span class="sw-cms-el-mw-card-grid__arrow">→</span>
+            </span>
+        </div>
+    </div>
+{% endblock %}

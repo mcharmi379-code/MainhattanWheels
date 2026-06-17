@@ -1,0 +1,117 @@
+{% block sw_cms_el_config_mw_buttons %}
+<div class="sw-cms-el-config-mw-buttons">
+    <sw-single-select
+        v-model:value="element.config.alignment.value"
+        label="Alignment"
+        :options="alignmentOptions"
+        @update:value="onInput"
+    />
+
+    <div class="sw-cms-el-config-mw-buttons__actions">
+        <sw-button variant="primary" size="small" @click="addButton">Add Button</sw-button>
+    </div>
+
+    <div
+        v-for="(btn, index) in buttons"
+        :key="index"
+        class="sw-cms-el-config-mw-buttons__accordion"
+    >
+        <button
+            type="button"
+            class="sw-cms-el-config-mw-buttons__accordion-header"
+            :class="{ 'is--open': activeButtonIndex === index }"
+            @click="activeButtonIndex = activeButtonIndex === index ? -1 : index"
+        >
+            <span>Button {{ index + 1 }} {{ btn.label ? '- ' + btn.label : '' }}</span>
+            <span class="sw-cms-el-config-mw-buttons__accordion-icon">{{ activeButtonIndex === index ? '−' : '+' }}</span>
+        </button>
+
+        <div v-if="activeButtonIndex === index" class="sw-cms-el-config-mw-buttons__accordion-body">
+            <div class="sw-cms-el-config-mw-buttons__remove">
+                <sw-button variant="ghost-danger" size="small" @click.stop="removeButton(index)">Remove</sw-button>
+            </div>
+
+            <mt-text-field
+                :model-value="btn.label"
+                :label="$tc('mw-cms.elements.mwButtons.config.label')"
+                @update:model-value="updateButton(index, 'label', $event)"
+            />
+
+            <sw-single-select
+                :value="btn.variant"
+                :label="$tc('mw-cms.elements.mwButtons.config.variant')"
+                :options="variantOptions"
+                @update:value="updateButton(index, 'variant', $event)"
+            />
+
+            <sw-colorpicker
+                :value="btn.textColor"
+                :label="$tc('mw-cms.elements.mwButtons.config.textColor')"
+                color-output="hex"
+                :z-index="1000"
+                @update:value="updateButton(index, 'textColor', $event)"
+            />
+
+            <sw-colorpicker
+                :value="btn.bgColor"
+                :label="$tc('mw-cms.elements.mwButtons.config.bgColor')"
+                color-output="hex"
+                :z-index="1000"
+                @update:value="updateButton(index, 'bgColor', $event)"
+            />
+
+            <sw-single-select
+                :value="btn.linkType"
+                :label="$tc('mw-cms.elements.mwButtons.config.linkType')"
+                :options="linkTypeOptions"
+                @update:value="updateButton(index, 'linkType', $event)"
+            />
+
+            <sw-dynamic-url-field
+                v-if="btn.linkType === 'internal'"
+                v-model:value="btn.linkUrl"
+                :label="$tc('mw-cms.elements.mwButtons.config.linkTo')"
+                @update:value="onInput"
+            />
+            <mt-text-field
+                v-else
+                v-model="btn.linkUrl"
+                :label="$tc('mw-cms.elements.mwButtons.config.linkTo')"
+                @update:model-value="onInput"
+            />
+
+            <sw-field
+                type="checkbox"
+                v-model="btn.linkNewTab"
+                :label="$tc('mw-cms.elements.mwButtons.config.linkNewTab')"
+                @update:model-value="onInput"
+            />
+
+            <p class="sw-cms-el-config-mw-buttons__label">{{ $tc('mw-cms.elements.mwButtons.config.icon') }}</p>
+            <sw-media-upload-v2
+                variant="regular"
+                :upload-tag="`mw-buttons-icon-${index}`"
+                :source="btn.iconUrl"
+                :allow-multi-select="false"
+                :default-folder="cmsPageState.pageEntityName"
+                :caption="$tc('sw-cms.elements.general.config.caption.mediaUpload')"
+                @media-upload-sidebar-open="openMediaModal(index)"
+                @media-upload-remove-image="removeMedia(index)"
+            />
+            <sw-upload-listener
+                :upload-tag="`mw-buttons-icon-${index}`"
+                auto-upload
+                @media-upload-finish="onMediaUpload(index, $event)"
+            />
+            <sw-media-modal-v2
+                v-if="mediaModalIndex === index"
+                variant="full"
+                :caption="$tc('sw-cms.elements.general.config.caption.mediaUpload')"
+                :allow-multi-select="false"
+                @media-modal-selection-change="onMediaSelect(index, $event)"
+                @modal-close="mediaModalIndex = null"
+            />
+        </div>
+    </div>
+</div>
+{% endblock %}

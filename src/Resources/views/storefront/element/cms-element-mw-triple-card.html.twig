@@ -27,7 +27,7 @@
             "
         >
             {% if c.leftHeadline.value is not empty %}
-                <h3 class="mw-triple-card__headline">{{ c.leftHeadline.value }}</h3>
+                <h3 class="mw-triple-card__headline" {% if c.leftHeadingColor.value is not empty %}style="color: {{ c.leftHeadingColor.value }};"{% endif %}>{{ c.leftHeadline.value }}</h3>
             {% endif %}
 
             {% for item in leftIcons %}
@@ -58,7 +58,7 @@
                             <img src="{{ item.iconUrl }}" alt="" class="mw-triple-card__icon" loading="lazy" />
                         {% endif %}
                         {% if item.iconDesc is not empty %}
-                            <p class="mw-triple-card__icon-desc">{{ item.iconDesc }}</p>
+                            <p class="mw-triple-card__icon-desc" {% if item.iconTextColor is not empty %}style="color: {{ item.iconTextColor }};"{% endif %}>{{ item.iconDesc }}</p>
                         {% endif %}
                     </div>
                 {% endif %}
@@ -90,8 +90,12 @@
             {% endif %}
 
             {% if c.midBtnLabel.value is not empty %}
+                {% set midUrl = c.midBtnUrl.value ?: '#' %}
+                {% if c.midBtnLinkType.value == 'external' and midUrl != '#' and not (midUrl starts with 'http://') and not (midUrl starts with 'https://') and not (midUrl starts with '//') and not (midUrl starts with 'mailto:') and not (midUrl starts with 'tel:') %}
+                    {% set midUrl = 'https://' ~ midUrl %}
+                {% endif %}
                 <a
-                    href="{{ c.midBtnUrl.value ?: '#' }}"
+                    href="{{ midUrl }}"
                     {% if c.midBtnNewTab.value %}target="_blank" rel="noopener noreferrer"{% endif %}
                     class="mw-triple-card__btn"
                     style="
@@ -136,11 +140,15 @@
         </div>
 
         {# ── RIGHT CARD ── #}
-        {% set rightCardTag = (c.rightLinkUrl.value is not empty) ? 'a' : 'div' %}
+        {% set rightUrl = c.rightLinkUrl.value ?: '#' %}
+        {% if c.rightLinkType.value == 'external' and rightUrl != '#' and not (rightUrl starts with 'http://') and not (rightUrl starts with 'https://') and not (rightUrl starts with '//') and not (rightUrl starts with 'mailto:') and not (rightUrl starts with 'tel:') %}
+            {% set rightUrl = 'https://' ~ rightUrl %}
+        {% endif %}
+        {% set rightCardTag = (rightUrl is not empty and rightUrl != '#') ? 'a' : 'div' %}
         <{{ rightCardTag }}
             class="mw-triple-card__card mw-triple-card__right"
-            {% if c.rightLinkUrl.value is not empty %}
-                href="{{ c.rightLinkUrl.value }}"
+            {% if rightCardTag == 'a' %}
+                href="{{ rightUrl }}"
                 {% if c.rightLinkNewTab.value %}target="_blank" rel="noopener noreferrer"{% endif %}
             {% endif %}
             style="

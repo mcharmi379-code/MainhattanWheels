@@ -123,6 +123,14 @@
                         @update:model-value="updateLeftIcon('iconDesc', $event)"
                     />
                     <sw-colorpicker
+                        :value="activeLeftIcon.iconTextColor"
+                        :label="$tc('mw-cms.elements.mwTripleCard.config.iconTextColor')"
+                        color-output="hex"
+                        :z-index="1000"
+                        @update:value="updateLeftIcon('iconTextColor', $event)"
+                    />
+                    <sw-colorpicker
+                        v-slot:default
                         v-if="activeLeftIcon?.iconMimeType === 'image/svg+xml'"
                         :value="activeLeftIcon.iconColor"
                         :label="$tc('mw-cms.elements.mwTripleCard.config.iconColor')"
@@ -201,11 +209,23 @@
                     :label="$tc('mw-cms.elements.mwTripleCard.config.btnLabel')"
                     @update:model-value="onInput"
                 />
-                <mt-text-field
-                    v-model="c.midBtnUrl.value"
-                    :label="$tc('mw-cms.elements.mwTripleCard.config.btnUrl')"
-                    @update:model-value="onInput"
+                <sw-single-select
+                    v-model:value="c.midBtnLinkType.value"
+                    :label="$tc('mw-cms.elements.mwTripleCard.config.linkType')"
+                    :options="linkTypeOptions"
+                    @update:value="onMidLinkTypeChange"
                 />
+                <sw-dynamic-url-field
+                    v-if="c.midBtnLinkType.value === 'internal'"
+                    v-model:value="c.midBtnUrl.value"
+                    :label="$tc('mw-cms.elements.mwTripleCard.config.linkTo')"
+                />
+                <mt-text-field
+                    v-else
+                    v-model="c.midBtnUrl.value"
+                    :label="$tc('mw-cms.elements.mwTripleCard.config.linkTo')"
+                    @update:model-value="onInput"
+                /> 
                 <sw-field
                     type="checkbox"
                     v-model="c.midBtnNewTab.value"

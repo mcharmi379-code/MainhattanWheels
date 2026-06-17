@@ -1,0 +1,45 @@
+{% block element_mw_buttons %}
+    {% set buttons = element.data.buttons ?? element.config.buttons.value ?? [] %}
+    {% set alignment = element.config.alignment.value ?? 'left' %}
+
+    <div class="mw-buttons" style="--mw-buttons-alignment: {{ alignment == 'center' ? 'center' : (alignment == 'right' ? 'flex-end' : 'flex-start') }};">
+        {% for btn in buttons %}
+            {% if btn.label is not empty %}
+                {% set url = btn.linkUrl ?: '#' %}
+                {% if btn.linkType == 'external' and url != '#' and not (url starts with '#') and not (url starts with 'http://') and not (url starts with 'https://') and not (url starts with '//') and not (url starts with 'mailto:') and not (url starts with 'tel:') %}
+                    {% set url = 'https://' ~ url %}
+                {% endif %}
+
+                <a
+                    href="{{ url }}"
+                    {% if btn.linkNewTab %}target="_blank" rel="noopener noreferrer"{% endif %}
+                    class="mw-btn mw-btn--{{ btn.variant }}"
+                    style="
+                        --mw-btn-bg-color: {{ btn.bgColor ?: '#ff6600' }};
+                        --mw-btn-text-color: {{ btn.textColor ?: '#ffffff' }};
+                    "
+                >
+                    <span class="mw-btn__text">{{ btn.label }}</span>
+
+                    {% if btn.iconUrl is not empty %}
+                        <span class="mw-btn__icon">
+                            {% if btn.svgContent is not empty %}
+                                {{ btn.svgContent|raw }}
+                            {% elseif btn.iconUrl matches '/\\.svg(\\?.*)?$/' %}
+                                <span
+                                    class="mw-btn__icon-svg-mask"
+                                    style="background-color: currentColor; -webkit-mask-image: url('{{ btn.iconUrl }}'); mask-image: url('{{ btn.iconUrl }}');"
+                                    aria-hidden="true"
+                                ></span>
+                            {% else %}
+                                <img src="{{ btn.iconUrl }}" alt="" loading="lazy" />
+                            {% endif %}
+                        </span>
+                    {% else %}
+                        <span class="mw-btn__icon-default" aria-hidden="true">→</span>
+                    {% endif %}
+                </a>
+            {% endif %}
+        {% endfor %}
+    </div>
+{% endblock %}

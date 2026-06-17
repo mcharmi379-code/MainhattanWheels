@@ -1,0 +1,38 @@
+{% block sw_cms_element_mw_product_grid %}
+    <div class="sw-cms-el-mw-product-grid mw-product-grid" :style="gridStyle">
+        <div
+            v-for="(card, index) in cards"
+            :key="index"
+            class="mw-product-grid__card"
+            :class="{ 'is--big': layoutType === 'big-image' && columns === 2 }"
+            :style="{ '--mw-product-grid-hover-color': hoverColor }"
+        >
+            <div class="mw-product-grid__media">
+                <img v-if="getProduct(card.productId)?.cover?.media?.url" :src="getProduct(card.productId).cover.media.url" alt="" />
+                <div v-else class="mw-product-grid__media-placeholder">
+                    <span>Product Image</span>
+                </div>
+            </div>
+
+            <div class="mw-product-grid__content">
+                <div v-if="card.title" class="mw-product-grid__title">{{ card.title }}</div>
+                <div class="mw-product-grid__name">
+                    {{ getProduct(card.productId)?.translated?.name || getProduct(card.productId)?.name || 'Lorem Product Name' }}
+                </div>
+                <div class="mw-product-grid__description">
+                    {{ getProduct(card.productId)?.translated?.description || getProduct(card.productId)?.description || 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr...' }}
+                </div>
+            </div>
+
+            <div class="mw-product-grid__actions">
+                <div class="mw-product-grid__price">
+                    {{ getFormattedPrice(getProduct(card.productId)) }}
+                </div>
+                <div class="mw-product-grid__buttons">
+                    <a v-if="showDetails" class="mw-product-grid__details" href="#">Details</a>
+                    <button class="mw-product-grid__buy-btn" type="button">Add to cart</button>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
