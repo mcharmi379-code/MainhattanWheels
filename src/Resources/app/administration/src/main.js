@@ -28,3 +28,5 @@ import './module/sw-cms/elements/mw-buttons';
 
 import './module/sw-cms/elements/ict-accordion';
 import './module/sw-cms/blocks/ict-accordion';
+import './module/sw-cms/blocks/mw-wheel-showcase';
+import './module/sw-cms/elements/mw-wheel-showcase';

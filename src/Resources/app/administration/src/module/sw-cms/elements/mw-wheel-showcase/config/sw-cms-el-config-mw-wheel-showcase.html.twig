@@ -1,0 +1,33 @@
+{% block sw_cms_el_config_mw_wheel_showcase %}
+<div class="sw-cms-el-config-mw-wheel-showcase">
+    <mt-text-field v-model="element.config.title.value" label="Section Title (Optional)" @update:model-value="onInput" />
+    <mt-text-field v-model="element.config.buttonText.value" label="Button Label" @update:model-value="onInput" />
+    <mt-text-field v-model="element.config.buttonLink.value" label="Button Link / Anchor" @update:model-value="onInput" />
+    <sw-field type="checkbox" v-model="element.config.show360.value" label="Show 360° View Graphic" @update:model-value="onInput" />
+
+    <div class="sw-cms-el-config-mw-wheel-showcase__actions" style="margin-top: 20px; margin-bottom: 15px;">
+        <sw-button variant="primary" size="small" @click="addCard">Add Wheel Product</sw-button>
+    </div>
+
+    <div v-for="(card, index) in cards" :key="index" class="sw-cms-el-config-mw-wheel-showcase__accordion" style="border: 1px solid #e0e0e0; border-radius: 4px; margin-bottom: 10px; padding: 10px;">
+        <button type="button" class="sw-cms-el-config-mw-wheel-showcase__accordion-header" style="width: 100%; display: flex; justify-content: space-between; background: none; border: none; font-weight: bold; cursor: pointer;" @click="updateCard(index, 'open', !card.open)">
+            <span>Wheel {{ index + 1 }}</span>
+            <span>{{ card.open ? '−' : '+' }}</span>
+        </button>
+
+        <div v-if="card.open" class="sw-cms-el-config-mw-wheel-showcase__accordion-body" style="margin-top: 10px;">
+            <sw-button variant="ghost-danger" size="small" style="margin-bottom: 10px;" @click.stop="removeCard(index)">Remove</sw-button>
+            <mt-text-field :model-value="card.title" label="Custom Subtitle (Optional)" @update:model-value="updateCard(index, 'title', $event)" />
+            <sw-entity-single-select
+                entity="product"
+                :repository="productRepository"
+                :criteria="criteria"
+                :value="card.productId"
+                label="Product"
+                show-clearable-button
+                @update:value="updateCard(index, 'productId', $event)"
+            />
+        </div>
+    </div>
+</div>
+{% endblock %}

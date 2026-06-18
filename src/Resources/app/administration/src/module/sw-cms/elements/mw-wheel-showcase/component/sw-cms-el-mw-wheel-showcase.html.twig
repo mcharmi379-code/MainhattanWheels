@@ -1,0 +1,52 @@
+{% block sw_cms_element_mw_wheel_showcase %}
+    <div class="sw-cms-el-mw-wheel-showcase mw-wheel-showcase-editor">
+        <div class="mw-wheel-showcase-editor__title" v-if="title">
+            <h3>{{ title }}</h3>
+        </div>
+
+        <div class="mw-wheel-showcase-editor__active-box">
+            <div class="mw-wheel-showcase-editor__active-media">
+                <div class="mw-wheel-showcase-editor__image-placeholder">
+                    <span>Selected Wheel Active Image</span>
+                </div>
+                <div class="mw-wheel-showcase-editor__gallery-placeholders">
+                    <div class="mw-wheel-showcase-editor__gallery-dot" v-for="n in 4" :key="n"></div>
+                </div>
+            </div>
+            
+            <div class="mw-wheel-showcase-editor__active-details">
+                <h2 class="mw-wheel-showcase-editor__product-name">Porsche Platinum (Sample Wheel)</h2>
+                <h4 class="mw-wheel-showcase-editor__product-sub">Felgen Pulver + Lack: Porsche Platinum</h4>
+                
+                <div class="mw-wheel-showcase-editor__properties">
+                    <p><strong>Themenbereich:</strong> Felgen Pulverbeschichten</p>
+                    <p><strong>Oberflächenaufbau:</strong> 4-Schicht</p>
+                    <p><strong>Bearbeitungsschritte:</strong></p>
+                    <ul>
+                        <li>Chemische Softentlackung</li>
+                        <li>Sandstrahlen (Körnung: fein)</li>
+                        <li>Pulverbeschichtung Schwarz Glänzend</li>
+                    </ul>
+                </div>
+                
+                <div class="mw-wheel-showcase-editor__action">
+                    <sw-button variant="primary" disabled>{{ buttonText }}</sw-button>
+                </div>
+            </div>
+        </div>
+
+        <div class="mw-wheel-showcase-editor__row">
+            <div v-for="(card, index) in cards" :key="index" class="mw-wheel-showcase-editor__card">
+                <div class="mw-wheel-showcase-editor__card-media">
+                    <img v-if="getProduct(card.productId)?.cover?.media?.url" :src="getProduct(card.productId).cover.media.url" alt="" />
+                    <div v-else class="mw-wheel-showcase-editor__card-media-placeholder">
+                        <span>Wheel {{ index + 1 }}</span>
+                    </div>
+                </div>
+                <div class="mw-wheel-showcase-editor__card-name">
+                    {{ getProduct(card.productId)?.translated?.name || getProduct(card.productId)?.name || 'Select a product...' }}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,58 @@
+{% block block_ict_five_column %}
+    {% set columns = 5 %}
+
+    {% block block_ict_five_column_left %}
+        {% set element = block.slots.getSlot('left') %}
+        {% if element %}
+            <div class="col-6 col-md" data-cms-element-id="{{ element.id }}">
+                {% block block_ict_five_column_left_inner %}
+                    {% sw_include '@Storefront/storefront/element/cms-element-' ~ element.type ~ '.html.twig' ignore missing %}
+                {% endblock %}
+            </div>
+        {% endif %}
+    {% endblock %}
+
+    {% block block_ict_five_column_left_center %}
+        {% set element = block.slots.getSlot('leftCenter') %}
+        {% if element %}
+            <div class="col-6 col-md" data-cms-element-id="{{ element.id }}">
+                {% block block_ict_five_column_left_center_inner %}
+                    {% sw_include '@Storefront/storefront/element/cms-element-' ~ element.type ~ '.html.twig' ignore missing %}
+                {% endblock %}
+            </div>
+        {% endif %}
+    {% endblock %}
+
+    {% block block_ict_five_column_center %}
+        {% set element = block.slots.getSlot('center') %}
+        {% if element %}
+            <div class="col-6 col-md" data-cms-element-id="{{ element.id }}">
+                {% block block_ict_five_column_center_inner %}
+                    {% sw_include '@Storefront/storefront/element/cms-element-' ~ element.type ~ '.html.twig' ignore missing %}
+                {% endblock %}
+            </div>
+        {% endif %}
+    {% endblock %}
+
+    {% block block_ict_five_column_right_center %}
+        {% set element = block.slots.getSlot('rightCenter') %}
+        {% if element %}
+            <div class="col-6 col-md" data-cms-element-id="{{ element.id }}">
+                {% block block_ict_five_column_right_center_inner %}
+                    {% sw_include '@Storefront/storefront/element/cms-element-' ~ element.type ~ '.html.twig' ignore missing %}
+                {% endblock %}
+            </div>
+        {% endif %}
+    {% endblock %}
+
+    {% block block_ict_five_column_right %}
+        {% set element = block.slots.getSlot('right') %}
+        {% if element %}
+            <div class="col-6 col-md" data-cms-element-id="{{ element.id }}">
+                {% block block_ict_five_column_right_inner %}
+                    {% sw_include '@Storefront/storefront/element/cms-element-' ~ element.type ~ '.html.twig' ignore missing %}
+                {% endblock %}
+            </div>
+        {% endif %}
+    {% endblock %}
+{% endblock %}
