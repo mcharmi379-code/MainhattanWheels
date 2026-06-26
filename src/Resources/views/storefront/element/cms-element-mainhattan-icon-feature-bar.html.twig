@@ -14,15 +14,18 @@
                 {% for item in items %}
                     {% set isSvg = item.iconMedia is not null and item.iconMedia.mimeType == 'image/svg+xml' %}
                     {% set hasColor = item.svgColor is not empty %}
-                    {% set iconSize = c.iconSize.value ?: '40' %}
+                    {% set iconSize = c.iconSize.value ?: '48' %}
 
-                    <div class="mainhattan-icon-feature-bar__item">
+                    <div
+                        class="mainhattan-icon-feature-bar__item"
+                        style="padding: {{ c.cardPaddingY.value ?: '20' }}px {{ c.cardPaddingX.value ?: '24' }}px;"
+                    >
                         {% if item.iconMedia is not null %}
                             <div class="mainhattan-icon-feature-bar__icon-wrap">
                                 {% if isSvg and hasColor and item.svgContent is not empty %}
                                     <span
                                         class="mainhattan-icon-feature-bar__svg-inline"
-                                        style="color: {{ item.svgColor }}; width: {{ c.iconSize.value ?: '40' }}px; height: {{ c.iconSize.value ?: '40' }}px;"
+                                        style="color: {{ item.svgColor }}; width: {{ iconSize }}px; height: {{ iconSize }}px;"
                                         aria-hidden="true"
                                     >
                                         {{ item.svgContent|raw }}

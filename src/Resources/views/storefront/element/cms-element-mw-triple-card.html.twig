@@ -33,6 +33,7 @@
             {% for item in leftIcons %}
                 {% if item.iconUrl is not empty or item.svgContent is not empty %}
                     <div class="mw-triple-card__icon-item">
+                        <span class="mw-triple-card__icon-text">
                         {% if item.svgContent is not empty %}
                             <span
                                 class="mw-triple-card__icon mw-triple-card__icon--svg"
@@ -43,20 +44,21 @@
                             <span
                                 class="mw-triple-card__icon"
                                 style="
-                                    width: 44px;
-                                    height: 44px;
+                                    width: 26px;
+                                    height: 26px;
                                     display: inline-block;
                                     background-color: {{ item.iconColor }};
                                     -webkit-mask: url('{{ item.iconUrl }}') no-repeat center;
                                     mask: url('{{ item.iconUrl }}') no-repeat center;
-                                    -webkit-mask-size: 44px 44px;
-                                    mask-size: 44px 44px;
+                                    -webkit-mask-size: 26px 26px;
+                                    mask-size: 26px 26px;
                                 "
                                 aria-hidden="true"
                             ></span>
                         {% else %}
                             <img src="{{ item.iconUrl }}" alt="" class="mw-triple-card__icon" loading="lazy" />
                         {% endif %}
+                        </span>
                         {% if item.iconDesc is not empty %}
                             <p class="mw-triple-card__icon-desc" {% if item.iconTextColor is not empty %}style="color: {{ item.iconTextColor }};"{% endif %}>{{ item.iconDesc }}</p>
                         {% endif %}
@@ -82,7 +84,7 @@
             {% endif %}
 
             {% if c.midHeading.value is not empty %}
-                <h2 class="mw-triple-card__heading">{{ c.midHeading.value }}</h2>
+                <h3 class="mw-triple-card__heading">{{ c.midHeading.value }}</h3>
             {% endif %}
 
             {% if c.midDescription.value is not empty %}
@@ -108,6 +110,7 @@
 
             {% if c.midIconText.value is not empty %}
                 <div class="mw-triple-card__after-btn">
+                    <span class="mw-triple-card__icon-text">
                     {% if midIconSvg is not empty %}
                         <span
                             class="mw-triple-card__small-icon mw-triple-card__small-icon--svg"
@@ -115,23 +118,24 @@
                             aria-hidden="true"
                         >{{ midIconSvg|raw }}</span>
                     {% elseif midIconUrl is not empty and midIconUrl matches '/\\.svg(\\?.*)?$/' and c.midIconColor.value is not empty %}
-                        <span
-                            class="mw-triple-card__small-icon"
-                            style="
-                                width: 16px;
-                                height: 16px;
+                            <span
+                                class="mw-triple-card__small-icon"
+                                style="
+                                width: 26px;
+                                height: 26px;
                                 display: inline-block;
                                 background-color: {{ c.midIconColor.value }};
                                 -webkit-mask: url('{{ midIconUrl }}') no-repeat center;
                                 mask: url('{{ midIconUrl }}') no-repeat center;
-                                -webkit-mask-size: 16px 16px;
-                                mask-size: 16px 16px;
+                                -webkit-mask-size: 26px 26px;
+                                mask-size: 26px 26px;
                             "
                             aria-hidden="true"
                         ></span>
                     {% elseif midIconUrl is not empty %}
                         <img src="{{ midIconUrl }}" alt="" class="mw-triple-card__small-icon" loading="lazy" />
                     {% endif %}
+                    </span>
                     <span {% if c.midIconColor.value is not empty %}style="color: {{ c.midIconColor.value }};"{% endif %}>
                         {{ c.midIconText.value }}
                     </span>
@@ -162,7 +166,7 @@
             "
         >
             {% if c.rightHeading is defined and c.rightHeading.value is not empty %}
-                <h3 class="mw-triple-card__right-heading">{{ c.rightHeading.value }}</h3>
+                <h3 class="mw-triple-card__heading">{{ c.rightHeading.value }}</h3>
             {% endif %}
 
             {% if c.rightDescription.value is not empty %}
@@ -171,9 +175,7 @@
 
             {% if c.rightIconText.value is not empty %}
                 <div class="mw-triple-card__icon-text-row">
-                    <span {% if c.rightIconTextColor.value is not empty %}style="color: {{ c.rightIconTextColor.value }};"{% endif %}>
-                        {{ c.rightIconText.value }}
-                    </span>
+                    <span class="mw-triple-card__icon-text">
                     {% if rightIconSvg is not empty %}
                         <span
                             class="mw-triple-card__small-icon mw-triple-card__small-icon--svg"
@@ -181,23 +183,27 @@
                             aria-hidden="true"
                         >{{ rightIconSvg|raw }}</span>
                     {% elseif rightIconUrl is not empty and rightIconUrl matches '/\\.svg(\\?.*)?$/' and c.rightIconColor.value is not empty %}
-                        <span
-                            class="mw-triple-card__small-icon"
-                            style="
-                                width: 16px;
-                                height: 16px;
+                            <span
+                                class="mw-triple-card__small-icon"
+                                style="
+                                width: 26px;
+                                height: 26px;
                                 display: inline-block;
                                 background-color: {{ c.rightIconColor.value }};
                                 -webkit-mask: url('{{ rightIconUrl }}') no-repeat center;
                                 mask: url('{{ rightIconUrl }}') no-repeat center;
-                                -webkit-mask-size: 16px 16px;
-                                mask-size: 16px 16px;
+                                -webkit-mask-size: 26px 26px;
+                                mask-size: 26px 26px;
                             "
                             aria-hidden="true"
                         ></span>
                     {% elseif rightIconUrl is not empty %}
                         <img src="{{ rightIconUrl }}" alt="" class="mw-triple-card__small-icon" loading="lazy" />
                     {% endif %}
+                    </span>
+                    <span {% if c.rightIconTextColor.value is not empty %}style="color: {{ c.rightIconTextColor.value }};"{% endif %}>
+                        {{ c.rightIconText.value }}
+                    </span>
                 </div>
             {% endif %}
         </{{ rightCardTag }}>

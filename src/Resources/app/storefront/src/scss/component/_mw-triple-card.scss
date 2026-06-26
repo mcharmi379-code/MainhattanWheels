@@ -16,6 +16,15 @@
         min-height: 280px;
         gap: 20px;
         color: #ffffff;
+        border-radius: 0;
+        overflow: hidden;
+        transition: opacity 0.2s ease, filter 0.2s ease, transform 0.2s ease;
+
+        &:hover,
+        &:focus-visible {
+            filter: brightness(1.08);
+            outline: none;
+        }
 
         @media (max-width: 1199.98px) {
             padding: 32px 24px;
@@ -33,8 +42,11 @@
 
     // ── Left card ──────────────────────────────────────────────
     &__left {
-        justify-content: center;
+        justify-content: flex-start;
         align-items: flex-start;
+        text-align: left;
+        border-top-left-radius: 20px;
+        border-bottom-left-radius: 20px;
     }
 
     &__headline {
@@ -55,21 +67,25 @@
     &__icon-item {
         display: flex;
         flex-direction: row;
-        align-items: center;
-        gap: 14px;
+        align-items: flex-start;
+        gap: 12px;
     }
 
     &__icon {
-        width: 44px;
-        height: 44px;
+        width: 26px;
+        height: 26px;
         object-fit: contain;
         flex-shrink: 0;
+        flex: 0 0 26px;
+        display: block;
 
         &--svg {
             display: inline-flex;
             align-items: center;
-            width: 44px;
-            height: 44px;
+            justify-content: center;
+            width: 26px;
+            height: 26px;
+            flex: 0 0 26px;
 
             svg {
                 width: 100%;
@@ -88,9 +104,10 @@
 
     // ── Middle card ────────────────────────────────────────────
     &__mid {
-        justify-content: center;
-        align-items: center;
-        text-align: center;
+        justify-content: flex-start;
+        align-items: flex-start;
+        text-align: left;
+        border-radius: 0;
     }
 
     &__sub-heading {
@@ -101,18 +118,19 @@
         text-transform: uppercase;
         color: inherit;
         opacity: 0.9;
+        line-height: 1.2;
     }
 
     &__heading {
         margin: 0;
-        font-size: 1.85rem;
+        font-size: 1.35rem;
         font-weight: 800;
         letter-spacing: 0.02em;
         line-height: 1.15;
         color: inherit;
 
         @media (max-width: 575.98px) {
-            font-size: 1.4rem;
+            font-size: 1.1rem;
         }
     }
 
@@ -134,7 +152,7 @@
         letter-spacing: 0.06em;
         text-transform: uppercase;
         text-decoration: none;
-        border-radius: 2px;
+        border-radius: 6px;
         min-height: 44px;
         touch-action: manipulation;
         transition: opacity 0.2s ease;
@@ -154,7 +172,7 @@
     &__after-btn {
         display: inline-flex;
         align-items: center;
-        justify-content: center;
+        justify-content: flex-start;
         gap: 8px;
         font-size: 0.85rem;
         font-weight: 600;
@@ -163,10 +181,12 @@
 
     // ── Right card ─────────────────────────────────────────────
     &__right {
-        justify-content: center;
+        justify-content: flex-start;
         align-items: flex-start;
+        text-align: left;
         text-decoration: none;
-        transition: opacity 0.2s ease;
+        border-top-right-radius: 20px;
+        border-bottom-right-radius: 20px;
 
         &:is(a) {
             text-decoration: none;
@@ -175,26 +195,12 @@
         &:is(a):hover,
         &:is(a):focus,
         &:is(a):focus-visible {
-            opacity: 0.85;
             outline: none;
             text-decoration: none !important;
 
             * {
                 text-decoration: none !important;
             }
-        }
-    }
-
-    &__right-heading {
-        margin: 0;
-        font-size: 1.25rem;
-        font-weight: 800;
-        letter-spacing: 0.02em;
-        line-height: 1.2;
-        color: inherit;
-
-        @media (max-width: 575.98px) {
-            font-size: 1.05rem;
         }
     }
 
@@ -205,19 +211,24 @@
         font-size: 0.95rem;
         font-weight: 600;
         color: inherit;
+        line-height: 1.3;
     }
 
     &__small-icon {
-        width: 22px;
-        height: 22px;
+        width: 26px;
+        height: 26px;
         object-fit: contain;
         flex-shrink: 0;
+        flex: 0 0 26px;
+        display: block;
 
         &--svg {
             display: inline-flex;
             align-items: center;
-            width: 22px;
-            height: 22px;
+            justify-content: center;
+            width: 26px;
+            height: 26px;
+            flex: 0 0 26px;
 
             svg {
                 width: 100%;

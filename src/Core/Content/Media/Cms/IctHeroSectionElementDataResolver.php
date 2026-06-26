@@ -18,7 +18,7 @@ use Shopware\Core\Framework\Struct\ArrayStruct;
 final class IctHeroSectionElementDataResolver extends AbstractCmsElementResolver
 {
     private const SCALAR_MEDIA_FIELDS = [
-        'media'               => 'media',
+        'backgroundMedia'     => 'backgroundMedia',
         'backgroundImage'     => 'backgroundImage',
         'backgroundVideo'     => 'video',
         'primaryButtonIcon'   => 'primaryButtonIcon',

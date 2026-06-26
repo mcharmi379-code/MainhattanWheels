@@ -9,6 +9,8 @@
     width: 100%;
     margin: 20px auto 45px;
     box-shadow: 0 0 4px 1px #dadae5;
+    padding-top: 0 !important;
+
     @media(max-width:1260px){
         margin: 0;
         box-shadow: none
