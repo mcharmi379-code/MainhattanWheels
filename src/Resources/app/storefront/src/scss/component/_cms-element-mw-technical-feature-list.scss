@@ -1,0 +1,93 @@
+.cms-element-mw-technical-feature-list {
+    padding: 24px 16px;
+    background: #fff;
+}
+
+.cms-element-mw-technical-feature-list__inner {
+    max-width: 1180px;
+    margin: 0 auto;
+}
+
+.cms-element-mw-technical-feature-list__header {
+    margin-bottom: 20px;
+}
+
+.cms-element-mw-technical-feature-list__description {
+    margin: 0 0 8px;
+    color: #6b7280;
+}
+
+.cms-element-mw-technical-feature-list__title {
+    margin: 0;
+    font-size: clamp(1.5rem, 2.5vw, 2.5rem);
+    line-height: 1.15;
+}
+
+.cms-element-mw-technical-feature-list__bullets {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px 32px;
+}
+
+.cms-element-mw-technical-feature-list__bullet {
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+}
+
+.cms-element-mw-technical-feature-list__bullet-media {
+    width: 18px;
+    height: 18px;
+    object-fit: contain;
+    flex: 0 0 auto;
+    margin-top: 3px;
+}
+
+.cms-element-mw-technical-feature-list__bullet-icon {
+    color: #f59e0b;
+    font-weight: 700;
+    line-height: 1.4;
+    flex: 0 0 auto;
+}
+
+.cms-element-mw-technical-feature-list__gallery {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 12px;
+    margin-top: 24px;
+}
+
+.cms-element-mw-technical-feature-list__figure {
+    margin: 0;
+    border: 1px solid #e5e7eb;
+    background: #fff;
+}
+
+.cms-element-mw-technical-feature-list__figure img {
+    display: block;
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+}
+
+.cms-element-mw-technical-feature-list__footer {
+    margin-top: 24px;
+    padding-top: 16px;
+    border-top: 1px solid #e5e7eb;
+    display: grid;
+    gap: 4px;
+}
+
+@media (max-width: 991px) {
+    .cms-element-mw-technical-feature-list__bullets,
+    .cms-element-mw-technical-feature-list__gallery {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width: 575px) {
+    .cms-element-mw-technical-feature-list__bullets,
+    .cms-element-mw-technical-feature-list__gallery {
+        grid-template-columns: 1fr;
+    }
+}

@@ -1,0 +1,45 @@
+.sw-cms-el-preview-mw-profile-tabs {
+    display: grid;
+    grid-template-columns: 120px minmax(0, 1fr);
+    gap: 12px;
+    padding: 12px;
+}
+
+.sw-cms-el-preview-mw-profile-tabs__media {
+    aspect-ratio: 1 / 1;
+    background: #e5e7eb;
+    border-radius: 4px;
+}
+
+.sw-cms-el-preview-mw-profile-tabs__copy {
+    display: grid;
+    gap: 8px;
+    align-content: start;
+}
+
+.sw-cms-el-preview-mw-profile-tabs__line {
+    height: 10px;
+    background: #d1d5db;
+    border-radius: 999px;
+}
+
+.sw-cms-el-preview-mw-profile-tabs__line--short {
+    width: 40%;
+}
+
+.sw-cms-el-preview-mw-profile-tabs__tabs {
+    display: flex;
+    gap: 12px;
+    margin-top: 4px;
+}
+
+.sw-cms-el-preview-mw-profile-tabs__tab {
+    font-size: 12px;
+    font-weight: 700;
+    color: #6b7280;
+}
+
+.sw-cms-el-preview-mw-profile-tabs__tab.is--active {
+    color: #111827;
+    border-bottom: 2px solid #f59e0b;
+}

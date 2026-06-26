@@ -1,0 +1,35 @@
+<div class="sw-cms-el-mw-profile-tabs">
+    <div class="sw-cms-el-mw-profile-tabs__media">
+        <img v-if="media" :src="media.url" :alt="element.config.name.value">
+        <div v-else class="sw-cms-el-mw-profile-tabs__media-placeholder">
+            Select an image
+        </div>
+    </div>
+
+    <div class="sw-cms-el-mw-profile-tabs__content">
+        <p class="sw-cms-el-mw-profile-tabs__subheadline">{{ element.config.subheadline.value }}</p>
+        <h3 class="sw-cms-el-mw-profile-tabs__name">{{ element.config.name.value }}</h3>
+        <p class="sw-cms-el-mw-profile-tabs__role">{{ element.config.role.value }}</p>
+
+        <div class="sw-cms-el-mw-profile-tabs__tabs" role="tablist">
+            <button
+                v-for="(tab, index) in tabs"
+                :key="index"
+                type="button"
+                class="sw-cms-el-mw-profile-tabs__tab"
+                :class="{ 'is--active': activeTab === index }"
+                @click="setActiveTab(index)"
+            >
+                {{ tab.title }}
+            </button>
+        </div>
+
+        <div v-if="currentTab" class="sw-cms-el-mw-profile-tabs__panel">
+            <div class="sw-cms-el-mw-profile-tabs__panel-content" v-html="currentTab.content"></div>
+        </div>
+
+        <div v-if="element.config.buttonLabel.value" class="sw-cms-el-mw-profile-tabs__button">
+            {{ element.config.buttonLabel.value }}
+        </div>
+    </div>
+</div>
