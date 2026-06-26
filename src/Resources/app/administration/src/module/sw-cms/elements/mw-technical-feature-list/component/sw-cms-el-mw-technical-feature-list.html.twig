@@ -1,0 +1,26 @@
+<div class="sw-cms-el-mw-technical-feature-list">
+    <header class="sw-cms-el-mw-technical-feature-list__header">
+        <p class="sw-cms-el-mw-technical-feature-list__eyebrow">
+            {{ element.config.description.value }}
+        </p>
+        <h3 class="sw-cms-el-mw-technical-feature-list__title">
+            {{ element.config.title.value }}
+        </h3>
+    </header>
+
+    <div class="sw-cms-el-mw-technical-feature-list__bullets">
+        <div
+            v-for="(bullet, index) in element.config.bullets.value"
+            :key="index"
+            class="sw-cms-el-mw-technical-feature-list__bullet"
+        >
+            <span class="sw-cms-el-mw-technical-feature-list__bullet-icon" aria-hidden="true">✓</span>
+            <span class="sw-cms-el-mw-technical-feature-list__bullet-text">{{ bullet.text }}</span>
+        </div>
+    </div>
+
+    <footer class="sw-cms-el-mw-technical-feature-list__footer">
+        <strong>{{ element.config.footerLabel.value }}</strong>
+        <span>{{ element.config.footerValue.value }}</span>
+    </footer>
+</div>

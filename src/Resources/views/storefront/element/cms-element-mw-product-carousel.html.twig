@@ -1,0 +1,71 @@
+{% block element_mw_product_carousel %}
+    {% set c = element.data %}
+    {% set items = c.items ?? [] %}
+    {% set category = c.category ?? null %}
+    {% set headline = c.headline ?? '' %}
+    {% set ctaLabel = c.ctaLabel ?? 'All Products' %}
+    {% set hasProducts = c.hasProducts ?? items|length > 0 %}
+    {% set needsSlider = items|length > 3 %}
+    {% set baseSliderOptions = {
+        slider: {
+            controls: needsSlider,
+            nav: needsSlider,
+            navPosition: 'bottom',
+            items: 3,
+            slideBy: 1,
+            mode: 'carousel',
+            mouseDrag: needsSlider,
+            touchDrag: needsSlider,
+            autoplay: false,
+            autoplayButtonOutput: false,
+            speed: 400,
+            gutter: 16,
+            loop: needsSlider,
+            responsive: {
+                0: { items: 1, gutter: 0 },
+                576: { items: 2, gutter: 12 },
+                992: { items: 3, gutter: 16 }
+            }
+        }
+    } %}
+
+    {% if category %}
+        <section class="mw-product-carousel">
+            <div class="mw-product-carousel__header">
+                {% if headline %}<h2 class="mw-product-carousel__headline">{{ headline }}</h2>{% endif %}
+                {% if category %}
+                    <a class="mw-product-carousel__cta" href="{{ category_url(category) }}">{{ ctaLabel }}</a>
+                {% endif %}
+            </div>
+
+            {% if hasProducts %}
+                <div class="base-slider mw-product-carousel__slider{% if needsSlider %} has-nav-outside has-dots-outside{% endif %}" data-base-slider="true" data-base-slider-options="{{ baseSliderOptions|json_encode|e('html_attr') }}">
+                    <div class="mw-product-carousel__container" data-base-slider-container="true">
+                        {% for item in items %}
+                            {% set product = item.product %}
+                            {% if product %}
+                                <div class="mw-product-carousel__slide">
+                                    {% sw_include '@Storefront/storefront/component/product/card/box.html.twig' with {
+                                        product: product,
+                                        layout: 'standard',
+                                        displayMode: 'standard',
+                                        sizes: ' (min-width: 992px) 33vw, (min-width: 576px) 50vw, 100vw'
+                                    } %}
+                                </div>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                    {% if needsSlider %}
+                        <div class="image-slider-controls-container">
+                            <div class="base-slider-controls" data-base-slider-controls="true"></div>
+                        </div>
+                    {% endif %}
+                </div>
+            {% else %}
+                <div class="mw-product-carousel__empty">
+                    No products found in this category.
+                </div>
+            {% endif %}
+        </section>
+    {% endif %}
+{% endblock %}

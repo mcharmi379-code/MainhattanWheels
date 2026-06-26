@@ -1,0 +1,9 @@
+{% block block_mw_technical_feature_list %}
+    {% set element = block.slots.getSlot('content') %}
+
+    <div class="col-12" data-cms-element-id="{{ element.id }}">
+        {% block block_mw_technical_feature_list_inner %}
+            {% sw_include '@Storefront/storefront/element/cms-element-' ~ element.type ~ '.html.twig' ignore missing %}
+        {% endblock %}
+    </div>
+{% endblock %}
