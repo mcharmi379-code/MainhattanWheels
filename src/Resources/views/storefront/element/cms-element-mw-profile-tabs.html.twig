@@ -1,0 +1,100 @@
+{% block element_mw_profile_tabs %}
+    {% set c = element.config %}
+    {% set data = element.data %}
+    {% set tabs = data.tabs ?? c.tabs.value ?? [] %}
+    {% set media = data.media ?? null %}
+
+    {% if tabs|length %}
+        <section class="mw-profile-tabs">
+            <div class="mw-profile-tabs__inner">
+                <div class="mw-profile-tabs__media">
+                    {% if media %}
+                        {% sw_thumbnails 'mw-profile-tabs-media' with { media: media } %}
+                    {% endif %}
+                    <div class="mw-profile-tabs__caption">
+                        {% if data.subheadline ?? c.subheadline.value %}
+                            <div class="mw-profile-tabs__subheadline">{{ data.subheadline ?? c.subheadline.value }}</div>
+                        {% endif %}
+                        {% if data.name ?? c.name.value %}
+                            <h2 class="mw-profile-tabs__name">{{ data.name ?? c.name.value }}</h2>
+                        {% endif %}
+                        {% if data.role ?? c.role.value %}
+                            <div class="mw-profile-tabs__role">{{ data.role ?? c.role.value }}</div>
+                        {% endif %}
+                    </div>
+                </div>
+
+                <div class="mw-profile-tabs__content js-mw-profile-tabs" data-mw-profile-tabs="true">
+                    <div class="mw-profile-tabs__tablist" role="tablist" aria-label="Profile sections">
+                        {% for tab in tabs %}
+                            <button
+                                class="mw-profile-tabs__tab{% if loop.first %} is--active{% endif %}"
+                                type="button"
+                                data-mw-profile-tabs-trigger="{{ loop.index0 }}"
+                                aria-selected="{{ loop.first ? 'true' : 'false' }}"
+                                aria-controls="profile-tab-panel-{{ element.id }}-{{ loop.index }}"
+                            >
+                                {{ tab.title }}
+                            </button>
+                        {% endfor %}
+                    </div>
+
+                    <div class="mw-profile-tabs__panels">
+                        {% for tab in tabs %}
+                            <div
+                                id="profile-tab-panel-{{ element.id }}-{{ loop.index }}"
+                                class="mw-profile-tabs__panel{% if loop.first %} is--active{% endif %}"
+                                data-mw-profile-tabs-panel="{{ loop.index0 }}"
+                            >
+                                {{ tab.content|raw }}
+                            </div>
+                        {% endfor %}
+                    </div>
+
+                    {% if c.buttonLabel.value %}
+                        {% set buttonUrl = c.buttonLink.value ?: '#' %}
+                        {% if c.buttonType.value == 'external' and buttonUrl != '#' and not (buttonUrl starts with 'http://') and not (buttonUrl starts with 'https://') and not (buttonUrl starts with '//') and not (buttonUrl starts with 'mailto:') and not (buttonUrl starts with 'tel:') %}
+                            {% set buttonUrl = 'https://' ~ buttonUrl %}
+                        {% endif %}
+                        <a class="mw-profile-tabs__button" href="{{ buttonUrl }}"{% if c.buttonNewTab.value %} target="_blank" rel="noopener noreferrer"{% endif %}>
+                            {{ c.buttonLabel.value }}
+                        </a>
+                    {% endif %}
+                </div>
+            </div>
+        </section>
+
+        <script>
+            (function () {
+                const root = document.currentScript && document.currentScript.previousElementSibling
+                    ? document.currentScript.previousElementSibling.querySelector('[data-mw-profile-tabs="true"]')
+                    : null;
+
+                if (!root || root.dataset.mwProfileTabsInitialized === '1') {
+                    return;
+                }
+
+                root.dataset.mwProfileTabsInitialized = '1';
+
+                const triggers = root.querySelectorAll('[data-mw-profile-tabs-trigger]');
+                const panels = root.querySelectorAll('.mw-profile-tabs__panel');
+
+                triggers.forEach((trigger) => {
+                    trigger.addEventListener('click', () => {
+                        const index = trigger.getAttribute('data-mw-profile-tabs-trigger');
+
+                        triggers.forEach((button) => {
+                            const isActive = button === trigger;
+                            button.classList.toggle('is--active', isActive);
+                            button.setAttribute('aria-selected', isActive ? 'true' : 'false');
+                        });
+
+                        panels.forEach((panel) => {
+                            panel.classList.toggle('is--active', panel.getAttribute('data-mw-profile-tabs-panel') === index);
+                        });
+                    });
+                });
+            })();
+        </script>
+    {% endif %}
+{% endblock %}

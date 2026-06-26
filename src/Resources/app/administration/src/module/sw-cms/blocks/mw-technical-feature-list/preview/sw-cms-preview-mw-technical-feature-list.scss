@@ -1,0 +1,22 @@
+.sw-cms-preview-mw-technical-feature-list {
+    padding: 12px;
+}
+
+.sw-cms-preview-mw-technical-feature-list__bar {
+    height: 12px;
+    width: 45%;
+    background: #d1d5db;
+    margin-bottom: 12px;
+}
+
+.sw-cms-preview-mw-technical-feature-list__grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+}
+
+.sw-cms-preview-mw-technical-feature-list__card {
+    height: 42px;
+    background: #e5e7eb;
+    border-radius: 4px;
+}

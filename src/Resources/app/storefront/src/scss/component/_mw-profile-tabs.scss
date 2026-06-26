@@ -1,0 +1,106 @@
+.mw-profile-tabs {
+    padding: 16px 0;
+
+    &__inner {
+        display: grid;
+        grid-template-columns: 300px minmax(0, 1fr);
+        gap: 28px;
+        align-items: start;
+        padding: 18px;
+        background: #fff;
+        border: 1px solid #ececec;
+    }
+
+    &__media img {
+        display: block;
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+    }
+
+    &__caption {
+        margin-top: 14px;
+    }
+
+    &__subheadline {
+        color: #6b7280;
+        font-size: 0.95rem;
+    }
+
+    &__name {
+        margin: 6px 0 0;
+        font-size: 1.1rem;
+        font-weight: 700;
+        color: #111827;
+    }
+
+    &__role {
+        color: #6b7280;
+        margin-top: 4px;
+    }
+
+    &__tablist {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 18px;
+        margin-bottom: 18px;
+        align-items: flex-end;
+    }
+
+    &__tab {
+        display: inline-flex;
+        padding: 0 0 8px;
+        border: 0;
+        border-bottom: 2px solid transparent;
+        background: transparent;
+        font-weight: 700;
+        color: #6b7280;
+        cursor: pointer;
+        touch-action: manipulation;
+
+        &.is--active {
+            color: #111827;
+            border-bottom-color: #f59e0b;
+        }
+    }
+
+    &__panel {
+        display: none;
+        line-height: 1.6;
+        color: #374151;
+
+        &.is--active {
+            display: block;
+        }
+    }
+
+    &__button {
+        display: inline-flex;
+        align-items: center;
+        min-height: 44px;
+        margin-top: 24px;
+        padding: 0 18px;
+        border-radius: 2px;
+        background: #f59e0b;
+        color: #fff;
+        text-decoration: none;
+        font-weight: 700;
+        touch-action: manipulation;
+    }
+}
+
+@media (max-width: 767px) {
+    .mw-profile-tabs__inner {
+        grid-template-columns: 1fr;
+        gap: 18px;
+    }
+
+    .mw-profile-tabs__tablist {
+        gap: 12px;
+    }
+
+    .mw-profile-tabs__button {
+        width: 100%;
+        justify-content: center;
+    }
+}

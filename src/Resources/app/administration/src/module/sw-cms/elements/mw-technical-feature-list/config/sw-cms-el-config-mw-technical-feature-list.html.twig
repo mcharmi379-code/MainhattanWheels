@@ -1,0 +1,84 @@
+<div class="sw-cms-el-config-mw-technical-feature-list">
+    <sw-text-field
+        v-model:value="element.config.title.value"
+        label="Title"
+        @update:value="onInput"
+    />
+
+    <sw-textarea-field
+        v-model:value="element.config.description.value"
+        label="Description"
+        rows="3"
+        @update:value="onInput"
+    />
+
+    <section class="sw-cms-el-config-mw-technical-feature-list__section">
+        <div class="sw-cms-el-config-mw-technical-feature-list__section-head">
+            <h4>Bullet points</h4>
+            <sw-button size="small" variant="primary" icon="regular-plus-xs" @click="addBullet">
+                Add bullet
+            </sw-button>
+        </div>
+
+        <article
+            v-for="(bullet, index) in element.config.bullets.value"
+            :key="index"
+            class="sw-cms-el-config-mw-technical-feature-list__item"
+        >
+            <sw-text-field v-model:value="bullet.text" label="Bullet text" @update:value="onInput" />
+            <sw-text-field v-model:value="bullet.iconAlt" label="Icon alt text" @update:value="onInput" />
+            <sw-media-upload-v2
+                variant="regular"
+                :upload-tag="`${uploadTag}-bullet-${index}`"
+                :allow-multi-select="false"
+                @media-upload-sidebar-open="openMediaModal('bullet', index)"
+            />
+            <div v-if="bullet.iconUrl" class="sw-cms-el-config-mw-technical-feature-list__preview">
+                <img :src="bullet.iconUrl" :alt="bullet.iconAlt" />
+            </div>
+            <sw-button variant="danger" size="small" @click="removeBullet(index)">Remove</sw-button>
+        </article>
+    </section>
+
+    <section class="sw-cms-el-config-mw-technical-feature-list__section">
+        <div class="sw-cms-el-config-mw-technical-feature-list__section-head">
+            <h4>Gallery images</h4>
+            <sw-button size="small" variant="primary" icon="regular-plus-xs" @click="addImage">
+                Add image
+            </sw-button>
+        </div>
+
+        <article
+            v-for="(image, index) in element.config.gallery.value"
+            :key="index"
+            class="sw-cms-el-config-mw-technical-feature-list__item"
+        >
+            <sw-text-field v-model:value="image.alt" label="Image alt text" @update:value="onInput" />
+            <sw-media-upload-v2
+                variant="regular"
+                :upload-tag="`${uploadTag}-gallery-${index}`"
+                :allow-multi-select="false"
+                @media-upload-sidebar-open="openMediaModal('gallery', index)"
+            />
+            <div v-if="image.mediaUrl" class="sw-cms-el-config-mw-technical-feature-list__preview">
+                <img :src="image.mediaUrl" :alt="image.alt" />
+            </div>
+            <sw-button variant="danger" size="small" @click="removeImage(index)">Remove</sw-button>
+        </article>
+    </section>
+
+    <div class="sw-cms-el-config-mw-technical-feature-list__footer">
+        <sw-text-field v-model:value="element.config.footerLabel.value" label="Footer label" @update:value="onInput" />
+        <sw-text-field v-model:value="element.config.footerValue.value" label="Footer value" @update:value="onInput" />
+    </div>
+
+    <sw-media-modal-v2
+        v-if="mediaModalIsOpen"
+        variant="full"
+        :allow-multi-select="false"
+        :entity-context="cmsPageState.entityName"
+        :initial-folder-id="cmsPageState.defaultMediaFolderId"
+        @media-modal-selection-change="onSelectionChanges"
+        @modal-close="onCloseModal"
+    />
+</div>

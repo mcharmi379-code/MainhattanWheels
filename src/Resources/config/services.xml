@@ -10,6 +10,10 @@
             <tag name="shopware.cms.data_resolver" />
         </service>
 
+        <service id="MainhattanWheels\Core\Content\Cms\DataResolver\Element\MwProductCarouselCmsElementResolver" public="true">
+            <tag name="shopware.cms.data_resolver" />
+        </service>
+
         <service id="MainhattanWheels\Core\Content\Cms\DataResolver\Element\MwButtonsCmsElementResolver" public="true">
             <tag name="shopware.cms.data_resolver" />
             <argument>%kernel.project_dir%</argument>
@@ -75,6 +79,10 @@
         </service>
 
         <service id="MainhattanWheels\Core\Content\Cms\DataResolver\Element\MwHeroBannerCmsElementResolver" public="true">
+            <tag name="shopware.cms.data_resolver"/>
+        </service>
+
+        <service id="MainhattanWheels\Core\Content\Cms\DataResolver\Element\MwProfileTabsCmsElementResolver" public="true">
             <tag name="shopware.cms.data_resolver"/>
         </service>
     </services>

@@ -1,0 +1,52 @@
+{% block element_mw_technical_feature_list %}
+    {% set c = element.config %}
+    {% set bullets = c.bullets.value|default([]) %}
+    {% set gallery = c.gallery.value|default([]) %}
+
+    <section class="cms-element-mw-technical-feature-list">
+        <div class="cms-element-mw-technical-feature-list__inner">
+            {% if c.title.value %}
+                <header class="cms-element-mw-technical-feature-list__header">
+                    {% if c.description.value %}
+                        <p class="cms-element-mw-technical-feature-list__description">{{ c.description.value }}</p>
+                    {% endif %}
+                    <h2 class="cms-element-mw-technical-feature-list__title">{{ c.title.value }}</h2>
+                </header>
+            {% endif %}
+
+            {% if bullets|length %}
+                <div class="cms-element-mw-technical-feature-list__bullets">
+                    {% for bullet in bullets %}
+                        <div class="cms-element-mw-technical-feature-list__bullet">
+                            {% if bullet.iconUrl %}
+                                <img class="cms-element-mw-technical-feature-list__bullet-media" src="{{ bullet.iconUrl }}" alt="{{ bullet.iconAlt|default(bullet.text) }}" loading="lazy">
+                            {% else %}
+                                <span class="cms-element-mw-technical-feature-list__bullet-icon" aria-hidden="true">✓</span>
+                            {% endif %}
+                            <span class="cms-element-mw-technical-feature-list__bullet-text">{{ bullet.text }}</span>
+                        </div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+
+            {% if gallery|length %}
+                <div class="cms-element-mw-technical-feature-list__gallery">
+                    {% for item in gallery %}
+                        {% if item.mediaUrl is not empty %}
+                            <figure class="cms-element-mw-technical-feature-list__figure">
+                                <img src="{{ item.mediaUrl }}" alt="{{ item.alt|default(c.title.value) }}" loading="lazy">
+                            </figure>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            {% endif %}
+
+            {% if c.footerLabel.value or c.footerValue.value %}
+                <footer class="cms-element-mw-technical-feature-list__footer">
+                    {% if c.footerLabel.value %}<strong>{{ c.footerLabel.value }}</strong>{% endif %}
+                    {% if c.footerValue.value %}<span>{{ c.footerValue.value }}</span>{% endif %}
+                </footer>
+            {% endif %}
+        </div>
+    </section>
+{% endblock %}

@@ -1,0 +1,15 @@
+<div class="sw-cms-el-config-mw-product-carousel">
+    <sw-text-field v-model:value="element.config.headline.value" label="Headline" @update:value="onInput" />
+
+    <sw-entity-single-select
+        v-model:value="element.config.categoryId.value"
+        entity="category"
+        :repository="categoryRepository"
+        :criteria="categoryCriteria"
+        label="Category"
+        placeholder="Select category"
+        @update:value="onInput"
+    />
+
+    <sw-text-field v-model:value="element.config.ctaLabel.value" label="CTA label" @update:value="onInput" />
+</div>
