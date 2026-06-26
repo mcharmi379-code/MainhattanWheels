@@ -29,10 +29,10 @@ export default {
         },
 
         previewSource() {
-            if (this.element?.data?.media?.id) {
-                return this.element.data.media;
+            if (this.element?.data?.backgroundMedia?.id) {
+                return this.element.data.backgroundMedia;
             }
-            return this.element.config.media.value;
+            return this.element.config.backgroundMedia.value;
         },
     },
 
@@ -48,22 +48,22 @@ export default {
 
         async onImageUpload({ targetId }) {
             const media = await this.mediaRepository.get(targetId);
-            this.element.config.media.value = media.id;
-            this.element.config.media.source = 'static';
+            this.element.config.backgroundMedia.value = media.id;
+            this.element.config.backgroundMedia.source = 'static';
             this.updateElementData(media);
             this.$emit('element-update', this.element);
         },
 
         onImageRemove() {
-            this.element.config.media.value = null;
+            this.element.config.backgroundMedia.value = null;
             this.updateElementData(null);
             this.$emit('element-update', this.element);
         },
 
         onSelectionChanges(mediaItems) {
             const media = mediaItems[0];
-            this.element.config.media.value = media.id;
-            this.element.config.media.source = 'static';
+            this.element.config.backgroundMedia.value = media.id;
+            this.element.config.backgroundMedia.source = 'static';
             this.updateElementData(media);
             this.$emit('element-update', this.element);
         },
@@ -71,11 +71,11 @@ export default {
         updateElementData(media = null) {
             const mediaId = media ? media.id : null;
             if (!this.element.data) {
-                this.element.data = { mediaId, media };
+                this.element.data = { backgroundMediaId: mediaId, backgroundMedia: media };
                 return;
             }
-            this.element.data.mediaId = mediaId;
-            this.element.data.media = media;
+            this.element.data.backgroundMediaId = mediaId;
+            this.element.data.backgroundMedia = media;
         },
 
         onOpenMediaModal() {

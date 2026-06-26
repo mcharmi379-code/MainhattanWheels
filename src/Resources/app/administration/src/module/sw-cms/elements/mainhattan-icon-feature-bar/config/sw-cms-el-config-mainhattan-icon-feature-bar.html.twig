@@ -27,6 +27,21 @@
                         @update:model-value="onInput"
                     />
 
+                    <div class="config-row-2">
+                        <mt-text-field
+                            v-model="element.config.cardPaddingX.value"
+                            label="Card padding X (px)"
+                            type="number"
+                            @update:model-value="onInput"
+                        />
+                        <mt-text-field
+                            v-model="element.config.cardPaddingY.value"
+                            label="Card padding Y (px)"
+                            type="number"
+                            @update:model-value="onInput"
+                        />
+                    </div>
+
                     <mt-text-field
                         v-model="element.config.iconSize.value"
                         label="Icon size (px)"

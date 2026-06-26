@@ -13,6 +13,14 @@ Shopware.Service('cmsService').registerCmsElement({
             source: 'static',
             value: 'gbColor',
         },
+        backgroundMedia: {
+            source: 'static',
+            value: null,
+            required: false,
+            entity: {
+                name: 'media',
+            },
+        },
         backgroundColor: {
             source: 'static',
             value: '#f8f9fa',
@@ -113,17 +121,9 @@ Shopware.Service('cmsService').registerCmsElement({
             source: 'static',
             value: '#ffffff',
         },
-        media: {
-            source: 'static',
-            value: null,
-            required: true,
-            entity: {
-                name: 'media',
-            },
-        },
     },
     defaultData: {
-        media: null,
-        mediaId: null,
+        backgroundMedia: null,
+        backgroundMediaId: null,
     },
 });

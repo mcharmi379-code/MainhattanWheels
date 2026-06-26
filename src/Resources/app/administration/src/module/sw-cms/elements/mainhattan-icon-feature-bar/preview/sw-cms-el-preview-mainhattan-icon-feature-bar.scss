@@ -12,6 +12,8 @@
         gap: 6px;
         padding: 6px 8px;
         border-right: 1px solid #e5e7eb;
+        border-radius: 12px;
+        background: #ffffff;
 
         &:last-child {
             border-right: none;
@@ -22,7 +24,7 @@
         width: 20px;
         height: 20px;
         flex-shrink: 0;
-        border-radius: 3px;
+        border-radius: 6px;
         background: #adb5bd;
     }
 
@@ -37,7 +39,7 @@
         display: block;
         height: 5px;
         background: #343a40;
-        border-radius: 2px;
+        border-radius: 6px;
         width: 85%;
     }
 
@@ -45,7 +47,7 @@
         display: block;
         height: 4px;
         background: #ced4da;
-        border-radius: 2px;
+        border-radius: 6px;
         width: 55%;
     }
 }

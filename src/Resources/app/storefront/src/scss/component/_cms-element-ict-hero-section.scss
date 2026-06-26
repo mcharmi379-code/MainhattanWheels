@@ -4,7 +4,7 @@
     &__container {
         max-width: 1320px;
         margin: 0 auto;
-        padding: 0 40px;
+        padding: 100px 40px;
         display: flex;
         align-items: center;        // keep left & right vertically centered
         gap: 32px;
@@ -12,13 +12,16 @@
     }
 
     &__left {
-        flex: 0 0 52%;
-        max-width: 52%;
+        flex: 0 0 42%;
+        max-width: 42%;
         min-width: 0;
         display: flex;
         flex-direction: column;
         gap: 16px;
         padding: 48px 0;
+        justify-content: center;
+        text-align: left;
+        z-index: 1;
     }
 
     &__label {
@@ -89,22 +92,23 @@
     }
 
     &__right {
-        flex: 0 0 48%;
-        max-width: 48%;
+        flex: 1 1 58%;
+        max-width: 58%;
         min-width: 0;
         display: flex;
-        align-items: center;        // centered — eliminates the top gap
-        justify-content: center;
+        align-items: center;
+        justify-content: flex-end;
     }
 
     &__image {
         display: block;
-        width: 100%;
+        // width: 100%;
         height: auto;
-        max-height: 420px;
+        // max-height: 420px;
         object-fit: contain;
-        object-position: center;
+        object-position: center right;
     }
+
 }
 
 // ── 992px–1199px (between lg and xl): shrink font a little ───────────────────
@@ -116,13 +120,13 @@
         }
 
         &__left {
-            flex: 0 0 54%;
-            max-width: 54%;
+            flex: 0 0 46%;
+            max-width: 46%;
         }
 
         &__right {
-            flex: 0 0 46%;
-            max-width: 46%;
+            flex: 1 1 54%;
+            max-width: 54%;
         }
 
         &__headline {
@@ -141,15 +145,15 @@
         }
 
         &__left {
-            flex: 0 0 55%;
-            max-width: 55%;
+            flex: 0 0 50%;
+            max-width: 50%;
             padding: 36px 0;
             gap: 14px;
         }
 
         &__right {
-            flex: 0 0 45%;
-            max-width: 45%;
+            flex: 1 1 50%;
+            max-width: 50%;
         }
 
         &__headline {
@@ -160,9 +164,6 @@
             font-size: 15px;
         }
 
-        &__image {
-            max-height: 320px;
-        }
     }
 }
 
@@ -176,15 +177,10 @@
         }
 
         &__left {
-            flex: 0 0 58%;
-            max-width: 58%;
+            flex: 0 0 100%;
+            max-width: 100%;
             padding: 28px 0;
             gap: 12px;
-        }
-
-        &__right {
-            flex: 0 0 42%;
-            max-width: 42%;
         }
 
         &__headline {
@@ -201,9 +197,6 @@
             font-size: 13px;
         }
 
-        &__image {
-            max-height: 260px;
-        }
     }
 }
 
@@ -228,6 +221,7 @@
             flex: 1 1 auto;
             max-width: 100%;
             justify-content: center;
+            padding-bottom: 12px;
         }
 
         &__description {
@@ -237,7 +231,8 @@
         &__image {
             width: auto;
             max-width: 100%;
-            max-height: 200px;
+            max-height: 240px;
+            object-position: center;
         }
     }
 }

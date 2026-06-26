@@ -16,6 +16,15 @@
         min-height: 280px;
         gap: 20px;
         color: #ffffff;
+        border-radius: 0;
+        overflow: hidden;
+        transition: opacity 0.2s ease, filter 0.2s ease, transform 0.2s ease;
+
+        &:hover,
+        &:focus-visible {
+            filter: brightness(1.08);
+            outline: none;
+        }
 
         @media (max-width: 1199.98px) {
             padding: 32px 24px;
@@ -35,6 +44,8 @@
     &__left {
         justify-content: center;
         align-items: flex-start;
+        border-top-left-radius: 20px;
+        border-bottom-left-radius: 20px;
     }
 
     &__headline {
@@ -91,6 +102,7 @@
         justify-content: center;
         align-items: center;
         text-align: center;
+        border-radius: 0;
     }
 
     &__sub-heading {
@@ -134,7 +146,7 @@
         letter-spacing: 0.06em;
         text-transform: uppercase;
         text-decoration: none;
-        border-radius: 2px;
+        border-radius: 6px;
         min-height: 44px;
         touch-action: manipulation;
         transition: opacity 0.2s ease;
@@ -166,7 +178,8 @@
         justify-content: center;
         align-items: flex-start;
         text-decoration: none;
-        transition: opacity 0.2s ease;
+        border-top-right-radius: 20px;
+        border-bottom-right-radius: 20px;
 
         &:is(a) {
             text-decoration: none;
@@ -175,7 +188,6 @@
         &:is(a):hover,
         &:is(a):focus,
         &:is(a):focus-visible {
-            opacity: 0.85;
             outline: none;
             text-decoration: none !important;
 

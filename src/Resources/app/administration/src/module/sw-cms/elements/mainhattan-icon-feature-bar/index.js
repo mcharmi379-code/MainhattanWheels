@@ -17,9 +17,17 @@ Shopware.Service('cmsService').registerCmsElement({
             source: 'static',
             value: '24',
         },
+        cardPaddingX: {
+            source: 'static',
+            value: '24',
+        },
+        cardPaddingY: {
+            source: 'static',
+            value: '20',
+        },
         iconSize: {
             source: 'static',
-            value: '40',
+            value: '48',
         },
         headingColor: {
             source: 'static',

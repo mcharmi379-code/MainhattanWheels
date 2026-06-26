@@ -1,8 +1,15 @@
 {% block element_ict_hero_section %}
     {% set c = element.config %}
     {% set background = '' %}
+    {% set bgImageUrl = element.data.backgroundMedia.url ?? '' %}
     {% if c.backgroundType.value == 'color' %}
         {% set background = 'background-color:' ~ (c.backgroundColor.value ?: '#f8f9fa') ~ ';' %}
+    {% elseif c.backgroundType.value == 'image' %}
+        {% if bgImageUrl %}
+            {% set background = 'background-image:url(\'' ~ bgImageUrl ~ '\');background-size:cover;background-position:center;background-repeat:no-repeat;' %}
+        {% else %}
+            {% set background = 'background-color:#f7f7f7;' %}
+        {% endif %}
     {% else %}
         {% set background = 'background:linear-gradient(135deg,' ~ (c.backgroundGradientColor1.value ?: '#0b5c8a') ~ ' 0%,' ~ (c.backgroundGradientColor2.value ?: '#1559d6') ~ ' 100%);' %}
     {% endif %}
@@ -12,9 +19,19 @@
         <div class="cms-element-ict-hero-section__container">
             <div class="cms-element-ict-hero-section__left">
                 {% if c.labelText.value %}
+                    {% set labelStyles = [] %}
+                    {% if c.labelBackgroundColor.value is not empty %}
+                        {% set labelStyles = labelStyles|merge(['background-color:' ~ c.labelBackgroundColor.value]) %}
+                    {% endif %}
+                    {% if c.labelTextColor.value is not empty %}
+                        {% set labelStyles = labelStyles|merge(['color:' ~ c.labelTextColor.value]) %}
+                    {% endif %}
+                    {% if c.labelBorderColor.value is not empty %}
+                        {% set labelStyles = labelStyles|merge(['border-color:' ~ c.labelBorderColor.value]) %}
+                    {% endif %}
                     <span
                         class="cms-element-ict-hero-section__label"
-                        style="background-color:{{ c.labelBackgroundColor.value ?: '#ffffff' }};color:{{ c.labelTextColor.value ?: '#212529' }};border-color:{{ c.labelBorderColor.value ?: '#dee2e6' }};"
+                        {% if labelStyles|length %}style="{{ labelStyles|join(';') }};"{% endif %}
                     >
                         {{ c.labelText.value }}
                     </span>
@@ -59,17 +76,6 @@
                         </a>
                     {% endif %}
                 </div>
-            </div>
-
-            <div class="cms-element-ict-hero-section__right">
-                {% if element.data.media.url %}
-                    <img
-                        src="{{ element.data.media.url }}"
-                        alt="{{ element.data.media.translated.alt ?: '' }}"
-                        class="cms-element-ict-hero-section__image"
-                        loading="lazy"
-                    />
-                {% endif %}
             </div>
         </div>
     </section>
