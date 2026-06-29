@@ -10,14 +10,25 @@
         {% else %}
             {% set background = 'background-color:#f7f7f7;' %}
         {% endif %}
+    {% elseif c.backgroundType.value == 'video' %}
+        {% set background = 'background-color:#1a1a2e;' %}
     {% else %}
         {% set background = 'background:linear-gradient(135deg,' ~ (c.backgroundGradientColor1.value ?: '#0b5c8a') ~ ' 0%,' ~ (c.backgroundGradientColor2.value ?: '#1559d6') ~ ' 100%);' %}
     {% endif %}
     {% set minHeight = c.minHeight.value ?: '560px' %}
 
+    {% set alignmentClass = 'align-left' %}
+    {% if c.textAlignment.value is defined and c.textAlignment.value is not empty %}
+        {% set alignmentClass = 'align-' ~ c.textAlignment.value %}
+    {% endif %}
+
     <section class="cms-element-ict-hero-section" style="{{ background }}min-height:{{ minHeight }};">
+        {% if c.backgroundType.value == 'video' and element.data.video.url is defined and element.data.video.url is not empty %}
+            <video class="cms-element-ict-hero-section__video-bg" autoplay loop muted playsinline src="{{ element.data.video.url }}"></video>
+        {% endif %}
+
         <div class="cms-element-ict-hero-section__container">
-            <div class="cms-element-ict-hero-section__left">
+            <div class="cms-element-ict-hero-section__left {{ alignmentClass }}">
                 {% if c.labelText.value %}
                     {% set labelStyles = [] %}
                     {% if c.labelBackgroundColor.value is not empty %}

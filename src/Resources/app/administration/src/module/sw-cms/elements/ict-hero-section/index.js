@@ -21,6 +21,18 @@ Shopware.Service('cmsService').registerCmsElement({
                 name: 'media',
             },
         },
+        backgroundVideo: {
+            source: 'static',
+            value: null,
+            required: false,
+            entity: {
+                name: 'media',
+            },
+        },
+        textAlignment: {
+            source: 'static',
+            value: 'left',
+        },
         backgroundColor: {
             source: 'static',
             value: '#f8f9fa',

@@ -34,13 +34,26 @@ export default {
 
             return styles;
         },
+
+        textAlignmentClass() {
+            const align = this.element?.config?.textAlignment?.value || 'left';
+            return `align-${align}`;
+        },
     },
 
     watch: {
         'element.config.backgroundMedia.value': {
             handler(newVal) {
                 if (newVal && (!this.element.data || !this.element.data.backgroundMedia)) {
-                    this.fetchMedia(newVal);
+                    this.fetchMedia(newVal, 'backgroundMedia');
+                }
+            },
+            immediate: true,
+        },
+        'element.config.backgroundVideo.value': {
+            handler(newVal) {
+                if (newVal && (!this.element.data || !this.element.data.video)) {
+                    this.fetchMedia(newVal, 'video');
                 }
             },
             immediate: true,
@@ -50,14 +63,32 @@ export default {
     created() {
         this.initElementConfig('ict-hero-section');
         this.initElementData('ict-hero-section');
+        if (this.element && this.element.config) {
+            if (!this.element.config.textAlignment) {
+                this.element.config.textAlignment = {
+                    source: 'static',
+                    value: 'left',
+                };
+            }
+            if (!this.element.config.backgroundVideo) {
+                this.element.config.backgroundVideo = {
+                    source: 'static',
+                    value: null,
+                };
+            }
+        }
     },
 
     methods: {
-        async fetchMedia(mediaId) {
+        async fetchMedia(mediaId, type = 'backgroundMedia') {
             try {
                 const media = await this.mediaRepository.get(mediaId, Shopware.Context.api);
                 if (!this.element.data) {
-                    this.element.data = { backgroundMediaId: media.id, backgroundMedia: media };
+                    this.element.data = {};
+                }
+                if (type === 'video') {
+                    this.element.data.video = media;
+                    this.element.data.backgroundVideoId = media.id;
                 } else {
                     this.element.data.backgroundMedia = media;
                     this.element.data.backgroundMediaId = media.id;

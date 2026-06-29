@@ -36,3 +36,6 @@ import './module/sw-cms/elements/mw-buttons';
 
 import './module/sw-cms/elements/ict-accordion';
 import './module/sw-cms/blocks/ict-accordion';
+import './module/sw-cms/blocks/ict-content-tabs';
+import './module/sw-cms/elements/ict-content-tabs';
+

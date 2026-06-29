@@ -260,11 +260,23 @@
       },
       "mainhattanIconFeatureBar": {
         "label": "Mainhattan Icon Feature Bar"
+      },
+      "ictContentTabs": {
+        "label": "ICT Inhalts-Tabs"
       }
     },
     "elements": {
       "ictHeroSection": {
         "label": "ICT Hero-Bereich"
+      },
+      "ictContentTabs": {
+        "label": "ICT Inhalts-Tabs",
+        "addTab": "Tab hinzufuegen",
+        "tabLabel": "Tab-Bezeichnung",
+        "tabContent": "Tab-Inhalt",
+        "addTabHint": "Bitte konfigurieren Sie die Tabs in den Einstellungen.",
+        "styleLabel": "Darstellung",
+        "activeTabColor": "Aktiver Tab Farbe"
       }
     }
   }

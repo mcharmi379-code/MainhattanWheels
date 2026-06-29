@@ -1,5 +1,17 @@
 .cms-element-ict-hero-section {
     overflow: hidden;
+    position: relative;
+
+    &__video-bg {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        z-index: 0;
+        pointer-events: none;
+    }
 
     &__container {
         max-width: 1320px;
@@ -9,6 +21,8 @@
         align-items: center;        // keep left & right vertically centered
         gap: 32px;
         min-height: 340px;
+        position: relative;
+        z-index: 1;
     }
 
     &__left {
@@ -20,8 +34,39 @@
         gap: 16px;
         padding: 48px 0;
         justify-content: center;
-        text-align: left;
         z-index: 1;
+
+        &.align-left {
+            margin-right: auto;
+            margin-left: 0;
+            text-align: left;
+            align-items: flex-start;
+            .cms-element-ict-hero-section__actions {
+                justify-content: flex-start;
+            }
+        }
+
+        &.align-center {
+            margin-left: auto;
+            margin-right: auto;
+            text-align: center;
+            align-items: center;
+            flex: 0 0 60%;
+            max-width: 60%;
+            .cms-element-ict-hero-section__actions {
+                justify-content: center;
+            }
+        }
+
+        &.align-right {
+            margin-left: auto;
+            margin-right: 0;
+            text-align: right;
+            align-items: flex-end;
+            .cms-element-ict-hero-section__actions {
+                justify-content: flex-end;
+            }
+        }
     }
 
     &__label {

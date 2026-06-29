@@ -1,0 +1,41 @@
+{% block element_ict_content_tabs %}
+    {% set config = element.translated.config ?? element.config %}
+    {% set tabs = config.tabs.value ?? [] %}
+    {% set activeTabColor = config.activeTabColor.value ?? '#e30613' %}
+
+    {% if tabs|length > 0 %}
+        <div
+            class="cms-element-ict-content-tabs"
+            data-ict-content-tabs="true"
+            style="--ict-ct-active-color: {{ activeTabColor|e('html_attr') }};"
+        >
+
+            <div class="ict-ct__nav" role="tablist">
+                {% for tab in tabs %}
+                    <button
+                        type="button"
+                        class="ict-ct__nav-item{% if loop.first %} ict-ct__nav-item--active{% endif %}"
+                        data-tab-index="{{ loop.index0 }}"
+                        role="tab"
+                        aria-selected="{{ loop.first ? 'true' : 'false' }}"
+                    >
+                        {{ tab.label|default('Tab ' ~ loop.index)|e }}
+                    </button>
+                {% endfor %}
+            </div>
+
+            <div class="ict-ct__panels">
+                {% for tab in tabs %}
+                    <div
+                        class="ict-ct__panel{% if loop.first %} ict-ct__panel--active{% endif %}"
+                        role="tabpanel"
+                        {% if not loop.first %}hidden{% endif %}
+                    >
+                        {{ tab.content|raw }}
+                    </div>
+                {% endfor %}
+            </div>
+
+        </div>
+    {% endif %}
+{% endblock %}

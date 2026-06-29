@@ -14,7 +14,8 @@
                     :options="[
                         { value: 'color', label: 'Color' },
                         { value: 'gbColor', label: 'Gradient' },
-                        { value: 'image', label: 'Image' }
+                        { value: 'image', label: 'Image' },
+                        { value: 'video', label: 'Video' }
                     ]"
                     @update:model-value="onInput"
                 />
@@ -73,6 +74,35 @@
                     />
                 </div>
 
+                <div v-if="element.config.backgroundType.value === 'video'" class="sw-cms-el-config-ict-hero-section__background-video">
+                    <sw-media-upload-v2
+                        variant="regular"
+                        :upload-tag="uploadVideoTag"
+                        :source="previewVideoSource"
+                        :allow-multi-select="false"
+                        file-accept="video/*"
+                        :default-folder="cmsPageState.pageEntityName"
+                        caption="Upload/Select background video"
+                        @media-upload-sidebar-open="onOpenMediaVideoModal"
+                        @media-upload-remove-image="onVideoRemove"
+                    />
+                    <sw-upload-listener
+                        :upload-tag="uploadVideoTag"
+                        auto-upload
+                        @media-upload-finish="onVideoUpload"
+                    />
+                    <sw-media-modal-v2
+                        v-if="mediaModalVideoIsOpen"
+                        variant="full"
+                        caption="Select background video"
+                        :entity-context="cmsPageState.entityName"
+                        :allow-multi-select="false"
+                        :initial-folder-id="cmsPageState.defaultMediaFolderId"
+                        @media-modal-selection-change="onVideoSelectionChanges"
+                        @modal-close="onCloseVideoModal"
+                    />
+                </div>
+
                 <mt-text-field
                     v-model="element.config.minHeight.value"
                     label="Minimum Height"
@@ -81,6 +111,17 @@
             </sw-container>
 
             <sw-container v-if="active === 'leftSection'" class="sw-cms-el-config-ict-hero-section__left-section">
+                <mt-select
+                    v-model="element.config.textAlignment.value"
+                    label="Text Alignment"
+                    :options="[
+                        { value: 'left', label: 'Left' },
+                        { value: 'center', label: 'Center' },
+                        { value: 'right', label: 'Right' }
+                    ]"
+                    @update:model-value="onInput"
+                />
+
                 <mt-text-field v-model="element.config.labelText.value" label="Label Text" @update:model-value="onInput" />
 
                 <div class="config-row-3">
