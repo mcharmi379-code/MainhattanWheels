@@ -210,11 +210,17 @@
         },
         "ictOverviewCards6": {
           "label": "ICT Overview Cards"
+        },
+        "ictSevenColumn": {
+          "label": "ICT Seven Column Layout"
         }
       },
       "elements": {
         "ictOverviewCards6": {
           "label": "ICT Overview Cards"
+        },
+        "ictSevenColumn": {
+          "label": "ICT Seven Column Layout"
         },
         "ictAccordion": {
           "label": "ICT Accordion",
@@ -248,7 +254,8 @@
       "detail": {
         "label": {
           "blockCategory": {
-            "ict-cms-elements": "ICT CMS Elements"
+            "ict-cms-elements": "ICT CMS Elements",
+            "ict-cms-layouts": "ICT CMS Layouts"
           }
         }
       }
@@ -258,7 +265,8 @@
     "detail": {
       "label": {
         "blockCategory": {
-          "ict-cms-elements": "ICT CMS Elements"
+          "ict-cms-elements": "ICT CMS Elements",
+          "ict-cms-layouts": "ICT CMS Layouts"
         }
       }
     },
@@ -277,6 +285,9 @@
       },
       "ictOverviewCards6": {
         "label": "ICT Overview Cards"
+      },
+      "ictSevenColumn": {
+        "label": "ICT Seven Column Layout"
       }
     },
     "elements": {
@@ -463,6 +474,9 @@
             }
           }
         }
+      },
+      "ictSevenColumn": {
+        "label": "ICT Seven Column Layout"
       }
     }
   }

@@ -42,3 +42,5 @@ import './module/sw-cms/elements/ict-overview-cards-6';
 import './module/sw-cms/blocks/ict-overview-cards-6';
 
 
+import './module/sw-cms/blocks/ict-seven-column';
+import './module/sw-cms/elements/ict-seven-column';

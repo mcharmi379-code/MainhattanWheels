@@ -1,0 +1,63 @@
+.ict-seven-column-layout {
+    display: grid;
+    grid-template-columns: repeat(7, minmax(0, 1fr));
+    gap: 15px;
+    align-items: center; /* Vertically align items */
+
+    /* Tablet breakpoint */
+    @media (max-width: 991px) and (min-width: 768px) {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 10px;
+    }
+    
+    /* Mobile breakpoint (Touch friendly horizontal scroll) */
+    @media (max-width: 767px) {
+        display: flex;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        overflow-y: hidden;
+        -webkit-overflow-scrolling: touch; /* Smooth iOS scrolling */
+        scroll-snap-type: x mandatory;
+        padding-bottom: 15px; /* space for scrollbar */
+        gap: 12px;
+        
+        /* Hide scrollbar for cleaner look, but keep functionality */
+        scrollbar-width: thin;
+        scrollbar-color: rgba(0,0,0,0.2) transparent;
+
+        &::-webkit-scrollbar {
+            height: 4px;
+        }
+        &::-webkit-scrollbar-track {
+            background: transparent; 
+            border-radius: 10px;
+        }
+        &::-webkit-scrollbar-thumb {
+            background: rgba(0,0,0,0.2); 
+            border-radius: 10px;
+        }
+        &::-webkit-scrollbar-thumb:hover {
+            background: rgba(0,0,0,0.4); 
+        }
+
+        .ict-seven-column-layout__col {
+            flex: 0 0 calc(40% - 12px); /* Show roughly 2.5 items to hint scrolling */
+            min-width: 130px;
+            scroll-snap-align: start;
+        }
+    }
+
+    .ict-seven-column-layout__card-slot {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+        /* Ensure inner images scale properly within the grid cells */
+        img, .sw-cms-el-image {
+            max-width: 100%;
+            height: auto;
+            object-fit: contain;
+        }
+    }
+}
