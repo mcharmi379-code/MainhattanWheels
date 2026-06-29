@@ -203,9 +203,15 @@
       "blocks": {
         "ictAccordion": {
           "label": "ICT Akkordeon"
+        },
+        "ictOverviewCards6": {
+          "label": "ICT Overview Cards"
         }
       },
       "elements": {
+        "ictOverviewCards6": {
+          "label": "ICT Overview Cards"
+        },
         "ictAccordion": {
           "label": "ICT Akkordeon",
           "config": {
@@ -264,6 +270,9 @@
       },
       "ictContentTabs": {
         "label": "ICT Inhalts-Tabs"
+      },
+      "ictOverviewCards6": {
+        "label": "ICT Uebersichtskarten"
       }
     },
     "elements": {
@@ -278,6 +287,171 @@
         "addTabHint": "Bitte konfigurieren Sie die Tabs in den Einstellungen.",
         "styleLabel": "Darstellung",
         "activeTabColor": "Aktiver Tab Farbe"
+      },
+      "ictOverviewCards6": {
+        "label": "ICT Uebersichtskarten"
+      },
+      "ictTopics": {
+        "config": {
+          "borderStyle": {
+            "solid": "Durchgehend",
+            "dotted": "Gepunktet",
+            "dashed": "Gestrichelt"
+          }
+        }
+      },
+      "ictOverviewCards": {
+        "config": {
+          "tab": {
+            "cards": "Karten"
+          },
+          "section": {
+            "backgroundSettings": "Hintergrund-Einstellungen",
+            "layoutSettings": "Layout-Einstellungen",
+            "iconSettings": "Icon-Einstellungen",
+            "headlineSettings": "Ueberschrift-Einstellungen",
+            "subheadlineSettings": "Unterueberschrift-Einstellungen",
+            "bodyTextSettings": "Fliesstext-Einstellungen",
+            "buttonSettings": "Button-Einstellungen",
+            "cardDesign": "Karten-Design"
+          },
+          "label": {
+            "backgroundType": "Hintergrund-Typ",
+            "backgroundColor": "Hintergrund-Farbe",
+            "backgroundGradientColor1": "Verlauf Farbe 1",
+            "backgroundGradientColor2": "Verlauf Farbe 2",
+            "backgroundGradientDirection": "Verlaufsrichtung",
+            "backgroundImage": "Hintergrund-Bild",
+            "backgroundVideo": "Hintergrund-Video",
+            "columns": "Spalten",
+            "iconShape": "Icon-Form",
+            "iconBorderColor": "Icon-Rahmenfarbe",
+            "iconSize": "Icon-Groesse",
+            "featureIconSize": "Feature-Icon-Groesse",
+            "iconHoverEffect": "Icon-Hover-Effekt",
+            "outlineColor": "Umrandungsfarbe",
+            "outlineThickness": "Umrandungsstaerke",
+            "outlinePosition": "Umrandungsposition",
+            "verticalAlignment": "Vertikale Ausrichtung",
+            "cardGap": "Kartenabstand",
+            "showHeadline": "Ueberschrift anzeigen",
+            "headlineSize": "Ueberschriftsgroesse",
+            "headlineAlignment": "Ueberschriftsausrichtung",
+            "headlineColor": "Ueberschriftsfarbe",
+            "showSubheadline": "Unterueberschrift anzeigen",
+            "subheadlineSize": "Unterueberschriftsgroesse",
+            "subheadlineAlignment": "Unterueberschriftsausrichtung",
+            "subheadlineColor": "Unterueberschriftsfarbe",
+            "showBodyText": "Fliesstext anzeigen",
+            "bodyTextSize": "Fliesstextgroesse",
+            "bodyTextAlignment": "Fliesstextausrichtung",
+            "bodyTextColor": "Fliesstextfarbe",
+            "buttonText": "Button-Text",
+            "buttonTarget": "Button-Ziel",
+            "buttonTextColor": "Button-Textfarbe",
+            "buttonHoverTextColor": "Button-Hover-Textfarbe",
+            "buttonAfterText": "Info-Text nach Button",
+            "buttonAfterTextColor": "Info-Text Farbe",
+            "buttonAfterTextSize": "Info-Text Schriftgroesse",
+            "cardBackgroundType": "Karten-Hintergrundtyp",
+            "cardBorderColor": "Kartenrahmenfarbe",
+            "cardBackgroundColor": "Karten-Hintergrundfarbe",
+            "cardBackgroundImage": "Karten-Hintergrundbild",
+            "cardBackgroundVideo": "Karten-Hintergrundvideo",
+            "gradientColor1": "Verlauf Farbe 1",
+            "gradientColor2": "Verlauf Farbe 2",
+            "gradientDirection": "Verlaufsrichtung",
+            "videoUploadType": "Video-Upload-Typ",
+            "videoUrl": "Video-URL"
+          },
+          "button": {
+            "addCard": "Karte hinzufuegen",
+            "removeCard": "Karte entfernen"
+          },
+          "option": {
+            "columns": {
+              "one": "1 Spalte",
+              "two": "2 Spalten",
+              "three": "3 Spalten",
+              "four": "4 Spalten"
+            },
+            "iconShape": {
+              "square": "Eckig",
+              "round": "Rund"
+            },
+            "iconSize": {
+              "small": "Klein (50px)",
+              "medium": "Mittel (80px)",
+              "large": "Gross (120px)",
+              "xl150": "XL (150px)",
+              "xl180": "XL (180px)",
+              "xl200": "XL (200px)",
+              "xl220": "XL (220px)"
+            },
+            "featureIconSize": {
+              "size20": "20px",
+              "size25": "25px",
+              "size40": "40px",
+              "size50": "50px"
+            },
+            "iconHoverEffect": {
+              "none": "Keiner",
+              "scale": "Skalieren",
+              "rotate": "Drehen",
+              "pulse": "Pulsieren"
+            },
+            "outlinePosition": {
+              "inside": "Innen",
+              "outside": "Aussen"
+            },
+            "verticalAlignment": {
+              "stretch": "Strecken",
+              "top": "Oben",
+              "center": "Mitte",
+              "bottom": "Unten"
+            },
+            "headlineSize": {
+              "size1": "Standard (24px)",
+              "size2": "Gross (42px)"
+            },
+            "subheadlineSize": {
+              "default": "Standard (20px)",
+              "optional": "Gross (24px)"
+            },
+            "alignment": {
+              "left": "Links",
+              "center": "Zentriert",
+              "right": "Rechts"
+            },
+            "backgroundType": {
+              "none": "Keine",
+              "color": "Farbe",
+              "gradient": "Verlauf",
+              "image": "Bild",
+              "video": "Video"
+            },
+            "videoUpload": {
+              "file": "Datei hochladen",
+              "url": "Externe URL"
+            },
+            "gradientDirection": {
+              "top": "Oben → Unten",
+              "right": "Links → Rechts",
+              "bottom": "Unten → Oben",
+              "left": "Rechts → Links"
+            },
+            "shadow": {
+              "none": "Keiner",
+              "light": "Leicht",
+              "medium": "Mittel",
+              "heavy": "Stark"
+            },
+            "target": {
+              "same": "Gleicher Tab",
+              "new": "Neuer Tab"
+            }
+          }
+        }
       }
     }
   }

@@ -89,5 +89,8 @@
         <service id="MainhattanWheels\Core\Content\Cms\DataResolver\Element\IctContentTabsCmsElementResolver" public="true">
             <tag name="shopware.cms.data_resolver"/>
         </service>
+        <service id="MainhattanWheels\Core\Content\Cms\DataResolver\Element\IctOverviewCards6CmsElementResolver">
+            <tag name="shopware.cms.data_resolver"/>
+        </service>
     </services>
 </container>

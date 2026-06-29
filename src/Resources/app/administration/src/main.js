@@ -38,4 +38,7 @@ import './module/sw-cms/elements/ict-accordion';
 import './module/sw-cms/blocks/ict-accordion';
 import './module/sw-cms/blocks/ict-content-tabs';
 import './module/sw-cms/elements/ict-content-tabs';
+import './module/sw-cms/elements/ict-overview-cards-6';
+import './module/sw-cms/blocks/ict-overview-cards-6';
+
 

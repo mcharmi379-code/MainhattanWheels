@@ -1,0 +1,1052 @@
+{% block sw_cms_el_config_ict_overview_cards_6 %}
+    <div class="sw-cms-el-config-ict-overview-cards-6">
+        
+        <!-- Background Configuration -->
+        <div class="config-section">
+            <h3 class="config-section-title">{{ $tc('sw-cms.elements.ictOverviewCards.config.section.backgroundSettings') }}</h3>
+            <mt-select
+                v-model="element.config.backgroundType.value"
+                :label="$tc('sw-cms.elements.ictOverviewCards.config.label.backgroundType')"
+                :options="backgroundTypeOptions"
+                @update:value="onBackgroundType">
+            </mt-select>
+
+            <div v-if="element.config.backgroundType.value === 'color'" class="color-background-config">
+                <sw-colorpicker
+                    v-model:value="element.config.backgroundColor.value"
+                    color-output="hex"
+                    :z-index="1000"
+                    :label="$tc('sw-cms.elements.ictOverviewCards.config.label.backgroundColor')"
+                    @update:value="onElementUpdate">
+                </sw-colorpicker>
+            </div>
+
+            <div v-if="element.config.backgroundType.value === 'gradient'" class="gradient-background-config">
+                <sw-colorpicker
+                    v-model:value="element.config.backgroundGradientColor1.value"
+                    color-output="hex"
+                    :z-index="1000"
+                    :label="$tc('sw-cms.elements.ictOverviewCards.config.label.backgroundGradientColor1')"
+                    @update:value="onElementUpdate">
+                </sw-colorpicker>
+                <sw-colorpicker
+                    v-model:value="element.config.backgroundGradientColor2.value"
+                    color-output="hex"
+                    :z-index="1000"
+                    :label="$tc('sw-cms.elements.ictOverviewCards.config.label.backgroundGradientColor2')"
+                    @update:value="onElementUpdate">
+                </sw-colorpicker>
+                <mt-select
+                    class="ict-oc6-compact-select"
+                    v-model="element.config.backgroundGradientDirection.value"
+                    :label="$tc('sw-cms.elements.ictOverviewCards.config.label.backgroundGradientDirection')"
+                    :options="gradientDirectionOptions"
+                    :searchable="false"
+                    :allow-empty="false">
+                </mt-select>
+            </div>
+
+            <div v-if="element.config.backgroundType.value === 'image'" class="background-image-config">
+                <sw-upload-listener
+                    :upload-tag="backgroundUploadTag"
+                    @media-upload-finish="onBackgroundImageUpload"
+                    auto-upload>
+                </sw-upload-listener>
+
+                <sw-media-upload-v2
+                    variant="regular"
+                    :upload-tag="backgroundUploadTag"
+                    :source="backgroundMediaItem"
+                    :allow-multi-select="false"
+                    :label="$tc('sw-cms.elements.ictOverviewCards.config.label.backgroundImage')"
+                    :default-folder="'cms_page'"
+                    :file-accept="fileAccept"
+                    @selection-change="onBackgroundSelectionChanges"
+                    @media-upload-remove-image="onBackgroundImageRemove"
+                    @media-upload-sidebar-open="onOpenBackgroundModal">
+                </sw-media-upload-v2>
+
+                <sw-media-modal-v2
+                    v-if="backgroundMediaModalIsOpen"
+                    :initial-folder-id="null"
+                    :entity-context="'cms_page'"
+                    @media-modal-selection-change="onBackgroundSelectionChanges"
+                    @modal-close="onCloseBackgroundModal">
+                </sw-media-modal-v2>
+            </div>
+
+            <div v-if="element.config.backgroundType.value === 'video'" class="background-video-config">
+                <mt-select
+                    v-model="element.config.backgroundVideoUploadType.value"
+                    :label="$tc('sw-cms.elements.ictOverviewCards.config.label.backgroundVideoUploadType')"
+                    :options="videoUploadOptions"
+                    @update:value="onElementUpdate">
+                </mt-select>
+
+                <mt-text-field v-if="element.config.backgroundVideoUploadType.value === 'url'"
+                    v-model="element.config.backgroundVideoUploadUrl.value"
+                    :label="$tc('sw-cms.elements.ictOverviewCards.config.label.backgroundVideoUploadUrl')"
+                    @update:value="onBackgroundVideoUploadUrl">
+                </mt-text-field>
+
+                <div v-if="element.config.backgroundVideoUploadType.value === 'file'" class="video-file-config">
+                    <sw-upload-listener
+                        :upload-tag="backgroundVideoUploadTag"
+                        @media-upload-finish="onBackgroundVideoUpload"
+                        auto-upload>
+                    </sw-upload-listener>
+
+                    <sw-media-upload-v2
+                        variant="regular"
+                        :upload-tag="backgroundVideoUploadTag"
+                        :source="backgroundVideoMediaItem"
+                        :allow-multi-select="false"
+                        :label="$tc('sw-cms.elements.ictOverviewCards.config.label.backgroundVideo')"
+                        :default-folder="'cms_page'"
+                        :file-accept="videoFileAccept"
+                        @selection-change="onBackgroundVideoSelectionChanges"
+                        @media-upload-remove-image="onBackgroundVideoRemove"
+                        @media-upload-sidebar-open="onOpenBackgroundVideoModal">
+                    </sw-media-upload-v2>
+
+                    <sw-media-modal-v2
+                        v-if="backgroundVideoModalIsOpen"
+                        :initial-folder-id="null"
+                        :entity-context="'cms_page'"
+                        @media-modal-selection-change="onBackgroundVideoSelectionChanges"
+                        @modal-close="onCloseBackgroundVideoModal">
+                    </sw-media-modal-v2>
+                </div>
+            </div>
+        </div>
+        
+        <div class="config-section">
+            <h3 class="config-section-title">{{ $tc('sw-cms.elements.ictOverviewCards.config.section.layoutSettings') }}</h3>
+            <mt-select
+                v-model="element.config.numberOfColumns.value"
+                :label="$tc('sw-cms.elements.ictOverviewCards.config.label.numberOfColumns')"
+                :options="columnOptions"
+                @update:value="onElementUpdate">
+            </mt-select>
+
+            <mt-text-field
+                v-model="element.config.cardSpacing.value"
+                :label="$tc('sw-cms.elements.ictOverviewCards.config.label.cardSpacing')"
+                @update:value="onElementUpdate">
+            </mt-text-field>
+
+            <mt-select
+                v-model="element.config.verticalAlignment.value"
+                :label="$tc('sw-cms.elements.ictOverviewCards.config.label.verticalAlignment')"
+                :options="verticalAlignmentOptions"
+                @update:value="onElementUpdate">
+            </mt-select>
+        </div>
+
+        <div class="config-section card-management">
+            <div class="section-header">
+                <h3 class="config-section-title">{{ $tc('sw-cms.elements.ictOverviewCards.config.tab.cards') }}</h3>
+            <sw-button @click="addCard" variant="primary" size="small" class="add-card-btn">
+                {{ $tc('sw-cms.elements.ictOverviewCards.config.button.addCard') }}
+            </sw-button>
+            </div>
+
+            <div v-for="(card, cardIndex) in element.config.cards.value" :key="cardIndex" class="card-config">
+                <!-- ACCORDION WRAPPER -->
+                <div class="ict-accordion">
+                    <!-- ACCORDION HEADER -->
+                    <div class="ict-accordion-header" @click="toggleAccordion(cardIndex)">
+                        <div class="ict-card-accordion">
+                            <h4>
+                                <span class="ict-oc6-card-badge">{{ cardIndex + 1 }}</span>
+                                {{ card.headline || $tc('sw-cms.elements.ictOverviewCards.config.label.card') + ' ' + (cardIndex + 1) }}
+                            </h4>
+                            <span class="ict-card-accordion-arrow" :class="{ open: openIndex === cardIndex }">
+                                <mt-icon size="0.75rem" name="regular-chevron-right-xxs"></mt-icon>
+                            </span>
+                        </div>
+                    </div>
+
+                    <!-- ACCORDION CONTENT -->
+                    <div class="ict-accordion-content" :class="{ open: openIndex === cardIndex }">
+                        <div class="card-item-content">
+                    <div class="field-group">
+                        <h5 class="field-group-title">{{ $tc('sw-cms.elements.ictOverviewCards.config.section.iconSettings') }}</h5>
+
+                        <div class="field-subgroup">
+                            <sw-upload-listener
+                                :upload-tag="getIconImageUploadTag(cardIndex)"
+                                @media-upload-finish="onIconImageUpload(cardIndex, $event)"
+                                auto-upload>
+                            </sw-upload-listener>
+
+                            <sw-media-upload-v2
+                                variant="regular"
+                                :upload-tag="getIconImageUploadTag(cardIndex)"
+                                :source="getIconImageMediaItem(cardIndex)"
+                                :allow-multi-select="false"
+                                :label="$tc('sw-cms.elements.ictOverviewCards.config.label.iconImage')"
+                                :default-folder="'cms_page'"
+                                @selection-change="onIconImageSelectionChanges(cardIndex, $event)"
+                                @media-upload-remove-image="onIconImageRemove(cardIndex)"
+                                @media-upload-sidebar-open="onOpenIconImageModal(cardIndex)">
+                            </sw-media-upload-v2>
+
+                            <sw-media-modal-v2
+                                v-if="iconImageModals[cardIndex]"
+                                :initial-folder-id="null"
+                                :entity-context="'cms_page'"
+                                @media-modal-selection-change="onIconImageSelectionChanges(cardIndex, $event)"
+                                @modal-close="onCloseIconImageModal(cardIndex)">
+                            </sw-media-modal-v2>
+
+                            <mt-select
+                                v-model="card.iconShape"
+                                class="ict-icon-shape-field"
+                                :label="$tc('sw-cms.elements.ictOverviewCards.config.label.iconShape')"
+                                :options="iconShapeOptions"
+                                @update:value="onElementUpdate">
+                            </mt-select>
+
+                            <mt-select
+                                v-model="card.iconSize"
+                                :label="$tc('sw-cms.elements.ictOverviewCards.config.label.iconSize')"
+                                :options="iconSizeOptions"
+                                @update:value="onElementUpdate">
+                            </mt-select>
+
+                            <mt-select
+                                v-model="card.iconAlignment"
+                                :label="$tc('sw-cms.elements.ictOverviewCards.config.label.iconAlignment')"
+                                :options="alignmentOptions"
+                                @update:value="onElementUpdate">
+                            </mt-select>
+
+                            <div class="color-row">
+                                <sw-colorpicker
+                                    v-model:value="card.iconColor"
+                                    color-output="hex"
+                                    :z-index="1000"
+                                    :label="$tc('sw-cms.elements.ictOverviewCards.config.label.iconColor')"
+                                    @update:value="onElementUpdate">
+                                </sw-colorpicker>
+
+                                <sw-colorpicker
+                                    v-model:value="card.iconBackgroundColor"
+                                    color-output="hex"
+                                    :z-index="1000"
+                                    :label="$tc('sw-cms.elements.ictOverviewCards.config.label.iconBackgroundColor')"
+                                    @update:value="onElementUpdate">
+                                </sw-colorpicker>
+                            </div>
+
+                            <sw-colorpicker
+                                v-model:value="card.iconBorderColor"
+                                color-output="hex"
+                                :z-index="1000"
+                                :label="$tc('sw-cms.elements.ictOverviewCards.config.label.iconBorderColor')"
+                                @update:value="onElementUpdate">
+                            </sw-colorpicker>
+
+                            <div class="color-row">
+                                <sw-colorpicker
+                                    v-model:value="card.iconOutlineColor"
+                                    color-output="hex"
+                                    :z-index="1000"
+                                    :label="$tc('sw-cms.elements.ictOverviewCards.config.label.iconOutlineColor')"
+                                    @update:value="onElementUpdate">
+                                </sw-colorpicker>
+
+                                <mt-text-field
+                                    v-model="card.iconOutlineThickness"
+                                    :label="$tc('sw-cms.elements.ictOverviewCards.config.label.iconOutlineThickness')"
+                                    @update:value="onElementUpdate">
+                                </mt-text-field>
+                            </div>
+
+                            <mt-select
+                                v-model="card.iconOutlinePosition"
+                                :label="$tc('sw-cms.elements.ictOverviewCards.config.label.iconOutlinePosition')"
+                                :options="outlinePositionOptions"
+                                @update:value="onElementUpdate">
+                            </mt-select>
+
+                            <mt-text-field
+                                v-model="card.iconBorderRadius"
+                                :label="$tc('sw-cms.elements.ictOverviewCards.config.label.iconBorderRadius')"
+                                @update:value="onElementUpdate">
+                            </mt-text-field>
+
+                            <mt-select
+                                v-model="card.iconHoverEffect"
+                                :label="$tc('sw-cms.elements.ictOverviewCards.config.label.iconHoverEffect')"
+                                :options="iconHoverEffectOptions"
+                                @update:value="onElementUpdate">
+                            </mt-select>
+                        </div>
+                    </div>
+
+                    <div class="field-group">
+                        <h5 class="field-group-title">{{ $tc('sw-cms.elements.ictOverviewCards.config.section.headlineSettings') }}</h5>
+
+                        <div class="field-subgroup">
+                            <mt-text-field
+                                v-model="card.headline"
+                                :label="$tc('sw-cms.elements.ictOverviewCards.config.label.headline')"
+                                @update:value="onElementUpdate">
+                            </mt-text-field>
+
+                            <div class="inline-fields">
+                                <mt-text-field
+                                    v-model="card.headlineSize"
+                                    :label="$tc('sw-cms.elements.ictOverviewCards.config.label.headlineSize')"
+                                    @update:value="onElementUpdate">
+                                </mt-text-field>
+
+                                <mt-text-field
+                                    v-model="card.headlineLineHeight"
+                                    label="Headline line height"
+                                    @update:value="onElementUpdate">
+                                </mt-text-field>
+
+                                <sw-single-select
+                                    v-model:value="card.headlineAlignment"
+                                    :label="$tc('sw-cms.elements.ictOverviewCards.config.label.headlineAlignment')"
+                                    :options="alignmentOptions"
+                                    @update:value="onElementUpdate">
+                                </sw-single-select>
+                            </div>
+
+                            <sw-colorpicker
+                                v-model:value="card.headlineColor"
+                                color-output="hex"
+                                :z-index="1000"
+                                :label="$tc('sw-cms.elements.ictOverviewCards.config.label.headlineColor')"
+                                @update:value="onElementUpdate">
+                            </sw-colorpicker>
+                        </div>
+                    </div>
+
+                    <div class="field-group">
+                        <h5 class="field-group-title">{{ $tc('sw-cms.elements.ictOverviewCards.config.section.subheadlineSettings') }}</h5>
+
+                        <div class="field-subgroup">
+                            <mt-text-field
+                                v-model="card.subheadline"
+                                :label="$tc('sw-cms.elements.ictOverviewCards.config.label.subheadline')"
+                                @update:value="onElementUpdate">
+                            </mt-text-field>
+
+                            <div class="inline-fields">
+                                <mt-text-field
+                                    v-model="card.subheadlineSize"
+                                    :label="$tc('sw-cms.elements.ictOverviewCards.config.label.subheadlineSize')"
+                                    @update:value="onElementUpdate">
+                                </mt-text-field>
+
+                                <mt-text-field
+                                    v-model="card.subheadlineLineHeight"
+                                    label="Subheadline line height"
+                                    @update:value="onElementUpdate">
+                                </mt-text-field>
+
+                                <sw-single-select
+                                    v-model:value="card.subheadlineAlignment"
+                                    :label="$tc('sw-cms.elements.ictOverviewCards.config.label.subheadlineAlignment')"
+                                    :options="alignmentOptions"
+                                    @update:value="onElementUpdate">
+                                </sw-single-select>
+                            </div>
+
+                            <sw-colorpicker
+                                v-model:value="card.subheadlineColor"
+                                color-output="hex"
+                                :z-index="1000"
+                                :label="$tc('sw-cms.elements.ictOverviewCards.config.label.subheadlineColor')"
+                                @update:value="onElementUpdate">
+                            </sw-colorpicker>
+                        </div>
+                    </div>
+
+                    <div class="field-group">
+                        <h5 class="field-group-title">{{ $tc('sw-cms.elements.ictOverviewCards.config.section.bodyTextSettings') }}</h5>
+                        <mt-switch
+                            :checked="card.showBodyText"
+                            :label="$tc('sw-cms.elements.ictOverviewCards.config.label.showBodyText')"
+                            @change="card.showBodyText = $event; onElementUpdate()">
+                        </mt-switch>
+
+                        <div v-if="card.showBodyText" class="field-subgroup">
+                            <sw-text-editor
+                                :value="card.bodyText"
+                                sanitize-input
+                                @update:value="(value) => { card.bodyText = value; onElementUpdate(); }">
+                            </sw-text-editor>
+
+                            <div class="inline-fields">
+                                <mt-text-field
+                                    v-model="card.bodyTextSize"
+                                    :label="$tc('sw-cms.elements.ictOverviewCards.config.label.bodyTextSize')"
+                                    @update:value="onElementUpdate">
+                                </mt-text-field>
+
+                                <mt-text-field
+                                    v-model="card.bodyTextLineHeight"
+                                    label="Body text line height"
+                                    @update:value="onElementUpdate">
+                                </mt-text-field>
+
+                                <sw-single-select
+                                    v-model:value="card.bodyTextAlignment"
+                                    :label="$tc('sw-cms.elements.ictOverviewCards.config.label.bodyTextAlignment')"
+                                    :options="alignmentOptions"
+                                    @update:value="onElementUpdate">
+                                </sw-single-select>
+                            </div>
+
+                            <sw-colorpicker
+                                v-model:value="card.bodyTextColor"
+                                color-output="hex"
+                                :z-index="1000"
+                                :label="$tc('sw-cms.elements.ictOverviewCards.config.label.bodyTextColor')"
+                                @update:value="onElementUpdate">
+                            </sw-colorpicker>
+                        </div>
+                    </div>
+
+                    <div class="field-group">
+                        <h5 class="field-group-title">Detail Rows</h5>
+                        <mt-switch
+                            :checked="card.showDetailRows"
+                            label="Show detail rows"
+                            @change="card.showDetailRows = $event; onElementUpdate()">
+                        </mt-switch>
+
+                        <div v-if="card.showDetailRows" class="field-subgroup">
+                            <div class="inline-fields">
+                                <mt-select
+                                    v-model="card.detailRowsTitleAlignment"
+                                    label="Title alignment"
+                                    :options="alignmentOptions"
+                                    @update:value="onElementUpdate">
+                                </mt-select>
+
+                                <mt-select
+                                    v-model="card.detailRowsValueAlignment"
+                                    label="Value alignment"
+                                    :options="alignmentOptions"
+                                    @update:value="onElementUpdate">
+                                </mt-select>
+                            </div>
+
+                            <div class="inline-fields">
+                                <mt-text-field
+                                    v-model="card.detailRowsTitleSize"
+                                    label="Title size"
+                                    @update:value="onElementUpdate">
+                                </mt-text-field>
+
+                                <mt-text-field
+                                    v-model="card.detailRowsTitleLineHeight"
+                                    label="Title line height"
+                                    @update:value="onElementUpdate">
+                                </mt-text-field>
+
+                                <sw-single-select
+                                    v-model:value="card.detailRowsTitleFontWeight"
+                                    label="Title font weight"
+                                    :options="fontWeightOptions"
+                                    @update:value="onElementUpdate">
+                                </sw-single-select>
+                            </div>
+
+                            <div class="inline-fields">
+                                <mt-text-field
+                                    v-model="card.detailRowsValueSize"
+                                    label="Value size"
+                                    @update:value="onElementUpdate">
+                                </mt-text-field>
+
+                                <mt-text-field
+                                    v-model="card.detailRowsValueLineHeight"
+                                    label="Value line height"
+                                    @update:value="onElementUpdate">
+                                </mt-text-field>
+
+                                <sw-single-select
+                                    v-model:value="card.detailRowsValueFontWeight"
+                                    label="Value font weight"
+                                    :options="fontWeightOptions"
+                                    @update:value="onElementUpdate">
+                                </sw-single-select>
+                            </div>
+
+                            <div class="inline-fields">
+                                <sw-colorpicker
+                                    v-model:value="card.detailRowsOutlineColor"
+                                    color-output="hex"
+                                    :z-index="1000"
+                                    label="Outline color"
+                                    @update:value="onElementUpdate">
+                                </sw-colorpicker>
+
+                                <mt-text-field
+                                    v-model="card.detailRowsOutlineThickness"
+                                    label="Outline thickness"
+                                    @update:value="onElementUpdate">
+                                </mt-text-field>
+                            </div>
+
+                            <sw-button @click="addDetailRow(cardIndex)" variant="primary" size="small" class="add-feature-btn">
+                                Add detail row
+                            </sw-button>
+
+                            <div v-for="(row, rowIndex) in card.detailRows" :key="rowIndex" class="feature-item">
+                                <div class="feature-item-header">
+                                    <span>Row {{ rowIndex + 1 }}</span>
+                                    <sw-button @click="removeDetailRow(cardIndex, rowIndex)" variant="danger" size="small">
+                                        Remove row
+                                    </sw-button>
+                                </div>
+
+                                <div class="inline-fields">
+                                    <mt-text-field
+                                        v-model="row.title"
+                                        label="Title"
+                                        @update:value="onElementUpdate">
+                                    </mt-text-field>
+
+                                    <mt-text-field
+                                        v-model="row.value"
+                                        label="Value"
+                                        @update:value="onElementUpdate">
+                                    </mt-text-field>
+                                </div>
+
+                                <div class="inline-fields">
+                                    <sw-colorpicker
+                                        v-model:value="row.titleColor"
+                                        color-output="hex"
+                                        :z-index="1000"
+                                        label="Title color"
+                                        @update:value="onElementUpdate">
+                                    </sw-colorpicker>
+
+                                    <sw-colorpicker
+                                        v-model:value="row.valueColor"
+                                        color-output="hex"
+                                        :z-index="1000"
+                                        label="Value color"
+                                        @update:value="onElementUpdate">
+                                    </sw-colorpicker>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="field-group">
+                        <h5 class="field-group-title">Info Text</h5>
+
+                        <div class="field-subgroup">
+                            <mt-text-field
+                                v-model="card.infoText"
+                                label="Info text"
+                                @update:value="onElementUpdate">
+                            </mt-text-field>
+
+                            <div class="inline-fields">
+                                <mt-text-field
+                                    v-model="card.infoTextSize"
+                                    label="Info text size"
+                                    @update:value="onElementUpdate">
+                                </mt-text-field>
+
+                                <mt-text-field
+                                    v-model="card.infoTextLineHeight"
+                                    label="Info text line height"
+                                    @update:value="onElementUpdate">
+                                </mt-text-field>
+
+                                <sw-single-select
+                                    v-model:value="card.infoTextAlignment"
+                                    label="Info text alignment"
+                                    :options="alignmentOptions"
+                                    @update:value="onElementUpdate">
+                                </sw-single-select>
+                            </div>
+
+                            <div class="inline-fields">
+                                <sw-colorpicker
+                                    v-model:value="card.infoTextColor"
+                                    color-output="hex"
+                                    :z-index="1000"
+                                    label="Info text color"
+                                    @update:value="onElementUpdate">
+                                </sw-colorpicker>
+
+                                <mt-select
+                                    v-model="card.infoTextFontWeight"
+                                    label="Info text font weight"
+                                    :options="fontWeightOptions"
+                                    @update:value="onElementUpdate">
+                                </mt-select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="field-group field-group--button-settings">
+                        <div class="ict-sub-accordion">
+                            <div class="ict-sub-accordion-header" @click="toggleButtonSettingsAccordion(cardIndex)">
+                                <h5 class="field-group-title">{{ $tc('sw-cms.elements.ictOverviewCards.config.section.buttonSettings') }}</h5>
+                                <span class="ict-card-accordion-arrow" :class="{ open: isButtonSettingsAccordionOpen(cardIndex) }">
+                                    <mt-icon size="1rem" class="ict-card-accordion__arrow-separator" name="regular-chevron-right-xxs"></mt-icon>
+                                </span>
+                            </div>
+
+                            <div class="ict-sub-accordion-content" :class="{ open: isButtonSettingsAccordionOpen(cardIndex) }">
+                                <div class="field-subgroup field-subgroup--button-settings">
+                                    <div class="button-settings-toolbar">
+                                        <sw-button @click="addButton(cardIndex)" variant="primary" size="small">
+                                            Add Button
+                                        </sw-button>
+                                    </div>
+
+                                    <div v-if="getCardButtons(card).length" class="button-settings-list">
+                                        <div
+                                            v-for="(button, buttonIndex) in getCardButtons(card)"
+                                            :key="`${cardIndex}-${buttonIndex}`"
+                                            class="button-item"
+                                        >
+                                            <div class="button-item-header" @click="toggleButtonAccordion(cardIndex, buttonIndex)">
+                                                <div class="button-item-header-content">
+                                                    <span class="button-item-index">Button {{ buttonIndex + 1 }}</span>
+                                                    <span class="button-item-title">{{ button.buttonText || 'LEARN MORE' }}</span>
+                                                </div>
+                                                <div class="button-item-header-actions">
+                                                    <sw-button
+                                                        size="small"
+                                                        variant="danger"
+                                                        @click.stop="removeButton(cardIndex, buttonIndex)"
+                                                    >
+                                                        Remove
+                                                    </sw-button>
+                                                    <span class="ict-card-accordion-arrow" :class="{ open: isButtonAccordionOpen(cardIndex, buttonIndex) }">
+                                                        <mt-icon size="1rem" class="ict-card-accordion__arrow-separator" name="regular-chevron-right-xxs"></mt-icon>
+                                                    </span>
+                                                </div>
+                                            </div>
+
+                                            <div class="button-item-content" :class="{ open: isButtonAccordionOpen(cardIndex, buttonIndex) }">
+                                                <mt-text-field
+                                                    v-model="button.buttonText"
+                                                    :label="$tc('sw-cms.elements.ictOverviewCards.config.label.buttonText')"
+                                                    @update:value="onElementUpdate">
+                                                </mt-text-field>
+
+                                                <mt-select
+                                                    v-model="button.buttonLinkType"
+                                                    :label="$tc('sw-cms.elements.ictTwoColumnThreeImage.config.label.buttonLinkType')"
+                                                    :options="linkTypeOptions"
+                                                    @update:value="onButtonLinkTypeChange(button)">
+                                                </mt-select>
+
+                                                <sw-dynamic-url-field
+                                                    v-if="button.buttonLinkType === 'internal'"
+                                                    v-model:value="button.buttonUrl">
+                                                </sw-dynamic-url-field>
+
+                                                <mt-text-field
+                                                    v-if="button.buttonLinkType === 'external'"
+                                                    v-model="button.buttonUrl"
+                                                    :label="$tc('sw-cms.elements.ictTwoColumnThreeImage.config.label.buttonLink')"
+                                                    @update:value="onElementUpdate"
+                                                    @blur="onButtonExternalUrlChange(button)">
+                                                </mt-text-field>
+
+                                                <div class="inline-fields">
+                                                    <mt-select
+                                                        v-model="button.buttonTarget"
+                                                        :label="$tc('sw-cms.elements.ictOverviewCards.config.label.buttonTarget')"
+                                                        :options="targetOptions"
+                                                        @update:value="onElementUpdate">
+                                                    </mt-select>
+                                                </div>
+
+                                                <div class="inline-fields">
+                                                    <sw-colorpicker
+                                                        v-model:value="button.buttonTextColor"
+                                                        color-output="hex"
+                                                        :z-index="1000"
+                                                        :label="$tc('sw-cms.elements.ictOverviewCards.config.label.buttonTextColor')"
+                                                        @update:value="onElementUpdate">
+                                                    </sw-colorpicker>
+
+                                                    <sw-colorpicker
+                                                        v-model:value="button.buttonHoverTextColor"
+                                                        color-output="hex"
+                                                        :z-index="1000"
+                                                        :label="$tc('sw-cms.elements.ictOverviewCards.config.label.buttonHoverTextColor')"
+                                                        @update:value="onElementUpdate">
+                                                    </sw-colorpicker>
+                                                </div>
+
+                                                <div class="inline-fields">
+                                                    <sw-colorpicker
+                                                        v-model:value="button.buttonBorderColor"
+                                                        color-output="hex"
+                                                        :z-index="1000"
+                                                        :label="$tc('sw-cms.elements.ictTwoColumnThreeImage.config.label.buttonBorderColor')"
+                                                        @update:value="onElementUpdate">
+                                                    </sw-colorpicker>
+
+                                                    <sw-colorpicker
+                                                        v-model:value="button.buttonHoverBorderColor"
+                                                        color-output="hex"
+                                                        :z-index="1000"
+                                                        :label="$tc('sw-cms.elements.ictTwoColumnThreeImage.config.label.buttonHoverBorderColor')"
+                                                        @update:value="onElementUpdate">
+                                                    </sw-colorpicker>
+                                                </div>
+
+                                                <div class="inline-fields">
+                                                    <mt-select
+                                                        class="ict-oc6-compact-select"
+                                                        v-model="button.buttonBorderStyle"
+                                                        :label="$tc('sw-cms.elements.ictTwoColumnThreeImage.config.label.buttonBorderStyle')"
+                                                        :options="borderStyleOptions"
+                                                        :searchable="false"
+                                                        :allow-empty="false"
+                                                        @update:value="onElementUpdate">
+                                                    </mt-select>
+
+                                                    <mt-number-field
+                                                        v-model="button.buttonBorderWidth"
+                                                        :label="$tc('sw-cms.elements.ictTwoColumnThreeImage.config.label.borderWidth')"
+                                                        type="int"
+                                                        :min="0"
+                                                        :step="1"
+                                                        @update:value="onElementUpdate">
+                                                    </mt-number-field>
+                                                </div>
+
+                                                <div class="inline-fields">
+                                                    <mt-number-field
+                                                        v-model="button.buttonBorderRadius"
+                                                        :label="$tc('sw-cms.elements.ictTwoColumnThreeImage.config.label.borderRadius')"
+                                                        type="int"
+                                                        :min="0"
+                                                        :step="1"
+                                                        @update:value="onElementUpdate">
+                                                    </mt-number-field>
+                                                </div>
+
+                                                <div class="inline-fields">
+                                                    <mt-text-field
+                                                        v-model="button.buttonAfterText"
+                                                        :label="$tc('sw-cms.elements.ictOverviewCards.config.label.buttonAfterText')"
+                                                        @update:value="onElementUpdate">
+                                                    </mt-text-field>
+                                                </div>
+
+                                                <div class="inline-fields">
+                                                    <sw-colorpicker
+                                                        v-model:value="button.buttonAfterTextColor"
+                                                        color-output="hex"
+                                                        :z-index="1000"
+                                                        :label="$tc('sw-cms.elements.ictOverviewCards.config.label.buttonAfterTextColor')"
+                                                        @update:value="onElementUpdate">
+                                                    </sw-colorpicker>
+
+                                                    <mt-text-field
+                                                        v-model="button.buttonAfterTextSize"
+                                                        :label="$tc('sw-cms.elements.ictOverviewCards.config.label.buttonAfterTextSize')"
+                                                        @update:value="onElementUpdate">
+                                                    </mt-text-field>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div v-else class="button-settings-empty">
+                                        No buttons added yet.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="field-group">
+                        <h5 class="field-group-title">{{ $tc('sw-cms.elements.ictOverviewCards.config.section.cardDesign') }}</h5>
+
+                        <div class="field-subgroup">
+                            <mt-select
+                                v-model="card.cardMainBackgroundType"
+                                label="Main card background type"
+                                :options="cardBackgroundTypeOptions"
+                                @update:value="onElementUpdate">
+                            </mt-select>
+
+                            <sw-colorpicker v-if="card.cardMainBackgroundType === 'color'"
+                                v-model:value="card.cardMainBackgroundColor"
+                                color-output="hex"
+                                :z-index="1000"
+                                label="Main background color"
+                                @update:value="onElementUpdate">
+                            </sw-colorpicker>
+
+                            <div v-if="card.cardMainBackgroundType === 'gradient'" class="gradient-fields">
+                                <div class="inline-fields">
+                                    <sw-colorpicker
+                                        v-model:value="card.cardMainBackgroundGradientColor1"
+                                        color-output="hex"
+                                        :z-index="1000"
+                                        label="Gradient color 1"
+                                        @update:value="onElementUpdate">
+                                    </sw-colorpicker>
+                                    <sw-colorpicker
+                                        v-model:value="card.cardMainBackgroundGradientColor2"
+                                        color-output="hex"
+                                        :z-index="1000"
+                                        label="Gradient color 2"
+                                        @update:value="onElementUpdate">
+                                    </sw-colorpicker>
+                                </div>
+                                <mt-select
+                                    v-model="card.cardMainBackgroundGradientDirection"
+                                    label="Gradient direction"
+                                    :options="gradientDirectionOptions"
+                                    @update:value="onElementUpdate">
+                                </mt-select>
+                            </div>
+
+                            <div v-if="card.cardMainBackgroundType === 'image'" class="image-upload-field">
+                                <sw-upload-listener
+                                    :upload-tag="getCardMainImageUploadTag(cardIndex)"
+                                    @media-upload-finish="onCardMainImageUpload(cardIndex, $event)"
+                                    auto-upload>
+                                </sw-upload-listener>
+
+                                <sw-media-upload-v2
+                                    variant="regular"
+                                    :upload-tag="getCardMainImageUploadTag(cardIndex)"
+                                    :source="getCardMainImageMediaItem(cardIndex)"
+                                    :allow-multi-select="false"
+                                    label="Main background image"
+                                    :default-folder="'cms_page'"
+                                    @selection-change="onCardMainImageSelectionChanges(cardIndex, $event)"
+                                    @media-upload-remove-image="onCardMainImageRemove(cardIndex)"
+                                    @media-upload-sidebar-open="onOpenCardMainImageModal(cardIndex)">
+                                </sw-media-upload-v2>
+
+                                <sw-media-modal-v2
+                                    v-if="cardMainImageModals[cardIndex]"
+                                    :initial-folder-id="null"
+                                    :entity-context="'cms_page'"
+                                    @media-modal-selection-change="onCardMainImageSelectionChanges(cardIndex, $event)"
+                                    @modal-close="onCloseCardMainImageModal(cardIndex)">
+                                </sw-media-modal-v2>
+                            </div>
+
+                            <div v-if="card.cardMainBackgroundType === 'video'" class="video-upload-field">
+                                <mt-select
+                                    v-model="card.cardMainBackgroundVideoUploadType"
+                                    label="Main background video type"
+                                    :options="videoUploadOptions"
+                                    @update:value="updateCard(cardIndex, 'cardMainBackgroundVideoUploadType', $event)">
+                                </mt-select>
+
+                                <mt-text-field v-if="card.cardMainBackgroundVideoUploadType === 'url'"
+                                    v-model="card.cardMainBackgroundVideoUploadUrl"
+                                    label="Main background video URL"
+                                    @update:value="updateCard(cardIndex, 'cardMainBackgroundVideoUploadUrl', $event)">
+                                </mt-text-field>
+
+                                <div v-if="card.cardMainBackgroundVideoUploadType === 'file'">
+                                    <sw-upload-listener
+                                        :upload-tag="getCardMainVideoUploadTag(cardIndex)"
+                                        @media-upload-finish="onCardMainVideoUpload(cardIndex, $event)"
+                                        auto-upload>
+                                    </sw-upload-listener>
+
+                                    <sw-media-upload-v2
+                                        variant="regular"
+                                        :upload-tag="getCardMainVideoUploadTag(cardIndex)"
+                                        :source="getCardMainVideoMediaItem(cardIndex)"
+                                        :allow-multi-select="false"
+                                        label="Main background video"
+                                        :default-folder="'cms_page'"
+                                        :file-accept="'video/*'"
+                                        @selection-change="onCardMainVideoSelectionChanges(cardIndex, $event)"
+                                        @media-upload-remove-image="onCardMainVideoRemove(cardIndex)"
+                                        @media-upload-sidebar-open="onOpenCardMainVideoModal(cardIndex)">
+                                    </sw-media-upload-v2>
+
+                                    <sw-media-modal-v2
+                                        v-if="cardMainVideoModals[cardIndex]"
+                                        :initial-folder-id="null"
+                                        :entity-context="'cms_page'"
+                                        @media-modal-selection-change="onCardMainVideoSelectionChanges(cardIndex, $event)"
+                                        @modal-close="onCloseCardMainVideoModal(cardIndex)">
+                                    </sw-media-modal-v2>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="field-subgroup">
+                            <div class="inline-fields">
+                                <mt-select
+                                    v-model="card.mediaDisplayMode"
+                                    label="Media display mode"
+                                    :options="mediaDisplayModeOptions"
+                                    @update:value="onElementUpdate">
+                                </mt-select>
+
+                                <mt-text-field
+                                    v-model="card.mediaHeight"
+                                    label="Media height"
+                                    @update:value="onElementUpdate">
+                                </mt-text-field>
+                            </div>
+                        </div>
+                        
+                        <sw-colorpicker
+                            v-model:value="card.cardBorderColor"
+                            color-output="hex"
+                            :z-index="1000"
+                            :label="$tc('sw-cms.elements.ictOverviewCards.config.label.cardBorderColor')"
+                            @update:value="onElementUpdate">
+                        </sw-colorpicker>
+                        
+                        <mt-select
+                            v-model="card.cardBackgroundType"
+                            :label="$tc('sw-cms.elements.ictOverviewCards.config.label.cardBackgroundType')"
+                            :options="cardBackgroundTypeOptions"
+                            @update:value="onElementUpdate">
+                        </mt-select>
+
+                        <sw-colorpicker v-if="card.cardBackgroundType === 'color'"
+                            v-model:value="card.cardBackgroundColor"
+                            color-output="hex"
+                            :z-index="1000"
+                            :label="$tc('sw-cms.elements.ictOverviewCards.config.label.cardBackgroundColor')"
+                            @update:value="onElementUpdate">
+                        </sw-colorpicker>
+
+                        <div v-if="card.cardBackgroundType === 'gradient'" class="gradient-fields">
+                            <div class="inline-fields">
+                                <sw-colorpicker
+                                    v-model:value="card.cardBackgroundGradientColor1"
+                                    color-output="hex"
+                                    :z-index="1000"
+                                    :label="$tc('sw-cms.elements.ictOverviewCards.config.label.gradientColor1')"
+                                    @update:value="onElementUpdate">
+                                </sw-colorpicker>
+                                <sw-colorpicker
+                                    v-model:value="card.cardBackgroundGradientColor2"
+                                    color-output="hex"
+                                    :z-index="1000"
+                                    :label="$tc('sw-cms.elements.ictOverviewCards.config.label.gradientColor2')"
+                                    @update:value="onElementUpdate">
+                                </sw-colorpicker>
+                            </div>
+                            <mt-select
+                                class="ict-oc6-compact-select"
+                                v-model="card.cardBackgroundGradientDirection"
+                                :label="$tc('sw-cms.elements.ictOverviewCards.config.label.gradientDirection')"
+                                :options="gradientDirectionOptions"
+                                :searchable="false"
+                                :allow-empty="false"
+                                @update:value="onElementUpdate">
+                            </mt-select>
+                        </div>
+
+                        <div v-if="card.cardBackgroundType === 'image'" class="image-upload-field">
+                            <sw-upload-listener
+                                :upload-tag="getCardImageUploadTag(cardIndex)"
+                                @media-upload-finish="onCardImageUpload(cardIndex, $event)"
+                                auto-upload>
+                            </sw-upload-listener>
+
+                            <sw-media-upload-v2
+                                variant="regular"
+                                :upload-tag="getCardImageUploadTag(cardIndex)"
+                                :source="getCardImageMediaItem(cardIndex)"
+                                :allow-multi-select="false"
+                                :label="$tc('sw-cms.elements.ictOverviewCards.config.label.cardBackgroundImage')"
+                                :default-folder="'cms_page'"
+                                @selection-change="onCardImageSelectionChanges(cardIndex, $event)"
+                                @media-upload-remove-image="onCardImageRemove(cardIndex)"
+                                @media-upload-sidebar-open="onOpenCardImageModal(cardIndex)">
+                            </sw-media-upload-v2>
+
+                            <sw-media-modal-v2
+                                v-if="cardImageModals[cardIndex]"
+                                :initial-folder-id="null"
+                                :entity-context="'cms_page'"
+                                @media-modal-selection-change="onCardImageSelectionChanges(cardIndex, $event)"
+                                @modal-close="onCloseCardImageModal(cardIndex)">
+                            </sw-media-modal-v2>
+                        </div>
+
+                        <div v-if="card.cardBackgroundType === 'video'" class="video-upload-field">
+                            <mt-select
+                                v-model="card.cardBackgroundVideoUploadType"
+                                :label="$tc('sw-cms.elements.ictOverviewCards.config.label.videoUploadType')"
+                                :options="videoUploadOptions"
+                                @update:value="updateCard(cardIndex, 'cardBackgroundVideoUploadType', $event)">
+                            </mt-select>
+
+                            <mt-text-field v-if="card.cardBackgroundVideoUploadType === 'url'"
+                                v-model="card.cardBackgroundVideoUploadUrl"
+                                :label="$tc('sw-cms.elements.ictOverviewCards.config.label.videoUrl')"
+                                @update:value="updateCard(cardIndex, 'cardBackgroundVideoUploadUrl', $event)">
+                            </mt-text-field>
+
+                            <div v-if="card.cardBackgroundVideoUploadType === 'file'">
+                                <sw-upload-listener
+                                    :upload-tag="getCardVideoUploadTag(cardIndex)"
+                                    @media-upload-finish="onCardVideoUpload(cardIndex, $event)"
+                                    auto-upload>
+                                </sw-upload-listener>
+
+                                <sw-media-upload-v2
+                                    variant="regular"
+                                    :upload-tag="getCardVideoUploadTag(cardIndex)"
+                                    :source="getCardVideoMediaItem(cardIndex)"
+                                    :allow-multi-select="false"
+                                    :label="$tc('sw-cms.elements.ictOverviewCards.config.label.cardBackgroundVideo')"
+                                    :default-folder="'cms_page'"
+                                    :file-accept="'video/*'"
+                                    @selection-change="onCardVideoSelectionChanges(cardIndex, $event)"
+                                    @media-upload-remove-image="onCardVideoRemove(cardIndex)"
+                                    @media-upload-sidebar-open="onOpenCardVideoModal(cardIndex)">
+                                </sw-media-upload-v2>
+
+                                <sw-media-modal-v2
+                                    v-if="cardVideoModals[cardIndex]"
+                                    :initial-folder-id="null"
+                                    :entity-context="'cms_page'"
+                                    @media-modal-selection-change="onCardVideoSelectionChanges(cardIndex, $event)"
+                                    @modal-close="onCloseCardVideoModal(cardIndex)">
+                                </sw-media-modal-v2>
+                            </div>
+                        </div>
+
+
+                    </div>
+
+                <!-- Remove Button -->
+                <div v-if="element.config.cards.value.length > 1" class="remove-card-section">
+                    <sw-button @click="removeCard(cardIndex)" size="small" variant="danger" class="remove-card-button">
+                        {{ $tc('sw-cms.elements.ictOverviewCards.config.button.removeCard') }}
+                    </sw-button>
+                </div>
+
+                </div><!-- close card-item-content -->
+                </div><!-- close ict-accordion-content -->
+                </div><!-- close ict-accordion -->
+            </div><!-- close v-for card-config -->
+        </div><!-- close card-management -->
+
+    </div><!-- close sw-cms-el-config-ict-overview-cards -->
+{% endblock %}
