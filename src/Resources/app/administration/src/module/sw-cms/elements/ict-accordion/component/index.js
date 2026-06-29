@@ -38,6 +38,10 @@ function createAccordionConfig() {
             type: Array,
             required: true,
         },
+        activeColor: {
+            source: 'static',
+            value: '#e30613',
+        },
     };
 }
 
@@ -59,6 +63,10 @@ export default {
 
         description() {
             return this.element.config?.description?.value || '';
+        },
+
+        activeColor() {
+            return this.element.config?.activeColor?.value || '#e30613';
         },
 
         entries() {
@@ -89,7 +97,7 @@ export default {
                 changed = true;
             }
 
-            ['title', 'description', 'displayMode', 'entries'].forEach((key) => {
+            ['title', 'description', 'displayMode', 'activeColor', 'entries'].forEach((key) => {
                 if (!this.element.config[key]) {
                     this.element.config[key] = defaultConfig[key];
                     changed = true;

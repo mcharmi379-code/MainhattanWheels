@@ -23,10 +23,13 @@
         transition: all 0.2s ease;
         margin-bottom: -1px; // overlap the container border-bottom
 
-        &:hover {}
+        &:hover {
+            color: var(--ict-ct-active-color, #e30613);
+        }
 
         &.ict-ct__nav-item--active {
-
+            color: var(--ict-ct-active-color, #e30613);
+            border-bottom-color: var(--ict-ct-active-color, #e30613);
             font-weight: 700;
         }
 

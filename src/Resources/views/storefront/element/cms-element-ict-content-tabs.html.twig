@@ -1,6 +1,6 @@
 {% block element_ict_content_tabs %}
     {% set config = element.translated.config ?? element.config %}
-    {% set tabs = config.tabs.value ?? [] %}
+    {% set tabs = element.data.tabs ?? config.tabs.value ?? [] %}
     {% set activeTabColor = config.activeTabColor.value ?? '#e30613' %}
 
     {% if tabs|length > 0 %}
@@ -37,5 +37,46 @@
             </div>
 
         </div>
+
+        <script>
+            (function () {
+                const root = document.currentScript && document.currentScript.previousElementSibling
+                    ? (document.currentScript.previousElementSibling.matches('[data-ict-content-tabs="true"]') 
+                        ? document.currentScript.previousElementSibling 
+                        : document.currentScript.previousElementSibling.querySelector('[data-ict-content-tabs="true"]'))
+                    : null;
+
+                if (!root || root.dataset.ictContentTabsInitialized === '1') {
+                    return;
+                }
+
+                root.dataset.ictContentTabsInitialized = '1';
+
+                const triggers = root.querySelectorAll('.ict-ct__nav-item');
+                const panels = root.querySelectorAll('.ict-ct__panel');
+
+                triggers.forEach((trigger) => {
+                    trigger.addEventListener('click', () => {
+                        const index = parseInt(trigger.getAttribute('data-tab-index'), 10);
+
+                        triggers.forEach((button) => {
+                            const isActive = button === trigger;
+                            button.classList.toggle('ict-ct__nav-item--active', isActive);
+                            button.setAttribute('aria-selected', isActive ? 'true' : 'false');
+                        });
+
+                        panels.forEach((panel, i) => {
+                            const isActive = i === index;
+                            panel.classList.toggle('ict-ct__panel--active', isActive);
+                            if (isActive) {
+                                panel.removeAttribute('hidden');
+                            } else {
+                                panel.setAttribute('hidden', '');
+                            }
+                        });
+                    });
+                });
+            })();
+        </script>
     {% endif %}
 {% endblock %}

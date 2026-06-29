@@ -5,6 +5,7 @@
     {% set displayMode = config.displayMode.value|default('single') %}
     {% set entries = config.entries.value|default([]) %}
     {% set accordionId = 'ict-accordion-' ~ element.id %}
+    {% set activeColor = config.activeColor.value|default('#e30613') %}
 
     {% if entries is empty and (title or description) %}
         {% set entries = [{
@@ -17,7 +18,7 @@
     {% endif %}
 
     {% if title or description or entries is not empty %}
-        <div class="cms-element-ict-accordion">
+        <div class="cms-element-ict-accordion" style="--ict-accordion-active-color: {{ activeColor|e('html_attr') }};">
             {% if title or description %}
                 <header class="cms-element-ict-accordion__intro">
                     {% if title %}

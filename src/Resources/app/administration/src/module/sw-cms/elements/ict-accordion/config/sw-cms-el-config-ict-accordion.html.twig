@@ -146,6 +146,14 @@
                     {{ $tc('ict-cms-bundle-element.cms.elements.ictAccordion.config.displayModeMultiple') }}
                 </option>
             </sw-select-field>
+
+            <sw-colorpicker
+                v-model:value="element.config.activeColor.value"
+                :label="$tc('ict-cms-bundle-element.cms.elements.ictAccordion.config.activeColor')"
+                color-output="hex"
+                :z-index="1000"
+                @update:value="onInput"
+            />
         </sw-container>
     </template>
 </sw-tabs>

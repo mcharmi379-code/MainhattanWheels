@@ -226,7 +226,8 @@
             "descriptionPlaceholder": "Bereichsbeschreibung eingeben...",
             "displayMode": "Anzeigemodus",
             "displayModeSingle": "Einzeln (Nur ein Eintrag gleichzeitig geöffnet)",
-            "displayModeMultiple": "Mehrfach (Mehrere Einträge gleichzeitig geöffnet erlauben)"
+            "displayModeMultiple": "Mehrfach (Mehrere Einträge gleichzeitig geöffnet erlauben)",
+            "activeColor": "Aktive Farbe"
           }
         }
       }

@@ -230,7 +230,8 @@
             "descriptionPlaceholder": "Enter section description...",
             "displayMode": "Display Mode",
             "displayModeSingle": "Single (Only one item open at a time)",
-            "displayModeMultiple": "Multiple (Allow multiple items open simultaneously)"
+            "displayModeMultiple": "Multiple (Allow multiple items open simultaneously)",
+            "activeColor": "Active Color"
           }
         }
       }
