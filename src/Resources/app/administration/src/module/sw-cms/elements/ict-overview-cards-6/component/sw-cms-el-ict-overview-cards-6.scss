@@ -137,10 +137,10 @@
         flex: 1 1 auto;
         padding: 20px;
         min-width: 0;
+        gap: 15px;
     }
 
     .card-icon {
-        margin-bottom: 12px;
 
         .icon-box {
             display: inline-flex;
@@ -171,7 +171,6 @@
         display: flex;
         flex-wrap: wrap;
         gap: 6px;
-        margin-bottom: 10px;
     }
 
     .card-tag {
@@ -189,19 +188,16 @@
     }
 
     .card-headline {
-        margin: 0 0 6px;
         font-weight: 700;
         overflow-wrap: anywhere;
     }
 
     .card-subheadline {
-        margin: 0 0 10px;
         font-weight: 400;
         overflow-wrap: anywhere;
     }
 
     .card-body-text {
-        margin: 0 0 14px;
         min-width: 0;
         overflow-wrap: anywhere;
         word-break: break-word;
@@ -215,16 +211,10 @@
         }
     }
 
-    .card-detail-rows {
-        margin-bottom: 14px;
-    }
-
-    .card-detail-row,
-    .card-info-text {
-        padding: 7px 0;
-    }
+    .card-detail-rows {}
 
     .card-detail-row {
+        padding: 7px 0;
         display: grid;
         grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
         column-gap: 12px;
@@ -240,11 +230,9 @@
     }
 
     .card-buttons {
-        margin-top: auto;
         display: flex;
         flex-wrap: wrap;
         gap: 10px;
-        padding-top: 8px;
     }
 
     .card-button-wrapper {

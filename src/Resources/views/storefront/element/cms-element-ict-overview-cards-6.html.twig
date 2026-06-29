@@ -35,7 +35,7 @@
             {% endif %}
         {% endif %}
 
-        <div class="ict-overview-cards-grid" style="grid-template-columns: repeat({{ effectiveColumns }}, minmax(0, 1fr)); gap: {{ cardSpacing }}px; align-items: {{ verticalAlignment }}; position: relative; z-index: 1;">
+        <div class="ict-overview-cards-grid" style="--columns: {{ effectiveColumns }}; gap: {{ cardSpacing }}px; align-items: {{ verticalAlignment }}; position: relative; z-index: 1;">
             {% for card in cards %}
                 {% set cardIndex = loop.index0 %}
                 {% set cardImageMedia = slotData.cardImages[cardIndex] ?? null %}
@@ -242,7 +242,7 @@
                             {% endif %}
 
                             {% if card.infoText is defined and (card.infoText ~ '')|trim %}
-                                <div class="card-info-text" style="border-bottom: {{ detailRowBorder }}; text-align: {{ card.infoTextAlignment ?? 'left' }}; font-size: {{ infoTextCssSize }}; line-height: {{ infoTextLineHeightCss }}; color: {{ card.infoTextColor ?? '#262624' }}; font-weight: {{ card.infoTextFontWeight ?? '700' }};">
+                                <div class="card-info-text" style="text-align: {{ card.infoTextAlignment ?? 'left' }}; font-size: {{ infoTextCssSize }}; line-height: {{ infoTextLineHeightCss }}; color: {{ card.infoTextColor ?? '#262624' }}; font-weight: {{ card.infoTextFontWeight ?? '700' }};">
                                     {{ card.infoText }}
                                 </div>
                             {% endif %}
