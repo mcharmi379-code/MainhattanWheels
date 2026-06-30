@@ -1,0 +1,66 @@
+{% block element_mw_file_download %}
+    {% set data = element.data ?? {} %}
+    {% set config = element.config ?? {} %}
+    {% set downloadTitle = data.downloadTitle ?? config.downloadTitle.value ?? 'Richtmaschinen PDF-Katalog' %}
+    {% set downloadSubtitle = data.downloadSubtitle ?? config.downloadSubtitle.value ?? 'Alle technischen Details und Produktinformationen zum Download' %}
+    {% set downloadButtonText = data.downloadButtonText ?? config.downloadButtonText.value ?? 'Herunterladen' %}
+    {% set downloadFile = data.downloadFile ?? null %}
+    {% set downloadFileUrl = config.downloadFileUrl.value ?? data.downloadFileUrl ?? (downloadFile ? downloadFile.url : '') %}
+    {% set downloadPreviewImage = data.downloadPreviewImage ?? null %}
+    {% set downloadPreviewImageUrl = config.downloadPreviewImageUrl.value ?? data.downloadPreviewImageUrl ?? (downloadPreviewImage ? downloadPreviewImage.url : '') %}
+    {% set ctaTitle = data.ctaTitle ?? config.ctaTitle.value ?? 'Vorführung oder Angebot erwünscht?' %}
+    {% set ctaSubtitle = data.ctaSubtitle ?? config.ctaSubtitle.value ?? 'Vereinbaren Sie noch heute einen Termin zur Vorführung' %}
+    {% set ctaButtonText = data.ctaButtonText ?? config.ctaButtonText.value ?? 'Kontakt aufnehmen' %}
+    {% set ctaButtonUrl = data.ctaButtonUrl ?? config.ctaButtonUrl.value ?? '' %}
+    {% set ctaPreviewImage = data.ctaPreviewImage ?? null %}
+    {% set ctaPreviewImageUrl = config.ctaPreviewImageUrl.value ?? data.ctaPreviewImageUrl ?? (ctaPreviewImage ? ctaPreviewImage.url : '') %}
+    
+    <section class="mw-file-download">
+        <div class="mw-file-download__grid">
+            <article class="mw-file-download__card mw-file-download__card--download">
+                <div class="mw-file-download__row">
+                    {% if downloadPreviewImageUrl %}
+                        <div class="mw-file-download__image">
+                            <img src="{{ downloadPreviewImageUrl }}" alt="{{ downloadTitle }}" loading="lazy" decoding="async">
+                        </div>
+                    {% endif %}
+
+                    <div class="mw-file-download__body">
+                        <h3 class="mw-file-download__title">{{ downloadTitle }}</h3>
+                        <p class="mw-file-download__subtitle">{{ downloadSubtitle }}</p>
+                    </div>
+                </div>
+
+                {% if downloadFileUrl %}
+                    <a class="mw-file-download__btn" href="{{ downloadFileUrl }}" download>
+                        {{ downloadButtonText }}
+                    </a>
+                {% else %}
+                    <span class="mw-file-download__btn is--disabled" aria-disabled="true">
+                        {{ downloadButtonText }}
+                    </span>
+                {% endif %}
+            </article>
+
+            <article class="mw-file-download__card mw-file-download__card--cta">
+                <div class="mw-file-download__row">
+                    {% if ctaPreviewImageUrl %}
+                        <div class="mw-file-download__image">
+                            <img src="{{ ctaPreviewImageUrl }}" alt="{{ ctaTitle }}" loading="lazy" decoding="async">
+                        </div>
+                    {% endif %}
+
+                    <div class="mw-file-download__body">
+                        <h3 class="mw-file-download__title">{{ ctaTitle }}</h3>
+                        <p class="mw-file-download__subtitle">{{ ctaSubtitle }}</p>
+                    </div>
+                </div>
+
+                {% set url = ctaButtonUrl ?: '#' %}
+                <a class="mw-file-download__btn" href="{{ url }}">
+                    {{ ctaButtonText }}
+                </a>
+            </article>
+        </div>
+    </section>
+{% endblock %}

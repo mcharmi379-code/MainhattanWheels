@@ -1,6 +1,9 @@
 {
   "mw-cms": {
     "blocks": {
+      "ictThreeColumn": {
+        "label": "ICT Three Column Layout"
+      },
       "mwCategoryShowcase": {
         "label": "MW Category Showcase"
       },
@@ -24,9 +27,30 @@
       },
       "mwProductGrid": {
         "label": "MW Product Grid"
+      },
+      "mwTechnicalFeatureList": {
+        "label": "MW Technical Feature List"
+      },
+      "ictTwoColumnLayout": {
+        "label": "ICT Two Column Layout"
+      },
+      "mwProductCarousel": {
+        "label": "MW Product Carousel"
+      },
+      "mwProfileTabs": {
+        "label": "MW Profile Tabs"
+      },
+      "mwFileDownload": {
+        "label": "MW File Download"
+      },
+      "mwSubcategoryGrid": {
+        "label": "Subcategory Grid"
       }
     },
     "elements": {
+      "ictThreeColumn": {
+        "label": "ICT Three Column Layout"
+      },
       "mwDualCard": {
         "label": "MW Dual Card",
         "config": {
@@ -199,6 +223,51 @@
           "removeCard": "Remove Card",
           "cardIndex": "Card {index}"
         }
+      },
+      "mwTechnicalFeatureList": {
+        "label": "MW Technical Feature List"
+      },
+      "ictTwoColumnLayout": {
+        "label": "ICT Two Column Layout"
+      },
+      "mwProductCarousel": {
+        "label": "MW Product Carousel",
+        "config": {
+          "headline": "Headline",
+          "category": "Category",
+          "ctaLabel": "CTA Label"
+        }
+      },
+      "mwProfileTabs": {
+        "label": "MW Profile Tabs",
+        "config": {
+          "subheadline": "Subheadline",
+          "name": "Name",
+          "role": "Role",
+          "buttonLabel": "Button Label",
+          "buttonLink": "Button Link",
+          "buttonType": "Button Type",
+          "buttonNewTab": "Open in new tab"
+        }
+      },
+      "mwFileDownload": {
+        "label": "MW File Download",
+        "tabs": {
+          "download": "Download",
+          "cta": "CTA"
+        },
+        "downloadTitle": "Download Title",
+        "downloadSubtitle": "Download Subtitle",
+        "downloadButtonText": "Button Text",
+        "downloadPreviewImage": "Preview Image",
+        "ctaTitle": "Title",
+        "ctaSubtitle": "Subtitle",
+        "ctaButtonText": "Button Text",
+        "ctaButtonUrl": "Button URL",
+        "ctaPreviewImage": "Preview Image"
+      },
+      "mwSubcategoryGrid": {
+        "label": "Subcategory Grid"
       }
     }
   },
@@ -288,6 +357,24 @@
       },
       "ictSevenColumn": {
         "label": "ICT Seven Column Layout"
+      },
+      "mwTechnicalFeatureList": {
+        "label": "MW Technical Feature List"
+      },
+      "ictTwoColumnLayout": {
+        "label": "ICT Two Column Layout"
+      },
+      "mwProductCarousel": {
+        "label": "MW Product Carousel"
+      },
+      "mwProfileTabs": {
+        "label": "MW Profile Tabs"
+      },
+      "mwFileDownload": {
+        "label": "MW File Download"
+      },
+      "mwSubcategoryGrid": {
+        "label": "Subcategory Grid"
       }
     },
     "elements": {
@@ -477,6 +564,51 @@
       },
       "ictSevenColumn": {
         "label": "ICT Seven Column Layout"
+      },
+      "mwTechnicalFeatureList": {
+        "label": "MW Technical Feature List"
+      },
+      "ictTwoColumnLayout": {
+        "label": "ICT Two Column Layout"
+      },
+      "mwProductCarousel": {
+        "label": "MW Product Carousel",
+        "config": {
+          "headline": "Headline",
+          "category": "Category",
+          "ctaLabel": "CTA Label"
+        }
+      },
+      "mwProfileTabs": {
+        "label": "MW Profile Tabs",
+        "config": {
+          "subheadline": "Subheadline",
+          "name": "Name",
+          "role": "Role",
+          "buttonLabel": "Button Label",
+          "buttonLink": "Button Link",
+          "buttonType": "Button Type",
+          "buttonNewTab": "Open in new tab"
+        }
+      },
+      "mwFileDownload": {
+        "label": "MW File Download",
+        "config": {
+          "tabs": {
+            "download": "Download",
+            "cta": "CTA"
+          },
+          "downloadTitle": "Download Title",
+          "downloadSubtitle": "Download Subtitle",
+          "downloadButtonText": "Button Text",
+          "ctaTitle": "Title",
+          "ctaSubtitle": "Subtitle",
+          "ctaButtonText": "Button Text",
+          "ctaButtonUrl": "Button URL"
+        }
+      },
+      "mwSubcategoryGrid": {
+        "label": "Subcategory Grid"
       }
     }
   }

@@ -90,7 +90,15 @@
             <tag name="shopware.cms.data_resolver"/>
         </service>
         <service id="MainhattanWheels\Core\Content\Cms\DataResolver\Element\IctOverviewCards6CmsElementResolver">
+        <service id="MainhattanWheels\Core\Content\Cms\DataResolver\Element\MwFileDownloadCmsElementResolver" public="true">
             <tag name="shopware.cms.data_resolver"/>
+        </service>
+
+        <service id="MainhattanWheels\Core\Content\Cms\DataResolver\Element\MwSubcategoryGridCmsElementResolver" public="true">
+            <tag name="shopware.cms.data_resolver"/>
+        </service>
+          <service id="ICTECHcmsBundleElement\Core\Content\Cms\IctThreeColumnCmsElementResolver">
+            <argument type="service" id="Shopware\Core\Content\Media\Cms\DefaultMediaResolver"/>
         </service>
     </services>
 </container>

@@ -1,0 +1,18 @@
+<div class="sw-cms-el-config-mw-subcategory-grid">
+    <sw-text-field
+        v-model:value="element.config.title.value"
+        label="Title"
+        @update:value="onUpdate"
+    />
+
+    <sw-entity-single-select
+        v-model:value="element.config.categoryId.value"
+        entity="category"
+        :repository="categoryRepository"
+        :criteria="categoryCriteria"
+        label="Category"
+        placeholder="Select category"
+        show-clearable-button
+        @update:value="onUpdate"
+    />
+</div>

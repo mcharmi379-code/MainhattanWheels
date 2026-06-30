@@ -1,0 +1,9 @@
+<div class="sw-cms-el-mw-subcategory-grid">
+    <h3 class="sw-cms-el-mw-subcategory-grid__title">{{ title }}</h3>
+    <div class="sw-cms-el-mw-subcategory-grid__grid">
+        <div v-for="(item, index) in 6" :key="index" class="sw-cms-el-mw-subcategory-grid__card">
+            <span class="sw-cms-el-mw-subcategory-grid__line"></span>
+            <span class="sw-cms-el-mw-subcategory-grid__text">Subcategory {{ index + 1 }}</span>
+        </div>
+    </div>
+</div>

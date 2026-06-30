@@ -1,0 +1,24 @@
+{% block element_mw_subcategory_grid %}
+    {% set data = element.data ?? {} %}
+    {% set title = data.title ?? element.config.title.value ?? '' %}
+    {% set subCategories = data.subCategories ?? [] %}
+
+    {% if subCategories|length > 0 %}
+        <section class="mw-subcategory-grid">
+            {% if title %}
+                <h2 class="mw-subcategory-grid__title">{{ title }}</h2>
+            {% endif %}
+
+            <div class="mw-subcategory-grid__grid" role="list">
+                {% for category in subCategories %}
+                    {% if category %}
+                        <a class="mw-subcategory-grid__card" href="{{ category_url(category) }}" role="listitem">
+                            <span class="mw-subcategory-grid__accent" aria-hidden="true"></span>
+                            <span class="mw-subcategory-grid__text">{{ category.translated.name }}</span>
+                        </a>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </section>
+    {% endif %}
+{% endblock %}
