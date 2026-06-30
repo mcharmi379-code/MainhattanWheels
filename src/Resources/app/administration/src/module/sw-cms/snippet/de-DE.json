@@ -1,6 +1,9 @@
 {
   "mw-cms": {
     "blocks": {
+      "ictThreeColumn": {
+        "label": "ICT Drei-Spalten-Layout"
+      },
       "mwCategoryShowcase": {
         "label": "MW Kategorie-Showcase"
       },
@@ -24,9 +27,30 @@
       },
       "mwProductGrid": {
         "label": "MW Produkt-Raster"
+      },
+      "mwTechnicalFeatureList": {
+        "label": "MW Technische Feature-Liste"
+      },
+      "ictTwoColumnLayout": {
+        "label": "ICT Zwei-Spalten-Layout"
+      },
+      "mwProductCarousel": {
+        "label": "MW Produkt-Karussell"
+      },
+      "mwProfileTabs": {
+        "label": "MW Profil-Tabs"
+      },
+      "mwFileDownload": {
+        "label": "MW Datei-Download"
+      },
+      "mwSubcategoryGrid": {
+        "label": "Unterkategorien-Raster"
       }
     },
     "elements": {
+      "ictThreeColumn": {
+        "label": "ICT Drei-Spalten-Layout"
+      },
       "mwDualCard": {
         "label": "MW Dual-Karte",
         "config": {
@@ -195,6 +219,51 @@
           "removeCard": "Karte entfernen",
           "cardIndex": "Karte {index}"
         }
+      },
+      "mwTechnicalFeatureList": {
+        "label": "MW Technische Feature-Liste"
+      },
+      "ictTwoColumnLayout": {
+        "label": "ICT Zwei-Spalten-Layout"
+      },
+      "mwProductCarousel": {
+        "label": "MW Produkt-Karussell",
+        "config": {
+          "headline": "Überschrift",
+          "category": "Kategorie",
+          "ctaLabel": "CTA-Beschriftung"
+        }
+      },
+      "mwProfileTabs": {
+        "label": "MW Profil-Tabs",
+        "config": {
+          "subheadline": "Unterüberschrift",
+          "name": "Name",
+          "role": "Rolle",
+          "buttonLabel": "Button-Beschriftung",
+          "buttonLink": "Button-Link",
+          "buttonType": "Button-Typ",
+          "buttonNewTab": "In neuem Tab öffnen"
+        }
+      },
+      "mwFileDownload": {
+        "label": "MW Datei-Download",
+        "tabs": {
+          "download": "Download",
+          "cta": "CTA"
+        },
+        "downloadTitle": "Download-Titel",
+        "downloadSubtitle": "Download-Untertitel",
+        "downloadButtonText": "Button-Text",
+        "downloadPreviewImage": "Vorschaubild",
+        "ctaTitle": "Titel",
+        "ctaSubtitle": "Untertitel",
+        "ctaButtonText": "Button-Text",
+        "ctaButtonUrl": "Button-URL",
+        "ctaPreviewImage": "Vorschaubild"
+      },
+      "mwSubcategoryGrid": {
+        "label": "Unterkategorien-Raster"
       }
     }
   },
@@ -209,6 +278,9 @@
         },
         "ictSevenColumn": {
           "label": "ICT Sieben-Spalten-Layout"
+        },
+        "ictThreeColumn": {
+          "label": "ICT Drei-Spalten-Layout"
         }
       },
       "elements": {
@@ -217,6 +289,9 @@
         },
         "ictSevenColumn": {
           "label": "ICT Sieben-Spalten-Layout"
+        },
+        "ictThreeColumn": {
+          "label": "ICT Drei-Spalten-Layout"
         },
         "ictAccordion": {
           "label": "ICT Akkordeon",
@@ -284,6 +359,24 @@
       },
       "ictOverviewCards6": {
         "label": "ICT Uebersichtskarten"
+      },
+      "mwTechnicalFeatureList": {
+        "label": "MW Technische Feature-Liste"
+      },
+      "ictTwoColumnLayout": {
+        "label": "ICT Zwei-Spalten-Layout"
+      },
+      "mwProductCarousel": {
+        "label": "MW Produkt-Karussell"
+      },
+      "mwProfileTabs": {
+        "label": "MW Profil-Tabs"
+      },
+      "mwFileDownload": {
+        "label": "MW Datei-Download"
+      },
+      "mwSubcategoryGrid": {
+        "label": "Unterkategorien-Raster"
       }
     },
     "elements": {
@@ -317,7 +410,7 @@
             "cards": "Karten"
           },
           "section": {
-            "backgroundSettings": "Hintergrund-Einstellungen",
+            "backgrgit pull --rebase origin mainoundSettings": "Hintergrund-Einstellungen",
             "layoutSettings": "Layout-Einstellungen",
             "iconSettings": "Icon-Einstellungen",
             "headlineSettings": "Ueberschrift-Einstellungen",
@@ -464,8 +557,50 @@
           }
         }
       },
-      "ictContentTabs": {
-        "label": "ICT Inhalts-Tabs"
+      "mwTechnicalFeatureList": {
+        "label": "MW Technische Feature-Liste"
+      },
+      "ictTwoColumnLayout": {
+        "label": "ICT Zwei-Spalten-Layout"
+      },
+      "mwProductCarousel": {
+        "label": "MW Produkt-Karussell",
+        "config": {
+          "headline": "Überschrift",
+          "category": "Kategorie",
+          "ctaLabel": "CTA-Beschriftung"
+        }
+      },
+      "mwProfileTabs": {
+        "label": "MW Profil-Tabs",
+        "config": {
+          "subheadline": "Unterüberschrift",
+          "name": "Name",
+          "role": "Rolle",
+          "buttonLabel": "Button-Beschriftung",
+          "buttonLink": "Button-Link",
+          "buttonType": "Button-Typ",
+          "buttonNewTab": "In neuem Tab öffnen"
+        }
+      },
+      "mwFileDownload": {
+        "label": "MW Datei-Download",
+        "config": {
+          "tabs": {
+            "download": "Download",
+            "cta": "CTA"
+          },
+          "downloadTitle": "Download-Titel",
+          "downloadSubtitle": "Download-Untertitel",
+          "downloadButtonText": "Button-Text",
+          "ctaTitle": "Titel",
+          "ctaSubtitle": "Untertitel",
+          "ctaButtonText": "Button-Text",
+          "ctaButtonUrl": "Button-URL"
+        }
+      },
+      "mwSubcategoryGrid": {
+        "label": "Unterkategorien-Raster"
       }
     }
   }

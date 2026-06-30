@@ -1,0 +1,23 @@
+.sw-cms-el-preview-mw-subcategory-grid {
+    padding: 12px;
+
+    &__title {
+        height: 14px;
+        width: 60%;
+        background: #d1d5db;
+        border-radius: 999px;
+        margin-bottom: 12px;
+    }
+
+    &__grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 10px;
+    }
+
+    &__card {
+        min-height: 52px;
+        border: 1px solid #e5e7eb;
+        background: #fff;
+    }
+}

@@ -31,6 +31,10 @@ import './module/sw-cms/blocks/mw-product-carousel';
 import './module/sw-cms/elements/mw-product-carousel';
 import './module/sw-cms/blocks/mw-profile-tabs';
 import './module/sw-cms/elements/mw-profile-tabs';
+import './module/sw-cms/blocks/mw-file-download';
+import './module/sw-cms/elements/mw-file-download';
+import './module/sw-cms/blocks/mw-subcategory-grid';
+import './module/sw-cms/elements/mw-subcategory-grid';
 import './module/sw-cms/blocks/mw-buttons';
 import './module/sw-cms/elements/mw-buttons';
 
@@ -44,3 +48,6 @@ import './module/sw-cms/blocks/ict-overview-cards-6';
 
 import './module/sw-cms/blocks/ict-seven-column';
 import './module/sw-cms/elements/ict-seven-column';
+
+import './module/sw-cms/elements/ict-three-column';
+import './module/sw-cms/blocks/ict-three-column';

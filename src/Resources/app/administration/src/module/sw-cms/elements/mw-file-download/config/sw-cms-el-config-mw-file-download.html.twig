@@ -1,0 +1,83 @@
+<div class="sw-cms-el-config-mw-file-download">
+    <sw-tabs position-identifier="mw-file-download" default-item="download">
+        <template #default="{ active }">
+            <sw-tabs-item name="download" :active-tab="active" :title="$tc('mw-cms.elements.mwFileDownload.tabs.download')">
+                {{ $tc('mw-cms.elements.mwFileDownload.tabs.download') }}
+            </sw-tabs-item>
+            <sw-tabs-item name="cta" :active-tab="active" :title="$tc('mw-cms.elements.mwFileDownload.tabs.cta')">
+                {{ $tc('mw-cms.elements.mwFileDownload.tabs.cta') }}
+            </sw-tabs-item>
+        </template>
+
+        <template #content="{ active }">
+            <div v-if="active === 'download'" class="sw-cms-el-config-mw-file-download__section">
+                <sw-text-field v-model:value="element.config.downloadTitle.value" label="Download Title" @update:value="onUpdate" />
+                <sw-text-field v-model:value="element.config.downloadSubtitle.value" label="Download Subtitle" @update:value="onUpdate" />
+                <sw-text-field v-model:value="element.config.downloadButtonText.value" label="Button Text" @update:value="onUpdate" />
+
+                <sw-media-upload-v2
+                    :upload-tag="downloadUploadTag"
+                    :source="downloadFileSource"
+                    :allow-multi-select="false"
+                    variant="regular"
+                    file-accept="*/*"
+                    @media-upload-sidebar-open="downloadModalIsOpen = true"
+                    @media-upload-remove-image="onRemoveDownload"
+                />
+                <sw-upload-listener :upload-tag="downloadUploadTag" auto-upload @media-upload-finish="onDownloadUploadFinish" />
+                <sw-media-modal-v2
+                    v-if="downloadModalIsOpen"
+                    variant="full"
+                    :allow-multi-select="false"
+                    @media-modal-selection-change="onSelectDownload"
+                    @modal-close="downloadModalIsOpen = false"
+                />
+
+                <sw-media-upload-v2
+                    :upload-tag="downloadPreviewUploadTag"
+                    :source="downloadPreviewSource"
+                    :allow-multi-select="false"
+                    variant="regular"
+                    file-accept="image/*"
+                    label="Preview Image"
+                    @media-upload-sidebar-open="downloadPreviewModalIsOpen = true"
+                    @media-upload-remove-image="onRemoveDownloadPreview"
+                />
+                <sw-upload-listener :upload-tag="downloadPreviewUploadTag" auto-upload @media-upload-finish="onDownloadPreviewUploadFinish" />
+                <sw-media-modal-v2
+                    v-if="downloadPreviewModalIsOpen"
+                    variant="full"
+                    :allow-multi-select="false"
+                    @media-modal-selection-change="onSelectDownloadPreview"
+                    @modal-close="downloadPreviewModalIsOpen = false"
+                />
+            </div>
+
+            <div v-else class="sw-cms-el-config-mw-file-download__section">
+                <sw-text-field v-model:value="element.config.ctaTitle.value" label="Title" @update:value="onUpdate" />
+                <sw-text-field v-model:value="element.config.ctaSubtitle.value" label="Subtitle" @update:value="onUpdate" />
+                <sw-text-field v-model:value="element.config.ctaButtonText.value" label="Button Text" @update:value="onUpdate" />
+                <sw-dynamic-url-field v-model:value="element.config.ctaButtonUrl.value" />
+
+                <sw-media-upload-v2
+                    :upload-tag="ctaPreviewUploadTag"
+                    :source="ctaPreviewSource"
+                    :allow-multi-select="false"
+                    variant="regular"
+                    file-accept="image/*"
+                    label="Preview Image"
+                    @media-upload-sidebar-open="ctaPreviewModalIsOpen = true"
+                    @media-upload-remove-image="onRemoveCtaPreview"
+                />
+                <sw-upload-listener :upload-tag="ctaPreviewUploadTag" auto-upload @media-upload-finish="onCtaPreviewUploadFinish" />
+                <sw-media-modal-v2
+                    v-if="ctaPreviewModalIsOpen"
+                    variant="full"
+                    :allow-multi-select="false"
+                    @media-modal-selection-change="onSelectCtaPreview"
+                    @modal-close="ctaPreviewModalIsOpen = false"
+                />
+            </div>
+        </template>
+    </sw-tabs>
+</div>

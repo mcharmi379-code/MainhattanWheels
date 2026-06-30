@@ -1,0 +1,29 @@
+<div class="sw-cms-el-mw-file-download">
+    <div class="sw-cms-el-mw-file-download__grid">
+        <article class="sw-cms-el-mw-file-download__card">
+            <div class="sw-cms-el-mw-file-download__row">
+                <div v-if="downloadPreviewImage" class="sw-cms-el-mw-file-download__image">
+                    <img :src="downloadPreviewImage.url" :alt="downloadTitle">
+                </div>
+                <div class="sw-cms-el-mw-file-download__body">
+                    <h3 class="sw-cms-el-mw-file-download__title">{{ downloadTitle }}</h3>
+                    <p class="sw-cms-el-mw-file-download__subtitle">{{ downloadSubtitle }}</p>
+                </div>
+            </div>
+            <div class="sw-cms-el-mw-file-download__button">{{ downloadButtonText }}</div>
+        </article>
+
+        <article class="sw-cms-el-mw-file-download__card">
+            <div class="sw-cms-el-mw-file-download__row">
+                <div v-if="ctaPreviewImage" class="sw-cms-el-mw-file-download__image">
+                    <img :src="ctaPreviewImage.url" :alt="ctaTitle">
+                </div>
+                <div class="sw-cms-el-mw-file-download__body">
+                    <h3 class="sw-cms-el-mw-file-download__title">{{ ctaTitle }}</h3>
+                    <p class="sw-cms-el-mw-file-download__subtitle">{{ ctaSubtitle }}</p>
+                </div>
+            </div>
+            <div class="sw-cms-el-mw-file-download__button">{{ ctaButtonText }}</div>
+        </article>
+    </div>
+</div>

@@ -89,7 +89,20 @@
         <service id="MainhattanWheels\Core\Content\Cms\DataResolver\Element\IctContentTabsCmsElementResolver" public="true">
             <tag name="shopware.cms.data_resolver"/>
         </service>
-        <service id="MainhattanWheels\Core\Content\Cms\DataResolver\Element\IctOverviewCards6CmsElementResolver">
+        <service id="MainhattanWheels\Core\Content\Cms\DataResolver\Element\IctOverviewCards6CmsElementResolver" public="true">
+            <tag name="shopware.cms.data_resolver"/>
+        </service>
+
+        <service id="MainhattanWheels\Core\Content\Cms\DataResolver\Element\MwFileDownloadCmsElementResolver" public="true">
+            <tag name="shopware.cms.data_resolver"/>
+        </service>
+
+        <service id="MainhattanWheels\Core\Content\Cms\DataResolver\Element\MwSubcategoryGridCmsElementResolver" public="true">
+            <tag name="shopware.cms.data_resolver"/>
+        </service>
+
+        <service id="MainhattanWheels\Core\Content\Cms\DataResolver\Element\IctThreeColumnCmsElementResolver" public="true">
+            <argument type="service" id="Shopware\Core\Content\Media\Cms\DefaultMediaResolver"/>
             <tag name="shopware.cms.data_resolver"/>
         </service>
     </services>

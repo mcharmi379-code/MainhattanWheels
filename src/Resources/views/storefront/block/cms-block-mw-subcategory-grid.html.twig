@@ -1,0 +1,6 @@
+{% block block_mw_subcategory_grid %}
+    <div class="cms-block-mw-subcategory-grid">
+        {% set element = block.slots.getSlot('content') %}
+        {% sw_include '@Storefront/storefront/element/cms-element-' ~ element.type ~ '.html.twig' ignore missing %}
+    </div>
+{% endblock %}
