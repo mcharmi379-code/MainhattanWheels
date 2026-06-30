@@ -692,6 +692,24 @@
 
                                                 <div class="inline-fields">
                                                     <sw-colorpicker
+                                                        v-model:value="button.buttonBackgroundColor"
+                                                        color-output="hex"
+                                                        :z-index="1000"
+                                                        :label="$tc('sw-cms.elements.ictOverviewCards.config.label.buttonBackgroundColor')"
+                                                        @update:value="onElementUpdate">
+                                                    </sw-colorpicker>
+
+                                                    <sw-colorpicker
+                                                        v-model:value="button.buttonHoverBackgroundColor"
+                                                        color-output="hex"
+                                                        :z-index="1000"
+                                                        :label="$tc('sw-cms.elements.ictOverviewCards.config.label.buttonHoverBackgroundColor')"
+                                                        @update:value="onElementUpdate">
+                                                    </sw-colorpicker>
+                                                </div>
+
+                                                <div class="inline-fields">
+                                                    <sw-colorpicker
                                                         v-model:value="button.buttonBorderColor"
                                                         color-output="hex"
                                                         :z-index="1000"

@@ -281,3 +281,22 @@
         }
     }
 }
+
+.cms-section:has(.cms-block-ict-hero-section) {
+    &.boxed, .boxed {
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+    }
+}
+
+.cms-block-ict-hero-section {
+    .container,
+    .cms-section .boxed,
+    .container-fluid,
+    .container-xs,
+    .cms-block-container {
+        padding: 0 !important;
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+    }
+}

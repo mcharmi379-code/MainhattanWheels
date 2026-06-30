@@ -220,6 +220,8 @@
                                             {% if buttonTarget == '_blank' %}rel="noopener noreferrer"{% endif %}
                                             class="card-button"
                                             style="
+                                                --button-bg: {{ activeButton.buttonBackgroundColor ?? '#005AE5' }};
+                                                --button-hover-bg: {{ activeButton.buttonHoverBackgroundColor ?? '#00f5ff' }};
                                                 --button-text: {{ activeButton.buttonTextColor ?? '#FFFFFF' }};
                                                 --button-hover-text: {{ activeButton.buttonHoverTextColor ?? '#000000' }};
                                                 --button-border-width: {{ activeButton.buttonBorderWidth ?? 0 }}px;

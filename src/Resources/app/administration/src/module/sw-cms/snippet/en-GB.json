@@ -465,6 +465,8 @@
             "buttonTarget": "Button Target",
             "buttonTextColor": "Button Text Color",
             "buttonHoverTextColor": "Button Hover Text Color",
+            "buttonBackgroundColor": "Button Background Color",
+            "buttonHoverBackgroundColor": "Button Hover Background Color",
             "buttonAfterText": "Info Text after Button",
             "buttonAfterTextColor": "Info Text Color",
             "buttonAfterTextSize": "Info Text Font Size",
@@ -611,6 +613,19 @@
           "ctaSubtitle": "Subtitle",
           "ctaButtonText": "Button Text",
           "ctaButtonUrl": "Button URL"
+        }
+      },
+      "ictTwoColumnThreeImage": {
+        "config": {
+          "label": {
+            "buttonBorderColor": "Button border color",
+            "buttonHoverBorderColor": "Button hover border color",
+            "buttonBorderStyle": "Button border style",
+            "borderWidth": "Border width",
+            "borderRadius": "Border radius",
+            "buttonLinkType": "Link type",
+            "buttonLink": "Link"
+          }
         }
       },
       "mwSubcategoryGrid": {

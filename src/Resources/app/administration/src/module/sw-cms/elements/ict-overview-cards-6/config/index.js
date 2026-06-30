@@ -292,6 +292,8 @@ export default {
                 buttonTarget: '_self',
                 buttonTextColor: '#FFFFFF',
                 buttonHoverTextColor: '#000000',
+                buttonBackgroundColor: '#005AE5',
+                buttonHoverBackgroundColor: '#00f5ff',
                 buttonBorderColor: '#00f5ff',
                 buttonHoverBorderColor: '#f3f4f6',
                 buttonBorderStyle: 'solid',
@@ -321,6 +323,8 @@ export default {
                 buttonTarget: card?.buttonTarget,
                 buttonTextColor: card?.buttonTextColor,
                 buttonHoverTextColor: card?.buttonHoverTextColor,
+                buttonBackgroundColor: card?.buttonBackgroundColor,
+                buttonHoverBackgroundColor: card?.buttonHoverBackgroundColor,
                 buttonBorderColor: card?.buttonBorderColor,
                 buttonHoverBorderColor: card?.buttonHoverBorderColor,
                 buttonBorderStyle: card?.buttonBorderStyle,
@@ -546,6 +550,12 @@ export default {
                 if (card.buttonHoverTextColor === undefined || card.buttonHoverTextColor === null || String(card.buttonHoverTextColor).trim() === '') {
                     card.buttonHoverTextColor = '#000000';
                 }
+                if (card.buttonBackgroundColor === undefined || card.buttonBackgroundColor === null || String(card.buttonBackgroundColor).trim() === '') {
+                    card.buttonBackgroundColor = '#005AE5';
+                }
+                if (card.buttonHoverBackgroundColor === undefined || card.buttonHoverBackgroundColor === null || String(card.buttonHoverBackgroundColor).trim() === '') {
+                    card.buttonHoverBackgroundColor = '#00f5ff';
+                }
                 if (card.buttonBorderColor === undefined || card.buttonBorderColor === null || String(card.buttonBorderColor).trim() === '') {
                     card.buttonBorderColor = '#00f5ff';
                 }
@@ -631,6 +641,8 @@ export default {
                 buttonTarget: '_self',
                 buttonTextColor: '#FFFFFF',
                 buttonHoverTextColor: '#000000',
+                buttonBackgroundColor: '#005AE5',
+                buttonHoverBackgroundColor: '#00f5ff',
                 buttonBorderColor: '#00f5ff',
                 buttonHoverBorderColor: '#f3f4f6',
                 buttonBorderStyle: 'solid',
