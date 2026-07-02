@@ -1,0 +1,48 @@
+{% block sw_cms_el_mw_before_after %}
+    <div class="sw-cms-el-mw-before-after">
+        <div class="mw-before-after-grid-admin" :style="{ gridTemplateColumns: 'repeat(' + columns + ', minmax(0, 1fr))' }">
+            <div v-for="(item, index) in items" :key="index" class="mw-before-after-card-admin">
+                <h4 class="mw-before-after-card-admin__heading" :style="{ color: item.headingColor }">
+                    {{ item.heading || 'Heading' }}
+                </h4>
+
+                <div class="mw-before-after-slider-admin">
+                    <!-- Before Image -->
+                    <div class="mw-before-after-img-wrap-admin before">
+                        <img v-if="item.beforeImageUrl" :src="item.beforeImageUrl" alt="Before" />
+                        <div v-else class="mw-before-after-placeholder-admin">Before Image</div>
+                    </div>
+
+                    <!-- After Image (50% overlay) -->
+                    <div class="mw-before-after-img-wrap-admin after" :style="{ width: '50%' }">
+                        <img v-if="item.afterImageUrl" :src="item.afterImageUrl" alt="After" />
+                        <div v-else class="mw-before-after-placeholder-admin">After Image</div>
+                    </div>
+
+                    <!-- Split Handle Mock -->
+                    <div class="mw-before-after-handle-admin" :style="{ left: '50%' }">
+                        <div class="mw-before-after-handle-line-admin"></div>
+                        <div class="mw-before-after-handle-btn-admin">
+                            <span class="swap-icon-admin">⇄</span>
+                        </div>
+                        <div class="mw-before-after-handle-line-admin"></div>
+                    </div>
+                </div>
+
+                <div class="mw-before-after-card-admin__info">
+                    <p v-if="item.subHeading" class="mw-before-after-card-admin__subheading">{{ item.subHeading }}</p>
+                    
+                    <p v-if="item.beforeText" class="mw-before-after-card-admin__text">
+                        <strong :style="{ color: item.beforeTextColor }">Before: </strong>
+                        {{ item.beforeText }}
+                    </p>
+                    
+                    <p v-if="item.afterText" class="mw-before-after-card-admin__text">
+                        <strong :style="{ color: item.afterTextColor }">Afterwards: </strong>
+                        {{ item.afterText }}
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

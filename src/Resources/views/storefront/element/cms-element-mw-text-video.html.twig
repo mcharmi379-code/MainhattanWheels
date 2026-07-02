@@ -1,0 +1,121 @@
+{% block element_mw_text_video %}
+    {% set c = element.config %}
+    {% set media = element.data.media ?? null %}
+    {% set mediaType = c.mediaType.value ?? 'image' %}
+    {% set mediaLink = c.mediaLink.value ?: '' %}
+
+    {% set buttonUrl = c.buttonLink.value ?: '#' %}
+    {% if c.buttonLinkType.value == 'category' and buttonUrl != '#' %}
+        {% set buttonUrl = seoUrl('frontend.navigation.page', { navigationId: buttonUrl }) %}
+    {% elseif c.buttonLinkType.value == 'external' and buttonUrl != '#' and not (buttonUrl starts with 'http://') and not (buttonUrl starts with 'https://') and not (buttonUrl starts with 'mailto:') and not (buttonUrl starts with 'tel:') and not (buttonUrl starts with '#') %}
+        {% set buttonUrl = 'https://' ~ buttonUrl %}
+    {% endif %}
+
+    {% if mediaLink is not empty and not (mediaLink starts with 'http://') and not (mediaLink starts with 'https://') and not (mediaLink starts with '#') %}
+        {% set mediaLink = 'https://' ~ mediaLink %}
+    {% endif %}
+
+    <div class="cms-element-mw-text-video">
+        <div class="mw-text-video-container">
+            <!-- Left Side: Content -->
+            <div class="mw-text-video-content-col">
+                {% if c.heading.value is not empty %}
+                    <h2 class="mw-text-video-heading" style="color: {{ c.headingColor.value ?: '#1a1a1a' }};">
+                        {{ c.heading.value }}
+                    </h2>
+                {% endif %}
+
+                {% if c.subHeading.value is not empty %}
+                    <div class="mw-text-video-subheading" style="color: {{ c.subHeadingColor.value ?: '#4a5568' }};">
+                        {{ c.subHeading.value|raw }}
+                    </div>
+                {% endif %}
+
+                {% if c.buttonText.value is not empty %}
+                    <div class="mw-text-video-actions">
+                        <a href="{{ buttonUrl }}"
+                           target="{{ c.buttonLinkTarget.value ?: '_self' }}"
+                           class="btn mw-text-video-btn"
+                           style="background-color: {{ c.buttonBgColor.value ?: '#e06600' }}; color: {{ c.buttonTextColor.value ?: '#ffffff' }}; border-color: {{ c.buttonBgColor.value ?: '#e06600' }};">
+                            {{ c.buttonText.value }}
+                        </a>
+                    </div>
+                {% endif %}
+            </div>
+
+            <!-- Right Side: Media -->
+            <div class="mw-text-video-media-col">
+                <div class="mw-text-video-media-box" data-mw-video-player="true">
+                    {% if mediaType == 'video' %}
+                        {# Video Player Mode #}
+                        {% if media and media.url is not empty and (media.mimeType starts with 'video/' or '.mp4' in media.url or '.webm' in media.url) %}
+                            {# Direct Upload Video (MP4/WebM) #}
+                            <div class="mw-text-video-player-wrapper">
+                                <video class="mw-text-video-element" preload="metadata" playsinline>
+                                    <source src="{{ media.url }}" type="{{ media.mimeType ?: 'video/mp4' }}">
+                                    Your browser does not support the video tag.
+                                </video>
+                                <button class="mw-text-video-play-overlay" aria-label="Play video">
+                                    <span class="mw-text-video-play-btn-circle">
+                                        <span class="mw-text-video-play-triangle"></span>
+                                    </span>
+                                </button>
+                            </div>
+                        {% elseif mediaLink is not empty %}
+                            {# External Video (YouTube, Vimeo, etc.) #}
+                            {% set isYoutube = 'youtube.com' in mediaLink or 'youtu.be' in mediaLink %}
+                            {% set isVimeo = 'vimeo.com' in mediaLink %}
+                            {% set embedUrl = mediaLink %}
+
+                            {% if isYoutube %}
+                                {% if 'watch?v=' in mediaLink %}
+                                    {% set videoId = mediaLink|split('watch?v=')[1]|split('&')[0] %}
+                                    {% set embedUrl = 'https://www.youtube.com/embed/' ~ videoId ~ '?autoplay=1' %}
+                                {% elseif 'youtu.be/' in mediaLink %}
+                                    {% set videoId = mediaLink|split('youtu.be/')[1]|split('?')[0] %}
+                                    {% set embedUrl = 'https://www.youtube.com/embed/' ~ videoId ~ '?autoplay=1' %}
+                                {% endif %}
+                            {% elseif isVimeo %}
+                                {% set videoId = mediaLink|split('vimeo.com/')[1]|split('?')[0] %}
+                                {% set embedUrl = 'https://player.vimeo.com/video/' ~ videoId ~ '?autoplay=1' %}
+                            {% endif %}
+
+                            <div class="mw-text-video-player-wrapper" data-video-embed="{{ embedUrl }}">
+                                {% if media and media.url is not empty %}
+                                    {# Custom Cover Image #}
+                                    <img src="{{ media.url }}" alt="Video thumbnail" class="mw-text-video-cover-img" loading="lazy">
+                                {% else %}
+                                    {# Fallback Placeholder #}
+                                    <div class="mw-text-video-fallback-placeholder">
+                                        <div class="mw-text-video-placeholder-bg"></div>
+                                    </div>
+                                {% endif %}
+                                <button class="mw-text-video-play-overlay" aria-label="Play video">
+                                    <span class="mw-text-video-play-btn-circle">
+                                        <span class="mw-text-video-play-triangle"></span>
+                                    </span>
+                                </button>
+                            </div>
+                        {% else %}
+                            <div class="mw-text-video-empty-placeholder">No video configured</div>
+                        {% endif %}
+
+                    {% else %}
+                        {# Image Mode #}
+                        {% if media and media.url is not empty %}
+                            {% if mediaLink is not empty %}
+                                <a href="{{ mediaLink }}" target="{{ c.mediaLinkTarget.value ?: '_blank' }}" class="mw-text-video-media-link">
+                                    <img src="{{ media.url }}" alt="Media" class="mw-text-video-static-img" loading="lazy">
+                                </a>
+                            {% else %}
+                                <img src="{{ media.url }}" alt="Media" class="mw-text-video-static-img" loading="lazy">
+                            {% endif %}
+                        {% else %}
+                            <div class="mw-text-video-empty-placeholder">No image configured</div>
+                        {% endif %}
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

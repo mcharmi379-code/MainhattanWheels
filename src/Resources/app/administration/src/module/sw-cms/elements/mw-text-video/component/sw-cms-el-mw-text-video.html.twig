@@ -1,0 +1,37 @@
+<div class="sw-cms-el-mw-text-video">
+    <div class="mw-text-video-row">
+        <!-- Left Side: Texts & Button -->
+        <div class="mw-text-video-left">
+            <h2 class="mw-tv-heading" :style="headingStyle">
+                {{ heading || 'Enter heading...' }}
+            </h2>
+            <div class="mw-tv-subheading" :style="subHeadingStyle">
+                {{ subHeading || 'Enter description...' }}
+            </div>
+            <div class="mw-tv-actions">
+                <button class="mw-tv-button" :style="buttonStyle" type="button">
+                    {{ buttonText || 'Button Text' }}
+                </button>
+            </div>
+        </div>
+
+        <!-- Right Side: Media (Image or Video) -->
+        <div class="mw-text-video-right">
+            <div class="mw-tv-media-wrapper">
+                <template v-if="mediaUrl">
+                    <img v-if="mediaType === 'image'" :src="mediaUrl" class="mw-tv-image" alt="Media Preview" />
+                    <div v-else class="mw-tv-video-container">
+                        <img :src="mediaUrl" class="mw-tv-image" alt="Video Cover Preview" />
+                        <div class="mw-tv-play-btn">
+                            <sw-icon name="regular-play" size="24px"></sw-icon>
+                        </div>
+                    </div>
+                </template>
+                <div v-else class="mw-tv-media-placeholder">
+                    <sw-icon name="regular-image" size="32px" class="placeholder-icon"></sw-icon>
+                    <span>No media selected</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

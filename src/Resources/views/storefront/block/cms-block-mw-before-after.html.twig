@@ -1,0 +1,14 @@
+{% block block_mw_before_after %}
+    {% set element = block.slots.getSlot('beforeAfter') %}
+
+    {% if element %}
+        <div class="cms-block-mw-before-after">
+            <div data-cms-element-id="{{ element.id }}">
+                {% sw_include '@Storefront/storefront/element/cms-element-' ~ element.type ~ '.html.twig'
+                    ignore missing
+                    with { element: element }
+                %}
+            </div>
+        </div>
+    {% endif %}
+{% endblock %}

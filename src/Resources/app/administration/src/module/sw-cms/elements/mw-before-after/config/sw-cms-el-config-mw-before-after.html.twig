@@ -1,0 +1,167 @@
+{% block sw_cms_el_config_mw_before_after %}
+    <div class="sw-cms-el-config-mw-before-after">
+        <sw-tabs default-item="settings">
+            <template #default="{ active }">
+                <sw-tabs-item name="settings" :active-tab="active">Settings</sw-tabs-item>
+                <sw-tabs-item name="items" :active-tab="active">Items (Columns)</sw-tabs-item>
+            </template>
+
+            <template #content="{ active }">
+                {# Settings Tab #}
+                <sw-container v-if="active === 'settings'" class="mw-before-after-config__settings">
+                    <sw-single-select
+                        v-model:value="element.config.columns.value"
+                        label="Show column option"
+                        :options="columnsOptions"
+                        @update:value="onInput"
+                    />
+                </sw-container>
+
+                {# Items Tab #}
+                <sw-container v-if="active === 'items'" class="mw-before-after-config__items">
+                    {# Item Selector Tabs #}
+                    <div class="mw-ba-item-tabs">
+                        <button
+                            v-for="(item, index) in items"
+                            :key="index"
+                            class="mw-ba-item-tab"
+                            :class="{ 'is--active': activeItemIndex === index }"
+                            type="button"
+                            @click="selectItem(index)"
+                        >
+                            Column {{ index + 1 }}
+                            <span
+                                class="mw-ba-item-tab__remove"
+                                @click.stop="removeItem(index)"
+                            >✕</span>
+                        </button>
+
+                        <button
+                            class="mw-ba-item-tab mw-ba-item-tab--add"
+                            type="button"
+                            @click="addItem"
+                        >
+                            + Add Column
+                        </button>
+                    </div>
+
+                    {# Active Item Form #}
+                    <template v-if="activeItem !== null">
+                        <!-- Heading Field -->
+                        <div class="config-row-2">
+                            <mt-text-field
+                                :model-value="activeItem.heading"
+                                label="Heading text"
+                                @update:model-value="updateActiveField('heading', $event)"
+                            />
+                            <sw-colorpicker
+                                v-model:value="activeItem.headingColor"
+                                label="Heading color"
+                                color-output="hex"
+                                :z-index="1000"
+                                @update:value="onInput"
+                            />
+                        </div>
+
+                        <!-- Sub-heading/Summary -->
+                        <mt-text-field
+                            :model-value="activeItem.subHeading"
+                            label="Sub Heading / Info Text (e.g. CNC diamond...)"
+                            @update:model-value="updateActiveField('subHeading', $event)"
+                        />
+
+                        <!-- Before Section -->
+                        <div class="mw-ba-section-divider">Before Image Settings</div>
+                        <div class="mw-ba-media-upload-section">
+                            <p class="mw-ba-upload-label">Before Image</p>
+                            <sw-media-upload-v2
+                                variant="regular"
+                                :upload-tag="beforeUploadTag"
+                                :source="beforePreview"
+                                :allow-multi-select="false"
+                                :default-folder="cmsPageState.pageEntityName"
+                                :caption="$tc('sw-cms.elements.general.config.caption.mediaUpload')"
+                                @media-upload-sidebar-open="beforeMediaModalOpen = true"
+                                @media-upload-remove-image="onBeforeImageRemove"
+                            />
+                            <sw-upload-listener
+                                :upload-tag="beforeUploadTag"
+                                auto-upload
+                                @media-upload-finish="onBeforeImageUpload"
+                            />
+                            <sw-media-modal-v2
+                                v-if="beforeMediaModalOpen"
+                                variant="full"
+                                :caption="$tc('sw-cms.elements.general.config.caption.mediaUpload')"
+                                :allow-multi-select="false"
+                                @media-modal-selection-change="onBeforeMediaSelection"
+                                @modal-close="beforeMediaModalOpen = false"
+                            />
+                        </div>
+                        <div class="config-row-2">
+                            <mt-text-field
+                                :model-value="activeItem.beforeText"
+                                label="Before image text"
+                                @update:model-value="updateActiveField('beforeText', $event)"
+                            />
+                            <sw-colorpicker
+                                v-model:value="activeItem.beforeTextColor"
+                                label="Before text color"
+                                color-output="hex"
+                                :z-index="1000"
+                                @update:value="onInput"
+                            />
+                        </div>
+
+                        <!-- After Section -->
+                        <div class="mw-ba-section-divider">After Image Settings</div>
+                        <div class="mw-ba-media-upload-section">
+                            <p class="mw-ba-upload-label">After Image</p>
+                            <sw-media-upload-v2
+                                variant="regular"
+                                :upload-tag="afterUploadTag"
+                                :source="afterPreview"
+                                :allow-multi-select="false"
+                                :default-folder="cmsPageState.pageEntityName"
+                                :caption="$tc('sw-cms.elements.general.config.caption.mediaUpload')"
+                                @media-upload-sidebar-open="afterMediaModalOpen = true"
+                                @media-upload-remove-image="onAfterImageRemove"
+                            />
+                            <sw-upload-listener
+                                :upload-tag="afterUploadTag"
+                                auto-upload
+                                @media-upload-finish="onAfterImageUpload"
+                            />
+                            <sw-media-modal-v2
+                                v-if="afterMediaModalOpen"
+                                variant="full"
+                                :caption="$tc('sw-cms.elements.general.config.caption.mediaUpload')"
+                                :allow-multi-select="false"
+                                @media-modal-selection-change="onAfterMediaSelection"
+                                @modal-close="afterMediaModalOpen = false"
+                            />
+                        </div>
+                        <div class="config-row-2">
+                            <mt-text-field
+                                :model-value="activeItem.afterText"
+                                label="After image text"
+                                @update:model-value="updateActiveField('afterText', $event)"
+                            />
+                            <sw-colorpicker
+                                v-model:value="activeItem.afterTextColor"
+                                label="After text color"
+                                color-output="hex"
+                                :z-index="1000"
+                                @update:value="onInput"
+                            />
+                        </div>
+                    </template>
+
+                    <p v-else class="mw-ba-empty-hint">
+                        Click "+ Add Column" to add items.
+                    </p>
+                </sw-container>
+            </template>
+        </sw-tabs>
+    </div>
+{% endblock %}

@@ -45,6 +45,12 @@
       },
       "mwSubcategoryGrid": {
         "label": "Unterkategorien-Raster"
+      },
+      "mwBeforeAfter": {
+        "label": "MW Vorher-Nachher Spalten"
+      },
+      "mwTextVideo": {
+        "label": "MW Text Bild/Video Split"
       }
     },
     "elements": {
@@ -264,6 +270,34 @@
       },
       "mwSubcategoryGrid": {
         "label": "Unterkategorien-Raster"
+      },
+      "mwBeforeAfter": {
+        "label": "MW Vorher-Nachher Spalten"
+      },
+      "mwTextVideo": {
+        "label": "MW Text Bild/Video Split",
+        "config": {
+          "tabs": {
+            "content": "Texte & Button",
+            "media": "Rechtes Medium"
+          },
+          "labels": {
+            "heading": "Überschrift Text",
+            "headingColor": "Überschrift Farbe",
+            "subHeading": "Unterüberschrift / Beschreibung",
+            "subHeadingColor": "Unterüberschrift Farbe",
+            "buttonText": "Button Text",
+            "buttonBgColor": "Button Hintergrundfarbe",
+            "buttonTextColor": "Button Textfarbe",
+            "buttonLinkType": "Button Link-Typ",
+            "buttonLink": "Button Link-URL",
+            "buttonLinkTarget": "Button Ziel",
+            "mediaType": "Medientyp",
+            "mediaFile": "Medien-Upload",
+            "mediaLink": "Video-URL / Medienlink",
+            "mediaLinkTarget": "Medienlink-Ziel"
+          }
+        }
       }
     }
   },

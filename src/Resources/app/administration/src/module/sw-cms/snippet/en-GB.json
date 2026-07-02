@@ -45,6 +45,12 @@
       },
       "mwSubcategoryGrid": {
         "label": "Subcategory Grid"
+      },
+      "mwBeforeAfter": {
+        "label": "MW Before-After Columns"
+      },
+      "mwTextVideo": {
+        "label": "MW Text Image/Video Split"
       }
     },
     "elements": {
@@ -268,6 +274,34 @@
       },
       "mwSubcategoryGrid": {
         "label": "Subcategory Grid"
+      },
+      "mwBeforeAfter": {
+        "label": "MW Before-After Columns"
+      },
+      "mwTextVideo": {
+        "label": "MW Text Image/Video Split",
+        "config": {
+          "tabs": {
+            "content": "Texts & Button",
+            "media": "Right Side Media"
+          },
+          "labels": {
+            "heading": "Heading Text",
+            "headingColor": "Heading Color",
+            "subHeading": "Sub Heading / Description",
+            "subHeadingColor": "Sub Heading Color",
+            "buttonText": "Button Text",
+            "buttonBgColor": "Button Background Color",
+            "buttonTextColor": "Button Text Color",
+            "buttonLinkType": "Button Link Type",
+            "buttonLink": "Button Link URL",
+            "buttonLinkTarget": "Button Target",
+            "mediaType": "Media Type",
+            "mediaFile": "Media Upload",
+            "mediaLink": "Video URL / Media Link",
+            "mediaLinkTarget": "Media Link Target"
+          }
+        }
       }
     }
   },

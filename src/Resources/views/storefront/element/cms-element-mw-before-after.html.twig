@@ -1,0 +1,93 @@
+{% block element_mw_before_after %}
+    {% set c = element.config %}
+    {% set items = element.data.items ?? c.items.value ?? [] %}
+    {% set columns = c.columns.value ?? 3 %}
+
+    {% if items|length > 0 %}
+        <div class="cms-element-mw-before-after">
+            <div class="mw-before-after-grid columns-{{ columns }}">
+                {% for item in items %}
+                    {% set beforeImageUrl = item.beforeImageMedia.url ?? item.beforeImageUrl %}
+                    {% set afterImageUrl = item.afterImageMedia.url ?? item.afterImageUrl %}
+
+                    <div class="mw-before-after-card">
+                        {% if item.heading is not empty %}
+                            <h3 class="mw-before-after-heading" style="color: {{ item.headingColor ?: '#e06600' }};">
+                                {{ item.heading }}
+                            </h3>
+                        {% endif %}
+
+                        <div class="mw-before-after-slider-wrapper" data-mw-before-after="true">
+                            <div class="mw-before-after-slider">
+                                <!-- After Image Container (Background) -->
+                                <div class="mw-before-after-img after-img-container">
+                                    {% if afterImageUrl is not empty %}
+                                        <img src="{{ afterImageUrl }}" class="after-img" alt="After" loading="lazy" />
+                                    {% else %}
+                                        <div class="mw-before-after-placeholder">After Image</div>
+                                    {% endif %}
+                                </div>
+
+                                <!-- Before Image Container (Overlay) -->
+                                <div class="mw-before-after-overlay">
+                                    <div class="before-img-container">
+                                        {% if beforeImageUrl is not empty %}
+                                            <img src="{{ beforeImageUrl }}" class="before-img" alt="Before" loading="lazy" />
+                                        {% else %}
+                                            <div class="mw-before-after-placeholder">Before Image</div>
+                                        {% endif %}
+                                    </div>
+                                </div>
+
+                                <!-- Slider Handle -->
+                                <div class="mw-before-after-handle" style="left: 50%;">
+                                    <div class="mw-before-after-handle-line"></div>
+                                    <button class="mw-before-after-handle-button" type="button" aria-label="Swap images">
+                                        <svg class="mw-ba-swap-icon" viewBox="0 0 24 24" width="16" height="16">
+                                            <path fill="currentColor" d="M19,8L15,12H18A6,6 0 0,1 12,18C11,18 10.1,17.7 9.3,17.2L7.9,18.6C9.1,19.5 10.5,20 12,20A8,8 0 0,0 20,12H23L19,8M6,12A6,6 0 0,1 12,6C13,6 13.9,6.3 14.7,6.8L16.1,5.4C14.9,4.5 13.5,4 12,4A8,8 0 0,0 4,12H1L5,16L9,12H6Z" />
+                                        </svg>
+                                    </button>
+                                    <div class="mw-before-after-handle-line"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mw-before-after-info">
+                            {% if item.subHeading is not empty %}
+                                <p class="mw-before-after-subheading">
+                                    {{ item.subHeading }}
+                                </p>
+                            {% endif %}
+
+                            {% if item.beforeText is not empty %}
+                                {% if ':' in item.beforeText %}
+                                    {% set parts = item.beforeText|split(':', 2) %}
+                                    <p class="mw-before-after-text">
+                                        <strong class="mw-ba-prefix" style="color: {{ item.beforeTextColor ?: '#e06600' }};">{{ parts[0] }}:</strong>{{ parts[1] }}
+                                    </p>
+                                {% else %}
+                                    <p class="mw-before-after-text">
+                                        {{ item.beforeText }}
+                                    </p>
+                                {% endif %}
+                            {% endif %}
+
+                            {% if item.afterText is not empty %}
+                                {% if ':' in item.afterText %}
+                                    {% set parts = item.afterText|split(':', 2) %}
+                                    <p class="mw-before-after-text">
+                                        <strong class="mw-ba-prefix" style="color: {{ item.afterTextColor ?: '#e06600' }};">{{ parts[0] }}:</strong>{{ parts[1] }}
+                                    </p>
+                                {% else %}
+                                    <p class="mw-before-after-text">
+                                        {{ item.afterText }}
+                                    </p>
+                                {% endif %}
+                            {% endif %}
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    {% endif %}
+{% endblock %}

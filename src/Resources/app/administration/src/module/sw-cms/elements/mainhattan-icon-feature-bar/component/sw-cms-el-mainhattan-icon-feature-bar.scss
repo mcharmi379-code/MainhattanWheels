@@ -45,7 +45,13 @@
             height: 100%;
             fill: currentColor;
 
-            path, rect, circle, polygon, ellipse, line, polyline {
+            path,
+            rect,
+            circle,
+            polygon,
+            ellipse,
+            line,
+            polyline {
                 fill: currentColor;
             }
         }

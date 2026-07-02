@@ -1,0 +1,20 @@
+{% block sw_cms_element_ict_single_title_button_section_preview %}
+    <div class="sw-cms-el-preview-ict-single-title-button-section">
+        <div class="sw-cms-el-preview-ict-single-title-button-section-content" :style="wrapperStyle">
+            <div class="preview-title">
+                <h3>{{ title }}</h3>
+            </div>
+
+            <div class="preview-description" v-html="description"></div>
+
+            <div class="preview-buttons">
+                <div class="preview-button" :style="leftButtonStyle">
+                    {{ leftText }}
+                </div>
+                <div class="preview-button" :style="rightButtonStyle">
+                    {{ rightText }}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

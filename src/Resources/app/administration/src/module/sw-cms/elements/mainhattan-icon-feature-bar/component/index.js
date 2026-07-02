@@ -48,7 +48,7 @@ export default {
                         .then((svg) => {
                             this.svgCache = { ...this.svgCache, [item.iconUrl]: svg };
                         })
-                        .catch(() => {});
+                        .catch(() => { });
                 }
             });
         },

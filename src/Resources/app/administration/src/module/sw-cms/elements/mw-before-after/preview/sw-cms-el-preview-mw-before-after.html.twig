@@ -1,0 +1,18 @@
+{% block sw_cms_el_preview_mw_before_after %}
+    <div class="sw-cms-el-preview-mw-before-after">
+        <div class="mw-ba-preview-grid">
+            {% for i in 1..3 %}
+                <div class="mw-ba-preview-card">
+                    <div class="mw-ba-preview-heading"></div>
+                    <div class="mw-ba-preview-slider">
+                        <div class="mw-ba-preview-slider-left"></div>
+                        <div class="mw-ba-preview-slider-right"></div>
+                        <div class="mw-ba-preview-slider-line"></div>
+                    </div>
+                    <div class="mw-ba-preview-text line-1"></div>
+                    <div class="mw-ba-preview-text line-2"></div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

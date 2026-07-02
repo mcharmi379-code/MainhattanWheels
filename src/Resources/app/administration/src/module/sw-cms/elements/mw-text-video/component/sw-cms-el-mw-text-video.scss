@@ -1,0 +1,112 @@
+.sw-cms-el-mw-text-video {
+    width: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+
+    .mw-text-video-row {
+        display: flex;
+        gap: 30px;
+        align-items: center;
+        width: 100%;
+
+        @media (max-width: 767px) {
+            flex-direction: column;
+            gap: 20px;
+        }
+    }
+
+    .mw-text-video-left {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+    }
+
+    .mw-tv-heading {
+        font-size: 24px;
+        font-weight: 700;
+        margin: 0;
+        line-height: 1.3;
+    }
+
+    .mw-tv-subheading {
+        font-size: 14px;
+        line-height: 1.6;
+        margin: 0;
+    }
+
+    .mw-tv-actions {
+        display: flex;
+    }
+
+    .mw-tv-button {
+        padding: 10px 20px;
+        font-size: 14px;
+        font-weight: 600;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+    }
+
+    .mw-text-video-right {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+    }
+
+    .mw-tv-media-wrapper {
+        width: 100%;
+        position: relative;
+        border-radius: 8px;
+        overflow: hidden;
+        background-color: #f7fafc;
+        border: 1px solid #e2e8f0;
+        aspect-ratio: 16 / 9;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .mw-tv-image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .mw-tv-video-container {
+        position: relative;
+        width: 100%;
+        height: 100%;
+    }
+
+    .mw-tv-play-btn {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        background-color: #e06600;
+        color: #ffffff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .mw-tv-media-placeholder {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 8px;
+        color: #a0aec0;
+        font-size: 14px;
+
+        .placeholder-icon {
+            color: #cbd5e0;
+        }
+    }
+}

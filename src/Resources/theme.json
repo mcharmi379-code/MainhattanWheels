@@ -13,7 +13,7 @@
   ],
   "script": [
     "@Storefront",
-    "app/storefront/dist/storefront/js/mainhattan-wheels.js"
+    "app/storefront/dist/storefront/js/mainhattan-wheels/mainhattan-wheels.js"
   ],
   "asset": [
     "@Storefront",

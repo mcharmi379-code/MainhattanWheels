@@ -51,3 +51,12 @@ import './module/sw-cms/elements/ict-seven-column';
 
 import './module/sw-cms/elements/ict-three-column';
 import './module/sw-cms/blocks/ict-three-column';
+import './module/sw-cms/elements/ict-single-title-button-section';
+import './module/sw-cms/blocks/ict-single-title-button-section';
+
+
+import './module/sw-cms/blocks/mw-before-after';
+import './module/sw-cms/elements/mw-before-after';
+
+import './module/sw-cms/blocks/mw-text-video';
+import './module/sw-cms/elements/mw-text-video';

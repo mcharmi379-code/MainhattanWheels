@@ -1,0 +1,121 @@
+<div class="sw-cms-el-config-mw-text-video">
+    <sw-tabs defaultItem="content" position="left">
+        <template #default="{ active }">
+            <sw-tabs-item name="content" :active="active === 'content'">
+                {{ $tc('mw-cms.elements.mwTextVideo.config.tabs.content') }}
+            </sw-tabs-item>
+            <sw-tabs-item name="media" :active="active === 'media'">
+                {{ $tc('mw-cms.elements.mwTextVideo.config.tabs.media') }}
+            </sw-tabs-item>
+        </template>
+
+        <template #content="{ active }">
+            <!-- Content Tab (Left Side Settings) -->
+            <div v-if="active === 'content'" class="sw-cms-el-config-mw-text-video__tab-content">
+                <sw-text-field
+                    v-model="element.config.heading.value"
+                    :label="$tc('mw-cms.elements.mwTextVideo.config.labels.heading')">
+                </sw-text-field>
+
+                <sw-colorpicker
+                    v-model="element.config.headingColor.value"
+                    :label="$tc('mw-cms.elements.mwTextVideo.config.labels.headingColor')">
+                </sw-colorpicker>
+
+                <sw-textarea-field
+                    v-model="element.config.subHeading.value"
+                    :label="$tc('mw-cms.elements.mwTextVideo.config.labels.subHeading')">
+                </sw-textarea-field>
+
+                <sw-colorpicker
+                    v-model="element.config.subHeadingColor.value"
+                    :label="$tc('mw-cms.elements.mwTextVideo.config.labels.subHeadingColor')">
+                </sw-colorpicker>
+
+                <sw-text-field
+                    v-model="element.config.buttonText.value"
+                    :label="$tc('mw-cms.elements.mwTextVideo.config.labels.buttonText')">
+                </sw-text-field>
+
+                <sw-colorpicker
+                    v-model="element.config.buttonBgColor.value"
+                    :label="$tc('mw-cms.elements.mwTextVideo.config.labels.buttonBgColor')">
+                </sw-colorpicker>
+
+                <sw-colorpicker
+                    v-model="element.config.buttonTextColor.value"
+                    :label="$tc('mw-cms.elements.mwTextVideo.config.labels.buttonTextColor')">
+                </sw-colorpicker>
+
+                <sw-select-field
+                    v-model="element.config.buttonLinkType.value"
+                    :label="$tc('mw-cms.elements.mwTextVideo.config.labels.buttonLinkType')">
+                    <option value="external">External Link</option>
+                    <option value="category">Category Link</option>
+                </sw-select-field>
+
+                <sw-text-field
+                    v-model="element.config.buttonLink.value"
+                    :label="$tc('mw-cms.elements.mwTextVideo.config.labels.buttonLink')">
+                </sw-text-field>
+
+                <sw-select-field
+                    v-model="element.config.buttonLinkTarget.value"
+                    :label="$tc('mw-cms.elements.mwTextVideo.config.labels.buttonLinkTarget')">
+                    <option value="_self">Same Tab (_self)</option>
+                    <option value="_blank">New Tab (_blank)</option>
+                </sw-select-field>
+            </div>
+
+            <!-- Media Tab (Right Side Settings) -->
+            <div v-if="active === 'media'" class="sw-cms-el-config-mw-text-video__tab-content">
+                <sw-select-field
+                    v-model="element.config.mediaType.value"
+                    :label="$tc('mw-cms.elements.mwTextVideo.config.labels.mediaType')">
+                    <option value="image">Image</option>
+                    <option value="video">Video</option>
+                </sw-select-field>
+
+                <div class="sw-cms-el-config-mw-text-video__media-upload">
+                    <sw-media-upload-v2
+                        variant="regular"
+                        :uploadTag="uploadTag"
+                        :source="previewSource"
+                        :allowMultiSelect="false"
+                        :defaultFolder="element.config.mediaFile.entity.name"
+                        :label="$tc('mw-cms.elements.mwTextVideo.config.labels.mediaFile')"
+                        @media-upload-sidebar-open="onOpenMediaModal"
+                        @media-upload-remove-image="onImageRemove">
+                    </sw-media-upload-v2>
+
+                    <sw-upload-listener
+                        :uploadTag="uploadTag"
+                        autoUpload
+                        @media-upload-finish="onImageUpload">
+                    </sw-upload-listener>
+                </div>
+
+                <sw-text-field
+                    v-model="element.config.mediaLink.value"
+                    :label="$tc('mw-cms.elements.mwTextVideo.config.labels.mediaLink')"
+                    placeholder="Enter video URL (e.g. YouTube / Vimeo / HTML5) or general link">
+                </sw-text-field>
+
+                <sw-select-field
+                    v-model="element.config.mediaLinkTarget.value"
+                    :label="$tc('mw-cms.elements.mwTextVideo.config.labels.mediaLinkTarget')">
+                    <option value="_self">Same Tab (_self)</option>
+                    <option value="_blank">New Tab (_blank)</option>
+                </sw-select-field>
+            </div>
+        </template>
+    </sw-tabs>
+
+    <sw-media-modal-v2
+        v-if="mediaModalIsOpen"
+        :initialFolderId="initialFolderId"
+        :entityContext="element.config.mediaFile.entity.name"
+        @modal-close="onCloseModal"
+        @media-modal-selection-change="onSelectionChanges">
+    </sw-media-modal-v2>
+</div>
