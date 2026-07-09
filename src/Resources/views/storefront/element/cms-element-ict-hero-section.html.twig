@@ -22,7 +22,12 @@
         {% set alignmentClass = 'align-' ~ c.textAlignment.value %}
     {% endif %}
 
-    <section class="cms-element-ict-hero-section" style="{{ background }}min-height:{{ minHeight }};">
+    {% set heroClasses = ['cms-element-ict-hero-section'] %}
+    {% if c.backgroundType.value == 'video' %}
+        {% set heroClasses = heroClasses|merge(['cms-element-ict-hero-section--video']) %}
+    {% endif %}
+
+    <section class="{{ heroClasses|join(' ') }}" style="{{ background }}min-height:{{ minHeight }};">
         {% if c.backgroundType.value == 'video' and element.data.video.url is defined and element.data.video.url is not empty %}
             <video class="cms-element-ict-hero-section__video-bg" autoplay loop muted playsinline src="{{ element.data.video.url }}"></video>
         {% endif %}

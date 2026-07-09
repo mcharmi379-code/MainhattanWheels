@@ -1,6 +1,10 @@
 import Plugin from 'src/plugin-system/plugin.class';
 
 export default class MwBeforeAfter extends Plugin {
+    constructor(element, options = {}) {
+        super(element, options, 'MwBeforeAfter');
+    }
+
     init() {
         const slider = this.el.querySelector('.mw-before-after-slider');
         if (!slider) return;

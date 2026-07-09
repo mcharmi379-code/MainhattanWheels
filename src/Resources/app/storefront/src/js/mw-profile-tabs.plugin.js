@@ -1,6 +1,10 @@
 import Plugin from 'src/plugin-system/plugin.class';
 
 export default class MwProfileTabs extends Plugin {
+    constructor(element, options = {}) {
+        super(element, options, 'MwProfileTabs');
+    }
+
     init() {
         this.triggers = this.el.querySelectorAll('[data-mw-profile-tabs-trigger]');
         this.panels = this.el.querySelectorAll('[data-mw-profile-tabs-panel]');

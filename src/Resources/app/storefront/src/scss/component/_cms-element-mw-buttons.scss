@@ -98,12 +98,12 @@
 
         &--outline {
             background-color: transparent;
-            color: var(--mw-btn-text-color, #ff6600);
-            border: 2px solid var(--mw-btn-text-color, #ff6600);
+            color: var(--mw-btn-text-color, #e85630);
+            border: 2px solid var(--mw-btn-text-color, #e85630);
 
             &:hover, &:focus {
-                background-color: var(--mw-btn-text-color, #ff6600);
-                color: var(--mw-btn-bg-color, #ffffff);
+                background-color: var(--mw-btn-text-color, #e85630);
+                color: #ffffff;
                 transform: translateY(-2px);
                 box-shadow: 0 6px 20px 0 color-mix(in srgb, var(--mw-btn-text-color, #ff6600) 25%, transparent);
 

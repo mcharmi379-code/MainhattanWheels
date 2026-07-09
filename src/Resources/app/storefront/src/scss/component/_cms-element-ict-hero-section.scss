@@ -13,6 +13,21 @@
         pointer-events: none;
     }
 
+    &--video {
+        background-color: #111;
+
+        &::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            z-index: 1;
+            pointer-events: none;
+            background:
+                linear-gradient(90deg, rgba(0, 0, 0, 0.64) 0%, rgba(0, 0, 0, 0.34) 42%, rgba(0, 0, 0, 0.18) 70%, rgba(0, 0, 0, 0.08) 100%),
+                linear-gradient(180deg, rgba(0, 0, 0, 0.10) 0%, rgba(0, 0, 0, 0.28) 100%);
+        }
+    }
+
     &__container {
         max-width: 1320px;
         margin: 0 auto;
@@ -35,6 +50,8 @@
         padding: 48px 0;
         justify-content: center;
         z-index: 1;
+        position: relative;
+        z-index: 2;
 
         &.align-left {
             margin-right: auto;
@@ -154,6 +171,18 @@
         object-position: center right;
     }
 
+}
+
+.cms-element-ict-hero-section--video {
+    .cms-element-ict-hero-section__left,
+    .cms-element-ict-hero-section__headline,
+    .cms-element-ict-hero-section__description,
+    .cms-element-ict-hero-section__label,
+    .cms-element-ict-hero-section__actions,
+    .cms-element-ict-hero-section__button {
+        position: relative;
+        z-index: 2;
+    }
 }
 
 // ── 992px–1199px (between lg and xl): shrink font a little ───────────────────

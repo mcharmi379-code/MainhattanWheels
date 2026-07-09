@@ -1,10 +1,20 @@
 {% block sw_cms_el_mw_before_after %}
     <div class="sw-cms-el-mw-before-after">
-        <div class="mw-before-after-grid-admin" :style="{ gridTemplateColumns: 'repeat(' + columns + ', minmax(0, 1fr))' }">
+        <div v-if="items.length === 0" class="mw-before-after-empty-admin">
+            MW Before-After Columns
+        </div>
+
+        <div v-else class="mw-before-after-grid-admin" :class="{ 'is--single-column': columns === 1 }" :style="{ gridTemplateColumns: 'repeat(' + columns + ', minmax(0, 1fr))' }">
             <div v-for="(item, index) in items" :key="index" class="mw-before-after-card-admin">
-                <h4 class="mw-before-after-card-admin__heading" :style="{ color: item.headingColor }">
-                    {{ item.heading || 'Heading' }}
+                <h4 v-if="element.config.showHeading.value !== false" class="mw-before-after-card-admin__heading" :style="{ color: element.config.headingColor.value, backgroundColor: element.config.headingBackgroundColor.value }">
+                    {{ element.config.heading.value || 'Heading' }}
                 </h4>
+                <p v-if="element.config.showSubHeading.value !== false && element.config.subHeading.value" class="mw-before-after-card-admin__subheading">
+                    {{ element.config.subHeading.value }}
+                </p>
+                <p v-if="element.config.showDescription.value !== false && element.config.description.value" class="mw-before-after-card-admin__description">
+                    {{ element.config.description.value }}
+                </p>
 
                 <div class="mw-before-after-slider-admin">
                     <!-- Before Image -->
@@ -30,16 +40,21 @@
                 </div>
 
                 <div class="mw-before-after-card-admin__info">
-                    <p v-if="item.subHeading" class="mw-before-after-card-admin__subheading">{{ item.subHeading }}</p>
-                    
                     <p v-if="item.beforeText" class="mw-before-after-card-admin__text">
-                        <strong :style="{ color: item.beforeTextColor }">Before: </strong>
-                        {{ item.beforeText }}
+                        <strong :style="{ color: item.beforeTextColor, backgroundColor: item.beforeTextBackgroundColor }">
+                            {{ item.beforeText }}
+                        </strong>
                     </p>
-                    
+                    <p v-if="item.beforeDescription" class="mw-before-after-card-admin__description">
+                        {{ item.beforeDescription }}
+                    </p>
                     <p v-if="item.afterText" class="mw-before-after-card-admin__text">
-                        <strong :style="{ color: item.afterTextColor }">Afterwards: </strong>
-                        {{ item.afterText }}
+                        <strong :style="{ color: item.afterTextColor, backgroundColor: item.afterTextBackgroundColor }">
+                            {{ item.afterText }}
+                        </strong>
+                    </p>
+                    <p v-if="item.afterDescription" class="mw-before-after-card-admin__description">
+                        {{ item.afterDescription }}
                     </p>
                 </div>
             </div>

@@ -7,6 +7,7 @@ Shopware.Service('cmsService').registerCmsBlock({
     category: 'ict-cms-elements',
     component: 'sw-cms-block-mw-before-after',
     previewComponent: 'sw-cms-preview-mw-before-after',
+    allowedCmsElements: ['mw-before-after'],
     defaultConfig: {
         marginBottom: '20px',
         marginTop: '20px',

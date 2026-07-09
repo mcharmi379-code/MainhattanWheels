@@ -1,6 +1,10 @@
 import Plugin from 'src/plugin-system/plugin.class';
 
 export default class IctContentTabsPlugin extends Plugin {
+    constructor(element, options = {}) {
+        super(element, options, 'IctContentTabs');
+    }
+
     init() {
         console.log('IctContentTabsPlugin initialized');
         this._navItems = this.el.querySelectorAll('.ict-ct__nav-item');

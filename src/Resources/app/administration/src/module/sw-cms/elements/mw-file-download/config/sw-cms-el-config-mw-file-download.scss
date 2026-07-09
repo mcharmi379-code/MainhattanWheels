@@ -1,6 +1,19 @@
 .sw-cms-el-config-mw-file-download {
+    overflow: visible;
+
+    .sw-tabs__content,
+    .sw-tabs__content > div {
+        overflow: visible;
+    }
+
+    .sw-dynamic-url-field {
+        position: relative;
+        z-index: 2;
+    }
+
     &__section {
         display: grid;
         gap: 16px;
+        overflow: visible;
     }
 }

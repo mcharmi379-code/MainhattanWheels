@@ -28,9 +28,23 @@
         white-space: nowrap;
     }
 
-    &__slider { position: relative; }
-    &__slide { height: 100%; }
-    &__container { display: flex; }
+    &__cta:hover {
+        color: #fff;
+        background: #e85630;
+    }
+
+    &__slider {
+        position: relative;
+    }
+
+    &__slide {
+        height: 100%;
+    }
+
+    &__container {
+        display: flex;
+    }
+
     &__empty {
         padding: 20px 0;
         color: #6b7280;

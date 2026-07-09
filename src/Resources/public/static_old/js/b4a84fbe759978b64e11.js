@@ -1,1 +1,0 @@
-"use strict";(window["webpackJsonpPluginmainhattan-wheels"]=window["webpackJsonpPluginmainhattan-wheels"]||[]).push([[446],{446:function(n,t,c){c.r(t),c.d(t,{default:function(){return o}});var o={template:'{% block sw_cms_block_mw_product_grid %}\n    <div class="sw-cms-block-mw-product-grid">\n        <slot name="productGrid"></slot>\n    </div>\n{% endblock %}\n'}}}]);

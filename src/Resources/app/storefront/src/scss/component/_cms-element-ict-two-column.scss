@@ -94,3 +94,30 @@
         padding: 16px;
     }
 }
+
+body .gallery-slider-thumbnails-col .tns-horizontal.tns-subpixel {
+
+    @media(min-width: 768px) {
+
+        flex-direction: row;
+
+    }
+
+}
+
+body .gallery-slider-thumbnails-col,
+body .gallery-slider-thumbnails-col .gallery-slider-thumbnails-item-inner {
+    @media(min-width: 768px) {
+
+        width: auto;
+
+    }
+}
+
+body .gallery-slider-thumbnails-container.is-underneath .tns-outer {
+    @media(min-width: 768px) {
+
+        margin: 0;
+
+    }
+}

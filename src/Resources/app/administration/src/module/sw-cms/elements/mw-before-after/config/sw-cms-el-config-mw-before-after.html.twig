@@ -11,9 +11,62 @@
                 <sw-container v-if="active === 'settings'" class="mw-before-after-config__settings">
                     <sw-single-select
                         v-model:value="element.config.columns.value"
-                        label="Show column option"
+                        label="Columns"
                         :options="columnsOptions"
                         @update:value="onInput"
+                    />
+                    <sw-switch-field
+                        v-model:value="element.config.showHeading.value"
+                        label="Show title"
+                        @update:value="onInput"
+                    />
+                    <sw-switch-field
+                        v-model:value="element.config.showSubHeading.value"
+                        label="Show subtitle"
+                        @update:value="onInput"
+                    />
+                    <sw-switch-field
+                        v-model:value="element.config.showDescription.value"
+                        label="Show description"
+                        @update:value="onInput"
+                    />
+                    <sw-switch-field
+                        v-model:value="element.config.showTagsOnImage.value"
+                        label="Show tags on image"
+                        @update:value="onInput"
+                    />
+                    <div class="config-row-2">
+                        <mt-text-field
+                            :model-value="element.config.heading.value"
+                            label="Title"
+                            @update:model-value="element.config.heading.value = $event; onInput()"
+                        />
+                        <sw-colorpicker
+                            v-model:value="element.config.headingColor.value"
+                            label="Title text color"
+                            color-output="hex"
+                            :z-index="1000"
+                            @update:value="onInput"
+                        />
+                    </div>
+                    <sw-colorpicker
+                        v-model:value="element.config.headingBackgroundColor.value"
+                        label="Title background color"
+                        color-output="hex"
+                        :z-index="1000"
+                        @update:value="onInput"
+                    />
+                    <mt-text-field
+                        v-if="element.config.showSubHeading.value !== false"
+                        :model-value="element.config.subHeading.value"
+                        label="Subtitle"
+                        @update:model-value="element.config.subHeading.value = $event; onInput()"
+                    />
+                    <mt-text-field
+                        v-if="element.config.showDescription.value !== false"
+                        :model-value="element.config.description.value"
+                        label="Description"
+                        @update:model-value="element.config.description.value = $event; onInput()"
                     />
                 </sw-container>
 
@@ -23,13 +76,30 @@
                     <div class="mw-ba-item-tabs">
                         <button
                             v-for="(item, index) in items"
-                            :key="index"
+                            :key="item.id || index"
                             class="mw-ba-item-tab"
-                            :class="{ 'is--active': activeItemIndex === index }"
+                            :class="{ 'is--active': activeItemIndex === index, 'is--dragging': draggedItemIndex === index }"
                             type="button"
+                            draggable="true"
                             @click="selectItem(index)"
+                            @dragstart="onItemDragStart(index, $event)"
+                            @dragover="onItemDragOver(index, $event)"
+                            @drop="onItemDrop(index, $event)"
+                            @dragend="onItemDragEnd"
                         >
                             Column {{ index + 1 }}
+                            <span
+                                class="mw-ba-item-tab__move"
+                                @click.stop="moveItem(index, -1)"
+                                :class="{ 'is--disabled': index === 0 }"
+                                title="Move left"
+                            >‹</span>
+                            <span
+                                class="mw-ba-item-tab__move"
+                                @click.stop="moveItem(index, 1)"
+                                :class="{ 'is--disabled': index === items.length - 1 }"
+                                title="Move right"
+                            >›</span>
                             <span
                                 class="mw-ba-item-tab__remove"
                                 @click.stop="removeItem(index)"
@@ -47,29 +117,6 @@
 
                     {# Active Item Form #}
                     <template v-if="activeItem !== null">
-                        <!-- Heading Field -->
-                        <div class="config-row-2">
-                            <mt-text-field
-                                :model-value="activeItem.heading"
-                                label="Heading text"
-                                @update:model-value="updateActiveField('heading', $event)"
-                            />
-                            <sw-colorpicker
-                                v-model:value="activeItem.headingColor"
-                                label="Heading color"
-                                color-output="hex"
-                                :z-index="1000"
-                                @update:value="onInput"
-                            />
-                        </div>
-
-                        <!-- Sub-heading/Summary -->
-                        <mt-text-field
-                            :model-value="activeItem.subHeading"
-                            label="Sub Heading / Info Text (e.g. CNC diamond...)"
-                            @update:model-value="updateActiveField('subHeading', $event)"
-                        />
-
                         <!-- Before Section -->
                         <div class="mw-ba-section-divider">Before Image Settings</div>
                         <div class="mw-ba-media-upload-section">
@@ -101,17 +148,34 @@
                         <div class="config-row-2">
                             <mt-text-field
                                 :model-value="activeItem.beforeText"
-                                label="Before image text"
+                                label="Before tag"
                                 @update:model-value="updateActiveField('beforeText', $event)"
                             />
                             <sw-colorpicker
                                 v-model:value="activeItem.beforeTextColor"
-                                label="Before text color"
+                                label="Before tag text color"
                                 color-output="hex"
                                 :z-index="1000"
                                 @update:value="onInput"
                             />
                         </div>
+                        <sw-colorpicker
+                            v-model:value="activeItem.beforeTextBackgroundColor"
+                            label="Before tag background color"
+                            color-output="hex"
+                            :z-index="1000"
+                            @update:value="onInput"
+                        />
+                        <mt-text-field
+                            :model-value="activeItem.beforeDescription"
+                            label="Before description"
+                            @update:model-value="updateActiveField('beforeDescription', $event)"
+                        />
+                        <sw-switch-field
+                            v-model:value="activeItem.showBeforeText"
+                            label="Show before tag"
+                            @update:value="onInput"
+                        />
 
                         <!-- After Section -->
                         <div class="mw-ba-section-divider">After Image Settings</div>
@@ -144,17 +208,29 @@
                         <div class="config-row-2">
                             <mt-text-field
                                 :model-value="activeItem.afterText"
-                                label="After image text"
+                                label="After tag"
                                 @update:model-value="updateActiveField('afterText', $event)"
                             />
                             <sw-colorpicker
                                 v-model:value="activeItem.afterTextColor"
-                                label="After text color"
+                                label="After tag text color"
                                 color-output="hex"
                                 :z-index="1000"
                                 @update:value="onInput"
                             />
                         </div>
+                        <sw-colorpicker
+                            v-model:value="activeItem.afterTextBackgroundColor"
+                            label="After tag background color"
+                            color-output="hex"
+                            :z-index="1000"
+                            @update:value="onInput"
+                        />
+                        <mt-text-field
+                            :model-value="activeItem.afterDescription"
+                            label="After description"
+                            @update:model-value="updateActiveField('afterDescription', $event)"
+                        />
                     </template>
 
                     <p v-else class="mw-ba-empty-hint">

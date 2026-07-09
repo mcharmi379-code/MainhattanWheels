@@ -13,55 +13,65 @@
             <!-- Content Tab (Left Side Settings) -->
             <div v-if="active === 'content'" class="sw-cms-el-config-mw-text-video__tab-content">
                 <sw-text-field
-                    v-model="element.config.heading.value"
-                    :label="$tc('mw-cms.elements.mwTextVideo.config.labels.heading')">
+                    v-model:value="element.config.heading.value"
+                    :label="$tc('mw-cms.elements.mwTextVideo.config.labels.heading')"
+                    @update:value="onConfigInput">
                 </sw-text-field>
 
                 <sw-colorpicker
-                    v-model="element.config.headingColor.value"
-                    :label="$tc('mw-cms.elements.mwTextVideo.config.labels.headingColor')">
+                    v-model:value="element.config.headingColor.value"
+                    :label="$tc('mw-cms.elements.mwTextVideo.config.labels.headingColor')"
+                    @update:value="onConfigInput">
                 </sw-colorpicker>
 
                 <sw-textarea-field
-                    v-model="element.config.subHeading.value"
-                    :label="$tc('mw-cms.elements.mwTextVideo.config.labels.subHeading')">
+                    v-model:value="element.config.subHeading.value"
+                    :label="$tc('mw-cms.elements.mwTextVideo.config.labels.subHeading')"
+                    @update:value="onConfigInput">
                 </sw-textarea-field>
 
                 <sw-colorpicker
-                    v-model="element.config.subHeadingColor.value"
-                    :label="$tc('mw-cms.elements.mwTextVideo.config.labels.subHeadingColor')">
+                    v-model:value="element.config.subHeadingColor.value"
+                    :label="$tc('mw-cms.elements.mwTextVideo.config.labels.subHeadingColor')"
+                    @update:value="onConfigInput">
                 </sw-colorpicker>
 
                 <sw-text-field
-                    v-model="element.config.buttonText.value"
-                    :label="$tc('mw-cms.elements.mwTextVideo.config.labels.buttonText')">
+                    v-model:value="element.config.buttonText.value"
+                    :label="$tc('mw-cms.elements.mwTextVideo.config.labels.buttonText')"
+                    @update:value="onConfigInput">
                 </sw-text-field>
 
                 <sw-colorpicker
-                    v-model="element.config.buttonBgColor.value"
-                    :label="$tc('mw-cms.elements.mwTextVideo.config.labels.buttonBgColor')">
+                    v-model:value="element.config.buttonBgColor.value"
+                    :label="$tc('mw-cms.elements.mwTextVideo.config.labels.buttonBgColor')"
+                    @update:value="onConfigInput">
                 </sw-colorpicker>
 
                 <sw-colorpicker
-                    v-model="element.config.buttonTextColor.value"
-                    :label="$tc('mw-cms.elements.mwTextVideo.config.labels.buttonTextColor')">
+                    v-model:value="element.config.buttonTextColor.value"
+                    :label="$tc('mw-cms.elements.mwTextVideo.config.labels.buttonTextColor')"
+                    @update:value="onConfigInput">
                 </sw-colorpicker>
 
                 <sw-select-field
-                    v-model="element.config.buttonLinkType.value"
-                    :label="$tc('mw-cms.elements.mwTextVideo.config.labels.buttonLinkType')">
+                    v-model:value="element.config.buttonLinkType.value"
+                    :label="$tc('mw-cms.elements.mwTextVideo.config.labels.buttonLinkType')"
+                    @update:value="onConfigInput">
                     <option value="external">External Link</option>
                     <option value="category">Category Link</option>
                 </sw-select-field>
 
                 <sw-text-field
-                    v-model="element.config.buttonLink.value"
-                    :label="$tc('mw-cms.elements.mwTextVideo.config.labels.buttonLink')">
+                    v-model:value="element.config.buttonLink.value"
+                    :label="$tc('mw-cms.elements.mwTextVideo.config.labels.buttonLink')"
+                    @update:value="onConfigInput">
                 </sw-text-field>
 
                 <sw-select-field
-                    v-model="element.config.buttonLinkTarget.value"
-                    :label="$tc('mw-cms.elements.mwTextVideo.config.labels.buttonLinkTarget')">
+                    v-model:value="element.config.buttonLinkTarget.value"
+                    :label="$tc('mw-cms.elements.mwTextVideo.config.labels.buttonLinkTarget')"
+                    @update:value="onConfigInput">
                     <option value="_self">Same Tab (_self)</option>
                     <option value="_blank">New Tab (_blank)</option>
                 </sw-select-field>
@@ -70,8 +80,9 @@
             <!-- Media Tab (Right Side Settings) -->
             <div v-if="active === 'media'" class="sw-cms-el-config-mw-text-video__tab-content">
                 <sw-select-field
-                    v-model="element.config.mediaType.value"
-                    :label="$tc('mw-cms.elements.mwTextVideo.config.labels.mediaType')">
+                    v-model:value="element.config.mediaType.value"
+                    :label="$tc('mw-cms.elements.mwTextVideo.config.labels.mediaType')"
+                    @update:value="onConfigInput">
                     <option value="image">Image</option>
                     <option value="video">Video</option>
                 </sw-select-field>
@@ -96,14 +107,16 @@
                 </div>
 
                 <sw-text-field
-                    v-model="element.config.mediaLink.value"
+                    v-model:value="element.config.mediaLink.value"
                     :label="$tc('mw-cms.elements.mwTextVideo.config.labels.mediaLink')"
-                    placeholder="Enter video URL (e.g. YouTube / Vimeo / HTML5) or general link">
+                    placeholder="Enter video URL (e.g. YouTube / Vimeo / HTML5) or general link"
+                    @update:value="onConfigInput">
                 </sw-text-field>
 
                 <sw-select-field
-                    v-model="element.config.mediaLinkTarget.value"
-                    :label="$tc('mw-cms.elements.mwTextVideo.config.labels.mediaLinkTarget')">
+                    v-model:value="element.config.mediaLinkTarget.value"
+                    :label="$tc('mw-cms.elements.mwTextVideo.config.labels.mediaLinkTarget')"
+                    @update:value="onConfigInput">
                     <option value="_self">Same Tab (_self)</option>
                     <option value="_blank">New Tab (_blank)</option>
                 </sw-select-field>

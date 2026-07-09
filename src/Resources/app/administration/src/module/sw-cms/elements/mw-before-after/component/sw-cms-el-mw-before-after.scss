@@ -1,6 +1,19 @@
 .sw-cms-el-mw-before-after {
     width: 100%;
 
+    .mw-before-after-empty-admin {
+        min-height: 180px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 1px dashed #b8c6d9;
+        border-radius: 4px;
+        background: #f8fafc;
+        color: #52667a;
+        font-size: 13px;
+        font-weight: 600;
+    }
+
     .mw-before-after-grid-admin {
         display: grid;
         gap: 16px;

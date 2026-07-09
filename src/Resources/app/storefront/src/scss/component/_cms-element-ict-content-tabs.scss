@@ -24,12 +24,12 @@
         margin-bottom: -1px; // overlap the container border-bottom
 
         &:hover {
-            color: var(--ict-ct-active-color, #e30613);
+            color: var(--ict-ct-active-color, #e85630);
         }
 
         &.ict-ct__nav-item--active {
-            color: var(--ict-ct-active-color, #e30613);
-            border-bottom-color: var(--ict-ct-active-color, #e30613);
+            color: var(--ict-ct-active-color, #e85630);
+            border-bottom-color: var(--ict-ct-active-color, #e85630);
             font-weight: 700;
         }
 

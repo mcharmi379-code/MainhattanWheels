@@ -30,11 +30,19 @@
             {% endif %}
 
             {% if gallery|length %}
-                <div class="cms-element-mw-technical-feature-list__gallery">
+                <div class="cms-element-mw-technical-feature-list__gallery" data-mw-technical-feature-gallery="true">
                     {% for item in gallery %}
                         {% if item.mediaUrl is not empty %}
                             <figure class="cms-element-mw-technical-feature-list__figure">
-                                <img src="{{ item.mediaUrl }}" alt="{{ item.alt|default(c.title.value) }}" loading="lazy">
+                                <button
+                                    type="button"
+                                    class="cms-element-mw-technical-feature-list__figure-button"
+                                    data-mw-technical-feature-gallery-item
+                                    data-full-src="{{ item.mediaUrl }}"
+                                    data-full-alt="{{ item.alt|default(c.title.value) }}"
+                                >
+                                    <img src="{{ item.mediaUrl }}" alt="{{ item.alt|default(c.title.value) }}" loading="lazy">
+                                </button>
                             </figure>
                         {% endif %}
                     {% endfor %}

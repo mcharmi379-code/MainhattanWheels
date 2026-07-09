@@ -2,24 +2,78 @@
     {% set c = element.config %}
     {% set items = element.data.items ?? c.items.value ?? [] %}
     {% set columns = c.columns.value ?? 3 %}
+    {% set showHeading = c.showHeading.value is not same as(false) %}
+    {% set showSubHeading = c.showSubHeading.value is not same as(false) %}
+    {% set showDescription = c.showDescription.value is not same as(false) %}
+    {% set showTagsOnImage = c.showTagsOnImage.value is not same as(false) %}
+    {% set isSingleColumn = columns == 1 %}
 
     {% if items|length > 0 %}
         <div class="cms-element-mw-before-after">
-            <div class="mw-before-after-grid columns-{{ columns }}">
+            <div class="mw-before-after-grid columns-{{ columns }}{% if isSingleColumn %} is--single-column{% endif %}">
                 {% for item in items %}
                     {% set beforeImageUrl = item.beforeImageMedia.url ?? item.beforeImageUrl %}
                     {% set afterImageUrl = item.afterImageMedia.url ?? item.afterImageUrl %}
 
                     <div class="mw-before-after-card">
-                        {% if item.heading is not empty %}
-                            <h3 class="mw-before-after-heading" style="color: {{ item.headingColor ?: '#e06600' }};">
-                                {{ item.heading }}
-                            </h3>
+                        {% if isSingleColumn %}
+                            <div class="mw-before-after-card__hero">
+                                {% if showHeading and c.heading.value is not empty %}
+                                    <p class="mw-before-after-kicker" style="color: {{ c.headingColor.value ?: '#e06600' }};">
+                                        {{ c.heading.value }}
+                                    </p>
+                                {% endif %}
+
+                                {% if showSubHeading and c.subHeading.value is not empty %}
+                                    <h3 class="mw-before-after-heading">
+                                        {{ c.subHeading.value }}
+                                    </h3>
+                                {% endif %}
+
+                                {% if showDescription and c.description.value is not empty %}
+                                    <div class="mw-before-after-description">
+                                        {{ c.description.value|raw }}
+                                    </div>
+                                {% endif %}
+                            </div>
+                        {% else %}
+                            {% if showHeading and c.heading.value is not empty %}
+                                <p class="mw-before-after-kicker" style="color: {{ c.headingColor.value ?: '#e06600' }};">
+                                    {{ c.heading.value }}
+                                </p>
+                            {% endif %}
+
+                            {% if showSubHeading and c.subHeading.value is not empty %}
+                                <h3 class="mw-before-after-heading">
+                                    {{ c.subHeading.value }}
+                                </h3>
+                            {% endif %}
+
+                            {% if showDescription and c.description.value is not empty %}
+                                <div class="mw-before-after-description">
+                                    {{ c.description.value|raw }}
+                                </div>
+                            {% endif %}
                         {% endif %}
 
                         <div class="mw-before-after-slider-wrapper" data-mw-before-after="true">
+                            {% if showTagsOnImage %}
+                                <div class="mw-before-after-overlay-tags" aria-hidden="true">
+                                    {% if item.beforeText is not empty %}
+                                        <span class="mw-before-after-text-tag mw-before-after-text-tag--before" style="color: {{ item.beforeTextColor ?: '#ffffff' }}; background-color: {{ item.beforeTextBackgroundColor ?: '#111827' }};">
+                                            {{ item.beforeText }}
+                                        </span>
+                                    {% endif %}
+
+                                    {% if item.afterText is not empty %}
+                                        <span class="mw-before-after-text-tag mw-before-after-text-tag--after" style="color: {{ item.afterTextColor ?: '#ffffff' }}; background-color: {{ item.afterTextBackgroundColor ?: '#f97316' }};">
+                                            {{ item.afterText }}
+                                        </span>
+                                    {% endif %}
+                                </div>
+                            {% endif %}
+
                             <div class="mw-before-after-slider">
-                                <!-- After Image Container (Background) -->
                                 <div class="mw-before-after-img after-img-container">
                                     {% if afterImageUrl is not empty %}
                                         <img src="{{ afterImageUrl }}" class="after-img" alt="After" loading="lazy" />
@@ -28,7 +82,6 @@
                                     {% endif %}
                                 </div>
 
-                                <!-- Before Image Container (Overlay) -->
                                 <div class="mw-before-after-overlay">
                                     <div class="before-img-container">
                                         {% if beforeImageUrl is not empty %}
@@ -39,8 +92,7 @@
                                     </div>
                                 </div>
 
-                                <!-- Slider Handle -->
-                                <div class="mw-before-after-handle" style="left: 50%;">
+                                <div class="mw-before-after-handle" style="left: 50%;" aria-hidden="true">
                                     <div class="mw-before-after-handle-line"></div>
                                     <button class="mw-before-after-handle-button" type="button" aria-label="Swap images">
                                         <svg class="mw-ba-swap-icon" viewBox="0 0 24 24" width="16" height="16">
@@ -52,42 +104,134 @@
                             </div>
                         </div>
 
-                        <div class="mw-before-after-info">
-                            {% if item.subHeading is not empty %}
-                                <p class="mw-before-after-subheading">
-                                    {{ item.subHeading }}
-                                </p>
-                            {% endif %}
-
-                            {% if item.beforeText is not empty %}
-                                {% if ':' in item.beforeText %}
-                                    {% set parts = item.beforeText|split(':', 2) %}
-                                    <p class="mw-before-after-text">
-                                        <strong class="mw-ba-prefix" style="color: {{ item.beforeTextColor ?: '#e06600' }};">{{ parts[0] }}:</strong>{{ parts[1] }}
-                                    </p>
-                                {% else %}
-                                    <p class="mw-before-after-text">
+                        <div class="mw-before-after-card__details">
+                            {% if not showTagsOnImage %}
+                                {% if item.beforeText is not empty %}
+                                    <p class="mw-before-after-text-tag" style="color: {{ item.beforeTextColor ?: '#ffffff' }}; background-color: {{ item.beforeTextBackgroundColor ?: '#111827' }};">
                                         {{ item.beforeText }}
                                     </p>
                                 {% endif %}
                             {% endif %}
 
-                            {% if item.afterText is not empty %}
-                                {% if ':' in item.afterText %}
-                                    {% set parts = item.afterText|split(':', 2) %}
-                                    <p class="mw-before-after-text">
-                                        <strong class="mw-ba-prefix" style="color: {{ item.afterTextColor ?: '#e06600' }};">{{ parts[0] }}:</strong>{{ parts[1] }}
-                                    </p>
-                                {% else %}
-                                    <p class="mw-before-after-text">
+                            {% if item.beforeDescription is not empty %}
+                                <p class="mw-before-after-text">
+                                    {{ item.beforeDescription }}
+                                </p>
+                            {% endif %}
+
+                            {% if not showTagsOnImage %}
+                                {% if item.afterText is not empty %}
+                                    <p class="mw-before-after-text-tag" style="color: {{ item.afterTextColor ?: '#ffffff' }}; background-color: {{ item.afterTextBackgroundColor ?: '#f97316' }};">
                                         {{ item.afterText }}
                                     </p>
                                 {% endif %}
+                            {% endif %}
+
+                            {% if item.afterDescription is not empty %}
+                                <p class="mw-before-after-text">
+                                    {{ item.afterDescription }}
+                                </p>
                             {% endif %}
                         </div>
                     </div>
                 {% endfor %}
             </div>
         </div>
+
+        <script>
+            (() => {
+                const initCompareSlider = (root) => {
+                    const slider = root.querySelector('.mw-before-after-slider');
+                    const overlay = root.querySelector('.mw-before-after-overlay');
+                    const handle = root.querySelector('.mw-before-after-handle');
+                    const beforeImgContainer = root.querySelector('.before-img-container');
+
+                    if (!slider || !overlay || !handle) {
+                        return;
+                    }
+
+                    const setPosition = (clientX) => {
+                        const rect = slider.getBoundingClientRect();
+                        if (!rect.width) {
+                            return;
+                        }
+
+                        let pct = ((clientX - rect.left) / rect.width) * 100;
+                        pct = Math.max(0, Math.min(100, pct));
+
+                        overlay.style.width = pct + '%';
+                        handle.style.left = pct + '%';
+                    };
+
+                    const syncWidth = () => {
+                        if (beforeImgContainer) {
+                            beforeImgContainer.style.width = slider.offsetWidth + 'px';
+                        }
+                    };
+
+                    syncWidth();
+                    window.addEventListener('resize', syncWidth, { passive: true });
+
+                    let dragging = false;
+
+                    const startDrag = (event) => {
+                        if (event.button !== undefined && event.button !== 0) {
+                            return;
+                        }
+
+                        dragging = true;
+                        if (slider.setPointerCapture && event.pointerId !== undefined) {
+                            slider.setPointerCapture(event.pointerId);
+                        }
+                        setPosition(event.clientX);
+                        event.preventDefault();
+                    };
+
+                    slider.addEventListener('pointerdown', startDrag, { passive: false });
+                    slider.addEventListener('pointermove', (event) => {
+                        if (!dragging) {
+                            return;
+                        }
+
+                        setPosition(event.clientX);
+                    }, { passive: true });
+                    slider.addEventListener('pointerup', (event) => {
+                        dragging = false;
+                        if (slider.releasePointerCapture && event.pointerId !== undefined) {
+                            slider.releasePointerCapture(event.pointerId);
+                        }
+                    }, { passive: true });
+                    slider.addEventListener('pointercancel', () => {
+                        dragging = false;
+                    }, { passive: true });
+
+                    const tapHandler = (event) => {
+                        if (event.target.closest('button')) {
+                            return;
+                        }
+
+                        const rect = slider.getBoundingClientRect();
+                        if (!rect.width) {
+                            return;
+                        }
+
+                        setPosition(event.clientX || (event.touches && event.touches[0] && event.touches[0].clientX) || rect.left + rect.width / 2);
+                    };
+
+                    slider.addEventListener('click', tapHandler);
+                    slider.addEventListener('touchstart', tapHandler, { passive: true });
+                };
+
+                const boot = () => {
+                    document.querySelectorAll('[data-mw-before-after="true"]').forEach(initCompareSlider);
+                };
+
+                if (document.readyState === 'loading') {
+                    document.addEventListener('DOMContentLoaded', boot, { once: true });
+                } else {
+                    boot();
+                }
+            })();
+        </script>
     {% endif %}
 {% endblock %}

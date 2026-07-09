@@ -3,7 +3,6 @@
         <template #default="{ active }">
             <sw-tabs-item name="background" :active-tab="active">Background</sw-tabs-item>
             <sw-tabs-item name="leftSection" :active-tab="active">Left Section</sw-tabs-item>
-            <sw-tabs-item name="rightSection" :active-tab="active">Right Section</sw-tabs-item>
         </template>
 
         <template #content="{ active }">
@@ -196,12 +195,6 @@
                         <sw-colorpicker v-model:value="element.config.secondaryButtonTextColor.value" label="Text Color" color-output="hex" :z-index="1000" @update:value="onInput" />
                     </div>
                 </div>
-            </sw-container>
-
-            <sw-container v-if="active === 'rightSection'" class="sw-cms-el-config-ict-hero-section__right-section">
-                <p class="sw-cms-el-config-ict-hero-section__hint">
-                    The right section image has been replaced by the background image option.
-                </p>
             </sw-container>
         </template>
     </sw-tabs>

@@ -13,7 +13,7 @@
   ],
   "script": [
     "@Storefront",
-    "app/storefront/dist/storefront/js/mainhattan-wheels/mainhattan-wheels.js"
+    "app/storefront/src/main.js"
   ],
   "asset": [
     "@Storefront",
@@ -22,6 +22,9 @@
   "iconSets": {
     "mainhattan": "app/storefront/src/assets/icon-pack/mainhattan"
   },
+  "configInheritance": [
+    "@Storefront"
+  ],
   "config": {
     "tabs": {
       "header": {

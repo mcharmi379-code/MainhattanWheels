@@ -6,6 +6,7 @@ const { Mixin } = Shopware;
 export default {
     template,
     inject: ['repositoryFactory'],
+    emits: ['element-update', 'update:element'],
 
     mixins: [
         Mixin.getByName('cms-element'),
@@ -46,6 +47,30 @@ export default {
             this.initElementConfig('mw-text-video');
         },
 
+        onConfigInput() {
+            this.syncElementState();
+            this.$emit('update:element', this.element);
+            this.$emit('element-update', this.element);
+        },
+
+        syncElementState() {
+            if (!this.cmsPageState?.selectedBlock?.slots) {
+                return;
+            }
+
+            const slot = this.cmsPageState.selectedBlock.slots.find((candidate) => {
+                return candidate.id === this.element.id || candidate.slot === this.element.slot;
+            });
+
+            if (!slot) {
+                return;
+            }
+
+            slot.config = this.element.config;
+            slot.data = this.element.data;
+            this.cmsPageState.setBlock(this.cmsPageState.selectedBlock);
+        },
+
         async onImageUpload({ targetId }) {
             const mediaEntity = await this.mediaRepository.get(targetId);
 
@@ -54,7 +79,7 @@ export default {
 
             this.updateElementData(mediaEntity);
 
-            this.$emit('element-update', this.element);
+            this.onConfigInput();
         },
 
         onImageRemove() {
@@ -62,7 +87,7 @@ export default {
 
             this.updateElementData();
 
-            this.$emit('element-update', this.element);
+            this.onConfigInput();
         },
 
         onCloseModal() {
@@ -76,7 +101,7 @@ export default {
 
             this.updateElementData(media);
 
-            this.$emit('element-update', this.element);
+            this.onConfigInput();
         },
 
         updateElementData(media = null) {

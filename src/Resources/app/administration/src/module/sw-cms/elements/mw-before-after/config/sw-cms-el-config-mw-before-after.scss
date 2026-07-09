@@ -1,11 +1,16 @@
 .sw-cms-el-config-mw-before-after {
+    .sw-field--switch {
+        margin-top: 0px;
+        margin-bottom: 0px;
+    }
+
     .config-row-2 {
         display: flex;
         gap: 12px;
         align-items: flex-end;
         margin-bottom: 12px;
 
-        > * {
+        >* {
             flex: 1;
             margin-bottom: 0 !important;
         }
@@ -37,6 +42,10 @@
             border-color: #9ca3af;
         }
 
+        &:active {
+            cursor: grabbing;
+        }
+
         &.is--active {
             background-color: #1890ff;
             color: #ffffff;
@@ -45,7 +54,7 @@
             .mw-ba-item-tab__remove {
                 color: #ffffff;
                 opacity: 0.8;
-                
+
                 &:hover {
                     opacity: 1;
                 }
@@ -62,6 +71,11 @@
             }
         }
 
+        &.is--dragging {
+            opacity: 0.65;
+            transform: scale(0.98);
+        }
+
         .mw-ba-item-tab__remove {
             margin-left: 8px;
             font-size: 10px;
@@ -71,6 +85,25 @@
 
             &:hover {
                 color: #ef4444;
+            }
+        }
+
+        .mw-ba-item-tab__move {
+            margin-left: 8px;
+            font-size: 14px;
+            line-height: 1;
+            color: #6b7280;
+            cursor: pointer;
+            user-select: none;
+            transition: color 0.15s;
+
+            &:hover {
+                color: #111827;
+            }
+
+            &.is--disabled {
+                opacity: 0.35;
+                pointer-events: none;
             }
         }
     }
