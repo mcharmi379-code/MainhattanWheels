@@ -1,0 +1,90 @@
+.sw-cms-el-mw-product-quick-order {
+    padding: 20px;
+    background: #fff;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+
+    &__placeholder {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 30px 10px;
+        color: #94a3b8;
+        text-align: center;
+
+        p {
+            margin-top: 8px;
+            font-size: 13px;
+        }
+    }
+
+    &__wrapper {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 20px;
+        flex-wrap: wrap;
+    }
+
+    &__price-box {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+    }
+
+    &__price {
+        font-size: 24px;
+        font-weight: 700;
+        color: #0f172a;
+    }
+
+    &__tax-info {
+        font-size: 12px;
+        color: #64748b;
+    }
+
+    &__action-box {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        flex-wrap: nowrap;
+    }
+
+    &__qty-label {
+        font-size: 14px;
+        font-weight: 600;
+        color: #334155;
+    }
+
+    &__qty-input {
+        input {
+            width: 60px;
+            height: 38px;
+            text-align: center;
+            border: 1px solid #cbd5e1;
+            border-radius: 4px;
+            background: #f8fafc;
+            color: #475569;
+            font-weight: 600;
+            pointer-events: none;
+        }
+    }
+
+    &__btn {
+        background: #e85630;
+        color: #fff;
+        border: none;
+        border-radius: 4px;
+        padding: 10px 20px;
+        font-size: 14px;
+        font-weight: 600;
+        cursor: pointer;
+        display: inline-flex;
+        align-items: center;
+        height: 38px;
+        white-space: nowrap;
+        pointer-events: none;
+    }
+}

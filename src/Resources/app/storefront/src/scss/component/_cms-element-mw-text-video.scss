@@ -47,6 +47,9 @@
 
     .mw-text-video-actions {
         display: flex;
+        gap: 16px;
+        flex-wrap: wrap;
+        align-items: center;
         margin-top: 10px;
     }
 

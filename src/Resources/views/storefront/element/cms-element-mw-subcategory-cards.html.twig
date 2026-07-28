@@ -1,0 +1,35 @@
+{% block element_mw_subcategory_cards %}
+    {% set c = element.config %}
+    {% set cards = element.data.cards ?: c.cards.value %}
+
+    <div class="cms-element-mw-subcategory-cards">
+        {% if cards|length > 0 %}
+            <div class="cms-element-mw-subcategory-cards__grid">
+                {% for card in cards %}
+                    {% set buttonUrl = card.buttonUrl ?: '#' %}
+                    {% if card.buttonLinkType == 'external' and buttonUrl != '#' and not (buttonUrl starts with 'http://') and not (buttonUrl starts with 'https://') and not (buttonUrl starts with '//') and not (buttonUrl starts with 'mailto:') and not (buttonUrl starts with 'tel:') %}
+                        {% set buttonUrl = 'https://' ~ buttonUrl %}
+                    {% endif %}
+
+                    <div class="cms-element-mw-subcategory-cards__card">
+                        {% if card.title %}
+                            <h3 class="cms-element-mw-subcategory-cards__title">{{ card.title }}</h3>
+                        {% endif %}
+
+                        {% if card.description %}
+                            <div class="cms-element-mw-subcategory-cards__description">
+                                {{ card.description|raw }}
+                            </div>
+                        {% endif %}
+
+                        {% if card.buttonText %}
+                            <a href="{{ buttonUrl }}" class="cms-element-mw-subcategory-cards__link">
+                                {{ card.buttonText }}
+                            </a>
+                        {% endif %}
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+    </div>
+{% endblock %}

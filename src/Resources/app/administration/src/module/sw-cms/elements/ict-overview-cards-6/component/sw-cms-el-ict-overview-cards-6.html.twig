@@ -126,7 +126,11 @@
                     </div>
 
                     <div class="card-content">
-                        <div class="card-icon" :style="{ textAlign: getTextAlignment(card.iconAlignment) }">
+                        <div
+                            v-if="hasIconImage(index)"
+                            class="card-icon"
+                            :style="{ textAlign: getTextAlignment(card.iconAlignment) }"
+                        >
                             <div
                                 class="icon-box"
                                 :data-hover-effect="card.iconHoverEffect || 'none'"
@@ -157,13 +161,11 @@
                                     :alt="card.headline || 'Icon'"
                                     class="icon-image"
                                 />
-                                <svg v-else width="50%" height="50%" viewBox="0 0 24 24" :fill="card.iconColor">
-                                    <path d="M12,1L3,5V11C3,16.55 6.84,21.74 12,23C17.16,21.74 21,16.55 21,11V5L12,1Z"/>
-                                </svg>
                             </div>
                         </div>
 
                         <h3
+                            v-if="hasText(card.headline)"
                             class="card-headline"
                             :style="{
                                 fontSize: getCssSizeValue(card.headlineSize, '24px'),
@@ -176,6 +178,7 @@
                         </h3>
 
                         <h4
+                            v-if="hasText(card.subheadline)"
                             class="card-subheadline"
                             :style="{
                                 fontSize: getCssSizeValue(card.subheadlineSize, '20px'),
@@ -188,7 +191,7 @@
                         </h4>
 
                         <div
-                            v-if="card.showBodyText"
+                            v-if="card.showBodyText && hasText(card.bodyText)"
                             class="card-body-text"
                             :style="{
                                 fontSize: getCssSizeValue(card.bodyTextSize, '16px'),

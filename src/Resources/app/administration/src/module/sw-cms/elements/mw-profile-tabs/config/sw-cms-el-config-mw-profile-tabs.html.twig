@@ -37,12 +37,12 @@
         :default-folder="cmsPageState.pageEntityName"
         :caption="$tc('sw-cms.elements.general.config.caption.mediaUpload')"
         @media-upload-sidebar-open="onOpenMediaModal"
-        @media-upload-remove-image="element.config.media.value = null; element.data.media = null; onInput()"
+        @media-upload-remove-image="onImageRemove"
     />
     <sw-upload-listener
         :upload-tag="uploadTag"
         auto-upload
-        @media-upload-finish="onSelectionChanges([$event.media])"
+        @media-upload-finish="onImageUpload"
     />
     <sw-media-modal-v2
         v-if="mediaModalIsOpen"

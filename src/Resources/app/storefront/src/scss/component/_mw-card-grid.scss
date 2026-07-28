@@ -28,15 +28,8 @@
         overflow: hidden;
 
         &:hover,
-        &:focus-visible,
-        &:visited,
-        &:active {
-            text-decoration: none;
-        }
-
-        &:hover,
         &:focus-visible {
-            border-color: var(--mw-card-grid-hover-color, #ff6600);
+            border-color: var(--mw-card-grid-hover-color, #e35630);
             box-shadow: 0 0 32px rgba(255, 102, 0, 0.16);
             transform: translateY(-2px);
             outline: none;
@@ -89,36 +82,25 @@
         font-size: 1.15rem;
         line-height: 1.2;
         font-weight: 700;
+
+        &--inline {
+            margin: 0;
+        }
     }
 
-    &__subheading {
-        display: inline-flex;
-        align-items: center;
-        gap: 10px;
-        margin-top: auto;
-        color: #ff6600;
-        font-size: 0.8rem;
-        line-height: 1.2;
-        letter-spacing: 0.03em;
-        text-transform: uppercase;
-        font-weight: 700;
-        text-decoration: none;
-    }
+    &__description {
+        color: #1f2937;
+        font-size: 0.95rem;
+        line-height: 1.65;
 
-    &__arrow {
-        font-size: 1.15em;
-        line-height: 1;
-        transition: transform .2s ease;
-    }
-
-    &__card:hover &__arrow,
-    &__card:focus-visible &__arrow {
-        transform: translateX(2px);
+        p {
+            margin: 0;
+        }
     }
 
     &__card:hover &__icon--mask,
     &__card:focus-visible &__icon--mask {
-        background-color: var(--mw-card-grid-hover-color, #ff6600);
+        background-color: var(--mw-card-grid-hover-color, #e35630);
     }
 
     &__card:hover &__icon,
@@ -128,15 +110,60 @@
 
     &__card:hover &__badge,
     &__card:focus-visible &__badge {
-        background-color: var(--mw-card-grid-hover-color, #ff6600);
+        background-color: var(--mw-card-grid-hover-color, #e35630);
         color: #fff;
-        border-color: var(--mw-card-grid-hover-color, #ff6600);
+        border-color: var(--mw-card-grid-hover-color, #e35630);
     }
 
     &__card:hover &__heading,
-    &__card:focus-visible &__heading,
-    &__card:hover &__subheading,
-    &__card:focus-visible &__subheading {
+    &__card:focus-visible &__heading {
         text-decoration: none;
+    }
+
+    &.is--title-beside-badge {
+        gap: 20px;
+
+        .mw-card-grid__card {
+            min-height: 208px;
+            padding: 28px 22px 24px;
+            border-color: #e35630;
+            border-radius: 4px;
+            box-shadow: 0 2px 8px rgba(17, 24, 39, 0.12);
+            transform: none;
+        }
+
+        .mw-card-grid__card:hover,
+        .mw-card-grid__card:focus-visible {
+            border-color: #e35630;
+            box-shadow: 0 8px 24px rgba(227, 86, 48, 0.16);
+        }
+
+        .mw-card-grid__top {
+            justify-content: flex-start;
+            align-items: center;
+            gap: 12px;
+            min-height: 0;
+            margin-bottom: 20px;
+        }
+
+        .mw-card-grid__badge {
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            border-color: #e35630;
+            background: #e35630;
+            color: #fff;
+            font-size: 0.95rem;
+        }
+
+        .mw-card-grid__heading {
+            font-size: 1.05rem;
+            font-weight: 800;
+        }
+
+        .mw-card-grid__description {
+            font-size: 0.9rem;
+            line-height: 1.7;
+        }
     }
 }

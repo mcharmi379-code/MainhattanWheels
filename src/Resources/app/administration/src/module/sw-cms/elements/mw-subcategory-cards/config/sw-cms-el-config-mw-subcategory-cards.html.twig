@@ -1,0 +1,72 @@
+{% block sw_cms_element_mw_subcategory_cards_config %}
+<div class="sw-cms-el-config-mw-subcategory-cards">
+    <div class="config-section card-management">
+        <div class="section-header">
+            <h3 class="config-section-title">Subcategory Cards</h3>
+            <sw-button @click="addCard" variant="primary" size="small" class="add-card-btn">
+                Add Card
+            </sw-button>
+        </div>
+
+        <div v-for="(card, cardIndex) in cards" :key="cardIndex" class="card-config-item">
+            <div class="mw-accordion-header" @click="toggleAccordion(cardIndex)">
+                <div class="accordion-title">
+                    <span class="card-badge">{{ cardIndex + 1 }}</span>
+                    {{ card.title || 'Subcategory Title ' + (cardIndex + 1) }}
+                </div>
+                <div class="accordion-actions">
+                    <sw-button @click.stop="removeCard(cardIndex)" variant="danger" size="x-small">
+                        Remove Card
+                    </sw-button>
+                    <mt-icon size="0.75rem" :name="openAccordionIndex === cardIndex ? 'regular-chevron-down-xs' : 'regular-chevron-right-xs'"></mt-icon>
+                </div>
+            </div>
+
+            <div class="mw-accordion-content" v-if="openAccordionIndex === cardIndex">
+                <div class="config-field-group">
+                    <mt-text-field
+                        v-model="card.title"
+                        label="Card Title"
+                        placeholder="e.g. OEM Felgen-Pulverlackgrundierung"
+                        @update:model-value="onInput"
+                    />
+
+                    <sw-text-editor
+                        v-model:value="card.description"
+                        label="Description / Bullet Points"
+                        placeholder="Add list items or description text..."
+                        sanitize-input
+                        @update:value="onInput"
+                    />
+
+                    <mt-text-field
+                        v-model="card.buttonText"
+                        label="Button / Link Text"
+                        placeholder="e.g. Zur Unterkategorie im Shop →"
+                        @update:model-value="onInput"
+                    />
+
+                    <mt-select
+                        v-model="card.buttonLinkType"
+                        label="Link Type"
+                        :options="[{ value: 'internal', label: 'Internal' }, { value: 'external', label: 'External' }]"
+                        @update:model-value="onInput"
+                    />
+
+                    <sw-dynamic-url-field
+                        v-if="card.buttonLinkType === 'internal'"
+                        v-model:value="card.buttonUrl"
+                    />
+                    <mt-text-field
+                        v-if="card.buttonLinkType === 'external'"
+                        v-model="card.buttonUrl"
+                        label="Button Link URL"
+                        placeholder="https://..."
+                        @update:model-value="onInput"
+                    />
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,54 @@
+{% block element_mw_process_steps %}
+    {% set heading     = element.data.heading|default('') %}
+    {% set subheading  = element.data.subheading|default('') %}
+    {% set accentColor = element.data.accentColor|default('#e8671a') %}
+    {% set steps       = element.data.steps|default([]) %}
+
+    {% if heading or subheading or steps|length > 0 %}
+        <div class="cms-element-mw-process-steps">
+            <div class="mw-process-steps-container">
+                <!-- Header -->
+                {% if heading or subheading %}
+                    <div class="mw-process-steps-header">
+                        {% if heading %}
+                            <h2 class="mw-process-steps-heading">{{ heading }}</h2>
+                        {% endif %}
+                        <div class="mw-process-steps-accent-line" style="background-color: {{ accentColor|e('html_attr') }};"></div>
+                        {% if subheading %}
+                            <h3 class="mw-process-steps-subheading">{{ subheading|raw }}</h3>
+                        {% endif %}
+                    </div>
+                {% endif %}
+
+                <!-- Steps Grid -->
+                {% if steps|length > 0 %}
+                    <div class="mw-process-steps-grid">
+                        {% for step in steps %}
+                            <div class="mw-process-steps-item">
+                                <div class="mw-process-steps-badge-row">
+                                    <span class="mw-process-steps-badge" style="border-color: {{ accentColor|e('html_attr') }}; color: {{ accentColor|e('html_attr') }};">
+                                        {{ step.number }}
+                                    </span>
+                                    {% if not loop.last %}
+                                        <div class="mw-process-steps-connector-line"></div>
+                                    {% endif %}
+                                </div>
+                                <div class="mw-process-steps-body">
+                                    <h2 class="mw-process-steps-step-title">
+                                        <strong>{{ step.title }}</strong>
+                                    </h2>
+                                    {% if step.subTitle %}
+                                        <h4 class="mw-process-steps-step-subtitle">{{ step.subTitle }}</h4>
+                                    {% endif %}
+                                    <div class="mw-process-steps-step-desc">
+                                        {{ step.description|raw }}
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    {% endif %}
+{% endblock %}

@@ -1,0 +1,35 @@
+{% block sw_cms_element_mw_testimonial %}
+<div class="sw-cms-el-mw-testimonial">
+
+    <!-- Placeholder: no image selected yet -->
+    <div class="sw-cms-el-mw-testimonial__image-col sw-cms-el-mw-testimonial__image-col--placeholder"
+         v-if="!hasImage">
+        <sw-icon name="regular-image" size="40" />
+    </div>
+
+    <!-- Image preview via media preview component -->
+    <div class="sw-cms-el-mw-testimonial__image-col" v-else>
+        <sw-media-preview-v2
+            class="sw-cms-el-mw-testimonial__image"
+            :source="imageId"
+        />
+    </div>
+
+    <!-- Vertical Divider -->
+    <div class="sw-cms-el-mw-testimonial__divider" aria-hidden="true"></div>
+
+    <!-- Quote Content -->
+    <div class="sw-cms-el-mw-testimonial__content">
+        <div class="sw-cms-el-mw-testimonial__quote">
+            {{ quote || '„Your testimonial quote will appear here..."' }}
+        </div>
+        <div class="sw-cms-el-mw-testimonial__author">
+            <strong v-if="authorName">{{ authorName }}</strong>
+            <strong v-else class="sw-cms-el-mw-testimonial__placeholder-text">Author Name</strong>
+            <span v-if="authorRole"> {{ authorRole }}</span>
+            <span v-else class="sw-cms-el-mw-testimonial__placeholder-text"> Role / Position</span>
+        </div>
+    </div>
+
+</div>
+{% endblock %}

@@ -1,0 +1,62 @@
+{% block sw_cms_el_config_mw_testimonial %}
+<div class="sw-cms-el-config-mw-testimonial">
+
+    <!-- Upload Listener (Critical to make sw-media-upload-v2 work) -->
+    <sw-upload-listener
+        :upload-tag="uploadTag"
+        auto-upload
+        @media-upload-finish="onImageUpload"
+    />
+
+    <!-- Person Photo — standard Shopware media upload with Open Media / Upload buttons -->
+    <p class="sw-cms-el-config-mw-testimonial__label">{{ $tc('mw-cms.elements.mwTestimonial.config.personPhoto') }}</p>
+    <sw-media-upload-v2
+        variant="regular"
+        :upload-tag="uploadTag"
+        :source="previewSource"
+        :allow-multi-select="false"
+        :default-folder="cmsPageState.pageEntityName"
+        :caption="$tc('sw-cms.elements.general.config.caption.mediaUpload')"
+        @media-upload-sidebar-open="onOpenMediaModal"
+        @media-upload-remove-image="onImageRemove"
+    />
+
+    <!-- Media Selection Modal -->
+    <sw-media-modal-v2
+        v-if="mediaModalIsOpen"
+        variant="full"
+        :caption="$tc('sw-cms.elements.general.config.caption.mediaUpload')"
+        :allow-multi-select="false"
+        @media-upload-remove-image="onImageRemove"
+        @media-modal-selection-change="onSelectionChanges"
+        @modal-close="onCloseModal"
+    />
+
+    <!-- Quote -->
+    <sw-textarea-field
+        v-model:value="element.config.quote.value"
+        :label="$tc('mw-cms.elements.mwTestimonial.config.quote')"
+        placeholder="Enter testimonial quote..."
+        :rows="4"
+        @update:value="onInput"
+        style="margin-top: 15px;"
+    />
+
+    <!-- Author Name -->
+    <sw-text-field
+        v-model:value="element.config.authorName.value"
+        :label="$tc('mw-cms.elements.mwTestimonial.config.authorName')"
+        placeholder="e.g. Thomas Beez"
+        @update:value="onInput"
+    />
+
+    <!-- Author Role -->
+    <sw-text-field
+        v-model:value="element.config.authorRole.value"
+        :label="$tc('mw-cms.elements.mwTestimonial.config.authorRole')"
+        placeholder="e.g. Geschäftsführer der Mainhattan-Wheels GmbH"
+        @update:value="onInput"
+    />
+
+</div>
+{% endblock %}

@@ -1,0 +1,47 @@
+{% block sw_cms_element_mw_tab_cards %}
+<div class="sw-cms-el-mw-tab-cards">
+    <div class="sw-cms-el-mw-tab-cards__header">
+        <h2 class="sw-cms-el-mw-tab-cards__main-heading" v-if="element.config.mainHeading.value">
+            {{ element.config.mainHeading.value }}
+        </h2>
+        <p class="sw-cms-el-mw-tab-cards__sub-heading" v-if="element.config.subHeading.value">
+            {{ element.config.subHeading.value }}
+        </p>
+    </div>
+
+    <div class="sw-cms-el-mw-tab-cards__grid">
+        <div
+            v-for="(card, index) in cards"
+            :key="index"
+            class="sw-cms-el-mw-tab-cards__card"
+            :class="{ 'is--active': activeCardIndex === index }"
+            @click="selectCard(index)"
+        >
+            <div class="sw-cms-el-mw-tab-cards__card-title">{{ card.cardTitle }}</div>
+            <div class="sw-cms-el-mw-tab-cards__card-subtitle" v-if="card.cardSubtitle">{{ card.cardSubtitle }}</div>
+        </div>
+    </div>
+
+    <div class="sw-cms-el-mw-tab-cards__panel" v-if="activeCard">
+        <div class="sw-cms-el-mw-tab-cards__panel-header">
+            <div class="sw-cms-el-mw-tab-cards__panel-titles">
+                <h3 class="sw-cms-el-mw-tab-cards__tab-headline">{{ activeCard.tabHeadline || activeCard.cardTitle }}</h3>
+                <div class="sw-cms-el-mw-tab-cards__tab-subheadline" v-if="activeCard.tabSubheadline">{{ activeCard.tabSubheadline }}</div>
+            </div>
+            <button class="sw-cms-el-mw-tab-cards__button" v-if="element.config.buttonText.value">
+                {{ element.config.buttonText.value }}
+            </button>
+        </div>
+        <div class="sw-cms-el-mw-tab-cards__product-links" v-if="activeCard.productLinks && activeCard.productLinks.length">
+            <div
+                v-for="(link, lIdx) in activeCard.productLinks"
+                :key="lIdx"
+                class="sw-cms-el-mw-tab-cards__link-item"
+            >
+                <span class="link-bullet">›</span>
+                <span class="link-text">{{ link.label || 'Product Link ' + (lIdx + 1) }}</span>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

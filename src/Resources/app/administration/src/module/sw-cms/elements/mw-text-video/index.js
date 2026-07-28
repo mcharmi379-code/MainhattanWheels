@@ -25,6 +25,10 @@ Shopware.Service('cmsService').registerCmsElement({
             source: 'static',
             value: '#4a5568',
         },
+        showPrimaryButton: {
+            source: 'static',
+            value: true,
+        },
         buttonText: {
             source: 'static',
             value: 'Call 06074 - 48 66 5 66',
@@ -46,6 +50,34 @@ Shopware.Service('cmsService').registerCmsElement({
             value: '_self',
         },
         buttonLink: {
+            source: 'static',
+            value: '',
+        },
+        showSecondaryButton: {
+            source: 'static',
+            value: false,
+        },
+        button2Text: {
+            source: 'static',
+            value: 'Learn More',
+        },
+        button2BgColor: {
+            source: 'static',
+            value: '#1a1a1a',
+        },
+        button2TextColor: {
+            source: 'static',
+            value: '#ffffff',
+        },
+        button2LinkType: {
+            source: 'static',
+            value: 'external',
+        },
+        button2LinkTarget: {
+            source: 'static',
+            value: '_self',
+        },
+        button2Link: {
             source: 'static',
             value: '',
         },

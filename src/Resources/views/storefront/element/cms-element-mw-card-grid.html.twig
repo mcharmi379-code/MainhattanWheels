@@ -2,8 +2,9 @@
     {% set c = element.config %}
     {% set cards = c.cards.value ?? [] %}
     {% set columns = c.columns.value ?? 4 %}
+    {% set titleBesideBadge = c.titleBesideBadge.value is same as(true) %}
 
-    <div class="cms-element-mw-card-grid mw-card-grid" style="--mw-card-grid-columns: {{ columns }};">
+    <div class="cms-element-mw-card-grid mw-card-grid{% if titleBesideBadge %} is--title-beside-badge{% endif %}" style="--mw-card-grid-columns: {{ columns }};">
         {% for card in cards %}
             {% set index = loop.index %}
             {% set iconUrl = card.iconUrl ?? null %}
@@ -11,27 +12,23 @@
             {% set iconColor = card.iconColor ?? '' %}
             {% set heading = card.heading ?? '' %}
             {% set headingColor = card.headingColor ?? '' %}
-            {% set subheading = card.subheading ?? '' %}
-            {% set subheadingColor = card.subheadingColor ?? '' %}
-            {% set linkType = card.linkType ?? 'internal' %}
-            {% set linkUrl = card.linkUrl ?? '' %}
-            {% set linkNewTab = card.linkNewTab ?? false %}
-            {% set hoverColor = card.hoverColor ?? '#ff6600' %}
+            {% set description = card.description ?? card.subheading ?? '' %}
+            {% set descriptionColor = card.descriptionColor ?? card.subheadingColor ?? '' %}
+            {% set hoverColor = card.hoverColor ?? '#e35630' %}
             {% set isSvg = iconUrl is not empty and (iconMimeType == 'image/svg+xml' or iconUrl matches '/\\.svg(\\?.*)?$/') %}
-            {% set href = linkUrl %}
-            {% if linkType == 'external' and href != '#' and href is not empty and not (href starts with '#') and not (href starts with 'http://') and not (href starts with 'https://') and not (href starts with '//') and not (href starts with 'mailto:') and not (href starts with 'tel:') %}
-                {% set href = 'https://' ~ href %}
-            {% endif %}
-            {% set target = linkNewTab ? '_blank' : null %}
 
-            <a
+            <div
                 class="mw-card-grid__card"
-                href="{{ href ?: '#' }}"
-                {% if target %}target="{{ target }}" rel="noopener noreferrer"{% endif %}
                 style="--mw-card-grid-hover-color: {{ hoverColor }};"
             >
                 <div class="mw-card-grid__top">
-                    <span class="mw-card-grid__badge">{{ '%02d'|format(index) }}</span>
+                    <span class="mw-card-grid__badge">
+                        {{ titleBesideBadge ? index : '%02d'|format(index) }}
+                    </span>
+
+                    {% if titleBesideBadge and heading is not empty %}
+                        <h3 class="mw-card-grid__heading mw-card-grid__heading--inline" {% if headingColor is not empty %}style="color: {{ headingColor }};"{% endif %}>{{ heading }}</h3>
+                    {% endif %}
 
                     {% if iconUrl %}
                         {% if isSvg and iconColor is not empty %}
@@ -46,17 +43,16 @@
                     {% endif %}
                 </div>
 
-                {% if heading is not empty %}
+                {% if not titleBesideBadge and heading is not empty %}
                     <h3 class="mw-card-grid__heading" {% if headingColor is not empty %}style="color: {{ headingColor }};"{% endif %}>{{ heading }}</h3>
                 {% endif %}
 
-                {% if subheading is not empty %}
-                    <span class="mw-card-grid__subheading" {% if subheadingColor is not empty %}style="color: {{ subheadingColor }};"{% endif %}>
-                        {{ subheading }}
-                        <span class="mw-card-grid__arrow" aria-hidden="true">→</span>
-                    </span>
+                {% if description is not empty %}
+                    <div class="mw-card-grid__description" {% if descriptionColor is not empty %}style="color: {{ descriptionColor }};"{% endif %}>
+                        {{ description|raw }}
+                    </div>
                 {% endif %}
-            </a>
+            </div>
         {% endfor %}
     </div>
 {% endblock %}

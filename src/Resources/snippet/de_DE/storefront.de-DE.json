@@ -1,4 +1,8 @@
 {
+  "listing": {
+    "boxAddProduct": "In den Warenkorb",
+    "boxProductDetails": "Detailansicht"
+  },
   "mw-cms": {
     "showcase": {
       "showAll": "ALLE ANSEHEN",
@@ -15,6 +19,15 @@
     "taxPrice": "exkl. MwSt."
   },
   "footer": {
+    "logoTagline": "FELGENOBERFLÄCHENTECHNIK",
+    "copyright": "© 2025 Mainhattan-Wheels GmbH. Alle Rechte vorbehalten.",
+    "backToTop": "Zur Startseite gehen",
+    "social": {
+      "facebook": "#",
+      "instagram": "#",
+      "youtube": "#",
+      "linkedin": "#"
+    },
     "addressLineOne": "Mainhattan-Wheels GmbH",
     "addressLineTwo": "Lise-Meitner-Straße 5",
     "addressLineThree": "D-63128 Dietzenbach",
@@ -29,7 +42,9 @@
     },
     "newsletter": {
       "newsletterTitle": "Newsletter",
-      "submitButton": "anmelden"
+      "submitButton": "ANMELDEN",
+      "barTitle": "BLEIBEN SIE AUF DEM LAUFENDEN",
+      "barDesc": "Abonnieren Sie unseren Newsletter und erhalten Sie aktuelle Neuigkeiten, Angebote und Updates."
     },
     "opening": {
       "openingTitles": "Service Hotline",

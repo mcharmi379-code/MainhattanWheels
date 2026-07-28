@@ -135,7 +135,12 @@
                                 <button class="btn btn-buy"
                                         title="{{ 'listing.boxAddProduct'|trans|striptags }}">
                                     {% block page_product_detail_product_buy_button_label %}
-                                        {{ 'listing.boxAddProduct'|trans|sw_sanitize }}
+                                        <span class="btn-buy-icon">
+                                            {% sw_icon 'bag' style { 'size': 'sm' } %}
+                                        </span>
+                                        <span class="btn-buy-text">
+                                            {{ 'listing.boxAddProduct'|trans|sw_sanitize }}
+                                        </span>
                                     {% endblock %}
                                 </button>
                             </div>
@@ -146,9 +151,9 @@
         {% endblock %}
         {#        {% else %}#}
         {% block component_product_box_action_detail %}
-            <div class="d-grid">
+            <div class="product-detail-link-wrapper">
                 <a href="{{ seoUrl('frontend.detail.page', {productId: id}) }}"
-                   class="btn btn-light btn-detail"
+                   class="product-detail-link"
                    title="{{ 'listing.boxProductDetails'|trans|striptags }}">
                     {% block component_product_box_action_detail_label %}
                         {{ 'listing.boxProductDetails'|trans|sw_sanitize }}

@@ -1,0 +1,49 @@
+{% block element_mw_product_quick_order %}
+    {% set product = element.data.product %}
+
+    {% if product %}
+        {% set buttonText      = element.data.buttonText|default('View & order now') %}
+        {% set quantityLabel   = element.data.quantityLabel|default('Quantity') %}
+        {% set buttonBgColor   = element.data.buttonBgColor|default('#e8671a') %}
+        {% set buttonTextColor = element.data.buttonTextColor|default('#ffffff') %}
+
+        <div class="cms-element-mw-product-quick-order">
+            <div class="mw-pqo-card">
+                <!-- Price Section -->
+                <div class="mw-pqo-price-section">
+                    <div class="mw-pqo-price">
+                        {{ product.calculatedPrice.unitPrice|currency }}*
+                    </div>
+                    <div class="mw-pqo-tax">
+                        {{ 'productListing.taxPrice'|trans|sw_sanitize }}
+                    </div>
+                </div>
+
+                <!-- Action Section -->
+                <div class="mw-pqo-action-section">
+                    <!-- Quantity -->
+                    <div class="mw-pqo-qty-wrapper">
+                        <span class="mw-pqo-qty-label">{{ quantityLabel }}</span>
+                        <input
+                            type="number"
+                            class="mw-pqo-qty-input"
+                            value="{{ product.minPurchase|default(1) }}"
+                            min="{{ product.minPurchase|default(1) }}"
+                            max="{{ product.calculatedMaxPurchase|default(100) }}"
+                            step="{{ product.purchaseSteps|default(1) }}"
+                        />
+                    </div>
+
+                    <!-- Button -->
+                    <a
+                        href="{{ seoUrl('frontend.detail.page', { productId: product.id }) }}"
+                        class="mw-pqo-order-btn"
+                        style="background-color: {{ buttonBgColor|e('html_attr') }}; color: {{ buttonTextColor|e('html_attr') }};"
+                    >
+                        {{ buttonText }} <span class="mw-pqo-arrow">&rarr;</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+{% endblock %}

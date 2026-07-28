@@ -1,0 +1,9 @@
+{% block block_mw_tab_cards %}
+    {% set element = block.slots.getSlot('tabCards') %}
+
+    {% if element %}
+        <div class="col-12" data-cms-element-id="{{ element.id }}">
+            {% sw_include "@Storefront/storefront/element/cms-element-mw-tab-cards.html.twig" %}
+        </div>
+    {% endif %}
+{% endblock %}

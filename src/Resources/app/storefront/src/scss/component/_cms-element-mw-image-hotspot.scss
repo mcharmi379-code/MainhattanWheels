@@ -1,0 +1,304 @@
+.cms-element-mw-image-hotspot {
+    width: 100%;
+    margin: 30px 0;
+
+    // ── Tab Bar Navigation ───────────────────────────────────────
+    .mw-hotspots-tabs-nav {
+        display: flex;
+        justify-content: center;
+        align-items: stretch;
+        gap: 16px;
+        margin-bottom: 30px;
+        border-bottom: 2px solid #e5e7eb;
+        padding-bottom: 0;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        
+        // Hide scrollbar visually while keeping full touch scrollability
+        -ms-overflow-style: none;  /* IE and Edge */
+        scrollbar-width: none;  /* Firefox */
+        &::-webkit-scrollbar {
+            display: none; /* Chrome, Safari and Opera */
+        }
+
+        // On tablet & mobile screens: justify to start so scrolling left/right works without clipping
+        @media (max-width: 991.98px) {
+            justify-content: flex-start;
+            padding-left: 16px;
+            padding-right: 16px;
+            gap: 12px;
+        }
+    }
+
+    .mw-hotspots-tab-btn {
+        background: transparent;
+        border: none;
+        padding: 8px 24px 16px 24px;
+        cursor: pointer;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-end;
+        gap: 12px;
+        border-bottom: 3px solid transparent;
+        margin-bottom: -2px; // overlap border line perfectly
+        transition: border-color 0.2s ease;
+        outline: none;
+        flex-shrink: 0; // prevent button distortion when scrolling on mobile
+
+        &:hover {
+            .mw-hotspots-tab-text {
+                color: #1f2937;
+            }
+        }
+
+        &.is--active {
+            border-color: #e8671a;
+
+            .mw-hotspots-tab-text {
+                color: #e8671a;
+            }
+        }
+
+        @media (max-width: 767.98px) {
+            padding: 6px 14px 12px 14px;
+            gap: 8px;
+            margin-bottom: -2px;
+        }
+
+        @media (max-width: 575.98px) {
+            padding: 6px 10px 10px 10px;
+            gap: 6px;
+            margin-bottom: -2px;
+        }
+    }
+
+    .mw-hotspots-tab-icon-wrapper {
+        width: 44px;
+        height: 44px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+
+        @media (max-width: 767.98px) {
+            width: 36px;
+            height: 36px;
+        }
+
+        @media (max-width: 575.98px) {
+            width: 30px;
+            height: 30px;
+        }
+    }
+
+    .mw-hotspots-tab-icon {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        display: block;
+    }
+
+    .mw-hotspots-tab-text {
+        font-size: 0.95rem;
+        font-weight: 700;
+        color: #6b7280;
+        text-transform: uppercase;
+        text-align: center;
+        transition: color 0.2s ease;
+        white-space: nowrap;
+
+        @media (max-width: 767.98px) {
+            font-size: 0.825rem;
+        }
+
+        @media (max-width: 575.98px) {
+            font-size: 0.775rem;
+        }
+    }
+
+    // ── Tab Panels Content ───────────────────────────────────────
+    .mw-hotspots-panels {
+        width: 100%;
+    }
+
+    .mw-hotspots-panel {
+        display: none;
+
+        &.is--active {
+            display: block;
+            animation: hotspot-fade-in 0.3s ease;
+        }
+    }
+
+    .mw-hotspots-empty-state {
+        text-align: center;
+        padding: 40px;
+        background: #f9fafb;
+        border: 1px solid #e5e7eb;
+        border-radius: 6px;
+        color: #6b7280;
+    }
+
+    .mw-hotspot-wrapper {
+        position: relative;
+        width: 100%;
+        display: inline-block;
+        overflow: visible;
+    }
+
+    .mw-hotspot-base-image {
+        width: 100%;
+        height: auto;
+        display: block;
+        max-height: 700px;
+        object-fit: contain;
+    }
+
+    // ── Hotspot Pin ──────────────────────────────────────────────
+    .mw-hotspot-pin {
+        position: absolute;
+        transform: translate(-50%, -50%);
+        z-index: 10;
+
+        // Open tooltip on hover (desktop) OR when class is--active (touch/click)
+        &:hover,
+        &.is--active {
+            z-index: 30;
+
+            .mw-hotspot-tooltip {
+                opacity: 1;
+                visibility: visible;
+                transform: translate(-50%, -10px) scale(1);
+            }
+        }
+    }
+
+    .mw-hotspot-btn {
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        background-color: #e8671a;
+        color: #ffffff;
+        font-size: 0.95rem;
+        font-weight: 700;
+        border: 2px solid #ffffff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        padding: 0;
+        outline: none;
+        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+        transition: transform 0.2s ease, background-color 0.2s ease;
+        position: relative;
+
+        &:hover {
+            transform: scale(1.1);
+            background-color: darken(#e8671a, 8%);
+        }
+
+        &::after {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            border-radius: 50%;
+            border: 2px solid #e8671a;
+            animation: hotspot-pulse-storefront 2s infinite;
+            pointer-events: none;
+            opacity: 0;
+        }
+
+        @media (max-width: 575.98px) {
+            width: 26px;
+            height: 26px;
+            font-size: 0.8rem;
+        }
+    }
+
+    // ── Tooltip ──────────────────────────────────────────────────
+    .mw-hotspot-tooltip {
+        position: absolute;
+        bottom: 100%;
+        left: 50%;
+        transform: translate(-50%, 0) scale(0.95);
+        background: var(--tooltip-bg, #1f2937);
+        color: var(--tooltip-color, #ffffff);
+        padding: 12px 16px;
+        border-radius: 6px;
+        width: 220px;
+        text-align: left;
+        box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3), 0 8px 10px -6px rgba(0, 0, 0, 0.3);
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.25s cubic-bezier(0.16, 1, 0.3, 1), transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.25s;
+        pointer-events: none;
+
+        &::after {
+            content: '';
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            border: 8px solid transparent;
+            border-top-color: var(--tooltip-bg, #1f2937);
+        }
+
+        @media (max-width: 575.98px) {
+            width: 170px;
+            max-width: 75vw;
+            padding: 8px 12px;
+        }
+    }
+
+    .mw-hotspot-tooltip-title {
+        font-size: 0.925rem;
+        font-weight: 700;
+        margin: 0 0 6px 0;
+        line-height: 1.3;
+        color: #ffffff;
+
+        @media (max-width: 575.98px) {
+            font-size: 0.825rem;
+            margin-bottom: 4px;
+        }
+    }
+
+    .mw-hotspot-tooltip-text {
+        font-size: 0.825rem;
+        line-height: 1.5;
+        margin: 0;
+        color: #d1d5db;
+
+        @media (max-width: 575.98px) {
+            font-size: 0.75rem;
+            line-height: 1.4;
+        }
+    }
+}
+
+@keyframes hotspot-pulse-storefront {
+    0% {
+        transform: scale(1);
+        opacity: 0.8;
+    }
+    100% {
+        transform: scale(1.6);
+        opacity: 0;
+    }
+}
+
+@keyframes hotspot-fade-in {
+    from {
+        opacity: 0;
+        transform: translateY(4px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

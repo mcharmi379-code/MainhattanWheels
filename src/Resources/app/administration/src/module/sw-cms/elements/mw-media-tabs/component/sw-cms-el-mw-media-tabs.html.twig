@@ -1,0 +1,49 @@
+{% block sw_cms_el_mw_media_tabs %}
+    <div class="sw-cms-el-mw-media-tabs" :style="wrapperStyle">
+        <div class="sw-cms-el-mw-media-tabs__header">
+            <p
+                class="sw-cms-el-mw-media-tabs__subtitle"
+                :style="{ color: element.config.subtitleColor.value }"
+            >
+                {{ element.config.subtitle.value }}
+            </p>
+            <h3
+                class="sw-cms-el-mw-media-tabs__title"
+                :style="{ color: element.config.titleColor.value }"
+            >
+                {{ element.config.title.value }}
+            </h3>
+            <p
+                class="sw-cms-el-mw-media-tabs__description"
+                :style="{ color: element.config.descriptionColor.value }"
+            >
+                {{ element.config.description.value }}
+            </p>
+        </div>
+
+        <div class="sw-cms-el-mw-media-tabs__tabs">
+            <button
+                v-for="(tab, index) in tabs"
+                :key="index"
+                type="button"
+                class="sw-cms-el-mw-media-tabs__tab"
+                :class="{ 'is--active': activeIndex === index }"
+                :style="{ color: tab.textColor, backgroundColor: tab.backgroundColor }"
+                @click="setActive(index)"
+            >
+                <span class="sw-cms-el-mw-media-tabs__media">
+                    <video v-if="tab.mediaUrl && isVideo(tab)" :src="tab.mediaUrl" muted playsinline></video>
+                    <img v-else-if="tab.mediaUrl" :src="tab.mediaUrl" :alt="tab.title">
+                    <span v-else class="sw-cms-el-mw-media-tabs__placeholder">Media</span>
+                </span>
+                <strong>{{ tab.title || ('Tab ' + (index + 1)) }}</strong>
+                <small v-if="tab.eyebrow">{{ tab.eyebrow }}</small>
+            </button>
+        </div>
+
+        <div v-if="activeTab" class="sw-cms-el-mw-media-tabs__panel">
+            <h4>{{ activeTab.contentTitle || activeTab.title }}</h4>
+            <div v-html="activeTab.content"></div>
+        </div>
+    </div>
+{% endblock %}

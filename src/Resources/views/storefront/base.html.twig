@@ -106,15 +106,12 @@
 
             {% block layout_footer_copyright %}
                 <div class="container">
-                    <div class="footer-copyright">
-                        {% if theme_config('main-hattan-copyright-text') %}
-                            <div class="footer-copyright-custom">
-                                {{ theme_config('main-hattan-copyright-text')|trans|sw_sanitize }}
-                            </div>
-                        {% else %}
-                            {% sw_icon 'shopware' style {'size':'xs'} %}
-                            {{ "footer.copyrightInfo"|trans|sw_sanitize }}
-                        {% endif %}
+                    <div class="row align-items-center">
+                        <div class="col-12 text-center text-md-start">
+                            <span class="footer-copyright-text">
+                                {{ 'footer.copyright'|trans|sw_sanitize }}
+                            </span>
+                        </div>
                     </div>
                 </div>
             {% endblock %}

@@ -1,7 +1,18 @@
 {% block element_ict_hero_section %}
     {% set c = element.config %}
     {% set background = '' %}
-    {% set bgImageUrl = element.data.backgroundMedia.url ?? '' %}
+    {% set bgImageUrl = '' %}
+    {% if element.data.backgroundMedia.url is defined and element.data.backgroundMedia.url is not empty %}
+        {% set bgImageUrl = element.data.backgroundMedia.url %}
+    {% elseif element.data.backgroundImage.url is defined and element.data.backgroundImage.url is not empty %}
+        {% set bgImageUrl = element.data.backgroundImage.url %}
+    {% elseif element.data.media.url is defined and element.data.media.url is not empty %}
+        {% set bgImageUrl = element.data.media.url %}
+    {% elseif c.backgroundMedia.value is defined and c.backgroundMedia.value is not empty and not (c.backgroundMedia.value matches '/^[0-9a-f]{32}$/i') %}
+        {% set bgImageUrl = c.backgroundMedia.value %}
+    {% elseif c.backgroundImage.value is defined and c.backgroundImage.value is not empty and not (c.backgroundImage.value matches '/^[0-9a-f]{32}$/i') %}
+        {% set bgImageUrl = c.backgroundImage.value %}
+    {% endif %}
     {% if c.backgroundType.value == 'color' %}
         {% set background = 'background-color:' ~ (c.backgroundColor.value ?: '#f8f9fa') ~ ';' %}
     {% elseif c.backgroundType.value == 'image' %}
@@ -23,6 +34,9 @@
     {% endif %}
 
     {% set heroClasses = ['cms-element-ict-hero-section'] %}
+    {% if c.backgroundType.value == 'video' or (c.backgroundType.value == 'image' and bgImageUrl is not empty) %}
+        {% set heroClasses = heroClasses|merge(['cms-element-ict-hero-section--overlay']) %}
+    {% endif %}
     {% if c.backgroundType.value == 'video' %}
         {% set heroClasses = heroClasses|merge(['cms-element-ict-hero-section--video']) %}
     {% endif %}

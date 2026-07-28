@@ -44,11 +44,15 @@
 				{% set cardMainVideoMedia = slotData.cardMainVideos[cardIndex] ?? null %}
 				{% set iconImageMedia = slotData.iconImages[cardIndex] ?? null %}
 				{% set detailRows = card.showDetailRows and card.detailRows is defined and card.detailRows is iterable ? card.detailRows : [] %}
+				{% set headlineText = card.headline is defined and card.headline is not null ? (card.headline ~ '')|trim : '' %}
+				{% set subheadlineText = card.subheadline is defined and card.subheadline is not null ? (card.subheadline ~ '')|trim : '' %}
+				{% set bodyText = card.bodyText is defined and card.bodyText is not null ? (card.bodyText ~ '')|trim : '' %}
 				{% set activeButton = null %}
 				{% set activeButtonIndex = 0 %}
 				{% if card.buttons is defined and card.buttons is iterable %}
 					{% for configuredButton in card.buttons %}
-						{% if activeButton is null and (configuredButton.show is not defined or configuredButton.show) %}
+						{% set configuredButtonText = configuredButton.buttonText is defined and configuredButton.buttonText is not null ? (configuredButton.buttonText ~ '')|trim : '' %}
+						{% if activeButton is null and configuredButtonText and (configuredButton.show is not defined or configuredButton.show) %}
 							{% set activeButton = configuredButton %}
 							{% set activeButtonIndex = loop.index0 %}
 						{% endif %}
@@ -134,44 +138,42 @@
 						{% endif %}
 
 						<div class="card-content">
-							<div class="card-icon" style="text-align: {{ card.iconAlignment ?? 'left' }};">
-								<div class="icon-wrapper" style="
-										                                        width: {{ card.iconSize ?? 80 }}px;
-										                                        height: {{ card.iconSize ?? 80 }}px;
-										                                        background-color: {{ card.iconBackgroundColor ?? 'transparent' }};
-										                                        border-radius: {% if card.iconShape == 'round' %}50%{% else %}{{ card.iconBorderRadius ?? 8 }}px{% endif %};
-										                                        border: 1px solid {{ card.iconBorderColor ?? 'transparent' }};
-										                                        {% if card.iconOutlinePosition == 'outside' %}
-										                                            outline: {{ card.iconOutlineThickness ?: 1 }}px solid {{ card.iconOutlineColor ?? 'transparent' }};
-										                                        {% endif %}
-										                                        color: {{ card.iconColor ?? '#005AE5' }};
-										                                    ">
-									{% if iconImageMedia %}
+							{% if iconImageMedia %}
+								<div class="card-icon" style="text-align: {{ card.iconAlignment ?? 'left' }};">
+									<div class="icon-wrapper" style="
+										width: {{ card.iconSize ?? 80 }}px;
+										height: {{ card.iconSize ?? 80 }}px;
+										background-color: {{ card.iconBackgroundColor ?? 'transparent' }};
+										border-radius: {% if card.iconShape == 'round' %}50%{% else %}{{ card.iconBorderRadius ?? 8 }}px{% endif %};
+										border: 1px solid {{ card.iconBorderColor ?? 'transparent' }};
+										{% if card.iconOutlinePosition == 'outside' %}
+											outline: {{ card.iconOutlineThickness ?: 1 }}px solid {{ card.iconOutlineColor ?? 'transparent' }};
+										{% endif %}
+										color: {{ card.iconColor ?? '#005AE5' }};
+									">
 										{% if '.svg' in iconImageMedia.url %}
 											<span class="icon-image-mask" style="background-color: {{ card.iconColor ?? '#005AE5' }}; -webkit-mask-image: url('{{ iconImageMedia.url }}'); mask-image: url('{{ iconImageMedia.url }}');"></span>
 										{% else %}
 											<img src="{{ iconImageMedia.url }}" alt="Icon" class="icon-image">
 										{% endif %}
-									{% else %}
-										<svg width="50%" height="50%" viewbox="0 0 24 24" fill="currentColor">
-											<path d="M12,1L3,5V11C3,16.55 6.84,21.74 12,23C17.16,21.74 21,16.55 21,11V5L12,1Z"/>
-										</svg>
-									{% endif %}
+									</div>
 								</div>
-							</div>
+							{% endif %}
 
-							<h3 class="card-headline" style="font-size: {{ headlineCssSize }}; line-height: {{ headlineLineHeightCss }}; text-align: {{ card.headlineAlignment ?? 'left' }}; color: {{ card.headlineColor ?? '#262624' }};">
-								{{ card.headline }}
-							</h3>
-							{% if card.subheadline %}
+							{% if headlineText %}
+								<h3 class="card-headline" style="font-size: {{ headlineCssSize }}; line-height: {{ headlineLineHeightCss }}; text-align: {{ card.headlineAlignment ?? 'left' }}; color: {{ card.headlineColor ?? '#262624' }};">
+									{{ headlineText }}
+								</h3>
+							{% endif %}
+							{% if subheadlineText %}
 								<h4 class="card-subheadline" style="font-size: {{ subheadlineCssSize }}; line-height: {{ subheadlineLineHeightCss }}; text-align: {{ card.subheadlineAlignment ?? 'left' }}; color: {{ card.subheadlineColor ?? '#262624' }};">
-									{{ card.subheadline }}
+									{{ subheadlineText }}
 								</h4>
 							{% endif %}
 
-							{% if card.showBodyText %}
+							{% if card.showBodyText and bodyText %}
 								<div class="card-body-text" style="font-size: {{ bodyTextCssSize }}; line-height: {{ bodyTextLineHeightCss }}; text-align: {{ card.bodyTextAlignment ?? 'left' }}; color: {{ card.bodyTextColor ?? '#262624' }};">
-									{{ card.bodyText|raw }}
+									{{ bodyText|raw }}
 								</div>
 							{% endif %}
 

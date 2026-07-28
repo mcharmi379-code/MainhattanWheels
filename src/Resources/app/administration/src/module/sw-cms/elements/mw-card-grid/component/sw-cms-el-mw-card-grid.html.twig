@@ -4,9 +4,17 @@
             v-for="(card, index) in cards"
             :key="index"
             class="sw-cms-el-mw-card-grid__card"
+            :class="{ 'is--title-beside-badge': titleBesideBadge }"
         >
             <div class="sw-cms-el-mw-card-grid__top">
                 <span class="sw-cms-el-mw-card-grid__badge">{{ String(index + 1).padStart(2, '0') }}</span>
+                <h3
+                    v-if="titleBesideBadge"
+                    class="sw-cms-el-mw-card-grid__heading sw-cms-el-mw-card-grid__heading--inline"
+                    :style="{ color: card.headingColor || '#1a1a1a' }"
+                >
+                    {{ card.heading || ('Card ' + (index + 1)) }}
+                </h3>
                 <span
                     v-if="card.iconUrl"
                     class="sw-cms-el-mw-card-grid__icon"
@@ -20,13 +28,15 @@
                     <img v-if="!(card.iconMimeType === 'image/svg+xml' && card.iconColor)" :src="card.iconUrl" alt="" />
                 </span>
             </div>
-            <h3 class="sw-cms-el-mw-card-grid__heading" :style="{ color: card.headingColor || '#1a1a1a' }">
+            <h3 v-if="!titleBesideBadge" class="sw-cms-el-mw-card-grid__heading" :style="{ color: card.headingColor || '#1a1a1a' }">
                 {{ card.heading || ('Card ' + (index + 1)) }}
             </h3>
-            <span class="sw-cms-el-mw-card-grid__subheading" :style="{ color: card.subheadingColor || '#ff6600' }">
-                {{ card.subheading || 'LINK TEXT' }}
-                <span class="sw-cms-el-mw-card-grid__arrow">→</span>
-            </span>
+            <div
+                v-if="card.description || card.subheading"
+                class="sw-cms-el-mw-card-grid__description"
+                :style="{ color: card.descriptionColor || card.subheadingColor || '#1f2937' }"
+                v-html="card.description || card.subheading"
+            ></div>
         </div>
     </div>
 {% endblock %}

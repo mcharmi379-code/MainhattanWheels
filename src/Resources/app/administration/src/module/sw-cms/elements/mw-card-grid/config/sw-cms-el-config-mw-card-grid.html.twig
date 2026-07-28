@@ -7,6 +7,12 @@
         @update:value="onInput"
     />
 
+    <sw-switch-field
+        v-model:value="element.config.titleBesideBadge.value"
+        label="Show title beside badge"
+        @update:value="onInput"
+    />
+
     <div class="sw-cms-el-config-mw-card-grid__actions">
         <sw-button variant="primary" size="small" @click="addCard">Add Card</sw-button>
     </div>
@@ -68,28 +74,14 @@
             <mt-text-field :model-value="card.heading" label="Heading" @update:model-value="updateCard(index, 'heading', $event)" />
             <sw-colorpicker :value="card.headingColor" label="Heading Color" color-output="hex" :z-index="1000" @update:value="updateCard(index, 'headingColor', $event)" />
 
-            <mt-text-field :model-value="card.subheading" label="Subheading / Link Text" @update:model-value="updateCard(index, 'subheading', $event)" />
-            <sw-colorpicker :value="card.subheadingColor" label="Subheading / Link Color" color-output="hex" :z-index="1000" @update:value="updateCard(index, 'subheadingColor', $event)" />
+            <sw-text-editor
+                v-model:value="card.description"
+                label="Description"
+                sanitize-input
+                @update:value="updateCard(index, 'description', $event)"
+            />
+            <sw-colorpicker :value="card.descriptionColor" label="Description Color" color-output="hex" :z-index="1000" @update:value="updateCard(index, 'descriptionColor', $event)" />
 
-            <sw-single-select v-model:value="card.linkType" label="Link Type" :options="linkTypeOptions" @update:value="onInput" />
-            <sw-dynamic-url-field
-                v-if="card.linkType === 'internal'"
-                v-model:value="card.linkUrl"
-                label="Link to"
-                @update:value="onInput"
-            />
-            <mt-text-field
-                v-else
-                v-model="card.linkUrl"
-                label="Link to"
-                @update:model-value="onInput"
-            />
-            <sw-field
-                type="checkbox"
-                v-model="card.linkNewTab"
-                label="Open in new tab"
-                @update:model-value="onInput"
-            />
             <sw-colorpicker
                 :value="card.hoverColor"
                 label="Hover Highlight Color"

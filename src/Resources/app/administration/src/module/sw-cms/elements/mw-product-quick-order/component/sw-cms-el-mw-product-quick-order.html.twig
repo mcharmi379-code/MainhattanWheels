@@ -1,0 +1,31 @@
+{% block sw_cms_element_mw_product_quick_order %}
+<div class="sw-cms-el-mw-product-quick-order">
+    <div class="sw-cms-el-mw-product-quick-order__placeholder" v-if="!product">
+        <sw-icon name="regular-shopping-bag" size="24" />
+        <p>Please select a product in the element settings.</p>
+    </div>
+
+    <div class="sw-cms-el-mw-product-quick-order__wrapper" v-else>
+        <!-- Price box -->
+        <div class="sw-cms-el-mw-product-quick-order__price-box">
+            <div class="sw-cms-el-mw-product-quick-order__price">
+                {{ getFormattedPrice() }}
+            </div>
+            <div class="sw-cms-el-mw-product-quick-order__tax-info">
+                plus 19% VAT, plus shipping.
+            </div>
+        </div>
+
+        <!-- Action box -->
+        <div class="sw-cms-el-mw-product-quick-order__action-box">
+            <span class="sw-cms-el-mw-product-quick-order__qty-label">{{ quantityLabel }}</span>
+            <div class="sw-cms-el-mw-product-quick-order__qty-input">
+                <input type="number" value="1" disabled />
+            </div>
+            <button class="sw-cms-el-mw-product-quick-order__btn" type="button">
+                {{ buttonText }} &rarr;
+            </button>
+        </div>
+    </div>
+</div>
+{% endblock %}

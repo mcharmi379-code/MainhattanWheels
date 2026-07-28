@@ -13,9 +13,8 @@
         pointer-events: none;
     }
 
-    &--video {
-        background-color: #111;
-
+    &--video,
+    &--overlay {
         &::before {
             content: '';
             position: absolute;
@@ -26,6 +25,10 @@
                 linear-gradient(90deg, rgba(0, 0, 0, 0.64) 0%, rgba(0, 0, 0, 0.34) 42%, rgba(0, 0, 0, 0.18) 70%, rgba(0, 0, 0, 0.08) 100%),
                 linear-gradient(180deg, rgba(0, 0, 0, 0.10) 0%, rgba(0, 0, 0, 0.28) 100%);
         }
+    }
+
+    &--video {
+        background-color: #111;
     }
 
     &__container {
@@ -173,7 +176,8 @@
 
 }
 
-.cms-element-ict-hero-section--video {
+.cms-element-ict-hero-section--video,
+.cms-element-ict-hero-section--overlay {
     .cms-element-ict-hero-section__left,
     .cms-element-ict-hero-section__headline,
     .cms-element-ict-hero-section__description,

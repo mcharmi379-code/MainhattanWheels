@@ -9,12 +9,11 @@ const createCard = () => ({
     iconColor: '',
     heading: '',
     headingColor: '',
+    description: '',
+    descriptionColor: '',
     subheading: '',
     subheadingColor: '',
-    linkType: 'internal',
-    linkUrl: '',
-    linkNewTab: false,
-    hoverColor: '#ff6600',
+    hoverColor: '#e35630',
 });
 
 Shopware.Service('cmsService').registerCmsElement({
@@ -25,6 +24,7 @@ Shopware.Service('cmsService').registerCmsElement({
     previewComponent: 'sw-cms-el-preview-mw-card-grid',
     defaultConfig: {
         columns: { source: 'static', value: 4 },
+        titleBesideBadge: { source: 'static', value: false },
         cards: { source: 'static', value: [] },
     },
 });

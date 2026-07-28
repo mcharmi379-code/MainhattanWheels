@@ -65,13 +65,35 @@ export default {
         onCloseModal() {
             this.mediaModalIsOpen = false;
         },
+        async onImageUpload({ targetId }) {
+            if (!targetId) {
+                return;
+            }
+
+            const media = await this.mediaRepository.get(targetId);
+            this.updateMedia(media);
+            this.onInput();
+        },
+        onImageRemove() {
+            this.updateMedia(null);
+            this.onInput();
+        },
         async onSelectionChanges(mediaItems) {
             const media = mediaItems[0];
             if (!media) return;
-            this.element.config.media.value = media.id;
-            this.element.data.media = media;
+            this.updateMedia(media);
             this.onInput();
             this.onCloseModal();
+        },
+        updateMedia(media = null) {
+            if (!this.element.data) {
+                this.element.data = {};
+            }
+
+            this.element.config.media.value = media?.id ?? null;
+            this.element.config.media.source = 'static';
+            this.element.data.media = media;
+            this.element.data.mediaId = media?.id ?? null;
         },
     },
 };

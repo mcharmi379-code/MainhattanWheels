@@ -1,0 +1,178 @@
+{% block sw_cms_element_mw_tab_cards_config %}
+<div class="sw-cms-el-config-mw-tab-cards">
+    <!-- General Settings & Common Button Configuration -->
+    <div class="config-section">
+        <h3 class="config-section-title">General & Common Configuration</h3>
+        <mt-text-field
+            v-model="element.config.mainHeading.value"
+            label="Section Main Heading"
+            @update:model-value="onInput"
+        />
+        <mt-text-field
+            v-model="element.config.subHeading.value"
+            label="Section Sub Heading"
+            @update:model-value="onInput"
+        />
+
+        <div class="config-field-group common-button-group">
+            <h5 class="group-title">Common Action Button</h5>
+            <mt-text-field
+                v-model="element.config.buttonText.value"
+                label="Button Text"
+                @update:model-value="onInput"
+            />
+            <mt-select
+                v-model="element.config.buttonLinkType.value"
+                label="Button Link Type"
+                :options="[{ value: 'internal', label: 'Internal' }, { value: 'external', label: 'External' }]"
+                @update:model-value="onInput"
+            />
+            <sw-dynamic-url-field
+                v-if="element.config.buttonLinkType.value === 'internal'"
+                v-model:value="element.config.buttonUrl.value"
+            />
+            <mt-text-field
+                v-if="element.config.buttonLinkType.value === 'external'"
+                v-model="element.config.buttonUrl.value"
+                label="Button Link URL"
+                @update:model-value="onInput"
+            />
+            <mt-select
+                v-model="element.config.buttonTarget.value"
+                label="Button Target"
+                :options="[{ value: '_self', label: 'Same tab' }, { value: '_blank', label: 'New tab' }]"
+                @update:model-value="onInput"
+            />
+        </div>
+    </div>
+
+    <!-- Cards Management -->
+    <div class="config-section card-management">
+        <div class="section-header">
+            <h3 class="config-section-title">Cards</h3>
+            <sw-button @click="addCard" variant="primary" size="small" class="add-card-btn">
+                Add Card
+            </sw-button>
+        </div>
+
+        <div v-for="(card, cardIndex) in cards" :key="cardIndex" class="card-config-item">
+            <div class="mw-accordion-header" @click="toggleAccordion(cardIndex)">
+                <div class="accordion-title">
+                    <span class="card-badge">{{ cardIndex + 1 }}</span>
+                    {{ card.cardTitle || 'Card Title ' + (cardIndex + 1) }}
+                </div>
+                <div class="accordion-actions">
+                    <sw-button @click.stop="removeCard(cardIndex)" variant="danger" size="x-small">
+                        Remove Card
+                    </sw-button>
+                    <mt-icon size="0.75rem" :name="openAccordionIndex === cardIndex ? 'regular-chevron-down-xs' : 'regular-chevron-right-xs'"></mt-icon>
+                </div>
+            </div>
+
+            <div class="mw-accordion-content" v-if="openAccordionIndex === cardIndex">
+                <div class="config-field-group">
+                    <h5 class="group-title">Card Settings</h5>
+                    <mt-text-field
+                        v-model="card.cardTitle"
+                        label="Card Title"
+                        @update:model-value="onInput"
+                    />
+                    <mt-text-field
+                        v-model="card.cardSubtitle"
+                        label="Card Subtitle"
+                        @update:model-value="onInput"
+                    />
+
+                    <!-- Media Upload -->
+                    <div class="media-upload-wrapper">
+                        <sw-upload-listener
+                            :upload-tag="getMediaUploadTag(cardIndex)"
+                            @media-upload-finish="onImageUpload(cardIndex, $event)"
+                            auto-upload
+                        />
+                        <sw-media-upload-v2
+                            variant="regular"
+                            :upload-tag="getMediaUploadTag(cardIndex)"
+                            :source="card.mediaId"
+                            :allow-multi-select="false"
+                            label="Card Image / Logo"
+                            default-folder="cms_page"
+                            @selection-change="onSelectionChanges(cardIndex, $event)"
+                            @media-upload-remove-image="onImageRemove(cardIndex)"
+                            @media-upload-sidebar-open="onOpenMediaModal(cardIndex)"
+                        />
+                        <sw-media-modal-v2
+                            v-if="cardMediaModals[cardIndex]"
+                            variant="full"
+                            entity-context="cms_page"
+                            :allow-multi-select="false"
+                            @media-modal-selection-change="onSelectionChanges(cardIndex, $event)"
+                            @modal-close="onCloseMediaModal(cardIndex)"
+                        />
+                    </div>
+                </div>
+
+                <div class="config-field-group">
+                    <h5 class="group-title">Tab Panel Header</h5>
+                    <mt-text-field
+                        v-model="card.tabHeadline"
+                        label="Tab Headline"
+                        @update:model-value="onInput"
+                    />
+                    <mt-text-field
+                        v-model="card.tabSubheadline"
+                        label="Tab Subheadline"
+                        @update:model-value="onInput"
+                    />
+                </div>
+
+                <!-- Product Links (Addable & Removable Accordion) -->
+                <div class="config-field-group product-links-group">
+                    <div class="sub-header">
+                        <h5 class="group-title">Product Links</h5>
+                        <sw-button @click="addProductLink(cardIndex)" variant="ghost" size="x-small">
+                            Add Product Link
+                        </sw-button>
+                    </div>
+
+                    <div
+                        v-for="(link, linkIndex) in (card.productLinks || [])"
+                        :key="linkIndex"
+                        class="product-link-accordion-item"
+                    >
+                        <div class="mw-link-accordion-header" @click="toggleLinkAccordion(cardIndex, linkIndex)">
+                            <div class="link-accordion-title">
+                                <span class="link-badge">{{ linkIndex + 1 }}</span>
+                                {{ link.label || 'Product Link ' + (linkIndex + 1) }}
+                            </div>
+                            <div class="link-accordion-actions">
+                                <sw-button @click.stop="removeProductLink(cardIndex, linkIndex)" variant="danger" size="x-small">
+                                    Remove
+                                </sw-button>
+                                <mt-icon size="0.75rem" :name="isLinkAccordionOpen(cardIndex, linkIndex) ? 'regular-chevron-down-xs' : 'regular-chevron-right-xs'"></mt-icon>
+                            </div>
+                        </div>
+
+                        <div class="mw-link-accordion-content" v-if="isLinkAccordionOpen(cardIndex, linkIndex)">
+                            <mt-text-field
+                                v-model="link.label"
+                                label="Link Display Text / Title"
+                                placeholder="e.g. Audi Brillant-Schwarz Y9B"
+                                @update:model-value="onInput"
+                            />
+                            <sw-entity-single-select
+                                v-model:value="link.productId"
+                                entity="product"
+                                label="Select Product"
+                                placeholder="Choose product..."
+                                show-clearable-button
+                                @update:value="onInput"
+                            />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

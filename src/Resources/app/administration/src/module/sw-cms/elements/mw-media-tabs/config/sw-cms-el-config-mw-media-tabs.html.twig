@@ -1,0 +1,144 @@
+{% block sw_cms_el_config_mw_media_tabs %}
+    <div class="sw-cms-el-config-mw-media-tabs">
+        <div class="sw-cms-el-config-mw-media-tabs__section">
+            <h4>Section content</h4>
+            <sw-text-field v-model:value="element.config.subtitle.value" label="Subtitle" @update:value="onInput" />
+            <sw-text-field v-model:value="element.config.title.value" label="Title" @update:value="onInput" />
+            <sw-textarea-field v-model:value="element.config.description.value" label="Description" @update:value="onInput" />
+
+            <div class="sw-cms-el-config-mw-media-tabs__grid">
+                <sw-colorpicker v-model:value="element.config.subtitleColor.value" label="Subtitle text color" color-output="hex" :z-index="1000" @update:value="onInput" />
+                <sw-colorpicker v-model:value="element.config.titleColor.value" label="Title text color" color-output="hex" :z-index="1000" @update:value="onInput" />
+                <sw-colorpicker v-model:value="element.config.descriptionColor.value" label="Description text color" color-output="hex" :z-index="1000" @update:value="onInput" />
+                <sw-colorpicker v-model:value="element.config.backgroundColor.value" label="Background color" color-output="hex" :z-index="1000" @update:value="onInput" />
+                <sw-colorpicker v-model:value="element.config.activeColor.value" label="Active border color" color-output="hex" :z-index="1000" @update:value="onInput" />
+            </div>
+        </div>
+
+        <div class="sw-cms-el-config-mw-media-tabs__toolbar">
+            <sw-button size="small" variant="primary" @click="addTab()">Add tab</sw-button>
+            <sw-button size="small" variant="ghost" @click="openBulkMediaModal">Add tabs from media</sw-button>
+        </div>
+
+        <div class="sw-cms-el-config-mw-media-tabs__tabs">
+            <button
+                v-for="(tab, index) in tabs"
+                :key="index"
+                type="button"
+                class="sw-cms-el-config-mw-media-tabs__tab-button"
+                :class="{ 'is--active': activeIndex === index }"
+                @click="activeIndex = index"
+            >
+                {{ tab.title || ('Tab ' + (index + 1)) }}
+            </button>
+        </div>
+
+        <div v-if="activeTab" class="sw-cms-el-config-mw-media-tabs__section">
+            <div class="sw-cms-el-config-mw-media-tabs__tab-header">
+                <h4>Tab {{ activeIndex + 1 }}</h4>
+                <div>
+                    <sw-button size="small" :disabled="activeIndex === 0" @click="moveTab(activeIndex, -1)">Move up</sw-button>
+                    <sw-button size="small" :disabled="activeIndex >= tabs.length - 1" @click="moveTab(activeIndex, 1)">Move down</sw-button>
+                    <sw-button size="small" @click="duplicateTab(activeIndex)">Duplicate</sw-button>
+                    <sw-button size="small" variant="ghost-danger" @click="removeTab(activeIndex)">Delete</sw-button>
+                </div>
+            </div>
+
+            <div class="sw-cms-el-config-mw-media-tabs__media">
+                <sw-media-upload-v2
+                    variant="regular"
+                    :upload-tag="getUploadTag(activeIndex)"
+                    :source="activeTab.mediaUrl"
+                    :allow-multi-select="false"
+                    :default-folder="cmsPageState.pageEntityName"
+                    caption="Tab image or video"
+                    @media-upload-sidebar-open="openMediaModal(activeIndex)"
+                    @media-upload-remove-image="removeTabMedia(activeIndex)"
+                />
+                <sw-upload-listener
+                    :upload-tag="getUploadTag(activeIndex)"
+                    auto-upload
+                    @media-upload-finish="onUploadFinish(activeIndex, $event)"
+                />
+            </div>
+
+            <sw-text-field :value="activeTab.eyebrow" label="Small label / subtitle on card" @update:value="updateTab('eyebrow', $event)" />
+            <sw-text-field :value="activeTab.title" label="Card title" @update:value="updateTab('title', $event)" />
+            <sw-text-field :value="activeTab.contentTitle" label="Content title" @update:value="updateTab('contentTitle', $event)" />
+            <sw-text-editor
+                :value="activeTab.content"
+                label="Tab content"
+                sanitize-info-warn
+                enable-transparent-background
+                @update:value="updateTab('content', $event)"
+            />
+
+            <div class="sw-cms-el-config-mw-media-tabs__content-media">
+                <h4>Content media</h4>
+                <sw-single-select
+                    :value="activeTab.contentMediaType || 'image'"
+                    label="Content media type"
+                    :options="[
+                        { value: 'image', label: 'Image' },
+                        { value: 'video', label: 'Video' }
+                    ]"
+                    @update:value="updateTab('contentMediaType', $event)"
+                />
+
+                <sw-media-upload-v2
+                    variant="regular"
+                    :upload-tag="getUploadTag(activeIndex) + '-content'"
+                    :source="activeTab.contentMediaUrl"
+                    :allow-multi-select="false"
+                    :default-folder="cmsPageState.pageEntityName"
+                    :caption="activeTab.contentMediaType === 'video' ? 'Upload content video' : 'Upload content image'"
+                    @media-upload-sidebar-open="contentMediaModalIndex = activeIndex"
+                    @media-upload-remove-image="removeTabContentMedia(activeIndex)"
+                />
+                <sw-upload-listener
+                    :upload-tag="getUploadTag(activeIndex) + '-content'"
+                    auto-upload
+                    @media-upload-finish="onContentUploadFinish(activeIndex, $event)"
+                />
+            </div>
+
+            <div class="sw-cms-el-config-mw-media-tabs__grid">
+                <sw-colorpicker :value="activeTab.textColor" label="Card text color" color-output="hex" :z-index="1000" @update:value="updateTab('textColor', $event)" />
+                <sw-colorpicker :value="activeTab.backgroundColor" label="Card background color" color-output="hex" :z-index="1000" @update:value="updateTab('backgroundColor', $event)" />
+            </div>
+        </div>
+
+        <sw-media-modal-v2
+            v-if="mediaModalIndex !== null"
+            variant="full"
+            caption="Select tab image or video"
+            :entity-context="cmsPageState.entityName"
+            :allow-multi-select="false"
+            :initial-folder-id="cmsPageState.defaultMediaFolderId"
+            @media-modal-selection-change="onMediaSelection(mediaModalIndex, $event)"
+            @modal-close="closeMediaModal"
+        />
+
+        <sw-media-modal-v2
+            v-if="contentMediaModalIndex !== null"
+            variant="full"
+            :caption="activeTab && activeTab.contentMediaType === 'video' ? 'Select content video' : 'Select content image'"
+            :entity-context="cmsPageState.entityName"
+            :allow-multi-select="false"
+            :initial-folder-id="cmsPageState.defaultMediaFolderId"
+            @media-modal-selection-change="onContentMediaSelection(contentMediaModalIndex, $event)"
+            @modal-close="closeMediaModal"
+        />
+
+        <sw-media-modal-v2
+            v-if="bulkMediaModalOpen"
+            variant="full"
+            caption="Create tabs from selected media"
+            :entity-context="cmsPageState.entityName"
+            :allow-multi-select="true"
+            :initial-folder-id="cmsPageState.defaultMediaFolderId"
+            @media-modal-selection-change="onBulkMediaSelection"
+            @modal-close="closeMediaModal"
+        />
+    </div>
+{% endblock %}

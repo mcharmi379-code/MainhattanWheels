@@ -1,0 +1,36 @@
+{% block sw_cms_el_config_mw_product_quick_order %}
+<div class="sw-cms-el-config-mw-product-quick-order">
+    <sw-entity-single-select
+        v-model:value="element.config.productId.value"
+        entity="product"
+        :repository="productRepository"
+        :criteria="criteria"
+        label="Select Product"
+        placeholder="Select a product..."
+        show-clearable-button
+        @update:value="onProductChange"
+    />
+
+    <sw-text-field
+        v-model:value="element.config.buttonText.value"
+        label="Button Text"
+        placeholder="View & order now"
+        @update:value="onInput"
+    />
+
+    <sw-colorpicker
+        v-model:value="element.config.buttonBgColor.value"
+        label="Button Background Color"
+        :default-value="'#e8671a'"
+        @update:value="onInput"
+    />
+
+    <sw-colorpicker
+        v-model:value="element.config.buttonTextColor.value"
+        label="Button Text Color"
+        :default-value="'#ffffff'"
+        @update:value="onInput"
+    />
+</div>
+{% endblock %}
+

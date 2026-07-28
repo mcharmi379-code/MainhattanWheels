@@ -1,0 +1,154 @@
+{% block element_mw_media_tabs %}
+    {% set config = element.translated.config ?? element.config %}
+    {% set tabs = config.tabs.value ?? [] %}
+    {% set subtitle = config.subtitle.value ?? '' %}
+    {% set title = config.title.value ?? '' %}
+    {% set description = config.description.value ?? '' %}
+    {% set subtitleColor = config.subtitleColor.value ?? '#e35630' %}
+    {% set titleColor = config.titleColor.value ?? '#1f2024' %}
+    {% set descriptionColor = config.descriptionColor.value ?? '#6e7480' %}
+    {% set backgroundColor = config.backgroundColor.value ?? '#f5f4f3' %}
+    {% set activeColor = config.activeColor.value ?? '#ff6a1a' %}
+
+    {% if tabs|length > 0 %}
+        <section
+            class="cms-element-mw-media-tabs mw-media-tabs"
+            data-mw-media-tabs="true"
+            style="
+                --mw-media-tabs-bg: {{ backgroundColor|e('html_attr') }};
+                --mw-media-tabs-active: {{ activeColor|e('html_attr') }};
+                --mw-media-tabs-title: {{ titleColor|e('html_attr') }};
+                --mw-media-tabs-subtitle: {{ subtitleColor|e('html_attr') }};
+                --mw-media-tabs-description: {{ descriptionColor|e('html_attr') }};
+            "
+        >
+            <div class="mw-media-tabs__inner">
+                {% if subtitle or title or description %}
+                    <header class="mw-media-tabs__header">
+                        {% if subtitle %}
+                            <p class="mw-media-tabs__subtitle">{{ subtitle }}</p>
+                        {% endif %}
+                        {% if title %}
+                            <h2 class="mw-media-tabs__title">{{ title }}</h2>
+                        {% endif %}
+                        {% if description %}
+                            <p class="mw-media-tabs__description">{{ description }}</p>
+                        {% endif %}
+                    </header>
+                {% endif %}
+
+                <div class="mw-media-tabs__rail" role="tablist" aria-label="{{ title ?: 'Media tabs' }}">
+                    {% for tab in tabs %}
+                        {% set tabTitle = tab.title ?? ('Tab ' ~ loop.index) %}
+                        {% set tabEyebrow = tab.eyebrow ?? '' %}
+                        {% set mediaUrl = tab.mediaUrl ?? '' %}
+                        {% set mediaMimeType = tab.mediaMimeType ?? '' %}
+                        {% set mediaType = tab.mediaType ?? '' %}
+                        {% set isVideo = mediaUrl and (mediaType == 'video' or mediaMimeType starts with 'video/') %}
+
+                        <button
+                            type="button"
+                            class="mw-media-tabs__trigger{% if loop.first %} is--active{% endif %}"
+                            data-mw-media-tabs-trigger
+                            data-tab-index="{{ loop.index0 }}"
+                            role="tab"
+                            aria-selected="{{ loop.first ? 'true' : 'false' }}"
+                            aria-controls="mw-media-tabs-panel-{{ element.id }}-{{ loop.index0 }}"
+                            id="mw-media-tabs-trigger-{{ element.id }}-{{ loop.index0 }}"
+                            style="
+                                --mw-media-tabs-card-bg: {{ (tab.backgroundColor ?? '#ffffff')|e('html_attr') }};
+                                --mw-media-tabs-card-text: {{ (tab.textColor ?? '#1f2024')|e('html_attr') }};
+                            "
+                        >
+                            <span class="mw-media-tabs__media" aria-hidden="true">
+                                {% if isVideo %}
+                                    <video src="{{ mediaUrl }}" muted playsinline preload="metadata"></video>
+                                {% elseif mediaUrl %}
+                                    <img src="{{ mediaUrl }}" alt="" loading="lazy">
+                                {% else %}
+                                    <span class="mw-media-tabs__media-placeholder">{{ tabTitle }}</span>
+                                {% endif %}
+                            </span>
+                            <span class="mw-media-tabs__trigger-title">{{ tabTitle }}</span>
+                            {% if tabEyebrow %}
+                                <span class="mw-media-tabs__trigger-eyebrow">{{ tabEyebrow }}</span>
+                            {% endif %}
+                        </button>
+                    {% endfor %}
+                </div>
+
+                <div class="mw-media-tabs__panels">
+                    {% for tab in tabs %}
+                        {% set tabTitle = tab.title ?? ('Tab ' ~ loop.index) %}
+                        {% set contentTitle = tab.contentTitle ?? tabTitle %}
+                        {% set content = tab.content ?? '' %}
+                        {% set contentMediaUrl = tab.contentMediaUrl ?? '' %}
+                        {% set contentMediaMimeType = tab.contentMediaMimeType ?? '' %}
+                        {% set contentMediaType = tab.contentMediaType ?? '' %}
+                        {% set contentMediaIsVideo = contentMediaUrl and (contentMediaType == 'video' or contentMediaMimeType starts with 'video/') %}
+                        <article
+                            class="mw-media-tabs__panel{% if loop.first %} is--active{% endif %}"
+                            data-mw-media-tabs-panel
+                            role="tabpanel"
+                            id="mw-media-tabs-panel-{{ element.id }}-{{ loop.index0 }}"
+                            aria-labelledby="mw-media-tabs-trigger-{{ element.id }}-{{ loop.index0 }}"
+                            {% if not loop.first %}hidden{% endif %}
+                        >
+                            {% if contentTitle %}
+                                <h3 class="mw-media-tabs__panel-title">{{ contentTitle }}</h3>
+                            {% endif %}
+                            {% if content %}
+                                <div class="mw-media-tabs__panel-content">{{ content|raw }}</div>
+                            {% endif %}
+                            {% if contentMediaUrl %}
+                                <figure class="mw-media-tabs__content-media">
+                                    {% if contentMediaIsVideo %}
+                                        <video class="mw-media-tabs__content-video" src="{{ contentMediaUrl }}" controls playsinline preload="metadata"></video>
+                                    {% else %}
+                                        <img class="mw-media-tabs__content-image" src="{{ contentMediaUrl }}" alt="{{ contentTitle|striptags }}" loading="lazy">
+                                    {% endif %}
+                                </figure>
+                            {% endif %}
+                        </article>
+                    {% endfor %}
+                </div>
+            </div>
+        </section>
+
+        <script>
+            (function () {
+                var root = document.currentScript && document.currentScript.previousElementSibling;
+                if (!root || !root.matches('[data-mw-media-tabs="true"]') || root.dataset.mwMediaTabsInlineReady === '1') {
+                    return;
+                }
+
+                root.dataset.mwMediaTabsInlineReady = '1';
+
+                var triggers = Array.prototype.slice.call(root.querySelectorAll('[data-mw-media-tabs-trigger]'));
+                var panels = Array.prototype.slice.call(root.querySelectorAll('[data-mw-media-tabs-panel]'));
+
+                triggers.forEach(function (trigger) {
+                    trigger.addEventListener('click', function () {
+                        var index = parseInt(trigger.getAttribute('data-tab-index') || '0', 10);
+
+                        triggers.forEach(function (button, buttonIndex) {
+                            var active = buttonIndex === index;
+                            button.classList.toggle('is--active', active);
+                            button.setAttribute('aria-selected', active ? 'true' : 'false');
+                        });
+
+                        panels.forEach(function (panel, panelIndex) {
+                            var active = panelIndex === index;
+                            panel.classList.toggle('is--active', active);
+                            if (active) {
+                                panel.removeAttribute('hidden');
+                            } else {
+                                panel.setAttribute('hidden', '');
+                            }
+                        });
+                    });
+                });
+            })();
+        </script>
+    {% endif %}
+{% endblock %}

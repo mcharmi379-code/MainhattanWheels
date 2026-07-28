@@ -5,13 +5,12 @@
     {% set headline = c.headline ?? '' %}
     {% set ctaLabel = c.ctaLabel ?? 'All Products' %}
     {% set hasProducts = c.hasProducts ?? items|length > 0 %}
-    {% set needsSlider = items|length > 3 %}
+    {% set needsSlider = items|length > 1 %}
     {% set baseSliderOptions = {
         slider: {
-            controls: needsSlider,
-            nav: needsSlider,
-            navPosition: 'bottom',
-            items: 3,
+            controls: false,
+            nav: false,
+            items: 1,
             slideBy: 1,
             mode: 'carousel',
             mouseDrag: needsSlider,
@@ -22,9 +21,9 @@
             gutter: 16,
             loop: needsSlider,
             responsive: {
-                0: { items: 1, gutter: 0 },
-                576: { items: 2, gutter: 12 },
-                992: { items: 3, gutter: 16 }
+                xs: { items: 1, gutter: 12 },
+                sm: { items: 2, gutter: 12 },
+                lg: { items: 3, gutter: 16 }
             }
         }
     } %}

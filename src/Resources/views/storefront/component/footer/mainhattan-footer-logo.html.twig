@@ -7,8 +7,17 @@
                 {% block layout_footer_logo_image %}
                     <picture class="footer-logo-picture">
                         {% block layout_footer_logo_image_default %}
-                            {% if theme_config('sw-footer-logo') %}
-                                <img src="{{ theme_config('sw-footer-logo') |sw_encode_url }}"
+                            {% set footerLogo = theme_config('sw-footer-logo') %}
+                            {% if not footerLogo and theme_config('sw-logo-desktop') and 'demostore-logo' not in theme_config('sw-logo-desktop') %}
+                                {% set footerLogo = theme_config('sw-logo-desktop') %}
+                            {% endif %}
+
+                            {% if footerLogo %}
+                                <img src="{{ footerLogo |sw_encode_url }}"
+                                     alt="{{ "header.logoLink"|trans|striptags }}"
+                                     class="img-fluid footer-logo-main-img"/>
+                            {% else %}
+                                <img src="{{ asset('media/94/68/96/1784725184/Mainhattan-Wheels-Logo-B2-300x124.png') }}"
                                      alt="{{ "header.logoLink"|trans|striptags }}"
                                      class="img-fluid footer-logo-main-img"/>
                             {% endif %}

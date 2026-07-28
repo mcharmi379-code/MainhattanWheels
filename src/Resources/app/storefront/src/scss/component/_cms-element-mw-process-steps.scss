@@ -1,0 +1,185 @@
+.cms-element-mw-process-steps {
+    width: 100%;
+    padding: 40px 0;
+
+    .mw-process-steps-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    // ── Header Section ───────────────────────────────────────────
+    .mw-process-steps-header {
+        text-align: center;
+        margin-bottom: 50px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 16px;
+        padding: 0 15px;
+    }
+
+    .mw-process-steps-heading {
+        font-size: 2rem; // ~32px
+        font-weight: 700;
+        color: #1f2937;
+        line-height: 1.35;
+        max-width: 900px;
+        margin: 0;
+
+        @media (max-width: 767.98px) {
+            font-size: 1.5rem;
+        }
+    }
+
+    .mw-process-steps-accent-line {
+        width: 80px;
+        height: 4px;
+        border-radius: 2px;
+    }
+
+    .mw-process-steps-subheading {
+        font-size: 1.05rem;
+        font-weight: 500;
+        color: #4b5563;
+        margin: 0;
+        max-width: 700px;
+        line-height: 1.5;
+
+        @media (max-width: 767.98px) {
+            font-size: 0.95rem;
+        }
+    }
+
+    // ── Steps Grid Section ────────────────────────────────────────
+    .mw-process-steps-grid {
+        display: flex;
+        width: 100%;
+        gap: 24px;
+        justify-content: space-between;
+        padding: 0 15px;
+
+        // Tablet & mobile: switch to vertical stack
+        @media (max-width: 991.98px) {
+            flex-direction: column;
+            gap: 30px;
+        }
+    }
+
+    .mw-process-steps-item {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        min-width: 0;
+
+        @media (max-width: 991.98px) {
+            flex-direction: row;
+            gap: 24px;
+            align-items: flex-start;
+        }
+    }
+
+    // ── Badge & Connector Line ──────────────────────────────────
+    .mw-process-steps-badge-row {
+        display: flex;
+        align-items: center;
+        position: relative;
+        height: 48px;
+
+        @media (max-width: 991.98px) {
+            flex-direction: column;
+            height: auto;
+            width: 48px;
+            align-self: stretch;
+        }
+    }
+
+    .mw-process-steps-badge {
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        border: 2px solid #e8671a;
+        color: #e8671a;
+        background: #ffffff;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.15rem;
+        font-weight: 700;
+        z-index: 2;
+        flex-shrink: 0;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+        transition: transform 0.25s ease;
+
+        &:hover {
+            transform: scale(1.08);
+        }
+    }
+
+    .mw-process-steps-connector-line {
+        position: absolute;
+        left: 48px;
+        right: -24px; // bridge the gap between grid columns
+        height: 2px;
+        background-color: #e5e7eb;
+        z-index: 1;
+
+        @media (max-width: 991.98px) {
+            position: absolute;
+            left: 23px;
+            top: 48px;
+            bottom: -40px; // bridge the gap between items vertically
+            width: 2px;
+            height: auto;
+            right: auto;
+        }
+    }
+
+    // ── Step Body ────────────────────────────────────────────────
+    .mw-process-steps-body {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+
+        @media (max-width: 991.98px) {
+            flex: 1;
+            padding-top: 8px;
+        }
+    }
+
+    .mw-process-steps-step-title {
+        font-size: 1.125rem; // ~18px
+        font-weight: 700;
+        color: #1f2937;
+        margin: 0;
+        line-height: 1.3;
+
+        strong {
+            font-weight: 700;
+            color: inherit;
+        }
+    }
+
+    .mw-process-steps-step-subtitle {
+        font-size: 0.975rem;
+        font-weight: 600;
+        color: #4b5563;
+        margin: 0;
+        line-height: 1.35;
+    }
+
+    .mw-process-steps-step-desc {
+        font-size: 0.95rem;
+        line-height: 1.65;
+        color: #4b5563;
+        margin: 0;
+
+        p {
+            margin: 0 0 10px 0;
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
+    }
+}

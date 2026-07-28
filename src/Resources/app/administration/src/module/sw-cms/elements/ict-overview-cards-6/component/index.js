@@ -144,12 +144,20 @@ export default {
             return ['left', 'center', 'right'].includes(alignment) ? alignment : fallback;
         },
 
+        hasText(value) {
+            return String(value || '').trim().length > 0;
+        },
+
+        hasIconImage(index) {
+            return Boolean(this.element?.data?.iconImages?.[index]);
+        },
+
         getCardButtons(card) {
             if (Array.isArray(card?.buttons) && card.buttons.length) {
-                return card.buttons.filter(b => b?.show !== false);
+                return card.buttons.filter(b => b?.show !== false && this.hasText(b?.buttonText));
             }
             if (card?.showButton) {
-                return [this.createButtonFromLegacyCard(card)].filter(b => b?.show !== false);
+                return [this.createButtonFromLegacyCard(card)].filter(b => b?.show !== false && this.hasText(b?.buttonText));
             }
             return [];
         },

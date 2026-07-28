@@ -26,54 +26,72 @@ export default {
         },
 
         uploadTag() {
-            return `cms-element-ict-hero-section-${this.element.id}`;
+            return `cms-element-ict-hero-section-${this.element?.id || 'new'}`;
         },
 
         uploadVideoTag() {
-            return `cms-element-ict-hero-section-video-${this.element.id}`;
+            return `cms-element-ict-hero-section-video-${this.element?.id || 'new'}`;
         },
 
         previewSource() {
             if (this.element?.data?.backgroundMedia?.id) {
                 return this.element.data.backgroundMedia;
             }
-            return this.element.config.backgroundMedia.value;
+            return this.element?.config?.backgroundMedia?.value || null;
         },
 
         previewVideoSource() {
             if (this.element?.data?.video?.id) {
                 return this.element.data.video;
             }
-            return this.element.config?.backgroundVideo?.value || null;
+            return this.element?.config?.backgroundVideo?.value || null;
         },
     },
 
     created() {
-        this.initElementConfig('ict-hero-section');
-        this.initElementData('ict-hero-section');
-        if (this.element && this.element.config) {
-            if (!this.element.config.textAlignment) {
-                this.element.config.textAlignment = {
-                    source: 'static',
-                    value: 'left',
-                };
-            }
-            if (!this.element.config.backgroundVideo) {
-                this.element.config.backgroundVideo = {
-                    source: 'static',
-                    value: null,
-                };
-            }
-        }
+        this.createdComponent();
     },
 
     methods: {
+        createdComponent() {
+            this.initElementConfig('ict-hero-section');
+            this.initElementData('ict-hero-section');
+
+            if (this.element && this.element.config) {
+                if (!this.element.config.backgroundMedia) {
+                    this.element.config.backgroundMedia = {
+                        source: 'static',
+                        value: null,
+                    };
+                }
+                if (!this.element.config.backgroundVideo) {
+                    this.element.config.backgroundVideo = {
+                        source: 'static',
+                        value: null,
+                    };
+                }
+                if (!this.element.config.textAlignment) {
+                    this.element.config.textAlignment = {
+                        source: 'static',
+                        value: 'left',
+                    };
+                }
+            }
+        },
+
         onInput() {
             this.$emit('element-update', this.element);
         },
 
         async onImageUpload({ targetId }) {
+            if (!targetId) return;
             const media = await this.mediaRepository.get(targetId);
+            if (!this.element.config.backgroundMedia) {
+                this.element.config.backgroundMedia = {
+                    source: 'static',
+                    value: null,
+                };
+            }
             this.element.config.backgroundMedia.value = media.id;
             this.element.config.backgroundMedia.source = 'static';
             this.updateElementData(media);
@@ -81,13 +99,22 @@ export default {
         },
 
         onImageRemove() {
-            this.element.config.backgroundMedia.value = null;
+            if (this.element?.config?.backgroundMedia) {
+                this.element.config.backgroundMedia.value = null;
+            }
             this.updateElementData(null);
             this.$emit('element-update', this.element);
         },
 
         onSelectionChanges(mediaItems) {
-            const media = mediaItems[0];
+            const media = mediaItems?.[0];
+            if (!media) return;
+            if (!this.element.config.backgroundMedia) {
+                this.element.config.backgroundMedia = {
+                    source: 'static',
+                    value: null,
+                };
+            }
             this.element.config.backgroundMedia.value = media.id;
             this.element.config.backgroundMedia.source = 'static';
             this.updateElementData(media);
@@ -113,6 +140,7 @@ export default {
         },
 
         async onVideoUpload({ targetId }) {
+            if (!targetId) return;
             const media = await this.mediaRepository.get(targetId);
             if (!this.element.config.backgroundVideo) {
                 this.element.config.backgroundVideo = {
@@ -127,7 +155,7 @@ export default {
         },
 
         onVideoRemove() {
-            if (this.element.config.backgroundVideo) {
+            if (this.element?.config?.backgroundVideo) {
                 this.element.config.backgroundVideo.value = null;
             }
             this.updateVideoData(null);
@@ -135,7 +163,8 @@ export default {
         },
 
         onVideoSelectionChanges(mediaItems) {
-            const media = mediaItems[0];
+            const media = mediaItems?.[0];
+            if (!media) return;
             if (!this.element.config.backgroundVideo) {
                 this.element.config.backgroundVideo = {
                     source: 'static',

@@ -16,6 +16,26 @@
         color: #111;
         text-decoration: none;
         overflow: hidden;
+
+        &.is--title-beside-badge {
+            border-color: #e35630;
+            border-radius: 4px;
+            box-shadow: 0 2px 8px rgba(17, 24, 39, 0.08);
+        }
+
+        &.is--title-beside-badge .sw-cms-el-mw-card-grid__top {
+            justify-content: flex-start;
+            align-items: center;
+        }
+
+        &.is--title-beside-badge .sw-cms-el-mw-card-grid__badge {
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            border-color: #e35630;
+            background: #e35630;
+            color: #fff;
+        }
     }
 
     &__top {
@@ -68,23 +88,19 @@
         font-size: 14px;
         line-height: 1.2;
         font-weight: 700;
+
+        &--inline {
+            margin: 0;
+        }
     }
 
-    &__subheading {
-        display: inline-flex;
-        align-items: center;
-        gap: 6px;
-        margin-top: auto;
-        color: #ff6600;
-        font-size: 10px;
-        line-height: 1.2;
-        letter-spacing: 0.03em;
-        text-transform: uppercase;
-        font-weight: 700;
-    }
+    &__description {
+        color: #1f2937;
+        font-size: 11px;
+        line-height: 1.45;
 
-    &__arrow {
-        font-size: 1.15em;
-        line-height: 1;
+        p {
+            margin: 0;
+        }
     }
 }

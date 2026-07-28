@@ -1,0 +1,70 @@
+{% block sw_cms_el_config_mw_process_steps %}
+<div class="sw-cms-el-config-mw-process-steps">
+
+    <!-- General Config -->
+    <sw-text-field
+        v-model:value="element.config.heading.value"
+        label="Heading"
+        placeholder="Enter main process heading..."
+        @update:value="onInput"
+    />
+
+    <p class="sw-cms-el-config-mw-process-steps__label" style="font-size: 13px; font-weight: 600; color: #334155; margin-top: 12px; margin-bottom: 6px;">
+        Subheading
+    </p>
+    <sw-text-editor
+        v-model:value="element.config.subheading.value"
+        label="Subheading"
+        placeholder="Enter subheading description..."
+        sanitize-input
+        @update:value="onInput"
+    />
+
+    <sw-colorpicker
+        v-model:value="element.config.accentColor.value"
+        label="Accent Color"
+        @update:value="onInput"
+    />
+
+    <sw-number-field
+        v-model:value="stepCount"
+        label="Number of Steps"
+        :min="2"
+        :max="6"
+        :step="1"
+    />
+
+    <hr style="margin: 20px 0; border: 0; border-top: 1px solid #e2e8f0;" />
+
+    <!-- Steps Editor -->
+    <div v-for="i in stepCount" :key="i" style="margin-bottom: 20px; padding: 12px; border: 1px solid #e2e8f0; border-radius: 6px;">
+        <h4 style="margin-top: 0; margin-bottom: 12px; color: #1e293b;">Step {{ i }}</h4>
+        
+        <sw-text-field
+            v-model:value="element.config['step' + i + 'Title'].value"
+            label="Step Title"
+            placeholder="Enter step title..."
+            @update:value="onInput"
+        />
+
+        <sw-text-field
+            v-model:value="element.config['step' + i + 'SubTitle'].value"
+            label="Step Sub Title"
+            placeholder="Enter step sub title..."
+            @update:value="onInput"
+        />
+
+        <p class="sw-cms-el-config-mw-process-steps__label" style="font-size: 13px; font-weight: 600; color: #334155; margin-top: 12px; margin-bottom: 6px;">
+            Step Description
+        </p>
+        <sw-text-editor
+            v-model:value="element.config['step' + i + 'Desc'].value"
+            label="Step Description"
+            placeholder="Enter step description..."
+            sanitize-input
+            @update:value="onInput"
+        />
+    </div>
+
+</div>
+{% endblock %}

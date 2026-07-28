@@ -1,0 +1,43 @@
+.sw-cms-el-preview-mw-testimonial {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px;
+    font-size: 9px;
+
+    &__avatar {
+        flex-shrink: 0;
+        width: 32px;
+        height: 32px;
+        border-radius: 4px;
+        background: #cbd5e1;
+    }
+
+    &__content {
+        flex: 1;
+        overflow: hidden;
+    }
+
+    &__quote {
+        color: #475569;
+        font-size: 8px;
+        line-height: 1.3;
+        margin-bottom: 3px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    &__author {
+        font-size: 8px;
+        color: #94a3b8;
+
+        strong {
+            color: #1e293b;
+        }
+
+        span {
+            color: #3b82f6;
+        }
+    }
+}

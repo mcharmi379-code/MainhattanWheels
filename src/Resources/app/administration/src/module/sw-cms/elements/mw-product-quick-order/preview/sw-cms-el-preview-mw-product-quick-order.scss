@@ -1,0 +1,33 @@
+.sw-cms-el-preview-mw-product-quick-order {
+    padding: 10px;
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 4px;
+
+    &__box {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 6px;
+    }
+
+    &__price {
+        font-size: 10px;
+        font-weight: bold;
+        color: #0f172a;
+    }
+
+    &__label {
+        font-size: 8px;
+        color: #64748b;
+    }
+
+    &__btn {
+        background: #e85630;
+        color: #fff;
+        font-size: 8px;
+        padding: 4px 8px;
+        border-radius: 2px;
+        font-weight: bold;
+    }
+}

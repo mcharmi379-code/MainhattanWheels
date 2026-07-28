@@ -1,0 +1,28 @@
+.sw-cms-preview-mw-media-tabs {
+    padding: 12px;
+    background: #f5f4f3;
+
+    &__title {
+        width: 46%;
+        height: 12px;
+        margin: 0 auto 12px;
+        background: #1f2024;
+        border-radius: 999px;
+    }
+
+    &__cards {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 8px;
+
+        span {
+            height: 58px;
+            background: #fff;
+            border: 1px solid #d9dee5;
+        }
+
+        span:first-child {
+            border-color: #ff6a1a;
+        }
+    }
+}

@@ -1,0 +1,50 @@
+{% block element_mw_testimonial %}
+    {% set quote      = element.data.quote|default('') %}
+    {% set authorName = element.data.authorName|default('') %}
+    {% set authorRole = element.data.authorRole|default('') %}
+    {% set image      = element.data.image ?? null %}
+
+    {% if quote or authorName or image %}
+        <div class="cms-element-mw-testimonial">
+            <div class="mw-testimonial-card">
+                <!-- Person Photo -->
+                {% if image %}
+                    <div class="mw-testimonial-card__image-col">
+                        <img
+                            class="mw-testimonial-card__image"
+                            src="{{ image.url }}"
+                            alt="{{ image.translated.alt ?: authorName }}"
+                            title="{{ image.translated.title ?: authorName }}"
+                            loading="lazy"
+                        />
+                    </div>
+                {% endif %}
+
+                <!-- Vertical Divider -->
+                {% if image %}
+                    <div class="mw-testimonial-card__divider" aria-hidden="true"></div>
+                {% endif %}
+
+                <!-- Quote Content -->
+                <div class="mw-testimonial-card__content">
+                    {% if quote %}
+                        <blockquote class="mw-testimonial-card__quote">
+                            {{ quote }}
+                        </blockquote>
+                    {% endif %}
+
+                    {% if authorName or authorRole %}
+                        <p class="mw-testimonial-card__author">
+                            {% if authorName %}
+                                <strong class="mw-testimonial-card__author-name">{{ authorName }}</strong>
+                            {% endif %}
+                            {% if authorRole %}
+                                <span class="mw-testimonial-card__author-role">{{ authorRole }}</span>
+                            {% endif %}
+                        </p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    {% endif %}
+{% endblock %}

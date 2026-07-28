@@ -4,11 +4,21 @@
     {% set mediaType = c.mediaType.value ?? 'image' %}
     {% set mediaLink = c.mediaLink.value ?: '' %}
 
+    {% set showPrimaryButton = c.showPrimaryButton.value ?? true %}
+    {% set showSecondaryButton = c.showSecondaryButton.value ?? false %}
+
     {% set buttonUrl = c.buttonLink.value ?: '#' %}
     {% if c.buttonLinkType.value == 'category' and buttonUrl != '#' %}
         {% set buttonUrl = seoUrl('frontend.navigation.page', { navigationId: buttonUrl }) %}
     {% elseif c.buttonLinkType.value == 'external' and buttonUrl != '#' and not (buttonUrl starts with 'http://') and not (buttonUrl starts with 'https://') and not (buttonUrl starts with 'mailto:') and not (buttonUrl starts with 'tel:') and not (buttonUrl starts with '#') %}
         {% set buttonUrl = 'https://' ~ buttonUrl %}
+    {% endif %}
+
+    {% set button2Url = c.button2Link.value ?: '#' %}
+    {% if c.button2LinkType.value == 'category' and button2Url != '#' %}
+        {% set button2Url = seoUrl('frontend.navigation.page', { navigationId: button2Url }) %}
+    {% elseif c.button2LinkType.value == 'external' and button2Url != '#' and not (button2Url starts with 'http://') and not (button2Url starts with 'https://') and not (button2Url starts with 'mailto:') and not (button2Url starts with 'tel:') and not (button2Url starts with '#') %}
+        {% set button2Url = 'https://' ~ button2Url %}
     {% endif %}
 
     {% if mediaLink is not empty and not (mediaLink starts with 'http://') and not (mediaLink starts with 'https://') and not (mediaLink starts with '#') %}
@@ -31,14 +41,25 @@
                     </div>
                 {% endif %}
 
-                {% if c.buttonText.value is not empty %}
+                {% if (showPrimaryButton and c.buttonText.value is not empty) or (showSecondaryButton and c.button2Text.value is not empty) %}
                     <div class="mw-text-video-actions">
-                        <a href="{{ buttonUrl }}"
-                           target="{{ c.buttonLinkTarget.value ?: '_self' }}"
-                           class="btn mw-text-video-btn"
-                           style="background-color: {{ c.buttonBgColor.value ?: '#e06600' }}; color: {{ c.buttonTextColor.value ?: '#ffffff' }}; border-color: {{ c.buttonBgColor.value ?: '#e06600' }};">
-                            {{ c.buttonText.value }}
-                        </a>
+                        {% if showPrimaryButton and c.buttonText.value is not empty %}
+                            <a href="{{ buttonUrl }}"
+                               target="{{ c.buttonLinkTarget.value ?: '_self' }}"
+                               class="btn mw-text-video-btn"
+                               style="background-color: {{ c.buttonBgColor.value ?: '#e06600' }}; color: {{ c.buttonTextColor.value ?: '#ffffff' }}; border-color: {{ c.buttonBgColor.value ?: '#e06600' }};">
+                                {{ c.buttonText.value }}
+                            </a>
+                        {% endif %}
+
+                        {% if showSecondaryButton and c.button2Text.value is not empty %}
+                            <a href="{{ button2Url }}"
+                               target="{{ c.button2LinkTarget.value ?: '_self' }}"
+                               class="btn mw-text-video-btn mw-text-video-btn--secondary"
+                               style="background-color: {{ c.button2BgColor.value ?: '#1a1a1a' }}; color: {{ c.button2TextColor.value ?: '#ffffff' }}; border-color: {{ c.button2BgColor.value ?: '#1a1a1a' }};">
+                                {{ c.button2Text.value }}
+                            </a>
+                        {% endif %}
                     </div>
                 {% endif %}
             </div>
@@ -51,9 +72,7 @@
                         {% if media and media.url is not empty and (media.mimeType starts with 'video/' or '.mp4' in media.url or '.webm' in media.url) %}
                             {# Direct Upload Video (MP4/WebM) #}
                             <div class="mw-text-video-player-wrapper">
-                                <video class="mw-text-video-element" preload="metadata" playsinline>
-                                    <source src="{{ media.url }}" type="{{ media.mimeType ?: 'video/mp4' }}">
-                                    Your browser does not support the video tag.
+                                <video class="mw-text-video-element" src="{{ media.url }}" preload="metadata" playsinline autoplay muted loop poster="{{ media.url|replace({'.mp4': '.jpg', '.webm': '.jpg'}) }}">
                                 </video>
                                 <button class="mw-text-video-play-overlay" aria-label="Play video">
                                     <span class="mw-text-video-play-btn-circle">

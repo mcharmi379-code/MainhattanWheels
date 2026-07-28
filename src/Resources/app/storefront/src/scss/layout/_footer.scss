@@ -1,238 +1,458 @@
+// ============================================================
+// MAINHATTAN FOOTER — DARK THEME & RESPONSIVE LAYOUT
+// ============================================================
+
+$footer-bg: #141414;
+$footer-box-bg: #1a1a1a;
+$footer-border: rgba(255, 255, 255, 0.08);
+$footer-text: #b0b0b0;
+$footer-heading: #ffffff;
+$footer-accent: #ff4b00;
+$footer-accent-hover: #ff6a26;
+$footer-bottom-bg: #0d0d0d;
+
 .footer-main {
-    background-image: url("../../../bundles/mainhattanwheels/storefront/src/assets/CNC-Maschinen-Felgenbearbeitung-Mainhattan-Wheels-bg-06-min.png");
+    background-color: $footer-bg !important;
+}
+
+body {
+    overflow-x: hidden !important;
+}
+
+.mainhattan-footer-wrap {
+    background-image: url("../../../bundles/mainhattanwheels/storefront/src/assets/footer-background_3.png");
     background-repeat: no-repeat;
-    background-attachment: scroll;
-    background-position: bottom center;
-    padding: 15px 0 30px 0;
-    background-color: $sw-footer-background;
-    .footer-columns{
+    background-position: left bottom;
+    background-size: 100% auto;
+    overflow: hidden;
+    padding-top: 40px;
+    padding-bottom: 20px;
+    color: $footer-text;
+    font-family: $sw-font-family-base;
+}
+
+// ─── Newsletter Box ──────────────────────────────────────────
+.footer-newsletter-box {
+    background: $footer-box-bg;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    padding: 24px 30px;
+    margin-bottom: 40px;
+    position: relative;
+    overflow: hidden;
+
+    &__left {
         display: flex;
-        justify-content: space-between;
-        margin: 0 auto;
-        width: 100%;
-        .footer-column {
-            @media(min-width: 1024px){
-                width: 22.33%;
+        align-items: center;
+        gap: 20px;
+
+        @media (max-width: 991.98px) {
+            margin-bottom: 20px;
+        }
+    }
+
+    &__icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 54px;
+        height: 54px;
+        min-width: 54px;
+        border-radius: 50%;
+        border: 2px solid $footer-accent;
+        color: $footer-accent;
+
+        svg {
+            width: 24px;
+            height: 24px;
+        }
+    }
+
+    &__text {
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__title {
+        font-size: 17px;
+        font-weight: 800;
+        color: $footer-heading;
+        letter-spacing: 0.5px;
+        text-transform: uppercase;
+        margin: 0 0 4px 0;
+    }
+
+    &__desc {
+        font-size: 13px;
+        color: $footer-text;
+        margin: 0;
+        line-height: 1.4;
+    }
+
+    &__right {
+        .newsletter-block {
+            margin: 0;
+        }
+    }
+}
+
+@media (min-width: 768px) {
+    .footer-main .footer-logo-main {
+        padding: 2.5rem 0 .5rem 0;
+    }
+}
+
+// ─── Newsletter Form Flex Row ─────────────────────────────────
+.newsletter-form-row {
+    display: flex;
+    align-items: stretch;
+
+    @media (max-width: 575.98px) {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 12px;
+    }
+
+    .form-group,
+    .form-floating {
+        flex: 1;
+        margin: 0;
+        border: none !important;
+        background: transparent !important;
+    }
+
+    .newsletter-input {
+        background: transparent !important;
+        border: none !important;
+        padding: 0 !important;
+        height: auto !important;
+
+        input,
+        input[type="email"] {
+            background: #252525 !important;
+            border: 1px solid rgba(255, 255, 255, 0.15) !important;
+            border-right: none !important;
+            border-radius: 4px 0 0 4px !important;
+            color: #ffffff !important;
+            height: 46px !important;
+            padding: 10px 16px !important;
+            font-size: 14px !important;
+            box-shadow: none !important;
+            width: 100% !important;
+            outline: none !important;
+
+            @media (max-width: 575.98px) {
+                border-right: 1px solid rgba(255, 255, 255, 0.15) !important;
+                border-radius: 4px !important;
             }
-            @media(max-width: 1023px){
-                width: 50%;
-            }
-        }
-        .second-menu-title {
-            padding: 0px;
-            .footer__title {
-                margin-bottom: 5px;
-            }
-        }
-    }
-    .footer__title {
-        font-family: $sw-font-family-base;
-        color: $sw-footer-heading-color;
-        font-size: 17.6px;
-        font-weight: normal;
-        text-transform: capitalize;
-        margin-bottom: 0px;
-    }
-    .footer-link-item{
-        a {
-            color: $sw-footer-text-color;
-            font-family:  $sw-font-family-headline;
-            font-size: 16px;
-            text-transform: capitalize;
-            line-height: 26px;
-            &:hover{
-                color: $main-hattan-footer-social-column-hover-color;
-            }
-        }
-        @media(min-width: 768px){
-            padding: 0;
-        }
-    }
-    .google-map{
-        margin-top: 10px;
-        iframe{
-            width: 100%;
-            height: 230px;
-            @media(max-width:1023px){
-                height: 350px;
-            }
-        }
-    }
-    .opening-time-title{
-        h3 {
-            color: $sw-footer-heading-color;
-            font-family: $sw-font-family-base;
-            font-size: 17.6px;
-            font-weight: 400;
-            text-transform: capitalize;
-            margin-bottom: 0;
-        }
-    }
-    .opening-time {
-        color: $sw-footer-text-color;
-        font-size: $sw-font-size-content;
-        font-family:  $sw-font-family-headline;
-        p {
-            margin-bottom: 5px;
-            a{
-                color: $sw-footer-text-color;
-                text-decoration: none;
-            }
-        }
-        span{
-            font-family:  $sw-font-family-headline;
-        }
-    }
-    .footer-logo-main{
-        @media(min-width: 768px){
-            padding: 2.5rem 0 0.5rem 0;
-        }
-    }
-    .newsletter-title-one {
-        font-family: $sw-font-family-base;
-        color: $sw-footer-heading-color;
-        letter-spacing: 1px;
-        font-size: 1.1em;
-        margin-bottom: 0;
-    }
-    .footer-contact{
-        input[type="email"]{
-            background-color: #52565c;
-            padding: 8px 6px;
-            line-height: normal;
-            border-color: #35383c;
-            box-shadow: none;
-            font-family:  $sw-font-family-base;
-            color: #fff;
+
             &::placeholder {
-                color: #777777;
-                text-transform: capitalize;
-                font-family:  $sw-font-family-headline;
+                color: #888888 !important;
             }
-            &:focus{
-                box-shadow: 0px 0px 2px 0px rgba(0,0,0,0.2);
-                border-color: #35383c;
-                background-color: #52565c;
-                color: #777777;
-            }
-        }
-        button[type='submit']{
-            background-color: #ffffff;
-            color: #35383c;
-            border-color: #dddddd !important;
-            padding: 0px 22px;
-            border: none !important;
-            font-family: 'arial-light';
-            font-weight: 400;
-            font-size: 13.3333px;
-            margin: 14px 0;
-            border-radius: 0 !important;
-            &:hover{
-                background-color: #ebebeb;
-                color: #35383c;
-                border-color: #c9c9c9;
+
+            &:focus {
+                border-color: $footer-accent !important;
             }
         }
     }
-    .confirm-alert {
-        color: #fff;
+
+    .newsletter-submit-btn,
+    button[type="submit"] {
+        background-color: $footer-accent !important;
+        border-color: $footer-accent !important;
+        color: #ffffff !important;
+        font-weight: 800 !important;
+        font-size: 13px !important;
+        letter-spacing: 0.8px !important;
+        text-transform: uppercase !important;
+        height: 46px !important;
+        padding: 0 28px !important;
+        border-radius: 0 4px 4px 0 !important;
+        white-space: nowrap !important;
+        cursor: pointer !important;
+        transition: background-color 0.2s ease !important;
+
+        @media (max-width: 575.98px) {
+            border-radius: 4px !important;
+            width: 100% !important;
+        }
+
+        &:hover {
+            background-color: $footer-accent-hover !important;
+            border-color: $footer-accent-hover !important;
+        }
     }
 }
 
-.footer-bottom {
-    border-color: #282b2e;
-    background-color: #282b2e;
-    color: #e8e8e8;
+// ─── Footer Columns ───────────────────────────────────────────
+.footer-columns {
+    margin-bottom: 20px;
+
+    .footer-column {
+        margin-bottom: 24px;
+    }
+}
+
+.footer-logo-main {
+    margin-bottom: 12px;
+
+    &-img {
+        height: auto;
+    }
+}
+
+.footer-tagline {
     font-size: 11px;
-    padding: 20px 0 65px;
-    @media(max-width: 768px){
-        padding: 20px;
-    }
-    a {
-        color: #fff;
-    }
-    .container{
-        padding: 0 20px;
-    }
-    .footer-copyright{
-        padding: 0 20px;
-        .footer-copyright-custom {
-            text-align: start;
-            font-family:  $sw-font-family-base;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: $footer-accent;
+    margin-top: 6px;
+    margin-bottom: 16px;
+}
+
+.footer-social-icons {
+    display: flex;
+    gap: 20px;
+    margin-left: 25px;
+
+    &__link {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        color: $footer-text;
+        transition: all 0.2s ease;
+
+        svg {
+            width: 15px;
+            height: 15px;
+        }
+
+        &:hover {
+            background: $footer-accent;
+            border-color: $footer-accent;
+            color: #ffffff;
+            transform: translateY(-2px);
         }
     }
 }
 
-@include media-breakpoint-down(md) {
-    .footer-main{
-        .container {
-            padding: 0;
-        }
-        .footer-columns{
-            .footer-column{
-                width: 100%;
-            }
-            margin: 0 auto;
-            .footer-column-headline{
-                &.active{
-                    .footer-minus-icon {
-                        display: block;
-                    }
-                    .footer-plus-icon {
-                        display: none;
-                    }
-                }
-            }
-            .footer-logo-picture {
-                width: 100%;
-                display: block;
-                text-align: left;
-                margin: 3px auto;
-            }
-            .footer-column.js-footer-column {
-                padding: 0 30px;
-            }
-            .opening-time {
-                margin-bottom: 50px;
-            }
-            .opening-time-title{
-                h3 {
-                    line-height: normal;
-                    margin-bottom: 0;
-                }
-            }
-            .footer-newsletter-content {
-                margin: 0 0 50px;
-            }
-            .footer__title {
-                margin-bottom: 0;
-            }
-            .google-map {
-                margin: 20px 0;
-            }
-            .footer-column-toggle{
-                path,svg{
-                    fill: #fff;
-                    stroke-linecap: round;
-                    height: 15px;
-                }
-                .footer-minus-icon .icon {
-                    transform: rotate(90deg);
-                }
-            }
-            .second-menu-title {
-                border-top: 1px solid $sw-border-color;
-                margin: 0 -30px;
-                padding: 8px 30px;
-                .footer__title {
-                    margin-bottom: 0;
-                }
-            }
-         }
+.footer__title {
+    font-size: 14px;
+    font-weight: 800;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    color: $footer-heading;
+    margin-bottom: 16px;
+    position: relative;
+    padding-bottom: 8px;
+
+    &::after {
+        content: '';
+        display: block;
+        width: 24px;
+        height: 2px;
+        background: $footer-accent;
+        position: absolute;
+        bottom: 0;
+        left: 0;
     }
-    .footer-bottom {
-        .footer-copyright{
-            padding: 0;
+}
+
+.footer-link-item {
+    margin-bottom: 6px;
+}
+
+.footer-link {
+    color: $footer-text;
+    font-size: 14px;
+    text-decoration: none;
+    transition: color 0.2s ease, padding-left 0.2s ease;
+
+    &__arrow {
+        color: $footer-accent;
+        margin-right: 4px;
+        font-weight: bold;
+    }
+
+    &:hover {
+        color: $footer-accent;
+        padding-left: 4px;
+        text-decoration: none;
+    }
+}
+
+// ─── Map & Address ───────────────────────────────────────────
+.google-map {
+    border-radius: 6px;
+    overflow: hidden;
+    margin-bottom: 12px;
+
+    iframe {
+        display: block;
+        border-radius: 6px;
+    }
+}
+
+.footer-address {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    font-size: 13px;
+    color: $footer-text;
+    line-height: 1.5;
+
+    &__pin {
+        font-size: 14px;
+    }
+}
+
+// ─── Hotline & Hours ─────────────────────────────────────────
+.footer-hotline {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    &__phone,
+    &__hours {
+        display: flex;
+        align-items: flex-start;
+        gap: 12px;
+        font-size: 13px;
+        color: $footer-text;
+        line-height: 1.5;
+    }
+
+    &__icon {
+        font-size: 16px;
+        color: $footer-accent;
+    }
+}
+
+// ─── Footer Bottom Bar (Shopware Override) ────────────────────
+.footer-bottom {
+    background: $footer-bottom-bg !important;
+    border-top: 1px solid $footer-border !important;
+    padding: 16px 0 !important;
+
+    .footer-copyright {
+        display: block !important;
+        width: 100% !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        border: none !important;
+    }
+
+    .footer-copyright-custom-bar {
+        width: 100%;
+    }
+
+    .footer-copyright-text {
+        color: #888888;
+        font-size: 12px;
+    }
+
+    .footer-back-to-top {
+        color: $footer-accent;
+        font-weight: 700;
+        font-size: 13px;
+        text-decoration: none;
+        transition: color 0.2s ease;
+
+        &:hover {
+            color: $footer-accent-hover;
+            text-decoration: underline;
         }
+    }
+}
+
+// ─── Global Scroll & Layout Fixes ─────────────────────────────
+html,
+body {
+    overflow-x: hidden !important;
+    width: 100%;
+}
+
+// ─── Footer Accordion & Mobile Alignment ──────────────────────
+.footer-column-content {
+    @media (min-width: 992px) {
+        display: block !important;
+        height: auto !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+    }
+}
+
+.js-collapse-footer-column-trigger {
+    * {
+        pointer-events: none !important;
+    }
+
+    @media (max-width: 991.98px) {
+        display: flex !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+        padding: 14px 0 !important;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+        cursor: pointer !important;
+
+        .footer__title {
+            margin-bottom: 0 !important;
+            padding-bottom: 0 !important;
+
+            &::after {
+                display: none !important;
+            }
+        }
+    }
+}
+
+.footer-column-toggle {
+    display: none;
+
+    @media (max-width: 991.98px) {
+        display: block;
+        transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+
+        .icon {
+            color: rgba(255, 255, 255, 0.6) !important;
+
+            svg {
+                width: 10px;
+                height: 10px;
+                fill: currentColor;
+            }
+        }
+    }
+}
+
+// When expanded, rotate chevron
+.js-collapse-footer-column-trigger.show {
+    @media (max-width: 991.98px) {
+        .footer-column-toggle {
+            transform: rotate(90deg);
+        }
+    }
+}
+
+// Centering logo and socials on mobile
+@media (max-width: 991.98px) {
+    .footer-logo-main {
+        text-align: center !important;
+        margin-top: 10px !important;
+        margin-bottom: 16px !important;
+
+        .footer-logo-main-link {
+            display: inline-block !important;
+        }
+    }
+
+    .footer-social-icons {
+        justify-content: center !important;
+        margin-bottom: 24px !important;
     }
 }

@@ -1,0 +1,57 @@
+.sw-cms-el-mw-subcategory-cards {
+    &__grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+
+    &__card {
+        background: #ffffff;
+        border: 1px solid #e5e7eb;
+        border-radius: 10px;
+        padding: 24px 20px;
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__card-title {
+        font-size: 18px;
+        font-weight: 800;
+        color: #111827;
+        margin-bottom: 12px;
+    }
+
+    &__card-description {
+        font-size: 14px;
+        color: #4b5563;
+        margin-bottom: 16px;
+
+        ul {
+            padding-left: 0;
+            margin: 0;
+            list-style: none;
+
+            li {
+                position: relative;
+                padding-left: 16px;
+                margin-bottom: 6px;
+
+                &::before {
+                    content: "•";
+                    color: #f05a24;
+                    font-weight: bold;
+                    position: absolute;
+                    left: 0;
+                    top: 0;
+                }
+            }
+        }
+    }
+
+    &__card-link {
+        font-size: 14px;
+        font-weight: 700;
+        color: #f05a24;
+        margin-top: auto;
+    }
+}

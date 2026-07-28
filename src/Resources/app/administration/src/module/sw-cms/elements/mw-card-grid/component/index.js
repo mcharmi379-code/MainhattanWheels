@@ -24,6 +24,10 @@ export default {
                 '--mw-card-grid-columns': this.columns,
             };
         },
+
+        titleBesideBadge() {
+            return this.element?.config?.titleBesideBadge?.value === true;
+        },
     },
 
     created() {
@@ -31,10 +35,10 @@ export default {
 
         if (!Array.isArray(this.element.config.cards.value) || this.element.config.cards.value.length === 0) {
             this.element.config.cards.value = [
-                { iconId: null, iconUrl: null, iconMimeType: null, iconColor: '', heading: '', headingColor: '', subheading: '', subheadingColor: '', linkType: 'internal', linkUrl: '', linkNewTab: false, hoverColor: '#ff6600' },
-                { iconId: null, iconUrl: null, iconMimeType: null, iconColor: '', heading: '', headingColor: '', subheading: '', subheadingColor: '', linkType: 'internal', linkUrl: '', linkNewTab: false, hoverColor: '#ff6600' },
-                { iconId: null, iconUrl: null, iconMimeType: null, iconColor: '', heading: '', headingColor: '', subheading: '', subheadingColor: '', linkType: 'internal', linkUrl: '', linkNewTab: false, hoverColor: '#ff6600' },
-                { iconId: null, iconUrl: null, iconMimeType: null, iconColor: '', heading: '', headingColor: '', subheading: '', subheadingColor: '', linkType: 'internal', linkUrl: '', linkNewTab: false, hoverColor: '#ff6600' }
+                { iconId: null, iconUrl: null, iconMimeType: null, iconColor: '', heading: '', headingColor: '', description: '', descriptionColor: '', subheading: '', subheadingColor: '', hoverColor: '#e35630' },
+                { iconId: null, iconUrl: null, iconMimeType: null, iconColor: '', heading: '', headingColor: '', description: '', descriptionColor: '', subheading: '', subheadingColor: '', hoverColor: '#e35630' },
+                { iconId: null, iconUrl: null, iconMimeType: null, iconColor: '', heading: '', headingColor: '', description: '', descriptionColor: '', subheading: '', subheadingColor: '', hoverColor: '#e35630' },
+                { iconId: null, iconUrl: null, iconMimeType: null, iconColor: '', heading: '', headingColor: '', description: '', descriptionColor: '', subheading: '', subheadingColor: '', hoverColor: '#e35630' }
             ];
         }
     },

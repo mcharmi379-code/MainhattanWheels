@@ -10,12 +10,11 @@ const createCard = () => ({
     iconColor: '',
     heading: '',
     headingColor: '',
+    description: '',
+    descriptionColor: '',
     subheading: '',
     subheadingColor: '',
-    linkType: 'internal',
-    linkUrl: '',
-    linkNewTab: false,
-    hoverColor: '#ff6600',
+    hoverColor: '#e35630',
 });
 
 export default {
@@ -43,13 +42,6 @@ export default {
         columnsOptions() {
             return [1, 2, 3, 4, 5].map((value) => ({ value, label: String(value) }));
         },
-
-        linkTypeOptions() {
-            return [
-                { value: 'internal', label: this.$tc('mw-cms.elements.mwCardGrid.config.linkTypeInternal') },
-                { value: 'external', label: this.$tc('mw-cms.elements.mwCardGrid.config.linkTypeExternal') },
-            ];
-        },
     },
 
     created() {
@@ -71,11 +63,24 @@ export default {
             if (!Array.isArray(this.element.config.cards.value) || this.element.config.cards.value.length < 1) {
                 this.element.config.cards.value = [createCard()];
                 this.onInput();
+                return;
             }
+
+            this.element.config.cards.value = this.element.config.cards.value.map((card) => ({
+                ...createCard(),
+                ...card,
+                description: card.description ?? card.subheading ?? '',
+                descriptionColor: card.descriptionColor ?? card.subheadingColor ?? '',
+            }));
         },
 
         setCards(cards) {
-            this.element.config.cards.value = cards.map((card) => ({ ...createCard(), ...card }));
+            this.element.config.cards.value = cards.map((card) => ({
+                ...createCard(),
+                ...card,
+                description: card.description ?? card.subheading ?? '',
+                descriptionColor: card.descriptionColor ?? card.subheadingColor ?? '',
+            }));
             this.onInput();
         },
 

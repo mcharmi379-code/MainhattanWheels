@@ -1,0 +1,52 @@
+{% block sw_cms_element_mw_image_hotspot %}
+<div class="sw-cms-el-mw-image-hotspot">
+    <!-- Tabs Navigation Bar with optional icons -->
+    <div class="sw-cms-el-mw-image-hotspot__tabs-nav" v-if="tabs.length > 0">
+        <button 
+            v-for="tab in tabs" 
+            :key="tab.index"
+            type="button"
+            class="sw-cms-el-mw-image-hotspot__tab-btn"
+            :class="{ 'is--active': tab.index === activeTab }"
+            @click="setActiveTab(tab.index)"
+        >
+            <div class="sw-cms-el-mw-image-hotspot__tab-icon-wrapper" v-if="tab.iconId">
+                <sw-media-preview-v2 class="sw-cms-el-mw-image-hotspot__tab-icon-media" :source="tab.iconId" />
+            </div>
+            <span class="sw-cms-el-mw-image-hotspot__tab-text">{{ tab.title }}</span>
+        </button>
+    </div>
+
+    <!-- Active Tab Content -->
+    <div class="sw-cms-el-mw-image-hotspot__container" v-if="currentTabMediaId">
+        <sw-media-preview-v2 
+            class="sw-cms-el-mw-image-hotspot__image" 
+            :source="currentTabMediaId" 
+        />
+
+        <!-- Hotspot Pins for current tab -->
+        <div 
+            v-for="hotspot in currentTabHotspots" 
+            :key="hotspot.index"
+            class="sw-cms-el-mw-image-hotspot__pin"
+            :style="{ top: hotspot.top + '%', left: hotspot.left + '%' }"
+        >
+            <span class="sw-cms-el-mw-image-hotspot__badge">{{ hotspot.index }}</span>
+            <div 
+                class="sw-cms-el-mw-image-hotspot__tooltip" 
+                v-if="hotspot.title || hotspot.text"
+                :style="{ '--tooltip-bg': tooltipBgColor, '--tooltip-color': tooltipTextColor }"
+            >
+                <div class="sw-cms-el-mw-image-hotspot__tooltip-title" v-if="hotspot.title">{{ hotspot.title }}</div>
+                <div class="sw-cms-el-mw-image-hotspot__tooltip-text" v-if="hotspot.text">{{ hotspot.text }}</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Empty/Placeholder state when no media uploaded -->
+    <div class="sw-cms-el-mw-image-hotspot__placeholder" v-else>
+        <sw-icon name="regular-image" size="40" />
+        <p>Please upload an image for Tab {{ activeTab }} in the settings.</p>
+    </div>
+</div>
+{% endblock %}

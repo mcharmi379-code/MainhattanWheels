@@ -1,0 +1,23 @@
+{% block sw_cms_element_mw_subcategory_cards %}
+<div class="sw-cms-el-mw-subcategory-cards">
+    <div class="sw-cms-el-mw-subcategory-cards__grid">
+        <div
+            v-for="(card, index) in cards"
+            :key="index"
+            class="sw-cms-el-mw-subcategory-cards__card"
+        >
+            <h3 class="sw-cms-el-mw-subcategory-cards__card-title" v-if="card.title">
+                {{ card.title }}
+            </h3>
+            <div
+                class="sw-cms-el-mw-subcategory-cards__card-description"
+                v-if="card.description"
+                v-html="card.description"
+            ></div>
+            <div class="sw-cms-el-mw-subcategory-cards__card-link" v-if="card.buttonText">
+                {{ card.buttonText }}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,29 @@
+{% block sw_cms_element_mw_process_steps %}
+<div class="sw-cms-el-mw-process-steps">
+    <div class="sw-cms-el-mw-process-steps__header">
+        <h2 class="sw-cms-el-mw-process-steps__heading" v-if="heading">{{ heading }}</h2>
+        <div class="sw-cms-el-mw-process-steps__accent-divider" :style="{ backgroundColor: accentColor }"></div>
+        <h3 class="sw-cms-el-mw-process-steps__subheading" v-if="subheading" v-html="subheading"></h3>
+    </div>
+
+    <div class="sw-cms-el-mw-process-steps__grid">
+        <div class="sw-cms-el-mw-process-steps__item" v-for="step in steps" :key="step.number">
+            <div class="sw-cms-el-mw-process-steps__badge-row">
+                <span class="sw-cms-el-mw-process-steps__badge" :style="{ borderColor: accentColor, color: accentColor }">
+                    {{ step.number }}
+                </span>
+                <div class="sw-cms-el-mw-process-steps__connector-line"></div>
+            </div>
+            <div class="sw-cms-el-mw-process-steps__body">
+                <h2 class="sw-cms-el-mw-process-steps__step-title">
+                    <strong>{{ step.title || 'Step Title' }}</strong>
+                </h2>
+                <h4 class="sw-cms-el-mw-process-steps__step-subtitle" v-if="step.subTitle">
+                    {{ step.subTitle }}
+                </h4>
+                <div class="sw-cms-el-mw-process-steps__step-desc" v-html="step.description || 'Step description text...'"></div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

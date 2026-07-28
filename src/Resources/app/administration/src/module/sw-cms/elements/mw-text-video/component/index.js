@@ -27,6 +27,10 @@ export default {
             return `color: ${color};`;
         },
 
+        showPrimaryButton() {
+            return this.element?.config?.showPrimaryButton ? this.element.config.showPrimaryButton.value : true;
+        },
+
         buttonText() {
             return this.element?.config?.buttonText ? this.element.config.buttonText.value : '';
         },
@@ -34,6 +38,20 @@ export default {
         buttonStyle() {
             const bg = this.element?.config?.buttonBgColor ? this.element.config.buttonBgColor.value : '#e06600';
             const text = this.element?.config?.buttonTextColor ? this.element.config.buttonTextColor.value : '#ffffff';
+            return `background-color: ${bg}; color: ${text};`;
+        },
+
+        showSecondaryButton() {
+            return this.element?.config?.showSecondaryButton ? this.element.config.showSecondaryButton.value : false;
+        },
+
+        button2Text() {
+            return this.element?.config?.button2Text ? this.element.config.button2Text.value : '';
+        },
+
+        button2Style() {
+            const bg = this.element?.config?.button2BgColor ? this.element.config.button2BgColor.value : '#1a1a1a';
+            const text = this.element?.config?.button2TextColor ? this.element.config.button2TextColor.value : '#ffffff';
             return `background-color: ${bg}; color: ${text};`;
         },
 

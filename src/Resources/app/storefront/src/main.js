@@ -1,9 +1,16 @@
 import mainhattanHeaderHoverAddRemove from './js/mainhattan-header-hover-add-remove-class.plugin';
+import mainhattanCollapseFooterColumns from './js/mainhattan-collapse-footer-columns.plugin';
+import MwTabCardsPlugin from './js/mw-tab-cards/mw-tab-cards.plugin';
 
 const PluginManager = window.PluginManager;
 PluginManager.override('FlyoutMenu', mainhattanHeaderHoverAddRemove, '[data-flyout-menu]');
+PluginManager.override('CollapseFooterColumns', mainhattanCollapseFooterColumns, '[data-collapse-footer-columns="true"]');
 PluginManager.register('MwProfileTabs', () => import('./js/mw-profile-tabs.plugin'), '[data-mw-profile-tabs="true"]');
 PluginManager.register('IctContentTabs', () => import('./js/ict-content-tabs/ict-content-tabs.plugin'), '[data-ict-content-tabs]');
 PluginManager.register('MwBeforeAfter', () => import('./js/mw-before-after.plugin'), '[data-mw-before-after]');
 PluginManager.register('MwVideoPlayer', () => import('./js/mw-video-player.plugin'), '[data-mw-video-player]');
 PluginManager.register('MwTechnicalFeatureGallery', () => import('./js/mw-technical-feature-gallery.plugin'), '[data-mw-technical-feature-gallery="true"]');
+PluginManager.register('MwProductQuickOrder', () => import('./js/mw-product-quick-order.plugin'), '[data-mw-product-quick-order="true"]');
+PluginManager.register('MwMediaTabs', () => import('./js/mw-media-tabs.plugin'), '[data-mw-media-tabs="true"]');
+PluginManager.register('IctGalleryLightbox', () => import('./js/ict-gallery-lightbox/ict-gallery-lightbox.plugin'), '[data-ict-gallery]');
+PluginManager.register('MwTabCards', MwTabCardsPlugin, '[data-mw-tab-cards="true"]');

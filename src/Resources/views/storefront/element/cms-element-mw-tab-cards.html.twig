@@ -1,0 +1,150 @@
+{% block element_mw_tab_cards %}
+    {% set c = element.config %}
+    {% set cards = element.data.cards ?: c.cards.value %}
+    {% set commonButtonText = c.buttonText.value ?? '' %}
+    {% set commonButtonUrl = c.buttonUrl.value ?? '#' %}
+    {% set commonButtonLinkType = c.buttonLinkType.value ?? 'internal' %}
+    {% set commonButtonTarget = c.buttonTarget.value ?? '_self' %}
+
+    {% if commonButtonLinkType == 'external' and commonButtonUrl != '#' and not (commonButtonUrl starts with 'http://') and not (commonButtonUrl starts with 'https://') and not (commonButtonUrl starts with '//') and not (commonButtonUrl starts with 'mailto:') and not (commonButtonUrl starts with 'tel:') %}
+        {% set commonButtonUrl = 'https://' ~ commonButtonUrl %}
+    {% endif %}
+
+    <div class="cms-element-mw-tab-cards" data-mw-tab-cards="true">
+        {% if c.mainHeading.value or c.subHeading.value %}
+            <div class="cms-element-mw-tab-cards__header">
+                {% if c.mainHeading.value %}
+                    <h2 class="cms-element-mw-tab-cards__main-heading">{{ c.mainHeading.value }}</h2>
+                {% endif %}
+                {% if c.subHeading.value %}
+                    <p class="cms-element-mw-tab-cards__sub-heading">{{ c.subHeading.value }}</p>
+                {% endif %}
+            </div>
+        {% endif %}
+
+        {% if cards|length > 0 %}
+            <div class="cms-element-mw-tab-cards__grid" role="tablist">
+                {% for card in cards %}
+                    {% set activeClass = loop.first ? 'is--active' : '' %}
+                    {% set mediaUrl = card.mediaEntity.url ?? '' %}
+                    <button
+                        type="button"
+                        class="cms-element-mw-tab-cards__card {{ activeClass }}"
+                        data-mw-tab-card-index="{{ loop.index0 }}"
+                        role="tab"
+                        aria-selected="{{ loop.first ? 'true' : 'false' }}"
+                    >
+                        <div class="cms-element-mw-tab-cards__card-image-wrapper">
+                            {% if mediaUrl %}
+                                <img src="{{ mediaUrl }}" alt="{{ card.cardTitle }}" class="cms-element-mw-tab-cards__card-image" />
+                            {% endif %}
+                        </div>
+                        {% if card.cardTitle %}
+                            <div class="cms-element-mw-tab-cards__card-title">{{ card.cardTitle }}</div>
+                        {% endif %}
+                        {% if card.cardSubtitle %}
+                            <div class="cms-element-mw-tab-cards__card-subtitle">{{ card.cardSubtitle }}</div>
+                        {% endif %}
+                    </button>
+                {% endfor %}
+            </div>
+
+            <div class="cms-element-mw-tab-cards__panels">
+                {% for card in cards %}
+                    {% set activePanelClass = loop.first ? 'is--active' : '' %}
+
+                    <div
+                        class="cms-element-mw-tab-cards__panel {{ activePanelClass }}"
+                        data-mw-tab-panel-index="{{ loop.index0 }}"
+                        role="tabpanel"
+                        {% if not loop.first %}hidden{% endif %}
+                    >
+                        <div class="cms-element-mw-tab-cards__panel-header">
+                            <div class="cms-element-mw-tab-cards__panel-titles">
+                                <h3 class="cms-element-mw-tab-cards__tab-headline">{{ card.tabHeadline ?: card.cardTitle }}</h3>
+                                {% if card.tabSubheadline %}
+                                    <div class="cms-element-mw-tab-cards__tab-subheadline">{{ card.tabSubheadline }}</div>
+                                {% endif %}
+                            </div>
+                            {% if commonButtonText %}
+                                <a
+                                    href="{{ commonButtonUrl }}"
+                                    target="{{ commonButtonTarget }}"
+                                    class="cms-element-mw-tab-cards__button"
+                                >
+                                    {{ commonButtonText }}
+                                </a>
+                            {% endif %}
+                        </div>
+
+                        {% if card.productLinks|length > 0 %}
+                            <div class="cms-element-mw-tab-cards__product-links">
+                                <ul class="cms-element-mw-tab-cards__link-list">
+                                    {% for link in card.productLinks %}
+                                        {% set product = link.productEntity %}
+                                        {% set productUrl = '#' %}
+                                        {% if product and product.id %}
+                                            {% set productUrl = seoUrl('frontend.detail.page', { productId: product.id }) %}
+                                        {% elseif link.productId %}
+                                            {% set productUrl = seoUrl('frontend.detail.page', { productId: link.productId }) %}
+                                        {% endif %}
+
+                                        <li class="cms-element-mw-tab-cards__link-item">
+                                            <a href="{{ productUrl }}" class="cms-element-mw-tab-cards__link">
+                                                <span class="cms-element-mw-tab-cards__link-icon">›</span>
+                                                <span class="cms-element-mw-tab-cards__link-text">{{ link.label ?: (product ? product.translated.name : 'Product Link') }}</span>
+                                            </a>
+                                        </li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                        {% endif %}
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+    </div>
+
+    <script>
+        (function() {
+            function initMwTabCards() {
+                var containers = document.querySelectorAll('[data-mw-tab-cards="true"]');
+                containers.forEach(function(container) {
+                    var cards = container.querySelectorAll('[data-mw-tab-card-index]');
+                    var panels = container.querySelectorAll('[data-mw-tab-panel-index]');
+
+                    cards.forEach(function(card) {
+                        card.addEventListener('click', function(e) {
+                            e.preventDefault();
+                            var idx = card.getAttribute('data-mw-tab-card-index');
+
+                            cards.forEach(function(c) {
+                                var active = c.getAttribute('data-mw-tab-card-index') === idx;
+                                c.classList.toggle('is--active', active);
+                                c.setAttribute('aria-selected', active ? 'true' : 'false');
+                            });
+
+                            panels.forEach(function(p) {
+                                var active = p.getAttribute('data-mw-tab-panel-index') === idx;
+                                p.classList.toggle('is--active', active);
+                                if (active) {
+                                    p.removeAttribute('hidden');
+                                    p.style.display = 'block';
+                                } else {
+                                    p.setAttribute('hidden', 'hidden');
+                                    p.style.display = 'none';
+                                }
+                            });
+                        });
+                    });
+                });
+            }
+
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', initMwTabCards);
+            } else {
+                initMwTabCards();
+            }
+        })();
+    </script>
+{% endblock %}

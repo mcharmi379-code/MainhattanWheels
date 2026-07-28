@@ -5,12 +5,14 @@
             <h2 class="mw-tv-heading" :style="headingStyle">
                 {{ heading || 'Enter heading...' }}
             </h2>
-            <div class="mw-tv-subheading" :style="subHeadingStyle">
-                {{ subHeading || 'Enter description...' }}
+            <div class="mw-tv-subheading" :style="subHeadingStyle" v-html="subHeading || 'Enter description...'">
             </div>
-            <div class="mw-tv-actions">
-                <button class="mw-tv-button" :style="buttonStyle" type="button">
-                    {{ buttonText || 'Button Text' }}
+            <div class="mw-tv-actions" v-if="(showPrimaryButton && buttonText) || (showSecondaryButton && button2Text)" style="display: flex; gap: 10px; margin-top: 12px; flex-wrap: wrap;">
+                <button v-if="showPrimaryButton && buttonText" class="mw-tv-button" :style="buttonStyle" type="button">
+                    {{ buttonText }}
+                </button>
+                <button v-if="showSecondaryButton && button2Text" class="mw-tv-button" :style="button2Style" type="button">
+                    {{ button2Text }}
                 </button>
             </div>
         </div>

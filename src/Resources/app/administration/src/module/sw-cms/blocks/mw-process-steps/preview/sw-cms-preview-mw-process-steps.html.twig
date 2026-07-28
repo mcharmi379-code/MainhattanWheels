@@ -1,0 +1,11 @@
+{% block sw_cms_preview_mw_process_steps %}
+<div class="sw-cms-preview-mw-process-steps">
+    <div class="sw-cms-preview-mw-process-steps__title">Process Steps</div>
+    <div class="sw-cms-preview-mw-process-steps__steps">
+        <div class="sw-cms-preview-mw-process-steps__step" v-for="i in 4" :key="i">
+            <span class="sw-cms-preview-mw-process-steps__circle">{{ i }}</span>
+            <div class="sw-cms-preview-mw-process-steps__line"></div>
+        </div>
+    </div>
+</div>
+{% endblock %}

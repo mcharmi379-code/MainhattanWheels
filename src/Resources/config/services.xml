@@ -14,6 +14,22 @@
             <tag name="shopware.cms.data_resolver" />
         </service>
 
+        <service id="MainhattanWheels\Core\Content\Cms\DataResolver\Element\MwProductQuickOrderCmsElementResolver" public="true">
+            <tag name="shopware.cms.data_resolver" />
+        </service>
+
+        <service id="MainhattanWheels\Core\Content\Cms\DataResolver\Element\MwTestimonialCmsElementResolver" public="true">
+            <tag name="shopware.cms.data_resolver" />
+        </service>
+
+        <service id="MainhattanWheels\Core\Content\Cms\DataResolver\Element\MwProcessStepsCmsElementResolver" public="true">
+            <tag name="shopware.cms.data_resolver" />
+        </service>
+
+        <service id="MainhattanWheels\Core\Content\Cms\DataResolver\Element\MwImageHotspotCmsElementResolver" public="true">
+            <tag name="shopware.cms.data_resolver" />
+        </service>
+
         <service id="MainhattanWheels\Core\Content\Cms\DataResolver\Element\MwButtonsCmsElementResolver" public="true">
             <tag name="shopware.cms.data_resolver" />
             <argument>%kernel.project_dir%</argument>
@@ -41,6 +57,10 @@
 
         <!-- Restored original services -->
         <service id="MainhattanWheels\Core\Content\Media\Cms\IctHeroSectionElementDataResolver" public="true">
+            <tag name="shopware.cms.data_resolver"/>
+        </service>
+
+        <service id="MainhattanWheels\Core\Content\Cms\DataResolver\Element\MwTabCardsCmsElementResolver" public="true">
             <tag name="shopware.cms.data_resolver"/>
         </service>
 
@@ -112,6 +132,10 @@
 
         <service id="MainhattanWheels\Core\Content\Cms\DataResolver\Element\IctThreeColumnCmsElementResolver" public="true">
             <argument type="service" id="Shopware\Core\Content\Media\Cms\DefaultMediaResolver"/>
+            <tag name="shopware.cms.data_resolver"/>
+        </service>
+
+        <service id="MainhattanWheels\Core\Content\Cms\DataResolver\Element\IctImageGalleryCmsElementResolver" public="true">
             <tag name="shopware.cms.data_resolver"/>
         </service>
     </services>

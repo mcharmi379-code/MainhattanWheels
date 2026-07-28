@@ -1,0 +1,32 @@
+.sw-cms-el-preview-mw-subcategory-cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    padding: 8px;
+
+    .preview-card-item {
+        background: #ffffff;
+        border: 1px solid #e0e0e0;
+        border-radius: 6px;
+        padding: 8px;
+        font-size: 10px;
+    }
+
+    .preview-title {
+        font-weight: 700;
+        color: #111;
+        margin-bottom: 4px;
+    }
+
+    .preview-bullet {
+        color: #666;
+        font-size: 9px;
+        margin-bottom: 6px;
+    }
+
+    .preview-link {
+        color: #f05a24;
+        font-weight: 700;
+        font-size: 9px;
+    }
+}

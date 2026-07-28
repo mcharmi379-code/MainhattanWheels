@@ -1,0 +1,143 @@
+{% block element_mw_image_hotspot %}
+    {% set tabs             = element.data.tabs|default([]) %}
+    {% set tooltipBgColor   = element.data.tooltipBgColor|default('#1f2937') %}
+    {% set tooltipTextColor = element.data.tooltipTextColor|default('#ffffff') %}
+
+    {% if tabs|length > 0 %}
+        <div id="mw-tabbed-hotspots-{{ element.id }}" class="cms-element-mw-image-hotspot">
+            
+            <!-- Tabs Navigation (Horizontal Tab Bar layout on storefront) -->
+            <div class="mw-hotspots-tabs-nav">
+                {% for tab in tabs %}
+                    <button 
+                        type="button" 
+                        class="mw-hotspots-tab-btn{% if loop.first %} is--active{% endif %}"
+                        data-tab-trigger="{{ tab.index }}"
+                    >
+                        {% if tab.icon %}
+                            <div class="mw-hotspots-tab-icon-wrapper">
+                                <img class="mw-hotspots-tab-icon" src="{{ tab.icon.url }}" alt="{{ tab.title }} Icon" loading="lazy" />
+                            </div>
+                        {% endif %}
+                        <span class="mw-hotspots-tab-text">{{ tab.title }}</span>
+                    </button>
+                {% endfor %}
+            </div>
+
+            <!-- Tab Panels Content -->
+            <div class="mw-hotspots-panels">
+                {% for tab in tabs %}
+                    <div 
+                        class="mw-hotspots-panel{% if loop.first %} is--active{% endif %}"
+                        data-tab-panel="{{ tab.index }}"
+                    >
+                        {% if tab.media %}
+                            <div class="mw-hotspot-wrapper">
+                                <img 
+                                    class="mw-hotspot-base-image" 
+                                    src="{{ tab.media.url }}" 
+                                    alt="{{ tab.media.translated.alt ?: tab.title }}" 
+                                    title="{{ tab.media.translated.title ?: tab.title }}"
+                                    loading="lazy"
+                                />
+
+                                <!-- Hotspots -->
+                                {% for hotspot in tab.hotspots %}
+                                    <div 
+                                        class="mw-hotspot-pin" 
+                                        style="top: {{ hotspot.top }}%; left: {{ hotspot.left }}%;"
+                                        data-hotspot-pin="{{ hotspot.index }}"
+                                    >
+                                        <button 
+                                            type="button" 
+                                            class="mw-hotspot-btn"
+                                            aria-label="Hotspot {{ hotspot.index }}: {{ hotspot.title }}"
+                                        >
+                                            {{ hotspot.index }}
+                                        </button>
+                                        
+                                        {% if hotspot.title or hotspot.text %}
+                                            <div class="mw-hotspot-tooltip" style="--tooltip-bg: {{ tooltipBgColor|e('html_attr') }}; --tooltip-color: {{ tooltipTextColor|e('html_attr') }};">
+                                                {% if hotspot.title %}
+                                                    <h4 class="mw-hotspot-tooltip-title">{{ hotspot.title }}</h4>
+                                                {% endif %}
+                                                {% if hotspot.text %}
+                                                    <p class="mw-hotspot-tooltip-text">{{ hotspot.text }}</p>
+                                                {% endif %}
+                                            </div>
+                                        {% endif %}
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        {% else %}
+                            <div class="mw-hotspots-empty-state">
+                                Please configure an image for this tab in the backend.
+                            </div>
+                        {% endif %}
+                    </div>
+                {% endfor %}
+            </div>
+
+        </div>
+
+        <!-- Tab & Hotspot Click Controller -->
+        <script>
+            (function() {
+                const elementId = "{{ element.id }}";
+                const root = document.getElementById('mw-tabbed-hotspots-' + elementId);
+                if (!root) return;
+
+                const tabButtons = root.querySelectorAll('[data-tab-trigger]');
+                const tabPanels = root.querySelectorAll('[data-tab-panel]');
+                const allPins = root.querySelectorAll('.mw-hotspot-pin');
+
+                // 1. Tab switching logic
+                tabButtons.forEach(btn => {
+                    btn.addEventListener('click', function() {
+                        const targetIndex = btn.getAttribute('data-tab-trigger');
+                        
+                        // Update buttons
+                        tabButtons.forEach(b => b.classList.remove('is--active'));
+                        btn.classList.add('is--active');
+
+                        // Update panels
+                        tabPanels.forEach(panel => {
+                            if (panel.getAttribute('data-tab-panel') === targetIndex) {
+                                panel.classList.add('is--active');
+                            } else {
+                                panel.classList.remove('is--active');
+                            }
+                        });
+
+                        // Close active tooltips
+                        allPins.forEach(p => p.classList.remove('is--active'));
+                    });
+                });
+
+                // 2. Hotspot pin toggle logic (Mobile & click friendly)
+                allPins.forEach(pin => {
+                    const btn = pin.querySelector('.mw-hotspot-btn');
+                    if (!btn) return;
+
+                    btn.addEventListener('click', function(e) {
+                        e.stopPropagation();
+                        const isActive = pin.classList.contains('is--active');
+                        
+                        // Close all pins in active panel
+                        allPins.forEach(p => p.classList.remove('is--active'));
+
+                        // Toggle active pin
+                        if (!isActive) {
+                            pin.classList.add('is--active');
+                        }
+                    });
+                });
+
+                // 3. Click outside to close tooltips
+                document.addEventListener('click', function() {
+                    allPins.forEach(p => p.classList.remove('is--active'));
+                });
+            })();
+        </script>
+    {% endif %}
+{% endblock %}

@@ -514,8 +514,8 @@ export default {
                 if (card.detailRowsOutlineThickness === undefined || card.detailRowsOutlineThickness === null || String(card.detailRowsOutlineThickness).trim() === '') {
                     card.detailRowsOutlineThickness = '1';
                 }
-                if (card.infoText === undefined || card.infoText === null || String(card.infoText).trim() === '') {
-                    card.infoText = 'Infotext';
+                if (card.infoText === undefined || card.infoText === null) {
+                    card.infoText = '';
                 }
                 if (card.infoTextAlignment === undefined || card.infoTextAlignment === null || String(card.infoTextAlignment).trim() === '') {
                     card.infoTextAlignment = 'left';
@@ -626,7 +626,7 @@ export default {
                 detailRowsValueFontWeight: '400',
                 detailRowsOutlineColor: '#E4E4E3',
                 detailRowsOutlineThickness: '1',
-                infoText: 'Infotext',
+                infoText: '',
                 infoTextAlignment: 'left',
                 infoTextSize: '16',
                 infoTextLineHeight: '24',
@@ -690,7 +690,7 @@ export default {
                         this.createDetailRow({ title: 'Title 3', value: 'Value 3' }),
                         this.createDetailRow({ title: 'Title 4', value: 'Value 4' })
                     ],
-                    infoText: 'Infotext',
+                    infoText: '',
                     buttons: [
                         this.createButton()
                     ]
@@ -704,7 +704,7 @@ export default {
                         this.createDetailRow({ title: 'Title 2', value: 'Value 2' }),
                         this.createDetailRow({ title: 'Title 3', value: 'Value 3' })
                     ],
-                    infoText: 'Infotext',
+                    infoText: '',
                     buttons: [
                         this.createButton()
                     ]
@@ -719,7 +719,7 @@ export default {
                         this.createDetailRow({ title: 'Title 3', value: 'Value 3' }),
                         this.createDetailRow({ title: 'Title 4', value: 'Value 4' })
                     ],
-                    infoText: 'Infotext',
+                    infoText: '',
                     buttons: [
                         this.createButton()
                     ]

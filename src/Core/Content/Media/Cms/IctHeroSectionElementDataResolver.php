@@ -48,7 +48,7 @@ final class IctHeroSectionElementDataResolver extends AbstractCmsElementResolver
         }
 
         $collection = new CriteriaCollection();
-        $collection->add('media_' . $this->getType(), MediaDefinition::class, new Criteria($mediaIds));
+        $collection->add('media_' . $slot->getUniqueIdentifier(), MediaDefinition::class, new Criteria($mediaIds));
 
         return $collection;
     }
@@ -56,7 +56,7 @@ final class IctHeroSectionElementDataResolver extends AbstractCmsElementResolver
     public function enrich(CmsSlotEntity $slot, ResolverContext $resolverContext, ElementDataCollection $result): void
     {
         $config = $slot->getFieldConfig();
-        $mediaCollection = $result->get('media_' . $this->getType());
+        $mediaCollection = $result->get('media_' . $slot->getUniqueIdentifier());
         $data = new ArrayStruct();
 
         $this->enrichScalarFields($config, $mediaCollection, $data);
@@ -82,6 +82,8 @@ final class IctHeroSectionElementDataResolver extends AbstractCmsElementResolver
 
             if (is_string($value) && $value !== '') {
                 $ids[] = $value;
+            } elseif (is_array($value) && isset($value['id']) && is_string($value['id']) && $value['id'] !== '') {
+                $ids[] = $value['id'];
             }
         }
 
@@ -137,11 +139,18 @@ final class IctHeroSectionElementDataResolver extends AbstractCmsElementResolver
         foreach (self::SCALAR_MEDIA_FIELDS as $field => $dataKey) {
             $value = $config->get($field)?->getValue();
 
-            if (! is_string($value)) {
+            if (is_array($value) && isset($value['id'])) {
+                $value = $value['id'];
+            }
+
+            if (! is_string($value) || $value === '') {
                 continue;
             }
 
-            $data->set($dataKey, $mediaCollection?->get($value));
+            $media = $mediaCollection?->get($value);
+            if ($media !== null) {
+                $data->set($dataKey, $media);
+            }
         }
     }
 

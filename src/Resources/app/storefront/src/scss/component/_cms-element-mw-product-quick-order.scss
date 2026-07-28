@@ -1,0 +1,102 @@
+.cms-element-mw-product-quick-order {
+    width: 100%;
+    margin-top: 15px;
+    margin-bottom: 15px;
+
+    .mw-pqo-qty-input {
+        padding: 5px;
+        margin-right: 5px;
+    }
+
+    .mw-pqo-card {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border: 1px solid #dcdcdc;
+        border-radius: 14px;
+        padding: 24px;
+        background: #ffffff;
+        gap: 20px;
+        transition: border-color 0.2s ease, box-shadow 0.2s ease;
+
+        &:hover {
+            border-color: var(--mw-product-grid-hover-color, $sw-color-brand-primary);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+        }
+
+        @media (max-width: 767.98px) {
+            flex-direction: column;
+            align-items: stretch;
+            padding: 16px;
+            gap: 16px;
+        }
+    }
+
+    .mw-pqo-price-section {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+    }
+
+    .mw-pqo-price {
+        font-size: 1.625rem; // ~26px
+        font-weight: 700;
+        color: #1f2937;
+        line-height: 1.2;
+    }
+
+    .mw-pqo-tax {
+        font-size: 0.75rem; // ~12px
+        color: #6b7280;
+    }
+
+    .mw-pqo-action-section {
+        display: flex;
+        align-items: center;
+
+        @media (max-width: 480.98px) {
+            width: 100%;
+        }
+    }
+
+    .mw-pqo-order-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        background: $sw-color-brand-primary;
+        color: #ffffff;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 0.95rem;
+        padding: 10px 24px;
+        border-radius: 6px;
+        height: 42px;
+        white-space: nowrap;
+        transition: filter 0.2s ease, transform 0.2s ease;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+        &:hover {
+            filter: brightness(0.9);
+            text-decoration: none;
+            transform: translateY(-1px);
+        }
+
+        &:active {
+            transform: translateY(0);
+        }
+
+        @media (max-width: 480.98px) {
+            width: 100%;
+        }
+    }
+
+    .mw-pqo-arrow {
+        margin-left: 8px;
+        display: inline-block;
+        transition: transform 0.2s ease;
+    }
+
+    .mw-pqo-order-btn:hover .mw-pqo-arrow {
+        transform: translateX(3px);
+    }
+}

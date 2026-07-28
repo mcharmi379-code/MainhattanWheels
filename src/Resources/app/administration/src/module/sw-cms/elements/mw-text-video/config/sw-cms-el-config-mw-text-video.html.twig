@@ -24,11 +24,15 @@
                     @update:value="onConfigInput">
                 </sw-colorpicker>
 
-                <sw-textarea-field
+                <p class="sw-cms-el-config-mw-text-video__label" style="font-size: 13px; font-weight: 600; color: #334155; margin-top: 12px; margin-bottom: 6px;">
+                    {{ $tc('mw-cms.elements.mwTextVideo.config.labels.subHeading') }}
+                </p>
+                <sw-text-editor
                     v-model:value="element.config.subHeading.value"
                     :label="$tc('mw-cms.elements.mwTextVideo.config.labels.subHeading')"
+                    sanitize-input
                     @update:value="onConfigInput">
-                </sw-textarea-field>
+                </sw-text-editor>
 
                 <sw-colorpicker
                     v-model:value="element.config.subHeadingColor.value"
@@ -36,45 +40,110 @@
                     @update:value="onConfigInput">
                 </sw-colorpicker>
 
-                <sw-text-field
-                    v-model:value="element.config.buttonText.value"
-                    :label="$tc('mw-cms.elements.mwTextVideo.config.labels.buttonText')"
-                    @update:value="onConfigInput">
-                </sw-text-field>
+                <hr style="margin: 20px 0; border: 0; border-top: 1px solid #e2e8f0;" />
 
-                <sw-colorpicker
-                    v-model:value="element.config.buttonBgColor.value"
-                    :label="$tc('mw-cms.elements.mwTextVideo.config.labels.buttonBgColor')"
+                <!-- Primary Button Settings -->
+                <sw-switch-field
+                    v-model:value="element.config.showPrimaryButton.value"
+                    label="Show Primary Button"
                     @update:value="onConfigInput">
-                </sw-colorpicker>
+                </sw-switch-field>
 
-                <sw-colorpicker
-                    v-model:value="element.config.buttonTextColor.value"
-                    :label="$tc('mw-cms.elements.mwTextVideo.config.labels.buttonTextColor')"
-                    @update:value="onConfigInput">
-                </sw-colorpicker>
+                <template v-if="element.config.showPrimaryButton.value">
+                    <p style="font-size: 13px; font-weight: 700; color: #e8671a; margin-top: 10px; margin-bottom: 10px;">Primary Button Settings</p>
+                    <sw-text-field
+                        v-model:value="element.config.buttonText.value"
+                        :label="$tc('mw-cms.elements.mwTextVideo.config.labels.buttonText')"
+                        @update:value="onConfigInput">
+                    </sw-text-field>
 
-                <sw-select-field
-                    v-model:value="element.config.buttonLinkType.value"
-                    :label="$tc('mw-cms.elements.mwTextVideo.config.labels.buttonLinkType')"
-                    @update:value="onConfigInput">
-                    <option value="external">External Link</option>
-                    <option value="category">Category Link</option>
-                </sw-select-field>
+                    <sw-colorpicker
+                        v-model:value="element.config.buttonBgColor.value"
+                        :label="$tc('mw-cms.elements.mwTextVideo.config.labels.buttonBgColor')"
+                        @update:value="onConfigInput">
+                    </sw-colorpicker>
 
-                <sw-text-field
-                    v-model:value="element.config.buttonLink.value"
-                    :label="$tc('mw-cms.elements.mwTextVideo.config.labels.buttonLink')"
-                    @update:value="onConfigInput">
-                </sw-text-field>
+                    <sw-colorpicker
+                        v-model:value="element.config.buttonTextColor.value"
+                        :label="$tc('mw-cms.elements.mwTextVideo.config.labels.buttonTextColor')"
+                        @update:value="onConfigInput">
+                    </sw-colorpicker>
 
-                <sw-select-field
-                    v-model:value="element.config.buttonLinkTarget.value"
-                    :label="$tc('mw-cms.elements.mwTextVideo.config.labels.buttonLinkTarget')"
+                    <sw-select-field
+                        v-model:value="element.config.buttonLinkType.value"
+                        :label="$tc('mw-cms.elements.mwTextVideo.config.labels.buttonLinkType')"
+                        @update:value="onConfigInput">
+                        <option value="external">External Link</option>
+                        <option value="category">Category Link</option>
+                    </sw-select-field>
+
+                    <sw-text-field
+                        v-model:value="element.config.buttonLink.value"
+                        :label="$tc('mw-cms.elements.mwTextVideo.config.labels.buttonLink')"
+                        @update:value="onConfigInput">
+                    </sw-text-field>
+
+                    <sw-select-field
+                        v-model:value="element.config.buttonLinkTarget.value"
+                        :label="$tc('mw-cms.elements.mwTextVideo.config.labels.buttonLinkTarget')"
+                        @update:value="onConfigInput">
+                        <option value="_self">Same Tab (_self)</option>
+                        <option value="_blank">New Tab (_blank)</option>
+                    </sw-select-field>
+                </template>
+
+                <hr style="margin: 20px 0; border: 0; border-top: 1px solid #e2e8f0;" />
+
+                <!-- Secondary Button Settings -->
+                <sw-switch-field
+                    v-model:value="element.config.showSecondaryButton.value"
+                    label="Show Secondary Button"
                     @update:value="onConfigInput">
-                    <option value="_self">Same Tab (_self)</option>
-                    <option value="_blank">New Tab (_blank)</option>
-                </sw-select-field>
+                </sw-switch-field>
+
+                <template v-if="element.config.showSecondaryButton.value">
+                    <p style="font-size: 13px; font-weight: 700; color: #1e293b; margin-top: 10px; margin-bottom: 10px;">Secondary Button Settings</p>
+                    <sw-text-field
+                        v-model:value="element.config.button2Text.value"
+                        label="Secondary Button Text"
+                        placeholder="e.g. Learn More"
+                        @update:value="onConfigInput">
+                    </sw-text-field>
+
+                    <sw-colorpicker
+                        v-model:value="element.config.button2BgColor.value"
+                        label="Secondary Button Background Color"
+                        @update:value="onConfigInput">
+                    </sw-colorpicker>
+
+                    <sw-colorpicker
+                        v-model:value="element.config.button2TextColor.value"
+                        label="Secondary Button Text Color"
+                        @update:value="onConfigInput">
+                    </sw-colorpicker>
+
+                    <sw-select-field
+                        v-model:value="element.config.button2LinkType.value"
+                        label="Secondary Button Link Type"
+                        @update:value="onConfigInput">
+                        <option value="external">External Link</option>
+                        <option value="category">Category Link</option>
+                    </sw-select-field>
+
+                    <sw-text-field
+                        v-model:value="element.config.button2Link.value"
+                        label="Secondary Button Link URL"
+                        @update:value="onConfigInput">
+                    </sw-text-field>
+
+                    <sw-select-field
+                        v-model:value="element.config.button2LinkTarget.value"
+                        label="Secondary Button Link Target"
+                        @update:value="onConfigInput">
+                        <option value="_self">Same Tab (_self)</option>
+                        <option value="_blank">New Tab (_blank)</option>
+                    </sw-select-field>
+                </template>
             </div>
 
             <!-- Media Tab (Right Side Settings) -->
@@ -126,8 +195,7 @@
 
     <sw-media-modal-v2
         v-if="mediaModalIsOpen"
-        :initialFolderId="initialFolderId"
-        :entityContext="element.config.mediaFile.entity.name"
+        variant="full"
         @modal-close="onCloseModal"
         @media-modal-selection-change="onSelectionChanges">
     </sw-media-modal-v2>
