@@ -1,0 +1,1 @@
+"use strict";(window["webpackJsonpPluginmainhattan-wheels"]=window["webpackJsonpPluginmainhattan-wheels"]||[]).push([[4236],{4236:function(e,n,t){t.r(n),t.d(n,{default:function(){return a}});var a={template:'{% block sw_cms_block_mw_before_after %}\n    <div class="sw-cms-block-mw-before-after">\n        <slot name="beforeAfter"></slot>\n    </div>\n{% endblock %}\n'}}}]);

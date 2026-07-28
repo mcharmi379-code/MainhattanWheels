@@ -1,0 +1,1 @@
+"use strict";(window["webpackJsonpPluginmainhattan-wheels"]=window["webpackJsonpPluginmainhattan-wheels"]||[]).push([[4035],{4035:function(n,t,a){a.r(t),a.d(t,{default:function(){return s}});var s={template:'<div class="sw-cms-block-mw-product-carousel">\n    <slot name="productCarousel"></slot>\n</div>\n'}}}]);
