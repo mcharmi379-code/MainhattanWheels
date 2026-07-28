@@ -1,0 +1,105 @@
+{% block sw_cms_el_config_mw_load_capacity_table %}
+<div class="sw-cms-el-config-mw-load-capacity-table">
+
+    <div class="mw-lct-config__panel">
+
+        <div
+            v-for="(group, groupIndex) in columnGroups"
+            :key="groupIndex"
+            class="mw-lct-config__group"
+        >
+            <div class="mw-lct-config__group-header" @click="toggleGroup(groupIndex)">
+                <sw-icon
+                    class="mw-lct-config__group-toggle"
+                    :class="{ 'is-collapsed': isGroupCollapsed(groupIndex) }"
+                    name="regular-chevron-down-xs"
+                    size="12"
+                />
+
+                <span class="mw-lct-config__group-label">{{ group.title || ('Column group ' + (groupIndex + 1)) }}</span>
+
+                <sw-button
+                    size="x-small"
+                    variant="danger"
+                    :disabled="columnGroups.length <= 1"
+                    @click.stop="removeColumnGroup(groupIndex)"
+                >
+                    <sw-icon name="regular-trash" size="12" />
+                </sw-button>
+            </div>
+
+            <div v-if="!isGroupCollapsed(groupIndex)" class="mw-lct-config__group-body">
+                <sw-container columns="1fr 1fr" gap="12px">
+                    <sw-text-field
+                        v-model:value="group.title"
+                        :label="$tc('sw-cms.elements.mwLoadCapacityTable.groupTitle')"
+                        @update:value="onFieldChange"
+                    />
+                    <sw-text-field
+                        v-model:value="group.rangeLabel"
+                        :label="$tc('sw-cms.elements.mwLoadCapacityTable.groupRangeLabel')"
+                        @update:value="onFieldChange"
+                    />
+                </sw-container>
+
+                <div class="mw-lct-config__rows-label">
+                    {{ $tc('sw-cms.elements.mwLoadCapacityTable.rows') }}
+                </div>
+
+                <div
+                    v-for="(row, rowIndex) in group.rows"
+                    :key="rowIndex"
+                    class="mw-lct-config__row"
+                >
+                    <sw-container columns="1fr 1fr 32px" gap="8px">
+                        <sw-text-field
+                            v-model:value="row.label"
+                            :label="$tc('sw-cms.elements.mwLoadCapacityTable.rowLabel')"
+                            @update:value="onFieldChange"
+                        />
+                        <sw-text-field
+                            v-model:value="row.value"
+                            :label="$tc('sw-cms.elements.mwLoadCapacityTable.rowValue')"
+                            @update:value="onFieldChange"
+                        />
+                        <sw-button
+                            class="mw-lct-config__row-remove"
+                            size="x-small"
+                            variant="danger"
+                            @click="removeRow(groupIndex, rowIndex)"
+                        >
+                            <sw-icon name="regular-trash" size="12" />
+                        </sw-button>
+                    </sw-container>
+                </div>
+
+                <sw-button
+                    class="mw-lct-config__add-row-btn"
+                    variant="ghost"
+                    size="small"
+                    @click="addRow(groupIndex)"
+                >
+                    <span class="mw-lct-config__btn-content">
+                        <sw-icon name="regular-plus-circle" size="14" />
+                        <span>{{ $tc('sw-cms.elements.mwLoadCapacityTable.addRow') }}</span>
+                    </span>
+                </sw-button>
+            </div>
+        </div>
+
+        <sw-button
+            class="mw-lct-config__add-group-btn"
+            variant="ghost"
+            size="small"
+            @click="addColumnGroup"
+        >
+            <span class="mw-lct-config__btn-content">
+                <sw-icon name="regular-plus-circle" size="14" />
+                <span>{{ $tc('sw-cms.elements.mwLoadCapacityTable.addColumnGroup') }}</span>
+            </span>
+        </sw-button>
+
+    </div>
+
+</div>
+{% endblock %}

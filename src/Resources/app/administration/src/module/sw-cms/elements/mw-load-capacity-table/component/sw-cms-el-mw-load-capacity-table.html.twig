@@ -1,0 +1,30 @@
+{% block sw_cms_element_mw_load_capacity_table %}
+<div class="sw-cms-el-mw-load-capacity-table">
+
+    <div v-if="!hasContent" class="sw-cms-el-mw-load-capacity-table__placeholder">
+        <sw-icon name="regular-plus-circle" size="18" />
+        <span>{{ $tc('sw-cms.elements.mwLoadCapacityTable.addGroupHint') }}</span>
+    </div>
+
+    <div v-else class="mw-lct__wrapper">
+        <div
+            v-for="(group, groupIndex) in columnGroups"
+            :key="groupIndex"
+            class="mw-lct__group"
+        >
+            <div class="mw-lct__header">{{ group.title || ('Group ' + (groupIndex + 1)) }}</div>
+            <div class="mw-lct__subheader">{{ group.rangeLabel }}</div>
+
+            <div
+                v-for="(row, rowIndex) in group.rows"
+                :key="rowIndex"
+                class="mw-lct__row"
+            >
+                <span class="mw-lct__label">{{ row.label }} =</span>
+                <span class="mw-lct__value">{{ row.value }}</span>
+            </div>
+        </div>
+    </div>
+
+</div>
+{% endblock %}

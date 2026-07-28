@@ -51,6 +51,9 @@
       },
       "mwTextVideo": {
         "label": "MW Text Bild/Video Split"
+      },
+      "mwLoadCapacityTable": {
+        "label": "MW Tragfähigkeitstabelle"
       }
     },
     "elements": {
@@ -411,6 +414,9 @@
       },
       "mwSubcategoryGrid": {
         "label": "Unterkategorien-Raster"
+      },
+      "mwLoadCapacityTable": {
+        "label": "MW Tragfähigkeitstabelle"
       }
     },
     "elements": {
@@ -650,6 +656,19 @@
       },
       "mwSubcategoryGrid": {
         "label": "Unterkategorien-Raster"
+      },
+      "mwLoadCapacityTable": {
+        "label": "Tragfähigkeitstabelle",
+        "addColumnGroup": "Spaltengruppe hinzufügen",
+        "removeColumnGroup": "Spaltengruppe entfernen",
+        "groupTitle": "Gruppentitel",
+        "groupRangeLabel": "Bereichsbezeichnung",
+        "rows": "Zeilen",
+        "rowLabel": "Zeilenbezeichnung",
+        "rowValue": "Zeilenwert",
+        "addRow": "Zeile hinzufügen",
+        "removeRow": "Zeile entfernen",
+        "addGroupHint": "Bitte konfigurieren Sie die Spaltengruppen in den Einstellungen."
       }
     }
   }

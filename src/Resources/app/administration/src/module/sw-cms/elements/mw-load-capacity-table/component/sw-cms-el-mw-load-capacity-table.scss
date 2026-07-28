@@ -1,0 +1,68 @@
+.sw-cms-el-mw-load-capacity-table {
+    width: 100%;
+    min-height: 120px;
+
+    &__placeholder {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        min-height: 120px;
+        border: 1px dashed #b6c2d0;
+        border-radius: 6px;
+        background: #f8fafc;
+        color: #7b8794;
+        font-size: 13px;
+        cursor: pointer;
+    }
+
+    .mw-lct__wrapper {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1px;
+        background: #dadae5;
+    }
+
+    .mw-lct__group {
+        flex: 1 0 100px;
+        min-width: 90px;
+        background: #fff;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .mw-lct__header,
+    .mw-lct__subheader {
+        background: #000;
+        color: #fff;
+        text-align: center;
+        font-size: 12px;
+        font-weight: 700;
+        padding: 6px 4px;
+    }
+
+    .mw-lct__row {
+        display: flex;
+        justify-content: center;
+        gap: 4px;
+        padding: 4px 6px;
+        font-size: 12px;
+
+        &:nth-child(odd) {
+            background: #f1f1f1;
+        }
+
+        &:nth-child(even) {
+            background: #fff;
+        }
+    }
+
+    .mw-lct__label {
+        color: #7b8794;
+    }
+
+    .mw-lct__value {
+        color: #1a1a2e;
+        font-weight: 700;
+    }
+}

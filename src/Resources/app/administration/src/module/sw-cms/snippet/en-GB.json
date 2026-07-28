@@ -51,6 +51,9 @@
       },
       "mwTextVideo": {
         "label": "MW Text Image/Video Split"
+      },
+      "mwLoadCapacityTable": {
+        "label": "MW Load Capacity Table"
       }
     },
     "elements": {
@@ -415,6 +418,9 @@
       },
       "mwSubcategoryGrid": {
         "label": "Subcategory Grid"
+      },
+      "mwLoadCapacityTable": {
+        "label": "MW Load Capacity Table"
       }
     },
     "elements": {
@@ -664,6 +670,19 @@
       },
       "mwSubcategoryGrid": {
         "label": "Subcategory Grid"
+      },
+      "mwLoadCapacityTable": {
+        "label": "Load Capacity Table",
+        "addColumnGroup": "Add column group",
+        "removeColumnGroup": "Remove column group",
+        "groupTitle": "Group title",
+        "groupRangeLabel": "Range label",
+        "rows": "Rows",
+        "rowLabel": "Row label",
+        "rowValue": "Row value",
+        "addRow": "Add row",
+        "removeRow": "Remove row",
+        "addGroupHint": "Please configure column groups in the side settings panel."
       }
     }
   }

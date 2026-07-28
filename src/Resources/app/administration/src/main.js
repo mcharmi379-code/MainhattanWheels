@@ -58,6 +58,8 @@ import './module/sw-cms/blocks/mw-testimonial';
 import './module/sw-cms/elements/mw-testimonial';
 import './module/sw-cms/blocks/mw-process-steps';
 import './module/sw-cms/elements/mw-process-steps';
+import './module/sw-cms/blocks/mw-load-capacity-table';
+import './module/sw-cms/elements/mw-load-capacity-table';
 import './module/sw-cms/blocks/mw-image-hotspot';
 import './module/sw-cms/elements/mw-image-hotspot';
 import './module/sw-cms/blocks/mw-subcategory-cards';
