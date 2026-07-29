@@ -1,7 +1,8 @@
 import Plugin from 'src/plugin-system/plugin.class';
-
+alert('IctGalleryLightboxPlugin loaded');
 export default class IctGalleryLightboxPlugin extends Plugin {
     init() {
+        console.log('[IctGalleryLightbox] init', this.el);
         this.items = Array.from(this.el.querySelectorAll('[data-ict-gallery-item]'));
         this.modal = this.el.querySelector('[data-ict-gallery-modal]');
         this.backdrop = this.el.querySelector('[data-ict-gallery-backdrop]');
@@ -94,14 +95,22 @@ export default class IctGalleryLightboxPlugin extends Plugin {
 
     onItemClick(index, event) {
         event.preventDefault();
+        console.log('[IctGalleryLightbox] item clicked', {
+            index,
+            eventTarget: event.target,
+            currentTarget: event.currentTarget,
+        });
+        alert(`[IctGalleryLightbox] clicked image #${index + 1}`);
         this.open(index);
     }
 
     open(index) {
         if (!this.modal) {
+            console.warn('[IctGalleryLightbox] modal not found, cannot open');
             return;
         }
 
+        console.log('[IctGalleryLightbox] open', index);
         this.lastFocusedElement = document.activeElement;
         this.setActiveIndex(index);
         this.modal.classList.add('is-open');
@@ -118,6 +127,7 @@ export default class IctGalleryLightboxPlugin extends Plugin {
             return;
         }
 
+        console.log('[IctGalleryLightbox] close');
         this.modal.classList.remove('is-open');
         this.modal.setAttribute('aria-hidden', 'true');
         document.body.classList.remove('ict-image-gallery-is-open');
