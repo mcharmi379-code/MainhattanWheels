@@ -1,0 +1,78 @@
+{% block sw_cms_el_config_mw_cta_banner %}
+<div class="sw-cms-el-config-mw-cta-banner">
+    <mt-text-field
+        v-model="element.config.text.value"
+        :label="$tc('mw-cms.elements.mwCtaBanner.config.text')"
+        @update:model-value="onInput"
+    />
+
+    <sw-colorpicker
+        :value="element.config.textColor.value"
+        :label="$tc('mw-cms.elements.mwCtaBanner.config.textColor')"
+        color-output="hex"
+        :z-index="1000"
+        @update:value="element.config.textColor.value = $event; onInput()"
+    />
+
+    <sw-colorpicker
+        :value="element.config.bannerBgColor.value"
+        :label="$tc('mw-cms.elements.mwCtaBanner.config.bannerBgColor')"
+        color-output="hex"
+        :z-index="1000"
+        @update:value="element.config.bannerBgColor.value = $event; onInput()"
+    />
+
+    <sw-container>
+        <p class="sw-cms-el-config-mw-cta-banner__section-title">{{ $tc('mw-cms.elements.mwCtaBanner.config.buttonSection') }}</p>
+
+        <mt-text-field
+            v-model="element.config.buttonLabel.value"
+            :label="$tc('mw-cms.elements.mwCtaBanner.config.buttonLabel')"
+            @update:model-value="onInput"
+        />
+
+        <sw-colorpicker
+            :value="element.config.buttonBgColor.value"
+            :label="$tc('mw-cms.elements.mwCtaBanner.config.buttonBgColor')"
+            color-output="hex"
+            :z-index="1000"
+            @update:value="element.config.buttonBgColor.value = $event; onInput()"
+        />
+
+        <sw-colorpicker
+            :value="element.config.buttonTextColor.value"
+            :label="$tc('mw-cms.elements.mwCtaBanner.config.buttonTextColor')"
+            color-output="hex"
+            :z-index="1000"
+            @update:value="element.config.buttonTextColor.value = $event; onInput()"
+        />
+
+        <sw-single-select
+            v-model:value="element.config.buttonLinkType.value"
+            :label="$tc('mw-cms.elements.mwCtaBanner.config.linkType')"
+            :options="linkTypeOptions"
+            @update:value="onInput"
+        />
+
+        <sw-dynamic-url-field
+            v-if="element.config.buttonLinkType.value === 'internal'"
+            v-model:value="element.config.buttonLinkUrl.value"
+            :label="$tc('mw-cms.elements.mwCtaBanner.config.linkTo')"
+            @update:value="onInput"
+        />
+        <mt-text-field
+            v-else
+            v-model="element.config.buttonLinkUrl.value"
+            :label="$tc('mw-cms.elements.mwCtaBanner.config.linkTo')"
+            @update:model-value="onInput"
+        />
+
+        <sw-field
+            type="checkbox"
+            v-model="element.config.buttonNewTab.value"
+            :label="$tc('mw-cms.elements.mwCtaBanner.config.linkNewTab')"
+            @update:model-value="onInput"
+        />
+    </sw-container>
+</div>
+{% endblock %}

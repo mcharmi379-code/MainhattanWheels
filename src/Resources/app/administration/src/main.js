@@ -64,3 +64,5 @@ import './module/sw-cms/blocks/mw-image-hotspot';
 import './module/sw-cms/elements/mw-image-hotspot';
 import './module/sw-cms/blocks/mw-subcategory-cards';
 import './module/sw-cms/elements/mw-subcategory-cards';
+import './module/sw-cms/blocks/mw-cta-banner';
+import './module/sw-cms/elements/mw-cta-banner';

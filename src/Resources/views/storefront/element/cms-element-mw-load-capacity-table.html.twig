@@ -6,13 +6,17 @@
         <div class="cms-element-mw-load-capacity-table">
             {% for group in columnGroups %}
                 <div class="mw-lct__group">
-                    <div class="mw-lct__header">{{ group.title }}</div>
-                    <div class="mw-lct__subheader">{{ group.rangeLabel }}</div>
+                    {% if group.title is not empty or group.rangeLabel is not empty %}
+                        <div class="mw-lct__header">
+                            {% if group.title is not empty %}{{ group.title }}{% endif %}
+                        </div>
+                        <div class="mw-lct__subheader">{{ group.rangeLabel }}</div>
+                    {% endif %}
 
                     <div class="mw-lct__body">
                         {% for row in group.rows %}
                             <div class="mw-lct__row">
-                                <span class="mw-lct__label">{{ row.label }} =</span>
+                                <span class="mw-lct__label">{{ row.label }}</span>
                                 <span class="mw-lct__value">{{ row.value }}</span>
                             </div>
                         {% endfor %}

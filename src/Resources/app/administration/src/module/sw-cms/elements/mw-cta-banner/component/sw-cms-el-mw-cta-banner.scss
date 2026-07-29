@@ -1,0 +1,25 @@
+.sw-cms-el-mw-cta-banner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 24px;
+    border-radius: 4px;
+
+    &__text {
+        margin: 0;
+        font-weight: 700;
+    }
+
+    &__btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+        min-height: 40px;
+        padding: 0 24px;
+        font-weight: 600;
+        white-space: nowrap;
+        border-radius: 4px;
+    }
+}

@@ -1,0 +1,13 @@
+{% block sw_cms_el_mw_cta_banner %}
+    <div class="sw-cms-el-mw-cta-banner" :style="{ backgroundColor: bannerBgColor }">
+        <p class="sw-cms-el-mw-cta-banner__text" :style="{ color: textColor }">{{ text }}</p>
+
+        <span
+            v-if="buttonLabel"
+            class="sw-cms-el-mw-cta-banner__btn"
+            :style="{ backgroundColor: buttonBgColor, color: buttonTextColor }"
+        >
+            {{ buttonLabel }}
+        </span>
+    </div>
+{% endblock %}

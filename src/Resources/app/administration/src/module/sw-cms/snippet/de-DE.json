@@ -54,6 +54,9 @@
       },
       "mwLoadCapacityTable": {
         "label": "MW Tragfähigkeitstabelle"
+      },
+      "mwCtaBanner": {
+        "label": "MW CTA-Banner"
       }
     },
     "elements": {
@@ -300,6 +303,23 @@
             "mediaLink": "Video-URL / Medienlink",
             "mediaLinkTarget": "Medienlink-Ziel"
           }
+        }
+      },
+      "mwCtaBanner": {
+        "label": "MW CTA-Banner",
+        "config": {
+          "text": "Text",
+          "textColor": "Textfarbe",
+          "bannerBgColor": "Banner-Hintergrundfarbe",
+          "buttonSection": "Button",
+          "buttonLabel": "Button-Text",
+          "buttonBgColor": "Button-Hintergrundfarbe",
+          "buttonTextColor": "Button-Textfarbe",
+          "linkType": "Link-Typ",
+          "linkTo": "Verlinken zu",
+          "linkTypeInternal": "Intern",
+          "linkTypeExternal": "Extern",
+          "linkNewTab": "In neuem Tab öffnen"
         }
       }
     }

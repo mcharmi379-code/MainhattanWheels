@@ -142,5 +142,9 @@
         <service id="MainhattanWheels\Core\Content\Cms\DataResolver\Element\MwLoadCapacityTableCmsElementResolver" public="true">
             <tag name="shopware.cms.data_resolver"/>
         </service>
+
+        <service id="MainhattanWheels\Core\Content\Cms\DataResolver\Element\MwCtaBannerCmsElementResolver" public="true">
+            <tag name="shopware.cms.data_resolver"/>
+        </service>
     </services>
 </container>

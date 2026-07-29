@@ -23,6 +23,8 @@
         font-size: 0.9rem;
         font-weight: 700;
         padding: 0.5rem 0.25rem;
+        min-height: 1em;
+        line-height: 1em;
     }
 
     .mw-lct__body {
@@ -37,6 +39,8 @@
         padding: 0.4rem 0.5rem;
         font-size: 0.9rem;
         white-space: nowrap;
+        min-height: 1em;
+        line-height: 1em;
 
         &:nth-child(odd) {
             background: #f1f1f1;

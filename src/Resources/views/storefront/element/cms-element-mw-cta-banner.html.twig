@@ -1,0 +1,41 @@
+{% block element_mw_cta_banner %}
+    {% set data = element.data ?? {} %}
+    {% set config = element.config ?? {} %}
+    {% set text = data.text ?? config.text.value ?? '' %}
+    {% set textColor = data.textColor ?? config.textColor.value ?? '' %}
+    {% set bannerBgColor = data.bannerBgColor ?? config.bannerBgColor.value ?? '' %}
+    {% set buttonLabel = data.buttonLabel ?? config.buttonLabel.value ?? '' %}
+    {% set buttonLinkType = data.buttonLinkType ?? config.buttonLinkType.value ?? 'internal' %}
+    {% set buttonLinkUrl = data.buttonLinkUrl ?? config.buttonLinkUrl.value ?? '' %}
+    {% set buttonNewTab = data.buttonNewTab ?? config.buttonNewTab.value ?? false %}
+    {% set buttonBgColor = data.buttonBgColor ?? config.buttonBgColor.value ?? '' %}
+    {% set buttonTextColor = data.buttonTextColor ?? config.buttonTextColor.value ?? '' %}
+
+    {% if text or buttonLabel %}
+        <div class="mw-cta-banner"{% if bannerBgColor %} style="background-color: {{ bannerBgColor }};"{% endif %}>
+            {% if text %}
+                <p class="mw-cta-banner__text"{% if textColor %} style="color: {{ textColor }};"{% endif %}>
+                    {{ text }}
+                </p>
+            {% endif %}
+
+            {% if buttonLabel %}
+                {% set url = buttonLinkUrl ?: '#' %}
+                {% if buttonLinkType == 'external' and url != '#' and not (url starts with '#') and not (url starts with 'http://') and not (url starts with 'https://') and not (url starts with '//') and not (url starts with 'mailto:') and not (url starts with 'tel:') %}
+                    {% set url = 'https://' ~ url %}
+                {% endif %}
+
+                <a
+                    href="{{ url }}"
+                    {% if buttonNewTab %}target="_blank" rel="noopener noreferrer"{% endif %}
+                    class="mw-cta-banner__btn"
+                    {% if buttonBgColor or buttonTextColor %}
+                        style="{% if buttonBgColor %}background-color: {{ buttonBgColor }};{% endif %}{% if buttonTextColor %} color: {{ buttonTextColor }};{% endif %}"
+                    {% endif %}
+                >
+                    {{ buttonLabel }}
+                </a>
+            {% endif %}
+        </div>
+    {% endif %}
+{% endblock %}
