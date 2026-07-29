@@ -37,12 +37,13 @@ final class MwProductCarouselCmsElementResolver extends AbstractCmsElementResolv
         $collection->add('mw_product_carousel_category_' . $slot->getUniqueIdentifier(), CategoryDefinition::class, $categoryCriteria);
 
         $productCriteria = new Criteria();
-        $productCriteria->setLimit(3);
+        $productCriteria->setLimit(50);
         $productCriteria->addAssociation('cover.media');
         $productCriteria->addAssociation('manufacturer');
         $productCriteria->addAssociation('price');
         $productCriteria->addAssociation('calculatedPrices');
-        $productCriteria->addFilter(new EqualsFilter('categoriesRo.id', $categoryId));
+        $productCriteria->addFilter(new EqualsFilter('categories.id', $categoryId));
+        $productCriteria->addFilter(new EqualsFilter('parentId', null));
         $productCriteria->addSorting(new FieldSorting('createdAt', FieldSorting::ASCENDING));
         $collection->add('mw_product_carousel_products_' . $slot->getUniqueIdentifier(), ProductDefinition::class, $productCriteria);
 

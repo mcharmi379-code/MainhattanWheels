@@ -45,6 +45,10 @@
 
     &__slider {
         position: relative;
+
+        .tns-ovh {
+            overflow: hidden;
+        }
     }
 
     &__slide {

@@ -4,13 +4,17 @@
     {% set category = c.category ?? null %}
     {% set headline = c.headline ?? '' %}
     {% set ctaLabel = c.ctaLabel ?? 'All Products' %}
-    {% set hasProducts = c.hasProducts ?? items|length > 0 %}
-    {% set needsSlider = items|length > 1 %}
+    {% set itemCount = items|length %}
+    {% set hasProducts = c.hasProducts ?? itemCount > 0 %}
+    {% set xsItems = min(itemCount, 1) %}
+    {% set smItems = min(itemCount, 2) %}
+    {% set lgItems = min(itemCount, 3) %}
+    {% set needsSlider = itemCount > lgItems %}
     {% set baseSliderOptions = {
         slider: {
-            controls: false,
+            controls: true,
             nav: false,
-            items: 1,
+            items: xsItems,
             slideBy: 1,
             mode: 'carousel',
             mouseDrag: needsSlider,
@@ -21,9 +25,12 @@
             gutter: 16,
             loop: needsSlider,
             responsive: {
-                xs: { items: 1, gutter: 12 },
-                sm: { items: 2, gutter: 12 },
-                lg: { items: 3, gutter: 16 }
+                xs: { items: xsItems, gutter: 12 },
+                sm: { items: smItems, gutter: 12 },
+                md: { items: smItems, gutter: 12 },
+                lg: { items: lgItems, gutter: 16 },
+                xl: { items: lgItems, gutter: 16 },
+                xxl: { items: lgItems, gutter: 16 }
             }
         }
     } %}
@@ -55,8 +62,15 @@
                         {% endfor %}
                     </div>
                     {% if needsSlider %}
-                        <div class="image-slider-controls-container">
-                            <div class="base-slider-controls" data-base-slider-controls="true"></div>
+                        <div class="product-slider-controls-container">
+                            <div class="base-slider-controls" data-base-slider-controls="true">
+                                <button class="base-slider-controls-prev product-slider-controls-prev">
+                                    {% sw_icon 'arrow-head-left' %}
+                                </button>
+                                <button class="base-slider-controls-next product-slider-controls-next">
+                                    {% sw_icon 'arrow-head-right' %}
+                                </button>
+                            </div>
                         </div>
                     {% endif %}
                 </div>
