@@ -46,7 +46,7 @@ final class MwLoadCapacityTableCmsElementResolver extends AbstractCmsElementReso
         $value = $config['columnsPerRow']['value'] ?? 6;
         $columns = is_numeric($value) ? (int) $value : 6;
 
-        return max(1, min(12, $columns));
+        return max(1, $columns);
     }
 
     /**
