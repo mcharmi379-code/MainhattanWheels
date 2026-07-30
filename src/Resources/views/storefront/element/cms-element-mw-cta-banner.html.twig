@@ -15,7 +15,7 @@
         <div class="mw-cta-banner"{% if bannerBgColor %} style="background-color: {{ bannerBgColor }};"{% endif %}>
             {% if text %}
                 <p class="mw-cta-banner__text"{% if textColor %} style="color: {{ textColor }};"{% endif %}>
-                    {{ text }}
+                    {{ text|raw }}
                 </p>
             {% endif %}
 

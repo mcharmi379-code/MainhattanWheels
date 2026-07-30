@@ -1,9 +1,9 @@
 {% block sw_cms_el_config_mw_cta_banner %}
 <div class="sw-cms-el-config-mw-cta-banner">
-    <mt-text-field
-        v-model="element.config.text.value"
+    <sw-text-editor
+        v-model:value="element.config.text.value"
         :label="$tc('mw-cms.elements.mwCtaBanner.config.text')"
-        @update:model-value="onInput"
+        @update:value="onInput"
     />
 
     <sw-colorpicker
