@@ -7,6 +7,19 @@
         padding: 100px 40px;
     }
 
+    // Title/line text is user-authored rich text and may be wrapped in any tag
+    // (h1-h6, p, span, ...). Force every descendant to inherit our color/size/
+    // weight/spacing instead of the theme's own default styling for that tag.
+    &__title,
+    &__line {
+        * {
+            color: inherit !important;
+            font: inherit !important;
+            margin: 0 !important;
+            padding: 0 !important;
+        }
+    }
+
     &__title {
         margin: 0 0 16px;
         font-size: clamp(24px, 3.2vw, 44px);
