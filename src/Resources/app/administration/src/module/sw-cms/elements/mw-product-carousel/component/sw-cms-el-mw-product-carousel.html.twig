@@ -1,4 +1,45 @@
-<div class="sw-cms-el-mw-product-carousel">
-    <strong>{{ element.config.headline.value }}</strong>
-    <span>{{ element.config.ctaLabel.value }}</span>
+<div class="sw-cms-el-mw-product-carousel mw-product-carousel">
+    <div class="mw-product-carousel__header">
+        <div class="mw-product-carousel__header-text">
+            <p v-if="element.config.label.value" class="mw-product-carousel__label">
+                {{ element.config.label.value }}
+            </p>
+            <h2 v-if="element.config.title.value" class="mw-product-carousel__title">
+                {{ element.config.title.value }}
+            </h2>
+            <h2 v-else-if="element.config.headline.value" class="mw-product-carousel__headline">
+                {{ element.config.headline.value }}
+            </h2>
+            <p v-if="element.config.subtitle.value" class="mw-product-carousel__subtitle">
+                {{ element.config.subtitle.value }}
+            </p>
+        </div>
+        <a class="mw-product-carousel__cta" href="#" @click.prevent>
+            {{ element.config.ctaLabel.value || 'All Products' }}
+        </a>
+    </div>
+
+    <!-- Mock cards to match the frontend look -->
+    <div class="mw-product-carousel__grid-mock">
+        <div class="mw-product-mock-card" v-for="i in 3" :key="i">
+            <div class="mw-product-mock-card__media">
+                <div class="mw-product-mock-card__media-placeholder">
+                    <span class="icon">
+                        <sw-icon name="regular-image" size="24px" />
+                    </span>
+                </div>
+            </div>
+            <div class="mw-product-mock-card__content">
+                <div class="mw-product-mock-card__name">Product Name</div>
+                <div class="mw-product-mock-card__price">€199.00*</div>
+            </div>
+            <div class="mw-product-mock-card__actions">
+                <div class="mw-product-mock-card__btn-buy">
+                    <sw-icon name="regular-shopping-bag" size="14px" />
+                    Add to Cart
+                </div>
+                <div class="mw-product-mock-card__link">Detailed view</div>
+            </div>
+        </div>
+    </div>
 </div>

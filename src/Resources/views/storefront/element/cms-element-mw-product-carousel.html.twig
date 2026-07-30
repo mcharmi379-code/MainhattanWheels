@@ -4,6 +4,9 @@
     {% set category = c.category ?? null %}
     {% set headline = c.headline ?? '' %}
     {% set ctaLabel = c.ctaLabel ?? 'All Products' %}
+    {% set label = c.label ?? '' %}
+    {% set title = c.title ?? '' %}
+    {% set subtitle = c.subtitle ?? '' %}
     {% set itemCount = items|length %}
     {% set hasProducts = c.hasProducts ?? itemCount > 0 %}
     {% set xsItems = min(itemCount, 1) %}
@@ -38,7 +41,19 @@
     {% if category %}
         <section class="mw-product-carousel">
             <div class="mw-product-carousel__header">
-                {% if headline %}<h2 class="mw-product-carousel__headline">{{ headline }}</h2>{% endif %}
+                <div class="mw-product-carousel__header-text">
+                    {% if label %}
+                        <p class="mw-product-carousel__label">{{ label }}</p>
+                    {% endif %}
+                    {% if title %}
+                        <h2 class="mw-product-carousel__title">{{ title }}</h2>
+                    {% elseif headline %}
+                        <h2 class="mw-product-carousel__headline">{{ headline }}</h2>
+                    {% endif %}
+                    {% if subtitle %}
+                        <p class="mw-product-carousel__subtitle">{{ subtitle }}</p>
+                    {% endif %}
+                </div>
                 {% if category %}
                     <a class="mw-product-carousel__cta" href="{{ category_url(category) }}">{{ ctaLabel }}</a>
                 {% endif %}
