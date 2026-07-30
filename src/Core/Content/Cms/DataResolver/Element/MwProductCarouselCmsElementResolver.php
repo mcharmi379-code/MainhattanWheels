@@ -73,6 +73,9 @@ final class MwProductCarouselCmsElementResolver extends AbstractCmsElementResolv
             $slot->setData(new ArrayStruct([
                 'headline' => $config->get('headline')?->getStringValue() ?? '',
                 'ctaLabel' => $config->get('ctaLabel')?->getStringValue() ?? 'All Products',
+                'label' => $config->get('label')?->getStringValue() ?? '',
+                'title' => $config->get('title')?->getStringValue() ?? '',
+                'subtitle' => $config->get('subtitle')?->getStringValue() ?? '',
                 'category' => $category,
                 'items' => [],
                 'hasProducts' => false,
@@ -84,6 +87,9 @@ final class MwProductCarouselCmsElementResolver extends AbstractCmsElementResolv
         $slot->setData(new ArrayStruct([
             'headline' => $config->get('headline')?->getStringValue() ?? '',
             'ctaLabel' => $config->get('ctaLabel')?->getStringValue() ?? 'All Products',
+            'label' => $config->get('label')?->getStringValue() ?? '',
+            'title' => $config->get('title')?->getStringValue() ?? '',
+            'subtitle' => $config->get('subtitle')?->getStringValue() ?? '',
             'category' => $category,
             'items' => $items,
             'hasProducts' => $items !== [],

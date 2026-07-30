@@ -14,5 +14,8 @@ Shopware.Service('cmsService').registerCmsElement({
         headline: { source: 'static', value: 'Produkte' },
         categoryId: { source: 'static', value: null },
         ctaLabel: { source: 'static', value: 'All Products' },
+        label: { source: 'static', value: '' },
+        title: { source: 'static', value: '' },
+        subtitle: { source: 'static', value: '' },
     },
 });
