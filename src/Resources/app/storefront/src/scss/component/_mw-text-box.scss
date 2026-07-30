@@ -1,0 +1,45 @@
+.mw-text-box {
+    --mw-text-box-bg-color: #f4f4f4;
+    --mw-text-box-text-color: #1f2937;
+    --mw-text-box-hover-bg-color: #1f2937;
+    --mw-text-box-hover-text-color: #ffffff;
+
+    padding: 24px;
+    background-color: var(--mw-text-box-bg-color);
+    border-radius: 4px;
+    transition: background-color 0.2s ease, color 0.2s ease;
+
+    &:hover {
+        background-color: var(--mw-text-box-hover-bg-color);
+
+        .mw-text-box__text {
+            color: var(--mw-text-box-hover-text-color);
+        }
+    }
+
+    &__text {
+        margin: 0;
+        color: var(--mw-text-box-text-color);
+        font-size: 1rem;
+        line-height: 1.5;
+        white-space: pre-wrap;
+        word-break: break-word;
+        transition: color 0.2s ease;
+    }
+
+    @media (max-width: 767.98px) {
+        padding: 16px;
+
+        &__text {
+            font-size: 0.9375rem;
+        }
+    }
+
+    @media (max-width: 575.98px) {
+        padding: 12px;
+
+        &__text {
+            font-size: 0.875rem;
+        }
+    }
+}

@@ -1,0 +1,21 @@
+{% block element_mw_text_box %}
+    {% set data = element.data ?? {} %}
+    {% set config = element.config ?? {} %}
+    {% set text = data.text ?? config.text.value ?? '' %}
+    {% set bgColor = data.bgColor ?? config.bgColor.value ?? '' %}
+    {% set textColor = data.textColor ?? config.textColor.value ?? '' %}
+    {% set hoverBgColor = data.hoverBgColor ?? config.hoverBgColor.value ?? '' %}
+    {% set hoverTextColor = data.hoverTextColor ?? config.hoverTextColor.value ?? '' %}
+
+    {% if text %}
+        {% set styleVars = [] %}
+        {% if bgColor %}{% set styleVars = styleVars|merge(['--mw-text-box-bg-color: ' ~ bgColor]) %}{% endif %}
+        {% if textColor %}{% set styleVars = styleVars|merge(['--mw-text-box-text-color: ' ~ textColor]) %}{% endif %}
+        {% if hoverBgColor %}{% set styleVars = styleVars|merge(['--mw-text-box-hover-bg-color: ' ~ hoverBgColor]) %}{% endif %}
+        {% if hoverTextColor %}{% set styleVars = styleVars|merge(['--mw-text-box-hover-text-color: ' ~ hoverTextColor]) %}{% endif %}
+
+        <div class="mw-text-box"{% if styleVars is not empty %} style="{{ styleVars|join('; ') }};"{% endif %}>
+            <p class="mw-text-box__text">{{ text }}</p>
+        </div>
+    {% endif %}
+{% endblock %}

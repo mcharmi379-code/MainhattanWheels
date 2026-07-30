@@ -6,7 +6,7 @@
         <span>{{ $tc('sw-cms.elements.mwLoadCapacityTable.addGroupHint') }}</span>
     </div>
 
-    <div v-else class="mw-lct__wrapper">
+    <div v-else class="mw-lct__wrapper" :style="{ '--mw-lct-columns': columnsPerRow }">
         <div
             v-for="(group, groupIndex) in columnGroups"
             :key="groupIndex"

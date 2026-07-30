@@ -1,0 +1,20 @@
+.sw-cms-el-preview-mw-hero-rotator {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+    padding: 16px;
+    background-color: #3a3a3a;
+    color: #ffffff;
+    font-weight: 700;
+
+    &__title {
+        font-size: 14px;
+        margin-bottom: 4px;
+    }
+
+    &__line {
+        font-size: 14px;
+        color: #e8540a;
+    }
+}

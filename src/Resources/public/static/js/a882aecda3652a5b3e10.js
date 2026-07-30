@@ -1,1 +1,0 @@
-"use strict";(window["webpackJsonpPluginmainhattan-wheels"]=window["webpackJsonpPluginmainhattan-wheels"]||[]).push([[8909],{8909:function(n,e,a){a.r(e),a.d(e,{default:function(){return o}});var o={template:'{% block sw_cms_block_mw_hero_banner %}\n    <div class="sw-cms-block-mw-hero-banner">\n        <slot name="heroBanner"></slot>\n    </div>\n{% endblock %}\n'}}}]);

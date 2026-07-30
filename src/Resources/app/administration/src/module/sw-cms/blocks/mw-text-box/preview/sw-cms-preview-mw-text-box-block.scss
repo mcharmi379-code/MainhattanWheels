@@ -1,0 +1,20 @@
+.sw-cms-preview-mw-text-box-block {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 8px;
+    padding: 16px;
+    background-color: #f4f4f4;
+    border-radius: 4px;
+
+    &__line {
+        height: 12px;
+        width: 100%;
+        background-color: #d1d5db;
+        border-radius: 2px;
+
+        &--short {
+            width: 60%;
+        }
+    }
+}

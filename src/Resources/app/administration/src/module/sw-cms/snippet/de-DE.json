@@ -57,6 +57,12 @@
       },
       "mwCtaBanner": {
         "label": "MW CTA-Banner"
+      },
+      "mwHeroRotator": {
+        "label": "MW Hero-Rotator"
+      },
+      "mwTextBox": {
+        "label": "MW Textbox"
       }
     },
     "elements": {
@@ -320,6 +326,34 @@
           "linkTypeInternal": "Intern",
           "linkTypeExternal": "Extern",
           "linkNewTab": "In neuem Tab öffnen"
+        }
+      },
+      "mwHeroRotator": {
+        "label": "MW Hero-Rotator",
+        "config": {
+          "backgroundColor": "Hintergrundfarbe",
+          "titleSection": "Titel",
+          "titleText": "Titeltext",
+          "titleColor": "Titel-Textfarbe",
+          "transformSection": "Transformationstext",
+          "lineCount": "Anzahl der Zeilen",
+          "transformTextLine": "Zeile",
+          "transformTextColor": "Transformationstext-Farbe",
+          "timingSection": "Animations-Timing",
+          "transitionDuration": "Übergangsdauer (ms)",
+          "rotationInterval": "Rotationsintervall (ms)"
+        }
+      },
+      "mwTextBox": {
+        "label": "MW Textbox",
+        "config": {
+          "text": "Text",
+          "colorSection": "Farben",
+          "bgColor": "Hintergrundfarbe",
+          "textColor": "Textfarbe",
+          "hoverSection": "Hover-Zustand",
+          "hoverBgColor": "Hover-Hintergrundfarbe",
+          "hoverTextColor": "Hover-Textfarbe"
         }
       }
     }
@@ -688,7 +722,8 @@
         "rowValue": "Zeilenwert",
         "addRow": "Zeile hinzufügen",
         "removeRow": "Zeile entfernen",
-        "addGroupHint": "Bitte konfigurieren Sie die Spaltengruppen in den Einstellungen."
+        "addGroupHint": "Bitte konfigurieren Sie die Spaltengruppen in den Einstellungen.",
+        "columnsPerRow": "Spalten pro Zeile"
       }
     }
   }

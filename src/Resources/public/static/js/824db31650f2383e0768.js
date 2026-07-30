@@ -1,1 +1,0 @@
-"use strict";(window["webpackJsonpPluginmainhattan-wheels"]=window["webpackJsonpPluginmainhattan-wheels"]||[]).push([[6873],{6873:function(n,t,o){o.r(t),o.d(t,{default:function(){return s}});var s={template:'{% block sw_cms_block_mw_image_hotspot %}\n    <div class="sw-cms-block-mw-image-hotspot">\n        <slot name="hotspot"></slot>\n    </div>\n{% endblock %}\n'}}}]);

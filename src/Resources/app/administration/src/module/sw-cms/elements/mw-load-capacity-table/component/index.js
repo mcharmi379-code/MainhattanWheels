@@ -22,6 +22,10 @@ export default {
         hasContent() {
             return this.columnGroups.length > 0;
         },
+
+        columnsPerRow() {
+            return this.element.config?.columnsPerRow?.value || 6;
+        },
     },
 
     created() {
