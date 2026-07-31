@@ -166,6 +166,57 @@
                         @update:value="onInput"
                     />
                 </div>
+
+                <hr style="margin: 20px 0; border: 0; border-top: 1px solid #e2e8f0;" />
+
+                <!-- Optional Additional Dynamic Content Elements for Active Tab -->
+                <p style="font-size: 13px; font-weight: 600; color: #334155; margin-bottom: 8px;">
+                    Additional Dynamic Content Elements (optional)
+                </p>
+
+                <div
+                    v-for="d in parseInt(element.config['tab' + t + 'DynamicCount'].value || 0, 10)"
+                    :key="'dyn-' + t + '-' + d"
+                    style="margin-top: 14px; padding: 12px; border: 1px solid #cbd5e1; border-radius: 6px; background: #f8fafc;"
+                >
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+                        <h4 style="margin: 0; color: #e8671a;">Dynamic Element {{ d }}</h4>
+                        <sw-button
+                            variant="ghost"
+                            size="x-small"
+                            style="color: #dc2626; border-color: #fecaca; background: #fee2e2;"
+                            @click="removeDynamicElement(t, d)"
+                        >
+                            <sw-icon name="regular-trash" size="10" />
+                        </sw-button>
+                    </div>
+
+                    <sw-single-select
+                        :options="dynamicElementTypeOptions"
+                        :value="dynamicElementType(t, d)"
+                        label="Element Type"
+                        placeholder="Select an element type..."
+                        @update:value="(value) => onDynamicTypeChange(t, d, value)"
+                    />
+
+                    <div v-if="dynamicElementType(t, d) && dynamicConfigComponent(t, d)" style="margin-top: 10px;">
+                        <component
+                            :is="dynamicConfigComponent(t, d)"
+                            :element="getDynamicElement(t, d)"
+                            @element-update="(updated) => onDynamicElementUpdate(t, d, updated)"
+                        />
+                    </div>
+                </div>
+
+                <sw-button
+                    v-if="parseInt(element.config['tab' + t + 'DynamicCount'].value || 0, 10) < 5"
+                    variant="ghost"
+                    size="small"
+                    style="color: #e8671a; border-color: #e8671a; margin-top: 10px;"
+                    @click="addDynamicElement(t)"
+                >
+                    + Add Dynamic Element
+                </sw-button>
             </div>
         </div>
 

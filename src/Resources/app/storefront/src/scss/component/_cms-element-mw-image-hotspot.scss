@@ -2,6 +2,15 @@
     width: 100%;
     margin: 30px 0;
 
+    // ── Optional additional dynamic content elements (text, image, etc.) ────
+    .mw-hotspots-dynamic-elements {
+        margin-top: 24px;
+    }
+
+    .mw-hotspots-dynamic-element + .mw-hotspots-dynamic-element {
+        margin-top: 16px;
+    }
+
     // ── Tab Bar Navigation ───────────────────────────────────────
     .mw-hotspots-tabs-nav {
         display: flex;

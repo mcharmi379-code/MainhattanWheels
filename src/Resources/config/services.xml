@@ -32,6 +32,9 @@
 
         <service id="MainhattanWheels\Core\Content\Cms\DataResolver\Element\MwImageHotspotCmsElementResolver" public="true">
             <tag name="shopware.cms.data_resolver" />
+            <argument type="service_locator">
+                <argument key="cms_slots_data_resolver" type="service" id="Shopware\Core\Content\Cms\DataResolver\CmsSlotsDataResolver" />
+            </argument>
         </service>
 
         <service id="MainhattanWheels\Core\Content\Cms\DataResolver\Element\MwButtonsCmsElementResolver" public="true">
