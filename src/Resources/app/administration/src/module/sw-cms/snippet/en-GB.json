@@ -1,744 +1,804 @@
 {
-  "mw-cms": {
-    "blocks": {
-      "ictThreeColumn": {
-        "label": "ICT Three Column Layout"
-      },
-      "mwCategoryShowcase": {
-        "label": "MW Category Showcase"
-      },
-      "mainhattanIconFeatureBar": {
-        "label": "Mainhattan Icon Feature Bar"
-      },
-      "mwDualCard": {
-        "label": "MW Dual Card"
-      },
-      "mwTripleCard": {
-        "label": "MW Triple Card"
-      },
-      "mwHeroBanner": {
-        "label": "MW Hero Banner"
-      },
-      "mwCardGrid": {
-        "label": "MW Card Grid"
-      },
-      "mwButtons": {
-        "label": "MW Buttons"
-      },
-      "mwProductGrid": {
-        "label": "MW Product Grid"
-      },
-      "mwTechnicalFeatureList": {
-        "label": "MW Technical Feature List"
-      },
-      "ictTwoColumnLayout": {
-        "label": "ICT Two Column Layout"
-      },
-      "mwProductCarousel": {
-        "label": "MW Product Carousel"
-      },
-      "mwProfileTabs": {
-        "label": "MW Profile Tabs"
-      },
-      "mwFileDownload": {
-        "label": "MW File Download"
-      },
-      "mwSubcategoryGrid": {
-        "label": "Subcategory Grid"
-      },
-      "mwBeforeAfter": {
-        "label": "MW Before-After Columns"
-      },
-      "mwTextVideo": {
-        "label": "MW Text Image/Video Split"
-      },
-      "mwLoadCapacityTable": {
-        "label": "MW Load Capacity Table"
-      },
-      "mwCtaBanner": {
-        "label": "MW CTA Banner"
-      },
-      "mwHeroRotator": {
-        "label": "MW Hero Rotator"
-      },
-      "mwTextBox": {
-        "label": "MW Text Box"
-      }
-    },
-    "elements": {
-      "ictThreeColumn": {
-        "label": "ICT Three Column Layout"
-      },
-      "mwDualCard": {
-        "label": "MW Dual Card",
-        "config": {
-          "tabLeft": "Left Card",
-          "tabRight": "Right Card",
-          "heading": "Heading",
-          "description": "Description",
-          "button": "Button",
-          "btnLabel": "Button Label",
-          "btnUrl": "Button URL",
-          "btnNewTab": "Open in new tab",
-          "colors": "Colors",
-          "bgColor": "Background Color",
-          "textColor": "Text Color",
-          "btnBgColor": "Button Background",
-          "btnTextColor": "Button Text Color",
-          "btnOutlineColor": "Button Outline Color",
-          "features": "Features",
-          "featureText": "Feature Text",
-          "featureIcon": "Feature Icon (PNG / SVG)",
-          "svgColor": "SVG Icon Color",
-          "addFeature": "Add Feature",
-          "rightBg": "Right Card Background",
-          "bgImage": "Background Image",
-          "linkType": "Link Type",
-          "linkTo": "Link to",
-          "linkTypeExternal": "External",
-          "linkTypeInternal": "Internal"
-        }
-      },
-      "mwTripleCard": {
-        "label": "MW Triple Card",
-        "config": {
-          "tabLeft": "Left Card",
-          "tabMid": "Middle Card",
-          "tabRight": "Right Card",
-          "background": "Background",
-          "bgType": "Background Type",
-          "bgTypeColor": "Color",
-          "bgTypeImage": "Image",
-          "bgColor": "Background Color",
-          "bgImage": "Background Image",
-          "content": "Content",
-          "headline": "Headline",
-          "headingColor": "Heading Color",
-          "subHeading": "Sub Heading",
-          "heading": "Heading",
-          "description": "Description",
-          "textColor": "Text Color",
-          "icon": "Icon (PNG / SVG)",
-          "icons": "Icons",
-          "addIcon": "Add Icon",
-          "iconDesc": "Icon Description",
-          "iconText": "Icon Text",
-          "iconColor": "Icon Color",
-          "iconTextColor": "Icon Text Color",
-          "button": "Button",
-          "btnLabel": "Button Label",
-          "btnUrl": "Button URL",
-          "btnNewTab": "Open in new tab",
-          "btnBgColor": "Button Background",
-          "btnBorderColor": "Button Border Color",
-          "btnTextColor": "Button Text Color",
-          "afterButton": "After Button",
-          "iconTextLink": "Icon + Text + Link",
-          "linkUrl": "Link URL",
-          "linkType": "Link Type",
-          "linkTo": "Link to",
-          "linkTypeExternal": "External",
-          "linkTypeInternal": "Internal"
-        }
-      },
-      "mwHeroBanner": {
-        "label": "MW Hero Banner",
-        "config": {
-          "content": "Content",
-          "buttons": "Buttons",
-          "background": "Background",
-          "heading": "Heading (HTML allowed)",
-          "headingColor": "Heading Color",
-          "description": "Description",
-          "descriptionColor": "Description Color",
-          "primaryButton": "Primary Button",
-          "secondaryButton": "Secondary Button",
-          "buttonText": "Button Text",
-          "buttonUrl": "URL",
-          "buttonTarget": "Target",
-          "sameTab": "Same tab",
-          "newTab": "New tab",
-          "textColor": "Text Color",
-          "backgroundColor": "Background Color",
-          "rightImage": "Right Image"
-        }
-      },
-      "mwCardGrid": {
-        "label": "MW Card Grid",
-        "config": {
-          "cardTab": "Card {index}",
-          "cardSection": "Card {index}",
-          "icon": "Icon (PNG / SVG)",
-          "iconColor": "Icon Color",
-          "heading": "Heading",
-          "headingColor": "Heading Color",
-          "subheading": "Subheading / Link Text",
-          "subheadingColor": "Subheading / Link Color",
-          "linkType": "Link Type",
-          "linkTo": "Link to",
-          "linkTypeInternal": "Internal",
-          "linkTypeExternal": "External",
-          "linkNewTab": "Open in new tab",
-          "hoverColor": "Hover Highlight Color"
-        }
-      },
-      "mwCategoryShowcase": {
-        "label": "MW Category Showcase",
-        "previewHint": "Configure main category and sub-categories in settings.",
-        "config": {
-          "mainCategory": "Main Category",
-          "mainCategoryPlaceholder": "Select main category…",
-          "tabGeneral": "General",
-          "tabCards": "Sub-Categories",
-          "colorPlaceholder": "Pick a colour…",
-          "showAllSection": "\"View All\" Button",
-          "showAllLabel": "Label",
-          "showAllLabelPlaceholder": "e.g. VIEW ALL",
-          "showAllColor": "Color (text & arrow)",
-          "learnMoreSection": "\"Learn More\" Link",
-          "learnMoreLabel": "Label",
-          "learnMoreLabelPlaceholder": "e.g. LEARN MORE",
-          "learnMoreColor": "Color (text & arrow)",
-          "cardAppearanceSection": "Card Appearance",
-          "cardBgColor": "Card Background Color",
-          "cardBorderColor": "Card Border Color",
-          "visibleCards": "Number of Cards to Show (max)",
-          "subCategoriesLabel": "Sub-Categories (cards)",
-          "subCategory": "Sub-Category",
-          "subCategoryPlaceholder": "Select sub-category…",
-          "addSubCategory": "+ Add Sub-Category",
-          "removeSubCategory": "Remove"
-        }
-      },
-      "mwButtons": {
-        "label": "MW Buttons",
-        "config": {
-          "label": "Button Text",
-          "variant": "Variant",
-          "variantSolid": "Solid",
-          "variantOutline": "Outline",
-          "textColor": "Text Color",
-          "bgColor": "Background Color",
-          "linkType": "Link Type",
-          "linkTo": "Link to",
-          "linkTypeInternal": "Internal",
-          "linkTypeExternal": "External",
-          "linkNewTab": "Open in new tab",
-          "icon": "Icon (PNG / SVG)"
-        }
-      },
-      "mwProductGrid": {
-        "label": "MW Product Grid",
-        "config": {
-          "title": "Title",
-          "product": "Product",
-          "layout": "Layout",
-          "columns": "Columns",
-          "showDetails": "Show Details",
-          "buttonColor": "Button Color",
-          "hoverColor": "Hover Color",
-          "addCard": "+ Add Card",
-          "removeCard": "Remove Card",
-          "cardIndex": "Card {index}"
-        }
-      },
-      "mwTechnicalFeatureList": {
-        "label": "MW Technical Feature List"
-      },
-      "ictTwoColumnLayout": {
-        "label": "ICT Two Column Layout"
-      },
-      "mwProductCarousel": {
-        "label": "MW Product Carousel",
-        "config": {
-          "headline": "Headline",
-          "category": "Category",
-          "ctaLabel": "CTA Label"
-        }
-      },
-      "mwProfileTabs": {
-        "label": "MW Profile Tabs",
-        "config": {
-          "subheadline": "Subheadline",
-          "name": "Name",
-          "role": "Role",
-          "buttonLabel": "Button Label",
-          "buttonLink": "Button Link",
-          "buttonType": "Button Type",
-          "buttonNewTab": "Open in new tab"
-        }
-      },
-      "mwFileDownload": {
-        "label": "MW File Download",
-        "tabs": {
-          "download": "Download",
-          "cta": "CTA"
-        },
-        "downloadTitle": "Download Title",
-        "downloadSubtitle": "Download Subtitle",
-        "downloadButtonText": "Button Text",
-        "downloadPreviewImage": "Preview Image",
-        "ctaTitle": "Title",
-        "ctaSubtitle": "Subtitle",
-        "ctaButtonText": "Button Text",
-        "ctaButtonUrl": "Button URL",
-        "ctaPreviewImage": "Preview Image"
-      },
-      "mwSubcategoryGrid": {
-        "label": "Subcategory Grid"
-      },
-      "mwBeforeAfter": {
-        "label": "MW Before-After Columns"
-      },
-      "mwTextVideo": {
-        "label": "MW Text Image/Video Split",
-        "config": {
-          "tabs": {
-            "content": "Texts & Button",
-            "media": "Right Side Media"
-          },
-          "labels": {
-            "heading": "Heading Text",
-            "headingColor": "Heading Color",
-            "subHeading": "Sub Heading / Description",
-            "subHeadingColor": "Sub Heading Color",
-            "buttonText": "Button Text",
-            "buttonBgColor": "Button Background Color",
-            "buttonTextColor": "Button Text Color",
-            "buttonLinkType": "Button Link Type",
-            "buttonLink": "Button Link URL",
-            "buttonLinkTarget": "Button Target",
-            "mediaType": "Media Type",
-            "mediaFile": "Media Upload",
-            "mediaLink": "Video URL / Media Link",
-            "mediaLinkTarget": "Media Link Target"
-          }
-        }
-      },
-      "mwCtaBanner": {
-        "label": "MW CTA Banner",
-        "config": {
-          "text": "Text",
-          "textColor": "Text Color",
-          "bannerBgColor": "Banner Background Color",
-          "buttonSection": "Button",
-          "buttonLabel": "Button Label",
-          "buttonBgColor": "Button Background Color",
-          "buttonTextColor": "Button Text Color",
-          "linkType": "Link Type",
-          "linkTo": "Link to",
-          "linkTypeInternal": "Internal",
-          "linkTypeExternal": "External",
-          "linkNewTab": "Open in new tab"
-        }
-      },
-      "mwHeroRotator": {
-        "label": "MW Hero Rotator",
-        "config": {
-          "backgroundColor": "Background Color",
-          "titleSection": "Title",
-          "titleText": "Title Text",
-          "titleColor": "Title Text Color",
-          "transformSection": "Transformation Text",
-          "lineCount": "Number of Lines",
-          "transformTextLine": "Line",
-          "transformTextColor": "Transformation Text Color",
-          "timingSection": "Animation Timing",
-          "transitionDuration": "Transition Duration (ms)",
-          "rotationInterval": "Rotation Interval (ms)"
-        }
-      },
-      "mwTextBox": {
-        "label": "MW Text Box",
-        "config": {
-          "text": "Text",
-          "colorSection": "Colors",
-          "bgColor": "Background Color",
-          "textColor": "Text Color",
-          "hoverSection": "Hover State",
-          "hoverBgColor": "Hover Background Color",
-          "hoverTextColor": "Hover Text Color"
-        }
-      }
-    }
-  },
-  "ict-cms-bundle-element": {
-    "cms": {
-      "blocks": {
-        "ictAccordion": {
-          "label": "ICT Accordion"
-        },
-        "ictOverviewCards6": {
-          "label": "ICT Overview Cards"
-        },
-        "ictSevenColumn": {
-          "label": "ICT Seven Column Layout"
-        },
-        "ictThreeColumn": {
-          "label": "ICT Three Column Layout"
-        }
-      },
-      "elements": {
-        "ictOverviewCards6": {
-          "label": "ICT Overview Cards"
-        },
-        "ictSevenColumn": {
-          "label": "ICT Seven Column Layout"
-        },
-        "ictThreeColumn": {
-          "label": "ICT Three Column Layout"
-        },
-        "ictAccordion": {
-          "label": "ICT Accordion",
-          "config": {
-            "tabs": {
-              "entries": "Accordion Items",
-              "settings": "Settings"
+    "mw-cms": {
+        "blocks": {
+            "ictThreeColumn": {
+                "label": "ICT Three Column Layout"
             },
-            "entry": {
-              "title": "Title",
-              "titlePlaceholder": "Enter item title...",
-              "expanded": "Initially Expanded",
-              "content": "Content",
-              "add": "Add Accordion Item"
+            "mwCategoryShowcase": {
+                "label": "MW Category Showcase"
             },
-            "title": "Accordion Section Title",
-            "titlePlaceholder": "Enter section title...",
-            "description": "Accordion Section Description",
-            "descriptionPlaceholder": "Enter section description...",
-            "displayMode": "Display Mode",
-            "displayModeSingle": "Single (Only one item open at a time)",
-            "displayModeMultiple": "Multiple (Allow multiple items open simultaneously)",
-            "activeColor": "Active Color"
-          }
-        }
-      }
-    }
-  },
-  "apps": {
-    "sw-cms": {
-      "detail": {
-        "label": {
-          "blockCategory": {
-            "ict-cms-elements": "ICT CMS Elements",
-            "ict-cms-layouts": "ICT CMS Layouts"
-          }
-        }
-      }
-    }
-  },
-  "sw-cms": {
-    "detail": {
-      "label": {
-        "blockCategory": {
-          "ict-cms-elements": "ICT CMS Elements",
-          "ict-cms-layouts": "ICT CMS Layouts"
-        }
-      }
-    },
-    "blocks": {
-      "mainhattanTextimage": {
-        "label": "Mian-hattan-wheels Text and Image"
-      },
-      "ictHeroSection": {
-        "label": "ICT Hero Section"
-      },
-      "mainhattanIconFeatureBar": {
-        "label": "Mainhattan Icon Feature Bar"
-      },
-      "ictContentTabs": {
-        "label": "ICT Content Tabs"
-      },
-      "ictOverviewCards6": {
-        "label": "ICT Overview Cards"
-      },
-      "ictSevenColumn": {
-        "label": "ICT Seven Column Layout"
-      },
-      "mwTechnicalFeatureList": {
-        "label": "MW Technical Feature List"
-      },
-      "ictTwoColumnLayout": {
-        "label": "ICT Two Column Layout"
-      },
-      "mwProductCarousel": {
-        "label": "MW Product Carousel"
-      },
-      "mwProfileTabs": {
-        "label": "MW Profile Tabs"
-      },
-      "mwFileDownload": {
-        "label": "MW File Download"
-      },
-      "mwSubcategoryGrid": {
-        "label": "Subcategory Grid"
-      },
-      "mwLoadCapacityTable": {
-        "label": "MW Load Capacity Table"
-      }
-    },
-    "elements": {
-      "ictHeroSection": {
-        "label": "ICT Hero Section"
-      },
-      "ictContentTabs": {
-        "label": "ICT Content Tabs",
-        "addTab": "Add tab",
-        "tabLabel": "Tab label",
-        "tabContent": "Tab content",
-        "addTabHint": "Please configure tabs in the side settings panel.",
-        "styleLabel": "Styling",
-        "activeTabColor": "Active Tab Color"
-      },
-      "ictOverviewCards6": {
-        "label": "ICT Overview Cards"
-      },
-      "ictTopics": {
-        "config": {
-          "borderStyle": {
-            "solid": "Solid",
-            "dotted": "Dotted",
-            "dashed": "Dashed"
-          }
-        }
-      },
-      "ictOverviewCards": {
-        "config": {
-          "tab": {
-            "cards": "Cards"
-          },
-          "section": {
-            "backgroundSettings": "Background Settings",
-            "layoutSettings": "Layout Settings",
-            "iconSettings": "Icon Settings",
-            "headlineSettings": "Headline Settings",
-            "subheadlineSettings": "Subheadline Settings",
-            "bodyTextSettings": "Body Text Settings",
-            "buttonSettings": "Button Settings",
-            "cardDesign": "Card Design"
-          },
-          "label": {
-            "backgroundType": "Background Type",
-            "backgroundColor": "Background Color",
-            "backgroundGradientColor1": "Gradient Color 1",
-            "backgroundGradientColor2": "Gradient Color 2",
-            "backgroundGradientDirection": "Gradient Direction",
-            "backgroundImage": "Background Image",
-            "backgroundVideo": "Background Video",
-            "backgroundVideoUploadType": "Video Upload Type",
-            "backgroundVideoUploadUrl": "Video URL",
-            "numberOfColumns": "Number of Columns",
-            "cardSpacing": "Card Spacing (px)",
-            "verticalAlignment": "Vertical Alignment",
-            "card": "Card",
-            "iconImage": "Icon Image",
-            "iconShape": "Icon Shape",
-            "iconSize": "Icon Size",
-            "iconAlignment": "Icon Alignment",
-            "iconColor": "Icon Color",
-            "iconBackgroundColor": "Icon Background Color",
-            "iconBorderColor": "Icon Border Color",
-            "iconOutlineColor": "Outline Color",
-            "iconOutlineThickness": "Outline Thickness",
-            "iconOutlinePosition": "Outline Position",
-            "iconBorderRadius": "Border Radius",
-            "iconHoverEffect": "Hover Effect",
-            "headline": "Headline",
-            "headlineSize": "Headline Size",
-            "headlineAlignment": "Headline Alignment",
-            "headlineColor": "Headline Color",
-            "subheadline": "Subheadline",
-            "subheadlineSize": "Subheadline Size",
-            "subheadlineAlignment": "Subheadline Alignment",
-            "subheadlineColor": "Subheadline Color",
-            "showBodyText": "Show Body Text",
-            "bodyTextSize": "Body Text Size",
-            "bodyTextAlignment": "Body Text Alignment",
-            "bodyTextColor": "Body Text Color",
-            "buttonText": "Button Text",
-            "buttonTarget": "Button Target",
-            "buttonTextColor": "Button Text Color",
-            "buttonHoverTextColor": "Button Hover Text Color",
-            "buttonBackgroundColor": "Button Background Color",
-            "buttonHoverBackgroundColor": "Button Hover Background Color",
-            "buttonAfterText": "Info Text after Button",
-            "buttonAfterTextColor": "Info Text Color",
-            "buttonAfterTextSize": "Info Text Font Size",
-            "cardBackgroundType": "Card Background Type",
-            "cardBorderColor": "Card Border Color",
-            "cardBackgroundColor": "Card Background Color",
-            "cardBackgroundImage": "Card Background Image",
-            "cardBackgroundVideo": "Card Background Video",
-            "gradientColor1": "Gradient Color 1",
-            "gradientColor2": "Gradient Color 2",
-            "gradientDirection": "Gradient Direction",
-            "videoUploadType": "Video Upload Type",
-            "videoUrl": "Video URL"
-          },
-          "button": {
-            "addCard": "Add Card",
-            "removeCard": "Remove Card"
-          },
-          "option": {
-            "columns": {
-              "one": "1 Column",
-              "two": "2 Columns",
-              "three": "3 Columns",
-              "four": "4 Columns"
+            "mainhattanIconFeatureBar": {
+                "label": "Mainhattan Icon Feature Bar"
             },
-            "iconShape": {
-              "square": "Square",
-              "round": "Round"
+            "mwDualCard": {
+                "label": "MW Dual Card"
             },
-            "iconSize": {
-              "small": "Small (50px)",
-              "medium": "Medium (80px)",
-              "large": "Large (120px)",
-              "xl150": "XL (150px)",
-              "xl180": "XL (180px)",
-              "xl200": "XL (200px)",
-              "xl220": "XL (220px)"
+            "mwTripleCard": {
+                "label": "MW Triple Card"
             },
-            "featureIconSize": {
-              "size20": "20px",
-              "size25": "25px",
-              "size40": "40px",
-              "size50": "50px"
+            "mwHeroBanner": {
+                "label": "MW Hero Banner"
             },
-            "iconHoverEffect": {
-              "none": "None",
-              "scale": "Scale",
-              "rotate": "Rotate",
-              "pulse": "Pulse"
+            "mwCardGrid": {
+                "label": "MW Card Grid"
             },
-            "outlinePosition": {
-              "inside": "Inside",
-              "outside": "Outside"
+            "mwButtons": {
+                "label": "MW Buttons"
             },
-            "verticalAlignment": {
-              "stretch": "Stretch",
-              "top": "Top",
-              "center": "Center",
-              "bottom": "Bottom"
+            "mwProductGrid": {
+                "label": "MW Product Grid"
             },
-            "headlineSize": {
-              "size1": "Default (24px)",
-              "size2": "Large (42px)"
+            "mwTechnicalFeatureList": {
+                "label": "MW Technical Feature List"
             },
-            "subheadlineSize": {
-              "default": "Default (20px)",
-              "optional": "Large (24px)"
+            "ictTwoColumnLayout": {
+                "label": "ICT Two Column Layout"
             },
-            "alignment": {
-              "left": "Left",
-              "center": "Center",
-              "right": "Right"
+            "mwProductCarousel": {
+                "label": "MW Product Carousel"
             },
-            "backgroundType": {
-              "none": "None",
-              "color": "Color",
-              "gradient": "Gradient",
-              "image": "Image",
-              "video": "Video"
+            "mwProfileTabs": {
+                "label": "MW Profile Tabs"
             },
-            "videoUpload": {
-              "file": "Upload file",
-              "url": "External URL"
+            "mwFileDownload": {
+                "label": "MW File Download"
             },
-            "gradientDirection": {
-              "top": "Top → Bottom",
-              "right": "Left → Right",
-              "bottom": "Bottom → Top",
-              "left": "Right → Left"
+            "mwSubcategoryGrid": {
+                "label": "Subcategory Grid"
             },
-            "shadow": {
-              "none": "None",
-              "light": "Light",
-              "medium": "Medium",
-              "heavy": "Heavy"
+            "mwBeforeAfter": {
+                "label": "MW Before-After Columns"
             },
-            "target": {
-              "same": "Same tab",
-              "new": "New tab"
+            "mwTextVideo": {
+                "label": "MW Text Image/Video Split"
+            },
+            "mwLoadCapacityTable": {
+                "label": "MW Load Capacity Table"
+            },
+            "mwCtaBanner": {
+                "label": "MW CTA Banner"
+            },
+            "mwHeroRotator": {
+                "label": "MW Hero Rotator"
+            },
+            "mwTextBox": {
+                "label": "MW Text Box"
+            },
+            "mwImageHotspot": {
+                "label": "MW Image Hotspot"
+            },
+            "mwProductQuickOrder": {
+                "label": "MW Product Quick Order"
+            },
+            "mwTestimonial": {
+                "label": "MW Testimonial"
+            },
+            "mwProcessSteps": {
+                "label": "MW Process Steps"
+            },
+            "mwTabCards": {
+                "label": "MW Tab Cards"
+            },
+            "mwSubcategoryCards": {
+                "label": "MW Subcategory Cards"
             }
-          }
+        },
+        "elements": {
+            "ictThreeColumn": {
+                "label": "ICT Three Column Layout"
+            },
+            "mwDualCard": {
+                "label": "MW Dual Card",
+                "config": {
+                    "tabLeft": "Left Card",
+                    "tabRight": "Right Card",
+                    "heading": "Heading",
+                    "description": "Description",
+                    "button": "Button",
+                    "btnLabel": "Button Label",
+                    "btnUrl": "Button URL",
+                    "btnNewTab": "Open in new tab",
+                    "colors": "Colors",
+                    "bgColor": "Background Color",
+                    "textColor": "Text Color",
+                    "btnBgColor": "Button Background",
+                    "btnTextColor": "Button Text Color",
+                    "btnOutlineColor": "Button Outline Color",
+                    "features": "Features",
+                    "featureText": "Feature Text",
+                    "featureIcon": "Feature Icon (PNG / SVG)",
+                    "svgColor": "SVG Icon Color",
+                    "addFeature": "Add Feature",
+                    "rightBg": "Right Card Background",
+                    "bgImage": "Background Image",
+                    "linkType": "Link Type",
+                    "linkTo": "Link to",
+                    "linkTypeExternal": "External",
+                    "linkTypeInternal": "Internal"
+                }
+            },
+            "mwTripleCard": {
+                "label": "MW Triple Card",
+                "config": {
+                    "tabLeft": "Left Card",
+                    "tabMid": "Middle Card",
+                    "tabRight": "Right Card",
+                    "background": "Background",
+                    "bgType": "Background Type",
+                    "bgTypeColor": "Color",
+                    "bgTypeImage": "Image",
+                    "bgColor": "Background Color",
+                    "bgImage": "Background Image",
+                    "content": "Content",
+                    "headline": "Headline",
+                    "headingColor": "Heading Color",
+                    "subHeading": "Sub Heading",
+                    "heading": "Heading",
+                    "description": "Description",
+                    "textColor": "Text Color",
+                    "icon": "Icon (PNG / SVG)",
+                    "icons": "Icons",
+                    "addIcon": "Add Icon",
+                    "iconDesc": "Icon Description",
+                    "iconText": "Icon Text",
+                    "iconColor": "Icon Color",
+                    "iconTextColor": "Icon Text Color",
+                    "button": "Button",
+                    "btnLabel": "Button Label",
+                    "btnUrl": "Button URL",
+                    "btnNewTab": "Open in new tab",
+                    "btnBgColor": "Button Background",
+                    "btnBorderColor": "Button Border Color",
+                    "btnTextColor": "Button Text Color",
+                    "afterButton": "After Button",
+                    "iconTextLink": "Icon + Text + Link",
+                    "linkUrl": "Link URL",
+                    "linkType": "Link Type",
+                    "linkTo": "Link to",
+                    "linkTypeExternal": "External",
+                    "linkTypeInternal": "Internal"
+                }
+            },
+            "mwHeroBanner": {
+                "label": "MW Hero Banner",
+                "config": {
+                    "content": "Content",
+                    "buttons": "Buttons",
+                    "background": "Background",
+                    "heading": "Heading (HTML allowed)",
+                    "headingColor": "Heading Color",
+                    "description": "Description",
+                    "descriptionColor": "Description Color",
+                    "primaryButton": "Primary Button",
+                    "secondaryButton": "Secondary Button",
+                    "buttonText": "Button Text",
+                    "buttonUrl": "URL",
+                    "buttonTarget": "Target",
+                    "sameTab": "Same tab",
+                    "newTab": "New tab",
+                    "textColor": "Text Color",
+                    "backgroundColor": "Background Color",
+                    "rightImage": "Right Image"
+                }
+            },
+            "mwCardGrid": {
+                "label": "MW Card Grid",
+                "config": {
+                    "cardTab": "Card {index}",
+                    "cardSection": "Card {index}",
+                    "icon": "Icon (PNG / SVG)",
+                    "iconColor": "Icon Color",
+                    "heading": "Heading",
+                    "headingColor": "Heading Color",
+                    "subheading": "Subheading / Link Text",
+                    "subheadingColor": "Subheading / Link Color",
+                    "linkType": "Link Type",
+                    "linkTo": "Link to",
+                    "linkTypeInternal": "Internal",
+                    "linkTypeExternal": "External",
+                    "linkNewTab": "Open in new tab",
+                    "hoverColor": "Hover Highlight Color"
+                }
+            },
+            "mwCategoryShowcase": {
+                "label": "MW Category Showcase",
+                "previewHint": "Configure main category and sub-categories in settings.",
+                "config": {
+                    "mainCategory": "Main Category",
+                    "mainCategoryPlaceholder": "Select main category…",
+                    "tabGeneral": "General",
+                    "tabCards": "Sub-Categories",
+                    "colorPlaceholder": "Pick a colour…",
+                    "showAllSection": "\"View All\" Button",
+                    "showAllLabel": "Label",
+                    "showAllLabelPlaceholder": "e.g. VIEW ALL",
+                    "showAllColor": "Color (text & arrow)",
+                    "learnMoreSection": "\"Learn More\" Link",
+                    "learnMoreLabel": "Label",
+                    "learnMoreLabelPlaceholder": "e.g. LEARN MORE",
+                    "learnMoreColor": "Color (text & arrow)",
+                    "cardAppearanceSection": "Card Appearance",
+                    "cardBgColor": "Card Background Color",
+                    "cardBorderColor": "Card Border Color",
+                    "visibleCards": "Number of Cards to Show (max)",
+                    "subCategoriesLabel": "Sub-Categories (cards)",
+                    "subCategory": "Sub-Category",
+                    "subCategoryPlaceholder": "Select sub-category…",
+                    "addSubCategory": "+ Add Sub-Category",
+                    "removeSubCategory": "Remove"
+                }
+            },
+            "mwButtons": {
+                "label": "MW Buttons",
+                "config": {
+                    "label": "Button Text",
+                    "variant": "Variant",
+                    "variantSolid": "Solid",
+                    "variantOutline": "Outline",
+                    "textColor": "Text Color",
+                    "bgColor": "Background Color",
+                    "linkType": "Link Type",
+                    "linkTo": "Link to",
+                    "linkTypeInternal": "Internal",
+                    "linkTypeExternal": "External",
+                    "linkNewTab": "Open in new tab",
+                    "icon": "Icon (PNG / SVG)"
+                }
+            },
+            "mwProductGrid": {
+                "label": "MW Product Grid",
+                "config": {
+                    "title": "Title",
+                    "product": "Product",
+                    "layout": "Layout",
+                    "columns": "Columns",
+                    "showDetails": "Show Details",
+                    "buttonColor": "Button Color",
+                    "hoverColor": "Hover Color",
+                    "addCard": "+ Add Card",
+                    "removeCard": "Remove Card",
+                    "cardIndex": "Card {index}"
+                }
+            },
+            "mwTechnicalFeatureList": {
+                "label": "MW Technical Feature List"
+            },
+            "ictTwoColumnLayout": {
+                "label": "ICT Two Column Layout"
+            },
+            "mwProductCarousel": {
+                "label": "MW Product Carousel",
+                "config": {
+                    "headline": "Headline",
+                    "category": "Category",
+                    "ctaLabel": "CTA Label"
+                }
+            },
+            "mwProfileTabs": {
+                "label": "MW Profile Tabs",
+                "config": {
+                    "subheadline": "Subheadline",
+                    "name": "Name",
+                    "role": "Role",
+                    "buttonLabel": "Button Label",
+                    "buttonLink": "Button Link",
+                    "buttonType": "Button Type",
+                    "buttonNewTab": "Open in new tab"
+                }
+            },
+            "mwFileDownload": {
+                "label": "MW File Download",
+                "tabs": {
+                    "download": "Download",
+                    "cta": "CTA"
+                },
+                "downloadTitle": "Download Title",
+                "downloadSubtitle": "Download Subtitle",
+                "downloadButtonText": "Button Text",
+                "downloadPreviewImage": "Preview Image",
+                "ctaTitle": "Title",
+                "ctaSubtitle": "Subtitle",
+                "ctaButtonText": "Button Text",
+                "ctaButtonUrl": "Button URL",
+                "ctaPreviewImage": "Preview Image"
+            },
+            "mwSubcategoryGrid": {
+                "label": "Subcategory Grid"
+            },
+            "mwBeforeAfter": {
+                "label": "MW Before-After Columns"
+            },
+            "mwTextVideo": {
+                "label": "MW Text Image/Video Split",
+                "config": {
+                    "tabs": {
+                        "content": "Texts & Button",
+                        "media": "Right Side Media"
+                    },
+                    "labels": {
+                        "heading": "Heading Text",
+                        "headingColor": "Heading Color",
+                        "subHeading": "Sub Heading / Description",
+                        "subHeadingColor": "Sub Heading Color",
+                        "buttonText": "Button Text",
+                        "buttonBgColor": "Button Background Color",
+                        "buttonTextColor": "Button Text Color",
+                        "buttonLinkType": "Button Link Type",
+                        "buttonLink": "Button Link URL",
+                        "buttonLinkTarget": "Button Target",
+                        "mediaType": "Media Type",
+                        "mediaFile": "Media Upload",
+                        "mediaLink": "Video URL / Media Link",
+                        "mediaLinkTarget": "Media Link Target"
+                    }
+                }
+            },
+            "mwCtaBanner": {
+                "label": "MW CTA Banner",
+                "config": {
+                    "text": "Text",
+                    "textColor": "Text Color",
+                    "bannerBgColor": "Banner Background Color",
+                    "buttonSection": "Button",
+                    "buttonLabel": "Button Label",
+                    "buttonBgColor": "Button Background Color",
+                    "buttonTextColor": "Button Text Color",
+                    "linkType": "Link Type",
+                    "linkTo": "Link to",
+                    "linkTypeInternal": "Internal",
+                    "linkTypeExternal": "External",
+                    "linkNewTab": "Open in new tab"
+                }
+            },
+            "mwHeroRotator": {
+                "label": "MW Hero Rotator",
+                "config": {
+                    "backgroundColor": "Background Color",
+                    "titleSection": "Title",
+                    "titleText": "Title Text",
+                    "titleColor": "Title Text Color",
+                    "transformSection": "Transformation Text",
+                    "lineCount": "Number of Lines",
+                    "transformTextLine": "Line",
+                    "transformTextColor": "Transformation Text Color",
+                    "timingSection": "Animation Timing",
+                    "transitionDuration": "Transition Duration (ms)",
+                    "rotationInterval": "Rotation Interval (ms)"
+                }
+            },
+            "mwTextBox": {
+                "label": "MW Text Box",
+                "config": {
+                    "text": "Text",
+                    "colorSection": "Colors",
+                    "bgColor": "Background Color",
+                    "textColor": "Text Color",
+                    "hoverSection": "Hover State",
+                    "hoverBgColor": "Hover Background Color",
+                    "hoverTextColor": "Hover Text Color"
+                }
+            },
+            "ictTwoColumn": {
+                "label": "ICT Two Column"
+            },
+            "mwImageHotspot": {
+                "label": "MW Image Hotspot"
+            },
+            "mwProcessSteps": {
+                "label": "MW Process Steps"
+            },
+            "mwProductQuickOrder": {
+                "label": "MW Product Quick Order"
+            },
+            "mwSubcategoryCards": {
+                "label": "MW Subcategory Cards"
+            },
+            "mwTabCards": {
+                "label": "MW Tab Cards"
+            },
+            "mwTestimonial": {
+                "label": "MW Testimonial"
+            }
         }
-      },
-      "ictSevenColumn": {
-        "label": "ICT Seven Column Layout"
-      },
-      "mwTechnicalFeatureList": {
-        "label": "MW Technical Feature List"
-      },
-      "ictTwoColumnLayout": {
-        "label": "ICT Two Column Layout"
-      },
-      "mwProductCarousel": {
-        "label": "MW Product Carousel",
-        "config": {
-          "headline": "Headline",
-          "category": "Category",
-          "ctaLabel": "CTA Label"
+    },
+    "ict-cms-bundle-element": {
+        "cms": {
+            "blocks": {
+                "ictAccordion": {
+                    "label": "ICT Accordion"
+                },
+                "ictOverviewCards6": {
+                    "label": "ICT Overview Cards"
+                },
+                "ictSevenColumn": {
+                    "label": "ICT Seven Column Layout"
+                },
+                "ictThreeColumn": {
+                    "label": "ICT Three Column Layout"
+                },
+                "ictImageGallery": {
+                    "label": "ICT Image Gallery"
+                },
+                "ictCategoryImageSlider": {
+                    "label": "ICT Category Image Slider"
+                }
+            },
+            "elements": {
+                "ictOverviewCards6": {
+                    "label": "ICT Overview Cards"
+                },
+                "ictSevenColumn": {
+                    "label": "ICT Seven Column Layout"
+                },
+                "ictThreeColumn": {
+                    "label": "ICT Three Column Layout"
+                },
+                "ictAccordion": {
+                    "label": "ICT Accordion",
+                    "config": {
+                        "tabs": {
+                            "entries": "Accordion Items",
+                            "settings": "Settings"
+                        },
+                        "entry": {
+                            "title": "Title",
+                            "titlePlaceholder": "Enter item title...",
+                            "expanded": "Initially Expanded",
+                            "content": "Content",
+                            "add": "Add Accordion Item"
+                        },
+                        "title": "Accordion Section Title",
+                        "titlePlaceholder": "Enter section title...",
+                        "description": "Accordion Section Description",
+                        "descriptionPlaceholder": "Enter section description...",
+                        "displayMode": "Display Mode",
+                        "displayModeSingle": "Single (Only one item open at a time)",
+                        "displayModeMultiple": "Multiple (Allow multiple items open simultaneously)",
+                        "activeColor": "Active Color"
+                    }
+                },
+                "ictImageGallery": {
+                    "label": "ICT Image Gallery"
+                },
+                "ictCategoryImageSlider": {
+                    "label": "ICT Category Image Slider"
+                }
+            }
         }
-      },
-      "mwProfileTabs": {
-        "label": "MW Profile Tabs",
-        "config": {
-          "subheadline": "Subheadline",
-          "name": "Name",
-          "role": "Role",
-          "buttonLabel": "Button Label",
-          "buttonLink": "Button Link",
-          "buttonType": "Button Type",
-          "buttonNewTab": "Open in new tab"
+    },
+    "apps": {
+        "sw-cms": {
+            "detail": {
+                "label": {
+                    "blockCategory": {
+                        "ict-cms-elements": "ICT CMS Elements",
+                        "ict-cms-layouts": "ICT CMS Layouts"
+                    }
+                }
+            }
         }
-      },
-      "mwFileDownload": {
-        "label": "MW File Download",
-        "config": {
-          "tabs": {
-            "download": "Download",
-            "cta": "CTA"
-          },
-          "downloadTitle": "Download Title",
-          "downloadSubtitle": "Download Subtitle",
-          "downloadButtonText": "Button Text",
-          "ctaTitle": "Title",
-          "ctaSubtitle": "Subtitle",
-          "ctaButtonText": "Button Text",
-          "ctaButtonUrl": "Button URL"
+    },
+    "sw-cms": {
+        "detail": {
+            "label": {
+                "blockCategory": {
+                    "ict-cms-elements": "ICT CMS Elements",
+                    "ict-cms-layouts": "ICT CMS Layouts"
+                }
+            }
+        },
+        "blocks": {
+            "mainhattanTextimage": {
+                "label": "Mian-hattan-wheels Text and Image"
+            },
+            "ictHeroSection": {
+                "label": "ICT Hero Section"
+            },
+            "mainhattanIconFeatureBar": {
+                "label": "Mainhattan Icon Feature Bar"
+            },
+            "ictContentTabs": {
+                "label": "ICT Content Tabs"
+            },
+            "ictOverviewCards6": {
+                "label": "ICT Overview Cards"
+            },
+            "ictSevenColumn": {
+                "label": "ICT Seven Column Layout"
+            },
+            "mwTechnicalFeatureList": {
+                "label": "MW Technical Feature List"
+            },
+            "ictTwoColumnLayout": {
+                "label": "ICT Two Column Layout"
+            },
+            "mwProductCarousel": {
+                "label": "MW Product Carousel"
+            },
+            "mwProfileTabs": {
+                "label": "MW Profile Tabs"
+            },
+            "mwFileDownload": {
+                "label": "MW File Download"
+            },
+            "mwSubcategoryGrid": {
+                "label": "Subcategory Grid"
+            },
+            "mwLoadCapacityTable": {
+                "label": "MW Load Capacity Table"
+            },
+            "ictSingleTitleButtonSection": {
+                "label": "ICT Single Title Button Section"
+            }
+        },
+        "elements": {
+            "ictHeroSection": {
+                "label": "ICT Hero Section"
+            },
+            "ictContentTabs": {
+                "label": "ICT Content Tabs",
+                "addTab": "Add tab",
+                "tabLabel": "Tab label",
+                "tabContent": "Tab content",
+                "addTabHint": "Please configure tabs in the side settings panel.",
+                "styleLabel": "Styling",
+                "activeTabColor": "Active Tab Color"
+            },
+            "ictOverviewCards6": {
+                "label": "ICT Overview Cards"
+            },
+            "ictTopics": {
+                "config": {
+                    "borderStyle": {
+                        "solid": "Solid",
+                        "dotted": "Dotted",
+                        "dashed": "Dashed"
+                    }
+                }
+            },
+            "ictOverviewCards": {
+                "config": {
+                    "tab": {
+                        "cards": "Cards"
+                    },
+                    "section": {
+                        "backgroundSettings": "Background Settings",
+                        "layoutSettings": "Layout Settings",
+                        "iconSettings": "Icon Settings",
+                        "headlineSettings": "Headline Settings",
+                        "subheadlineSettings": "Subheadline Settings",
+                        "bodyTextSettings": "Body Text Settings",
+                        "buttonSettings": "Button Settings",
+                        "cardDesign": "Card Design"
+                    },
+                    "label": {
+                        "backgroundType": "Background Type",
+                        "backgroundColor": "Background Color",
+                        "backgroundGradientColor1": "Gradient Color 1",
+                        "backgroundGradientColor2": "Gradient Color 2",
+                        "backgroundGradientDirection": "Gradient Direction",
+                        "backgroundImage": "Background Image",
+                        "backgroundVideo": "Background Video",
+                        "backgroundVideoUploadType": "Video Upload Type",
+                        "backgroundVideoUploadUrl": "Video URL",
+                        "numberOfColumns": "Number of Columns",
+                        "cardSpacing": "Card Spacing (px)",
+                        "verticalAlignment": "Vertical Alignment",
+                        "card": "Card",
+                        "iconImage": "Icon Image",
+                        "iconShape": "Icon Shape",
+                        "iconSize": "Icon Size",
+                        "iconAlignment": "Icon Alignment",
+                        "iconColor": "Icon Color",
+                        "iconBackgroundColor": "Icon Background Color",
+                        "iconBorderColor": "Icon Border Color",
+                        "iconOutlineColor": "Outline Color",
+                        "iconOutlineThickness": "Outline Thickness",
+                        "iconOutlinePosition": "Outline Position",
+                        "iconBorderRadius": "Border Radius",
+                        "iconHoverEffect": "Hover Effect",
+                        "headline": "Headline",
+                        "headlineSize": "Headline Size",
+                        "headlineAlignment": "Headline Alignment",
+                        "headlineColor": "Headline Color",
+                        "subheadline": "Subheadline",
+                        "subheadlineSize": "Subheadline Size",
+                        "subheadlineAlignment": "Subheadline Alignment",
+                        "subheadlineColor": "Subheadline Color",
+                        "showBodyText": "Show Body Text",
+                        "bodyTextSize": "Body Text Size",
+                        "bodyTextAlignment": "Body Text Alignment",
+                        "bodyTextColor": "Body Text Color",
+                        "buttonText": "Button Text",
+                        "buttonTarget": "Button Target",
+                        "buttonTextColor": "Button Text Color",
+                        "buttonHoverTextColor": "Button Hover Text Color",
+                        "buttonBackgroundColor": "Button Background Color",
+                        "buttonHoverBackgroundColor": "Button Hover Background Color",
+                        "buttonAfterText": "Info Text after Button",
+                        "buttonAfterTextColor": "Info Text Color",
+                        "buttonAfterTextSize": "Info Text Font Size",
+                        "cardBackgroundType": "Card Background Type",
+                        "cardBorderColor": "Card Border Color",
+                        "cardBackgroundColor": "Card Background Color",
+                        "cardBackgroundImage": "Card Background Image",
+                        "cardBackgroundVideo": "Card Background Video",
+                        "gradientColor1": "Gradient Color 1",
+                        "gradientColor2": "Gradient Color 2",
+                        "gradientDirection": "Gradient Direction",
+                        "videoUploadType": "Video Upload Type",
+                        "videoUrl": "Video URL"
+                    },
+                    "button": {
+                        "addCard": "Add Card",
+                        "removeCard": "Remove Card"
+                    },
+                    "option": {
+                        "columns": {
+                            "one": "1 Column",
+                            "two": "2 Columns",
+                            "three": "3 Columns",
+                            "four": "4 Columns"
+                        },
+                        "iconShape": {
+                            "square": "Square",
+                            "round": "Round"
+                        },
+                        "iconSize": {
+                            "small": "Small (50px)",
+                            "medium": "Medium (80px)",
+                            "large": "Large (120px)",
+                            "xl150": "XL (150px)",
+                            "xl180": "XL (180px)",
+                            "xl200": "XL (200px)",
+                            "xl220": "XL (220px)"
+                        },
+                        "featureIconSize": {
+                            "size20": "20px",
+                            "size25": "25px",
+                            "size40": "40px",
+                            "size50": "50px"
+                        },
+                        "iconHoverEffect": {
+                            "none": "None",
+                            "scale": "Scale",
+                            "rotate": "Rotate",
+                            "pulse": "Pulse"
+                        },
+                        "outlinePosition": {
+                            "inside": "Inside",
+                            "outside": "Outside"
+                        },
+                        "verticalAlignment": {
+                            "stretch": "Stretch",
+                            "top": "Top",
+                            "center": "Center",
+                            "bottom": "Bottom"
+                        },
+                        "headlineSize": {
+                            "size1": "Default (24px)",
+                            "size2": "Large (42px)"
+                        },
+                        "subheadlineSize": {
+                            "default": "Default (20px)",
+                            "optional": "Large (24px)"
+                        },
+                        "alignment": {
+                            "left": "Left",
+                            "center": "Center",
+                            "right": "Right"
+                        },
+                        "backgroundType": {
+                            "none": "None",
+                            "color": "Color",
+                            "gradient": "Gradient",
+                            "image": "Image",
+                            "video": "Video"
+                        },
+                        "videoUpload": {
+                            "file": "Upload file",
+                            "url": "External URL"
+                        },
+                        "gradientDirection": {
+                            "top": "Top → Bottom",
+                            "right": "Left → Right",
+                            "bottom": "Bottom → Top",
+                            "left": "Right → Left"
+                        },
+                        "shadow": {
+                            "none": "None",
+                            "light": "Light",
+                            "medium": "Medium",
+                            "heavy": "Heavy"
+                        },
+                        "target": {
+                            "same": "Same tab",
+                            "new": "New tab"
+                        }
+                    }
+                }
+            },
+            "ictSevenColumn": {
+                "label": "ICT Seven Column Layout"
+            },
+            "mwTechnicalFeatureList": {
+                "label": "MW Technical Feature List"
+            },
+            "ictTwoColumnLayout": {
+                "label": "ICT Two Column Layout"
+            },
+            "mwProductCarousel": {
+                "label": "MW Product Carousel",
+                "config": {
+                    "headline": "Headline",
+                    "category": "Category",
+                    "ctaLabel": "CTA Label"
+                }
+            },
+            "mwProfileTabs": {
+                "label": "MW Profile Tabs",
+                "config": {
+                    "subheadline": "Subheadline",
+                    "name": "Name",
+                    "role": "Role",
+                    "buttonLabel": "Button Label",
+                    "buttonLink": "Button Link",
+                    "buttonType": "Button Type",
+                    "buttonNewTab": "Open in new tab"
+                }
+            },
+            "mwFileDownload": {
+                "label": "MW File Download",
+                "config": {
+                    "tabs": {
+                        "download": "Download",
+                        "cta": "CTA"
+                    },
+                    "downloadTitle": "Download Title",
+                    "downloadSubtitle": "Download Subtitle",
+                    "downloadButtonText": "Button Text",
+                    "ctaTitle": "Title",
+                    "ctaSubtitle": "Subtitle",
+                    "ctaButtonText": "Button Text",
+                    "ctaButtonUrl": "Button URL"
+                }
+            },
+            "ictTwoColumnThreeImage": {
+                "config": {
+                    "label": {
+                        "buttonBorderColor": "Button border color",
+                        "buttonHoverBorderColor": "Button hover border color",
+                        "buttonBorderStyle": "Button border style",
+                        "borderWidth": "Border width",
+                        "borderRadius": "Border radius",
+                        "buttonLinkType": "Link type",
+                        "buttonLink": "Link"
+                    }
+                }
+            },
+            "mwSubcategoryGrid": {
+                "label": "Subcategory Grid"
+            },
+            "mwLoadCapacityTable": {
+                "label": "Load Capacity Table",
+                "addColumnGroup": "Add column group",
+                "removeColumnGroup": "Remove column group",
+                "groupTitle": "Group title",
+                "groupRangeLabel": "Range label",
+                "rows": "Rows",
+                "rowLabel": "Row label",
+                "rowValue": "Row value",
+                "addRow": "Add row",
+                "removeRow": "Remove row",
+                "addGroupHint": "Please configure column groups in the side settings panel.",
+                "columnsPerRow": "Columns per row"
+            },
+            "ictSingleTitleButtonSection": {
+                "label": "ICT Single Title Button Section"
+            },
+            "mainhattanIconFeatureBar": {
+                "label": "Mainhattan Icon Feature Bar"
+            }
         }
-      },
-      "ictTwoColumnThreeImage": {
-        "config": {
-          "label": {
-            "buttonBorderColor": "Button border color",
-            "buttonHoverBorderColor": "Button hover border color",
-            "buttonBorderStyle": "Button border style",
-            "borderWidth": "Border width",
-            "borderRadius": "Border radius",
-            "buttonLinkType": "Link type",
-            "buttonLink": "Link"
-          }
-        }
-      },
-      "mwSubcategoryGrid": {
-        "label": "Subcategory Grid"
-      },
-      "mwLoadCapacityTable": {
-        "label": "Load Capacity Table",
-        "addColumnGroup": "Add column group",
-        "removeColumnGroup": "Remove column group",
-        "groupTitle": "Group title",
-        "groupRangeLabel": "Range label",
-        "rows": "Rows",
-        "rowLabel": "Row label",
-        "rowValue": "Row value",
-        "addRow": "Add row",
-        "removeRow": "Remove row",
-        "addGroupHint": "Please configure column groups in the side settings panel.",
-        "columnsPerRow": "Columns per row"
-      }
     }
-  }
 }
