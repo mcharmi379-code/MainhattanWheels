@@ -1,0 +1,61 @@
+{# The standard Shopware category media is the dynamic flyout image. #}
+{% set category = navigationTree.category %}
+{% set name = category.translated.name %}
+{% set flyoutIconId = category.customFields.mainhattan_flyout_icon|default(null) %}
+{# Existing values from the former icon selector are ignored safely. #}
+{% set flyoutIconMedia = flyoutIconId and flyoutIconId|length == 32 ? searchMedia([flyoutIconId], context.context).get(flyoutIconId) : null %}
+
+{% macro category_links(treeItems, level) %}
+    {% for treeItem in treeItems %}
+        {% set child = treeItem.category %}
+        {% set childName = child.translated.name %}
+        <div class="mainhattan-navigation-flyout__item mainhattan-navigation-flyout__item--level-{{ level }}">
+            {% if child.type == 'folder' %}
+                <span class="mainhattan-navigation-flyout__link is-folder" title="{{ childName }}">
+                    {% sw_icon 'arrow-medium-right' style { 'size': 'xs', 'pack': 'solid' } %}{{ childName }}
+                </span>
+            {% else %}
+                <a class="mainhattan-navigation-flyout__link" href="{{ category_url(child) }}" title="{{ childName }}"
+                   {% if category_linknewtab(child) %}target="_blank"{% if child.linkType == 'external' %} rel="noopener noreferrer"{% endif %}{% endif %}>
+                    {% sw_icon 'arrow-medium-right' style { 'size': 'xs', 'pack': 'solid' } %}{{ childName }}
+                </a>
+            {% endif %}
+
+            {% if treeItem.children|length > 0 %}
+                <div class="mainhattan-navigation-flyout__children">
+                    {{ _self.category_links(treeItem.children, level + 1) }}
+                </div>
+            {% endif %}
+        </div>
+    {% endfor %}
+{% endmacro %}
+
+<div class="mainhattan-navigation-flyout">
+    <aside class="mainhattan-navigation-flyout__summary">
+        <a class="mainhattan-navigation-flyout__category-link" href="{{ category_url(category) }}" title="{{ name }}">
+            <span class="mainhattan-navigation-flyout__media" aria-hidden="true">
+                {% if flyoutIconMedia %}
+                    {% sw_thumbnails 'mainhattan-navigation-flyout-icon' with {
+                        media: flyoutIconMedia,
+                        sizes: { default: '56px' },
+                        attributes: {
+                            class: 'mainhattan-navigation-flyout__image',
+                            alt: (flyoutIconMedia.translated.alt ?: ''),
+                            loading: 'lazy'
+                        }
+                    } %}
+                {% else %}
+                    {% sw_icon 'stack' style { 'size': 'lg' } %}
+                {% endif %}
+            </span>
+            <span class="mainhattan-navigation-flyout__title">{{ name }}</span>
+        </a>
+        <a class="mainhattan-navigation-flyout__all-link" href="{{ category_url(category) }}" title="{{ 'general.toCategory'|trans|striptags }} {{ name }}">
+            {{ 'general.toCategory'|trans|sw_sanitize }} {% sw_icon 'arrow-right' style { 'size': 'xs', 'pack': 'solid' } %}
+        </a>
+    </aside>
+
+    <div class="mainhattan-navigation-flyout__links">
+        {{ _self.category_links(navigationTree.children, 0) }}
+    </div>
+</div>

@@ -349,6 +349,36 @@
         "block": "header",
         "order": 300
       },
+      "mw-header-service-link": {
+        "label": { "en-GB": "Customer service link", "de-DE": "Kundenservice-Link" },
+        "type": "text",
+        "value": "/kundenservice",
+        "editable": true,
+        "tab": "header",
+        "block": "header",
+        "order": 500,
+        "scss": false
+      },
+      "mw-header-shipping-link": {
+        "label": { "en-GB": "Shipping link", "de-DE": "Versand-Link" },
+        "type": "text",
+        "value": "/versand",
+        "editable": true,
+        "tab": "header",
+        "block": "header",
+        "order": 510,
+        "scss": false
+      },
+      "mw-header-b2b-link": {
+        "label": { "en-GB": "B2B login link", "de-DE": "B2B-Login-Link" },
+        "type": "text",
+        "value": "/account/login",
+        "editable": true,
+        "tab": "header",
+        "block": "header",
+        "order": 520,
+        "scss": false
+      },
       "sw-instagram-link": {
         "label": {
           "en-GB": "Instagram link",

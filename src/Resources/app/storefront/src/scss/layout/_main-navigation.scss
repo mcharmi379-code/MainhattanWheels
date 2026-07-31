@@ -106,4 +106,89 @@
             }
         }
     }  
+}  
+
+@include media-breakpoint-up(lg) {
+    .main-hattan-wheels-header .nav-main {
+        .main-navigation-menu {
+            justify-content: space-between;
+            width: 100%;
+
+            .main-navigation-link {
+                padding: 15px 11px 16px;
+                .main-navigation-link-text { border: 0; }
+                &.active .main-navigation-link-text,
+                &:hover .main-navigation-link-text { border-bottom: 3px solid $sw-color-brand-secondary; margin-bottom: -3px; }
+            }
+        }
+
+        .navigation-flyout {
+            border-top: 0;
+            box-shadow: 0 18px 28px rgba(18, 24, 30, .16);
+        }
+    }
+
+    .mainhattan-navigation-flyout {
+        display: grid;
+        grid-template-columns: 220px minmax(0, 1fr);
+        min-height: 300px;
+        max-width: 1240px;
+        margin: 0 auto;
+        background: #fff;
+
+        &__summary {
+            padding: 32px 28px;
+            border-right: 1px solid #e2e5e8;
+        }
+
+        &__category-link { display: block; color: $sw-color-brand-primary; text-decoration: none; }
+        &__media {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 56px;
+            height: 56px;
+            margin-bottom: 16px;
+            overflow: hidden;
+            border-radius: 5px;
+            background: #fff0eb;
+            color: $sw-color-brand-secondary;
+        }
+        &__image { width: 100%; height: 100%; object-fit: cover; }
+        &__title { display: block; font-family: 'opensans-bold'; font-size: 18px; line-height: 1.25; }
+        &__all-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            margin-top: 18px;
+            color: $sw-color-brand-secondary;
+            font-family: 'opensans-bold';
+            font-size: 12px;
+            letter-spacing: .04em;
+            text-decoration: none;
+            text-transform: uppercase;
+        }
+        &__links { padding: 28px 36px; }
+        &__item { margin-bottom: 17px; }
+        &__children {
+            margin: 8px 0 0 26px;
+            padding-left: 14px;
+            border-left: 1px solid #e2e5e8;
+        }
+        &__link {
+            display: flex;
+            align-items: center;
+            gap: 11px;
+            width: fit-content;
+            margin: 0;
+            color: $sw-color-brand-primary;
+            font-size: 16px;
+            text-decoration: none;
+            &.is-folder { cursor: default; }
+            &:not(.is-folder):hover { color: $sw-color-brand-secondary; }
+        }
+
+        &__item--level-1 > &__link { font-size: 15px; }
+        &__item--level-2 > &__link { font-size: 14px; }
+    }
 }
