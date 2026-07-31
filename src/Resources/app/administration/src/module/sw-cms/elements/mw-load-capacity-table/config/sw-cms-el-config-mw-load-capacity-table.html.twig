@@ -3,6 +3,14 @@
 
     <div class="mw-lct-config__panel">
 
+        <sw-number-field
+            v-model:value="element.config.columnsPerRow.value"
+            :label="$tc('sw-cms.elements.mwLoadCapacityTable.columnsPerRow')"
+            :min="1"
+            :step="1"
+            @update:value="onFieldChange"
+        />
+
         <div
             v-for="(group, groupIndex) in columnGroups"
             :key="groupIndex"

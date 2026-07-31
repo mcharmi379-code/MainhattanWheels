@@ -197,6 +197,93 @@ body {
     }
 }
 
+// Loveable-inspired desktop header structure. The existing responsive header is
+// retained below the lg breakpoint, where Shopware's off-canvas menu is used.
+@include media-breakpoint-up(lg) {
+    .header-main.mainhattan-header-main {
+        border-bottom: 2px solid $sw-color-brand-secondary;
+
+        .top-bar {
+            padding: 0 24px;
+
+            .top-bar-nav {
+                max-width: 1240px;
+            }
+        }
+
+        .mainhattan-service-links,
+        .mainhattan-top-bar-actions {
+            gap: 20px;
+        }
+
+        .mainhattan-service-links a,
+        .phone-info {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            color: #5d6671;
+            font-family: 'opensans-semibold';
+            font-size: 12px;
+            text-decoration: none;
+        }
+
+        .mainhattan-service-links a:hover {
+            color: $sw-color-brand-secondary;
+        }
+
+        .phone-info {
+            color: $sw-color-brand-secondary;
+            padding-right: 18px;
+            border-right: 1px solid #d9dce0;
+        }
+
+        .top-bar .phone-info a {
+            color: $sw-color-brand-primary;
+            font-size: 12px;
+        }
+
+        .main-hattan-wheels-header {
+            display: grid;
+            grid-template-columns: 255px minmax(300px, 1fr) auto;
+            grid-template-areas:
+                'logo search actions'
+                'navigation navigation navigation';
+            column-gap: 20px;
+            max-width: 1240px;
+            min-height: 154px;
+            padding: 0 24px;
+
+            .header-logo-col { grid-area: logo; width: auto; }
+            .header-search-col { grid-area: search; width: auto; padding: 0; }
+            .header-actions-col { grid-area: actions; padding: 0; }
+            .nav-main { grid-area: navigation; width: 100%; overflow: visible; }
+
+            .header-logo-main-img {
+                max-width: 245px;
+                max-height: 74px;
+            }
+
+            .header-search {
+                max-width: none;
+                .header-search-form .input-group {
+                    border-color: #eef0f3;
+                    background: #f0f2f5;
+                    border-radius: 28px;
+                }
+                .header-search-form .header-search-input {
+                    height: 46px;
+                    color: #3c4650;
+                }
+                .header-search-form .header-search-input::placeholder { color: #778291; }
+            }
+
+            .header-actions-col > .row { align-items: center; }
+            .social-icons { margin-left: 12px; padding-left: 12px; border-left: 1px solid rgba(255, 255, 255, .12); }
+            .social-icons .icon { width: 32px; height: 32px; }
+        }
+    }
+}
+
 
 
 // sticky menu styling

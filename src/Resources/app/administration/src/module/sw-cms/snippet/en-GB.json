@@ -57,6 +57,12 @@
       },
       "mwCtaBanner": {
         "label": "MW CTA Banner"
+      },
+      "mwHeroRotator": {
+        "label": "MW Hero Rotator"
+      },
+      "mwTextBox": {
+        "label": "MW Text Box"
       }
     },
     "elements": {
@@ -324,6 +330,34 @@
           "linkTypeInternal": "Internal",
           "linkTypeExternal": "External",
           "linkNewTab": "Open in new tab"
+        }
+      },
+      "mwHeroRotator": {
+        "label": "MW Hero Rotator",
+        "config": {
+          "backgroundColor": "Background Color",
+          "titleSection": "Title",
+          "titleText": "Title Text",
+          "titleColor": "Title Text Color",
+          "transformSection": "Transformation Text",
+          "lineCount": "Number of Lines",
+          "transformTextLine": "Line",
+          "transformTextColor": "Transformation Text Color",
+          "timingSection": "Animation Timing",
+          "transitionDuration": "Transition Duration (ms)",
+          "rotationInterval": "Rotation Interval (ms)"
+        }
+      },
+      "mwTextBox": {
+        "label": "MW Text Box",
+        "config": {
+          "text": "Text",
+          "colorSection": "Colors",
+          "bgColor": "Background Color",
+          "textColor": "Text Color",
+          "hoverSection": "Hover State",
+          "hoverBgColor": "Hover Background Color",
+          "hoverTextColor": "Hover Text Color"
         }
       }
     }
@@ -702,7 +736,8 @@
         "rowValue": "Row value",
         "addRow": "Add row",
         "removeRow": "Remove row",
-        "addGroupHint": "Please configure column groups in the side settings panel."
+        "addGroupHint": "Please configure column groups in the side settings panel.",
+        "columnsPerRow": "Columns per row"
       }
     }
   }

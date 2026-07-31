@@ -1,0 +1,81 @@
+{% block sw_cms_el_config_mw_hero_rotator %}
+<div class="sw-cms-el-config-mw-hero-rotator">
+
+    <sw-colorpicker
+        v-model:value="element.config.backgroundColor.value"
+        :label="$tc('mw-cms.elements.mwHeroRotator.config.backgroundColor')"
+        color-output="hex"
+        :z-index="1000"
+        @update:value="onInput"
+    />
+
+    <p class="sw-cms-el-config-mw-hero-rotator__section-title">{{ $tc('mw-cms.elements.mwHeroRotator.config.titleSection') }}</p>
+
+    <sw-text-editor
+        v-model:value="element.config.titleText.value"
+        :label="$tc('mw-cms.elements.mwHeroRotator.config.titleText')"
+        sanitize-input
+        @update:value="onInput"
+    />
+
+    <sw-colorpicker
+        v-model:value="element.config.titleColor.value"
+        :label="$tc('mw-cms.elements.mwHeroRotator.config.titleColor')"
+        color-output="hex"
+        :z-index="1000"
+        @update:value="onInput"
+    />
+
+    <p class="sw-cms-el-config-mw-hero-rotator__section-title">{{ $tc('mw-cms.elements.mwHeroRotator.config.transformSection') }}</p>
+
+    <sw-number-field
+        v-model:value="lineCount"
+        :label="$tc('mw-cms.elements.mwHeroRotator.config.lineCount')"
+        :min="1"
+        :max="6"
+        :step="1"
+    />
+
+    <div
+        v-for="i in lineCount"
+        :key="i"
+        class="sw-cms-el-config-mw-hero-rotator__line"
+    >
+        <sw-text-editor
+            v-model:value="element.config['transformText' + i].value"
+            :label="$tc('mw-cms.elements.mwHeroRotator.config.transformTextLine') + ' ' + i"
+            sanitize-input
+            @update:value="onInput"
+        />
+    </div>
+
+    <sw-colorpicker
+        v-model:value="element.config.transformTextColor.value"
+        :label="$tc('mw-cms.elements.mwHeroRotator.config.transformTextColor')"
+        color-output="hex"
+        :z-index="1000"
+        @update:value="onInput"
+    />
+
+    <p class="sw-cms-el-config-mw-hero-rotator__section-title">{{ $tc('mw-cms.elements.mwHeroRotator.config.timingSection') }}</p>
+
+    <sw-number-field
+        v-model:value="element.config.transitionDuration.value"
+        :label="$tc('mw-cms.elements.mwHeroRotator.config.transitionDuration')"
+        :min="100"
+        :max="3000"
+        :step="50"
+        @update:value="onInput"
+    />
+
+    <sw-number-field
+        v-model:value="element.config.rotationInterval.value"
+        :label="$tc('mw-cms.elements.mwHeroRotator.config.rotationInterval')"
+        :min="1000"
+        :max="10000"
+        :step="500"
+        @update:value="onInput"
+    />
+
+</div>
+{% endblock %}

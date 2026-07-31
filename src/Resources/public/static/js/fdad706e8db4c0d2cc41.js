@@ -1,0 +1,1 @@
+"use strict";(window["webpackJsonpPluginmainhattan-wheels"]=window["webpackJsonpPluginmainhattan-wheels"]||[]).push([[586],{50586:function(n,t,e){e.r(t),e.d(t,{default:function(){return a}});var a={template:'<div class="sw-cms-block-mw-technical-feature-list">\n    <slot name="content"></slot>\n</div>\n'}}}]);

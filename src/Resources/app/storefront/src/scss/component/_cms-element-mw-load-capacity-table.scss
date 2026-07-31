@@ -1,14 +1,18 @@
+// Fixed so every row - blank or filled - is pixel-identical; letting height derive from
+// line-height/content collapses empty label/value spans to a shorter box than filled ones.
+$mw-lct-row-height: 1.9rem;
+
 .cms-element-mw-load-capacity-table {
     width: 100%;
     margin-bottom: 2rem;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1.5rem;
+    display: grid;
+    grid-template-columns: repeat(var(--mw-lct-columns, 6), minmax(90px, 1fr));
+    align-items: stretch;
+    gap: 0.75rem;
+    overflow-x: auto;
 
     .mw-lct__group {
-        flex: 1 0 120px;
-        min-width: 110px;
-        max-width: 100%;
+        min-width: 0;
         background: #fff;
         border: 1px solid #dadae5;
         display: flex;
@@ -28,19 +32,28 @@
     }
 
     .mw-lct__body {
+        flex: 1;
         max-width: 100%;
         overflow-x: auto;
+
+        // Keeps an empty (row-less) column the same height as a populated one,
+        // instead of collapsing to zero when no row data was entered.
+        &--empty {
+            min-height: $mw-lct-row-height;
+            background: #f1f1f1;
+        }
     }
 
     .mw-lct__row {
         display: flex;
+        align-items: center;
         justify-content: center;
         gap: 0.25rem;
-        padding: 0.4rem 0.5rem;
+        height: $mw-lct-row-height;
+        padding: 0 0.5rem;
         font-size: 0.9rem;
         white-space: nowrap;
-        min-height: 1em;
-        line-height: 1em;
+        box-sizing: border-box;
 
         &:nth-child(odd) {
             background: #f1f1f1;
@@ -61,22 +74,12 @@
     }
 }
 
-// Responsiveness
-@include media-breakpoint-down(md) {
-    .cms-element-mw-load-capacity-table {
-        .mw-lct__group {
-            flex: 1 0 calc(50% - 0.75rem);
-            max-width: calc(50% - 0.75rem);
-        }
-    }
-}
-
+// The column count is fixed via --mw-lct-columns (configurable in the element settings),
+// so on narrow viewports the table keeps its columns and scrolls horizontally instead of
+// reflowing into fewer per row, which would break the intended "all columns in one row" layout.
 @include media-breakpoint-down(sm) {
     .cms-element-mw-load-capacity-table {
-        .mw-lct__group {
-            flex: 1 0 100%;
-            max-width: 100%;
-        }
+        grid-template-columns: repeat(var(--mw-lct-columns, 6), minmax(72px, 1fr));
 
         .mw-lct__header,
         .mw-lct__subheader {
@@ -85,7 +88,7 @@
         }
 
         .mw-lct__row {
-            padding: 0.3rem 0.4rem;
+            padding: 0 0.4rem;
             font-size: 0.8rem;
         }
     }

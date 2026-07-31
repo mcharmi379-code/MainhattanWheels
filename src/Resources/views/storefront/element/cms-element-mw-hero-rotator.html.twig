@@ -1,0 +1,41 @@
+{% block element_mw_hero_rotator %}
+    {% set backgroundColor = element.data.backgroundColor|default('#3a3a3a') %}
+    {% set titleText = element.data.titleText|default('') %}
+    {% set titleColor = element.data.titleColor|default('#ffffff') %}
+    {% set lines = element.data.lines|default([]) %}
+    {% set transformTextColor = element.data.transformTextColor|default('#e8540a') %}
+    {% set transitionDuration = element.data.transitionDuration|default(400) %}
+    {% set rotationInterval = element.data.rotationInterval|default(3000) %}
+
+    {% if titleText or lines|length > 0 %}
+        <section
+            class="cms-element-mw-hero-rotator"
+            data-mw-hero-rotator="true"
+            data-transition-duration="{{ transitionDuration }}"
+            data-rotation-interval="{{ rotationInterval }}"
+            style="background-color: {{ backgroundColor|e('html_attr') }};"
+        >
+            <div class="cms-element-mw-hero-rotator__container">
+                {% if titleText %}
+                    <div
+                        class="cms-element-mw-hero-rotator__title"
+                        style="color: {{ titleColor|e('html_attr') }};"
+                    >
+                        {{ titleText|raw }}
+                    </div>
+                {% endif %}
+
+                {% if lines|length > 0 %}
+                    <span class="cms-element-mw-hero-rotator__lines">
+                        {% for line in lines %}
+                            <span
+                                class="cms-element-mw-hero-rotator__line{{ loop.first ? ' is-active' : '' }}"
+                                style="color: {{ transformTextColor|e('html_attr') }}; transition-duration: {{ transitionDuration }}ms;"
+                            >{{ line|raw }}</span>
+                        {% endfor %}
+                    </span>
+                {% endif %}
+            </div>
+        </section>
+    {% endif %}
+{% endblock %}

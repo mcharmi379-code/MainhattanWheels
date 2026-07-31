@@ -66,3 +66,7 @@ import './module/sw-cms/blocks/mw-subcategory-cards';
 import './module/sw-cms/elements/mw-subcategory-cards';
 import './module/sw-cms/blocks/mw-cta-banner';
 import './module/sw-cms/elements/mw-cta-banner';
+import './module/sw-cms/blocks/mw-hero-rotator';
+import './module/sw-cms/elements/mw-hero-rotator';
+import './module/sw-cms/blocks/mw-text-box';
+import './module/sw-cms/elements/mw-text-box';

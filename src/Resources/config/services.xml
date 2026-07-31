@@ -26,6 +26,10 @@
             <tag name="shopware.cms.data_resolver" />
         </service>
 
+        <service id="MainhattanWheels\Core\Content\Cms\DataResolver\Element\MwHeroRotatorCmsElementResolver" public="true">
+            <tag name="shopware.cms.data_resolver" />
+        </service>
+
         <service id="MainhattanWheels\Core\Content\Cms\DataResolver\Element\MwImageHotspotCmsElementResolver" public="true">
             <tag name="shopware.cms.data_resolver" />
         </service>
@@ -144,6 +148,10 @@
         </service>
 
         <service id="MainhattanWheels\Core\Content\Cms\DataResolver\Element\MwCtaBannerCmsElementResolver" public="true">
+            <tag name="shopware.cms.data_resolver"/>
+        </service>
+
+        <service id="MainhattanWheels\Core\Content\Cms\DataResolver\Element\MwTextBoxCmsElementResolver" public="true">
             <tag name="shopware.cms.data_resolver"/>
         </service>
     </services>
