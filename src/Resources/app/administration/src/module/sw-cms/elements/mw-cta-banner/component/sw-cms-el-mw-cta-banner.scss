@@ -6,6 +6,12 @@
     padding: 24px;
     border-radius: 4px;
 
+    &__icon {
+        flex-shrink: 0;
+        width: 40px;
+        height: 40px;
+    }
+
     &__text {
         margin: 0;
         font-weight: 700;
@@ -21,5 +27,15 @@
         font-weight: 600;
         white-space: nowrap;
         border-radius: 4px;
+    }
+
+    &--button-text {
+        .sw-cms-el-mw-cta-banner__btn {
+            order: 1;
+        }
+
+        .sw-cms-el-mw-cta-banner__text {
+            order: 2;
+        }
     }
 }

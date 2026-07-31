@@ -1,5 +1,29 @@
 {% block sw_cms_el_config_mw_cta_banner %}
 <div class="sw-cms-el-config-mw-cta-banner">
+    <sw-upload-listener
+        upload-tag="mw-cta-banner-icon"
+        auto-upload
+        @media-upload-finish="onIconUploadSuccess"
+    />
+
+    <p class="sw-cms-el-config-mw-cta-banner__section-title">{{ $tc('mw-cms.elements.mwCtaBanner.config.iconSection') }}</p>
+    <sw-media-upload-v2
+        upload-tag="mw-cta-banner-icon"
+        :source="element.config.iconMediaId.value"
+        :allow-multi-select="false"
+        file-accept="image/*"
+        variant="regular"
+        @media-upload-remove-image="onRemoveIcon"
+    />
+
+    <sw-single-select
+        v-model:value="element.config.contentOrder.value"
+        :label="$tc('mw-cms.elements.mwCtaBanner.config.contentOrder')"
+        :help-text="$tc('mw-cms.elements.mwCtaBanner.config.contentOrderHelpText')"
+        :options="contentOrderOptions"
+        @update:value="onInput"
+    />
+
     <sw-text-editor
         v-model:value="element.config.text.value"
         :label="$tc('mw-cms.elements.mwCtaBanner.config.text')"

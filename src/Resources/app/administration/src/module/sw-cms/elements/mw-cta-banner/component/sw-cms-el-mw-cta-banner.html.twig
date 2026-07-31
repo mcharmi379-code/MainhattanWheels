@@ -1,5 +1,7 @@
 {% block sw_cms_el_mw_cta_banner %}
-    <div class="sw-cms-el-mw-cta-banner" :style="{ backgroundColor: bannerBgColor }">
+    <div class="sw-cms-el-mw-cta-banner" :class="'sw-cms-el-mw-cta-banner--' + contentOrder" :style="{ backgroundColor: bannerBgColor }">
+        <sw-media-preview-v2 v-if="iconMediaId" class="sw-cms-el-mw-cta-banner__icon" :source="iconMediaId" />
+
         <p class="sw-cms-el-mw-cta-banner__text" :style="{ color: textColor }" v-html="text"></p>
 
         <span

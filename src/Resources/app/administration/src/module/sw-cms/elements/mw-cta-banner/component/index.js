@@ -11,6 +11,14 @@ export default {
     ],
 
     computed: {
+        iconMediaId() {
+            return this.element.config.iconMediaId.value ?? null;
+        },
+
+        contentOrder() {
+            return this.element.config.contentOrder.value ?? 'text-button';
+        },
+
         text() {
             return this.element.config.text.value ?? '';
         },

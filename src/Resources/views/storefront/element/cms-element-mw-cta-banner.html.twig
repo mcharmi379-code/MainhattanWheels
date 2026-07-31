@@ -1,6 +1,8 @@
 {% block element_mw_cta_banner %}
     {% set data = element.data ?? {} %}
     {% set config = element.config ?? {} %}
+    {% set icon = data.icon ?? null %}
+    {% set contentOrder = data.contentOrder ?? config.contentOrder.value ?? 'text-button' %}
     {% set text = data.text ?? config.text.value ?? '' %}
     {% set textColor = data.textColor ?? config.textColor.value ?? '' %}
     {% set bannerBgColor = data.bannerBgColor ?? config.bannerBgColor.value ?? '' %}
@@ -11,30 +13,52 @@
     {% set buttonBgColor = data.buttonBgColor ?? config.buttonBgColor.value ?? '' %}
     {% set buttonTextColor = data.buttonTextColor ?? config.buttonTextColor.value ?? '' %}
 
-    {% if text or buttonLabel %}
+    {% if text or buttonLabel or icon %}
         <div class="mw-cta-banner"{% if bannerBgColor %} style="background-color: {{ bannerBgColor }};"{% endif %}>
-            {% if text %}
-                <p class="mw-cta-banner__text"{% if textColor %} style="color: {{ textColor }};"{% endif %}>
-                    {{ text|raw }}
-                </p>
+            {% if icon %}
+                <img
+                    class="mw-cta-banner__icon"
+                    src="{{ icon.url }}"
+                    alt="{{ icon.translated.alt ?: '' }}"
+                    title="{{ icon.translated.title ?: '' }}"
+                    loading="lazy"
+                />
             {% endif %}
 
-            {% if buttonLabel %}
-                {% set url = buttonLinkUrl ?: '#' %}
-                {% if buttonLinkType == 'external' and url != '#' and not (url starts with '#') and not (url starts with 'http://') and not (url starts with 'https://') and not (url starts with '//') and not (url starts with 'mailto:') and not (url starts with 'tel:') %}
-                    {% set url = 'https://' ~ url %}
+            {% set textBlock %}
+                {% if text %}
+                    <p class="mw-cta-banner__text"{% if textColor %} style="color: {{ textColor }};"{% endif %}>
+                        {{ text|raw }}
+                    </p>
                 {% endif %}
+            {% endset %}
 
-                <a
-                    href="{{ url }}"
-                    {% if buttonNewTab %}target="_blank" rel="noopener noreferrer"{% endif %}
-                    class="mw-cta-banner__btn"
-                    {% if buttonBgColor or buttonTextColor %}
-                        style="{% if buttonBgColor %}background-color: {{ buttonBgColor }};{% endif %}{% if buttonTextColor %} color: {{ buttonTextColor }};{% endif %}"
+            {% set buttonBlock %}
+                {% if buttonLabel %}
+                    {% set url = buttonLinkUrl ?: '#' %}
+                    {% if buttonLinkType == 'external' and url != '#' and not (url starts with '#') and not (url starts with 'http://') and not (url starts with 'https://') and not (url starts with '//') and not (url starts with 'mailto:') and not (url starts with 'tel:') %}
+                        {% set url = 'https://' ~ url %}
                     {% endif %}
-                >
-                    {{ buttonLabel }}
-                </a>
+
+                    <a
+                        href="{{ url }}"
+                        {% if buttonNewTab %}target="_blank" rel="noopener noreferrer"{% endif %}
+                        class="mw-cta-banner__btn"
+                        {% if buttonBgColor or buttonTextColor %}
+                            style="{% if buttonBgColor %}background-color: {{ buttonBgColor }};{% endif %}{% if buttonTextColor %} color: {{ buttonTextColor }};{% endif %}"
+                        {% endif %}
+                    >
+                        {{ buttonLabel }}
+                    </a>
+                {% endif %}
+            {% endset %}
+
+            {% if contentOrder == 'button-text' %}
+                {{ buttonBlock }}
+                {{ textBlock }}
+            {% else %}
+                {{ textBlock }}
+                {{ buttonBlock }}
             {% endif %}
         </div>
     {% endif %}

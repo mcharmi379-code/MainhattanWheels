@@ -343,7 +343,12 @@
                     "linkTo": "Verlinken zu",
                     "linkTypeInternal": "Intern",
                     "linkTypeExternal": "Extern",
-                    "linkNewTab": "In neuem Tab öffnen"
+                    "linkNewTab": "In neuem Tab öffnen",
+                    "iconSection": "Icon",
+                    "contentOrder": "Reihenfolge des Inhalts",
+                    "contentOrderHelpText": "Das Icon (falls vorhanden) wird immer zuerst angezeigt. Hiermit legen Sie die Reihenfolge von Text und Button darunter fest.",
+                    "contentOrderTextButton": "Text, dann Button",
+                    "contentOrderButtonText": "Button, dann Text"
                 }
             },
             "mwHeroRotator": {

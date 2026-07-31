@@ -15,6 +15,13 @@ export default {
                 { value: 'external', label: this.$tc('mw-cms.elements.mwCtaBanner.config.linkTypeExternal') },
             ];
         },
+
+        contentOrderOptions() {
+            return [
+                { value: 'text-button', label: this.$tc('mw-cms.elements.mwCtaBanner.config.contentOrderTextButton') },
+                { value: 'button-text', label: this.$tc('mw-cms.elements.mwCtaBanner.config.contentOrderButtonText') },
+            ];
+        },
     },
 
     created() {
@@ -23,6 +30,16 @@ export default {
 
     methods: {
         onInput() {
+            this.$emit('element-update', this.element);
+        },
+
+        onIconUploadSuccess({ targetId }) {
+            this.element.config.iconMediaId.value = targetId;
+            this.$emit('element-update', this.element);
+        },
+
+        onRemoveIcon() {
+            this.element.config.iconMediaId.value = null;
             this.$emit('element-update', this.element);
         },
     },

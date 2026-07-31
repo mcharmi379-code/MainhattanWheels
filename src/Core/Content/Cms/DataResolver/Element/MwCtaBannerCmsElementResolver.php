@@ -9,6 +9,8 @@ use Shopware\Core\Content\Cms\DataResolver\CriteriaCollection;
 use Shopware\Core\Content\Cms\DataResolver\Element\AbstractCmsElementResolver;
 use Shopware\Core\Content\Cms\DataResolver\Element\ElementDataCollection;
 use Shopware\Core\Content\Cms\DataResolver\ResolverContext\ResolverContext;
+use Shopware\Core\Content\Media\MediaDefinition;
+use Shopware\Core\Framework\DataAbstractionLayer\Search\Criteria;
 use Shopware\Core\Framework\Struct\ArrayStruct;
 
 final class MwCtaBannerCmsElementResolver extends AbstractCmsElementResolver
@@ -20,14 +22,35 @@ final class MwCtaBannerCmsElementResolver extends AbstractCmsElementResolver
 
     public function collect(CmsSlotEntity $slot, ResolverContext $resolverContext): ?CriteriaCollection
     {
-        return null;
+        $config = $slot->getFieldConfig();
+        $iconMediaId = $config->get('iconMediaId')?->getValue();
+
+        if (!\is_string($iconMediaId) || $iconMediaId === '') {
+            return null;
+        }
+
+        $criteria = new Criteria([$iconMediaId]);
+        $collection = new CriteriaCollection();
+        $collection->add('mw_cta_banner_icon_' . $slot->getUniqueIdentifier(), MediaDefinition::class, $criteria);
+
+        return $collection;
     }
 
     public function enrich(CmsSlotEntity $slot, ResolverContext $resolverContext, ElementDataCollection $result): void
     {
         $config = $slot->getFieldConfig();
 
+        $iconMediaId = $config->get('iconMediaId')?->getValue();
+        $icon = null;
+
+        if (\is_string($iconMediaId) && $iconMediaId !== '') {
+            $mediaResult = $result->get('mw_cta_banner_icon_' . $slot->getUniqueIdentifier());
+            $icon = $mediaResult?->get($iconMediaId);
+        }
+
         $slot->setData(new ArrayStruct([
+            'icon' => $icon,
+            'contentOrder' => $config->get('contentOrder')?->getStringValue() ?? 'text-button',
             'text' => $config->get('text')?->getStringValue() ?? '',
             'textColor' => $config->get('textColor')?->getStringValue() ?? '',
             'bannerBgColor' => $config->get('bannerBgColor')?->getStringValue() ?? '',

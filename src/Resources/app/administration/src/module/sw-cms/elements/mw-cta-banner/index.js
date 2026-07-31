@@ -11,6 +11,8 @@ Shopware.Service('cmsService').registerCmsElement({
     configComponent: 'sw-cms-el-config-mw-cta-banner',
     previewComponent: 'sw-cms-el-preview-mw-cta-banner',
     defaultConfig: {
+        iconMediaId: { source: 'static', value: null },
+        contentOrder: { source: 'static', value: 'text-button' },
         text: { source: 'static', value: 'Vereinbaren Sie noch heute einen Termin zur Überprüfung Ihrer Felgen und Reifen!' },
         textColor: { source: 'static', value: '#1f2937' },
         bannerBgColor: { source: 'static', value: '#f4f4f4' },
