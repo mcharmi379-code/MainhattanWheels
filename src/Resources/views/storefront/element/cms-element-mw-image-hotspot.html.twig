@@ -69,9 +69,15 @@
                                     </div>
                                 {% endfor %}
                             </div>
-                        {% else %}
-                            <div class="mw-hotspots-empty-state">
-                                Please configure an image for this tab in the backend.
+                        {% endif %}
+
+                        {% if tab.dynamicElements|default([])|length > 0 %}
+                            <div class="mw-hotspots-dynamic-elements">
+                                {% for dynamicElement in tab.dynamicElements %}
+                                    <div class="mw-hotspots-dynamic-element" data-cms-element-id="{{ dynamicElement.id }}">
+                                        {% sw_include '@Storefront/storefront/element/cms-element-' ~ dynamicElement.type ~ '.html.twig' ignore missing with { element: dynamicElement } %}
+                                    </div>
+                                {% endfor %}
                             </div>
                         {% endif %}
                     </div>

@@ -30,6 +30,13 @@ for (let t = 1; t <= 8; t++) {
         defaultConfig[`tab${t}Hotspot${h}Title`] = { source: 'static', value: '' };
         defaultConfig[`tab${t}Hotspot${h}Text`] = { source: 'static', value: '' };
     }
+
+    // Optional additional dynamic content elements (e.g. text, image, or any other CMS element)
+    defaultConfig[`tab${t}DynamicCount`] = { source: 'static', value: 0 };
+    for (let d = 1; d <= 5; d++) {
+        defaultConfig[`tab${t}Dynamic${d}Type`] = { source: 'static', value: null };
+        defaultConfig[`tab${t}Dynamic${d}Config`] = { source: 'static', value: '{}' };
+    }
 }
 
 // Set up specific defaults matching the reference images
