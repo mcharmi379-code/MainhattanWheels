@@ -1,0 +1,49 @@
+{% block sw_cms_el_config_mw_text_box %}
+<div class="sw-cms-el-config-mw-text-box">
+    <mt-textarea
+        v-model="element.config.text.value"
+        :label="$tc('mw-cms.elements.mwTextBox.config.text')"
+        @update:model-value="onInput"
+    />
+
+    <sw-container>
+        <p class="sw-cms-el-config-mw-text-box__section-title">{{ $tc('mw-cms.elements.mwTextBox.config.colorSection') }}</p>
+
+        <sw-colorpicker
+            :value="element.config.bgColor.value"
+            :label="$tc('mw-cms.elements.mwTextBox.config.bgColor')"
+            color-output="hex"
+            :z-index="1000"
+            @update:value="element.config.bgColor.value = $event; onInput()"
+        />
+
+        <sw-colorpicker
+            :value="element.config.textColor.value"
+            :label="$tc('mw-cms.elements.mwTextBox.config.textColor')"
+            color-output="hex"
+            :z-index="1000"
+            @update:value="element.config.textColor.value = $event; onInput()"
+        />
+    </sw-container>
+
+    <sw-container>
+        <p class="sw-cms-el-config-mw-text-box__section-title">{{ $tc('mw-cms.elements.mwTextBox.config.hoverSection') }}</p>
+
+        <sw-colorpicker
+            :value="element.config.hoverBgColor.value"
+            :label="$tc('mw-cms.elements.mwTextBox.config.hoverBgColor')"
+            color-output="hex"
+            :z-index="1000"
+            @update:value="element.config.hoverBgColor.value = $event; onInput()"
+        />
+
+        <sw-colorpicker
+            :value="element.config.hoverTextColor.value"
+            :label="$tc('mw-cms.elements.mwTextBox.config.hoverTextColor')"
+            color-output="hex"
+            :z-index="1000"
+            @update:value="element.config.hoverTextColor.value = $event; onInput()"
+        />
+    </sw-container>
+</div>
+{% endblock %}

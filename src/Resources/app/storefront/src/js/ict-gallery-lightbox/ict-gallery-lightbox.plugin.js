@@ -1,5 +1,5 @@
 import Plugin from 'src/plugin-system/plugin.class';
-alert('IctGalleryLightboxPlugin loaded');
+
 export default class IctGalleryLightboxPlugin extends Plugin {
     init() {
         console.log('[IctGalleryLightbox] init', this.el);
@@ -100,7 +100,6 @@ export default class IctGalleryLightboxPlugin extends Plugin {
             eventTarget: event.target,
             currentTarget: event.currentTarget,
         });
-        alert(`[IctGalleryLightbox] clicked image #${index + 1}`);
         this.open(index);
     }
 

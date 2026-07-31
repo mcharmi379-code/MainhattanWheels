@@ -1,5 +1,8 @@
 <div class="sw-cms-el-config-mw-product-carousel">
     <sw-text-field v-model:value="element.config.headline.value" label="Headline" @update:value="onInput" />
+    <sw-text-field v-model:value="element.config.label.value" label="Label" @update:value="onInput" />
+    <sw-text-field v-model:value="element.config.title.value" label="Title" @update:value="onInput" />
+    <sw-text-field v-model:value="element.config.subtitle.value" label="Subtitle" @update:value="onInput" />
 
     <sw-entity-single-select
         v-model:value="element.config.categoryId.value"

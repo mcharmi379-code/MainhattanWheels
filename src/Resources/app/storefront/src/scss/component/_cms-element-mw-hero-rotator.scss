@@ -1,0 +1,106 @@
+.cms-element-mw-hero-rotator {
+    overflow: hidden;
+
+    &__container {
+        max-width: 1320px;
+        margin: 0 auto;
+        padding: 100px 40px;
+    }
+
+    // Title/line text is user-authored rich text and may be wrapped in any tag
+    // (h1-h6, p, span, ...). Force every descendant to inherit our color/size/
+    // weight/spacing instead of the theme's own default styling for that tag.
+    &__title,
+    &__line {
+        * {
+            color: inherit !important;
+            font: inherit !important;
+            margin: 0 !important;
+            padding: 0 !important;
+        }
+    }
+
+    &__title {
+        margin: 0 0 16px;
+        font-size: clamp(24px, 3.2vw, 44px);
+        font-weight: 800;
+        line-height: 1.2;
+        word-break: break-word;
+        overflow-wrap: break-word;
+    }
+
+    &__lines {
+        position: relative;
+        display: block;
+    }
+
+    &__line {
+        display: none;
+        font-size: clamp(24px, 3.2vw, 44px);
+        font-weight: 800;
+        line-height: 1.3;
+        word-break: break-word;
+        overflow-wrap: break-word;
+        opacity: 0;
+        transform: translate(0, 30px);
+        transition-property: opacity, transform;
+        transition-timing-function: cubic-bezier(0.55, 0.085, 0.68, 0.53);
+
+        &.is-active {
+            display: inline-block;
+            opacity: 1;
+            transform: translate(0, 0);
+        }
+    }
+}
+
+@include media-breakpoint-down(xl) {
+    .cms-element-mw-hero-rotator {
+        &__container {
+            padding: 80px 32px;
+        }
+    }
+}
+
+@include media-breakpoint-down(lg) {
+    .cms-element-mw-hero-rotator {
+        &__container {
+            padding: 64px 24px;
+        }
+
+        &__title,
+        &__line {
+            font-size: clamp(22px, 3.6vw, 34px);
+        }
+    }
+}
+
+@include media-breakpoint-down(md) {
+    .cms-element-mw-hero-rotator {
+        &__container {
+            padding: 48px 20px;
+        }
+
+        &__title,
+        &__line {
+            font-size: clamp(20px, 5vw, 28px);
+        }
+    }
+}
+
+@include media-breakpoint-down(sm) {
+    .cms-element-mw-hero-rotator {
+        &__container {
+            padding: 36px 16px;
+        }
+
+        &__title,
+        &__line {
+            font-size: clamp(18px, 6vw, 24px);
+        }
+
+        &__title {
+            margin-bottom: 10px;
+        }
+    }
+}

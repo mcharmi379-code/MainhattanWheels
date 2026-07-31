@@ -1,0 +1,35 @@
+.sw-cms-el-mw-hero-rotator {
+    padding: 60px 32px;
+    text-align: left;
+
+    // Title/line text is user-authored rich text and may be wrapped in any tag
+    // (h1-h6, p, span, ...). Force every descendant to inherit our color/size/
+    // weight/spacing instead of the default styling for that tag.
+    &__title,
+    &__line {
+        * {
+            color: inherit !important;
+            font: inherit !important;
+            margin: 0 !important;
+            padding: 0 !important;
+        }
+    }
+
+    &__title {
+        font-size: 28px;
+        font-weight: 700;
+        line-height: 1.2;
+        margin-bottom: 12px;
+    }
+
+    &__lines {
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__line {
+        font-size: 28px;
+        font-weight: 700;
+        line-height: 1.2;
+    }
+}

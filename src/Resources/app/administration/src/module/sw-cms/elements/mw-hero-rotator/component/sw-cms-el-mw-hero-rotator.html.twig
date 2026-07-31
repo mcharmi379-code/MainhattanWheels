@@ -1,0 +1,15 @@
+{% block sw_cms_el_mw_hero_rotator %}
+    <div class="sw-cms-el-mw-hero-rotator" :style="{ backgroundColor: backgroundColor }">
+        <div class="sw-cms-el-mw-hero-rotator__title" :style="{ color: titleColor }" v-html="titleText"></div>
+
+        <div class="sw-cms-el-mw-hero-rotator__lines">
+            <div
+                v-for="(line, index) in lines"
+                :key="index"
+                class="sw-cms-el-mw-hero-rotator__line"
+                :style="{ color: transformTextColor }"
+                v-html="line"
+            ></div>
+        </div>
+    </div>
+{% endblock %}

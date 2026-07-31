@@ -1,9 +1,10 @@
 {% block element_mw_load_capacity_table %}
     {% set config = element.translated.config ?? element.config %}
     {% set columnGroups = element.data.columnGroups ?? config.columnGroups.value ?? [] %}
+    {% set columnsPerRow = element.data.columnsPerRow ?? config.columnsPerRow.value ?? 6 %}
 
     {% if columnGroups|length > 0 %}
-        <div class="cms-element-mw-load-capacity-table">
+        <div class="cms-element-mw-load-capacity-table" style="--mw-lct-columns: {{ columnsPerRow }};">
             {% for group in columnGroups %}
                 <div class="mw-lct__group">
                     {% if group.title is not empty or group.rangeLabel is not empty %}
@@ -13,7 +14,7 @@
                         <div class="mw-lct__subheader">{{ group.rangeLabel }}</div>
                     {% endif %}
 
-                    <div class="mw-lct__body">
+                    <div class="mw-lct__body{{ group.rows is empty ? ' mw-lct__body--empty' : '' }}">
                         {% for row in group.rows %}
                             <div class="mw-lct__row">
                                 <span class="mw-lct__label">{{ row.label }}</span>

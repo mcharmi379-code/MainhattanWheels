@@ -28,13 +28,25 @@ final class MwLoadCapacityTableCmsElementResolver extends AbstractCmsElementReso
         $config = $slot->getConfig();
 
         if ($config === null) {
-            $slot->setData(new ArrayStruct(['columnGroups' => []]));
+            $slot->setData(new ArrayStruct(['columnGroups' => [], 'columnsPerRow' => 6]));
             return;
         }
 
         $slot->setData(new ArrayStruct([
             'columnGroups' => $this->extractColumnGroups($config),
+            'columnsPerRow' => $this->extractColumnsPerRow($config),
         ]));
+    }
+
+    /**
+     * @param array<string, mixed> $config
+     */
+    private function extractColumnsPerRow(array $config): int
+    {
+        $value = $config['columnsPerRow']['value'] ?? 6;
+        $columns = is_numeric($value) ? (int) $value : 6;
+
+        return max(1, $columns);
     }
 
     /**
@@ -60,10 +72,21 @@ final class MwLoadCapacityTableCmsElementResolver extends AbstractCmsElementReso
                 continue;
             }
             /** @var array<string, mixed> $group */
+            $title = is_string($group['title'] ?? null) ? trim($group['title']) : '';
+            $rangeLabel = is_string($group['rangeLabel'] ?? null) ? trim($group['rangeLabel']) : '';
+            $rows = $this->extractRows($group);
+
+            // Skip a column entirely only when there is truly nothing to show for it
+            // (no header text and no rows) - a header-only column (e.g. just a range
+            // label) is intentional content, not a blank placeholder.
+            if ($title === '' && $rangeLabel === '' && $rows === []) {
+                continue;
+            }
+
             $result[] = [
-                'title' => is_string($group['title'] ?? null) ? $group['title'] : '',
-                'rangeLabel' => is_string($group['rangeLabel'] ?? null) ? $group['rangeLabel'] : '',
-                'rows' => $this->extractRows($group),
+                'title' => $title,
+                'rangeLabel' => $rangeLabel,
+                'rows' => $rows,
             ];
         }
 
@@ -82,16 +105,19 @@ final class MwLoadCapacityTableCmsElementResolver extends AbstractCmsElementReso
             return [];
         }
 
+        // Every configured row is kept as-is, blank or not: the admin controls exactly
+        // how many rows a column has, and a blank row still renders as an empty cell
+        // (same height as a filled one) rather than being silently removed.
         $result = [];
         foreach (array_values($rows) as $row) {
             if (! is_array($row)) {
                 continue;
             }
             /** @var array<string, mixed> $row */
-            $result[] = [
-                'label' => is_string($row['label'] ?? null) ? $row['label'] : '',
-                'value' => is_string($row['value'] ?? null) ? $row['value'] : '',
-            ];
+            $label = is_string($row['label'] ?? null) ? trim($row['label']) : '';
+            $value = is_string($row['value'] ?? null) ? trim($row['value']) : '';
+
+            $result[] = ['label' => $label, 'value' => $value];
         }
 
         return $result;
