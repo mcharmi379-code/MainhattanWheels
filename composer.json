@@ -3,11 +3,7 @@
   "description": "MianHattan Wheels",
   "type": "shopware-platform-plugin",
   "license": "proprietary",
-<<<<<<< HEAD
   "version": "1.0.38",
-=======
-  "version": "1.0.37",
->>>>>>> 073e6234401e7ab0f368e6ffd2520fa55e24a619
   "autoload": {
     "psr-4": {
       "MainhattanWheels\\": "src/"
