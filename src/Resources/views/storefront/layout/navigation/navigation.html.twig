@@ -81,10 +81,11 @@
                                              data-flyout-menu-id="{{ treeItem.category.id }}">
                                             <div class="container">
                                                 {% block layout_main_navigation_menu_flyout_include %}
-                                                    {% sw_include '@Storefront/storefront/layout/navigation/flyout.html.twig' with {
+                                                    {% sw_include '@MainhattanWheels/storefront/layout/navigation/mainhattan-flyout.html.twig' with {
                                                         themeIconConfig: themeIconConfig,
                                                         navigationTree: treeItem,
                                                         level: level+1,
+                                                        context: context,
                                                         page: page
                                                     } only %}
                                                 {% endblock %}
@@ -100,4 +101,3 @@
         {% endblock %}
     </div>
 {% endblock %}
-
