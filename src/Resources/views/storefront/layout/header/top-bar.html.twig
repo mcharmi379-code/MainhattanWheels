@@ -6,12 +6,7 @@
 {% block layout_header_top_bar %}
     <div class="top-bar">
         <nav class="top-bar-nav">
-            <div class="container d-flex justify-content-between align-items-center">
-                <div class="mainhattan-service-links d-none d-md-flex" aria-label="Service">
-                    <a href="{{ theme_config('mw-header-service-link') }}">{% sw_icon 'headset' style { 'size': 'xs' } %}<span>Kundenservice</span></a>
-                    <a href="{{ theme_config('mw-header-shipping-link') }}">{% sw_icon 'truck' style { 'size': 'xs' } %}<span>Versand</span></a>
-                    <a href="{{ theme_config('mw-header-b2b-link') }}">{% sw_icon 'log-in' style { 'size': 'xs' } %}<span>B2B Login</span></a>
-                </div>
+            <div class="container d-flex justify-content-end align-items-center">
                 <div class="mainhattan-top-bar-actions d-flex align-items-center">
                 <div class="phone-info">
                     {% sw_icon 'phone' style { 'size': 'xs' } %}
