@@ -211,12 +211,10 @@ body {
             }
         }
 
-        .mainhattan-service-links,
         .mainhattan-top-bar-actions {
             gap: 20px;
         }
 
-        .mainhattan-service-links a,
         .phone-info {
             display: inline-flex;
             align-items: center;
@@ -225,10 +223,6 @@ body {
             font-family: 'opensans-semibold';
             font-size: 12px;
             text-decoration: none;
-        }
-
-        .mainhattan-service-links a:hover {
-            color: $sw-color-brand-secondary;
         }
 
         .phone-info {
