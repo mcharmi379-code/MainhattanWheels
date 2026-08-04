@@ -235,6 +235,71 @@
     }
 }
 
+.beispiel-vermessungsprotokoll-laservermessung-von-felgen {
+    .cms-element-image {
+        position: relative;
+
+        .cms-image-container {
+            position: relative;
+            display: inline-block;
+            width: auto !important;
+            max-width: 100%;
+            overflow: hidden;
+
+            &::before {
+                content: '';
+                position: absolute;
+                inset: 0;
+                background: rgba(0, 0, 0, 0);
+                transition: background-color 0.25s ease;
+                z-index: 1;
+                pointer-events: none;
+            }
+
+        &::after {
+            content: var(--mw-image-hover-label, 'Beispiel Vermessungsprotokoll');
+            position: absolute;
+            left: 50%;
+            top: 50%;
+                transform: translate(-50%, -50%);
+                max-width: 90%;
+                color: #fff;
+                text-align: center;
+                font-size: clamp(18px, 2vw, 28px);
+                line-height: 1.25;
+                font-weight: 400;
+                text-shadow: 0 2px 10px rgba(0, 0, 0, 0.45);
+                opacity: 0;
+                transition: opacity 0.25s ease;
+                white-space: normal;
+                pointer-events: none;
+                z-index: 2;
+            }
+
+            img.cms-image {
+                display: block;
+                width: 100%;
+                transition: transform 0.25s ease, filter 0.25s ease;
+            }
+
+            &:hover {
+                &::before {
+                    background: rgba(0, 0, 0, 0.55);
+                }
+
+                &::after {
+                    opacity: 1;
+                }
+
+                img.cms-image {
+                    transform: scale(1.03);
+                    filter: brightness(0.55);
+                }
+            }
+        }
+    }
+}
+
 .cms-section:has(.cms-block-ict-hero-section) {
 
     &.boxed,

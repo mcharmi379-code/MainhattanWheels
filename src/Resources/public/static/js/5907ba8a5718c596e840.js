@@ -1,1 +1,0 @@
-"use strict";(window["webpackJsonpPluginmainhattan-wheels"]=window["webpackJsonpPluginmainhattan-wheels"]||[]).push([[9105],{19105:function(n,a,s){s.r(a),s.d(a,{default:function(){return t}});var t={template:'{% block sw_cms_block_mw_tab_cards %}\n    <div class="sw-cms-block-mw-tab-cards">\n        <slot name="tabCards"></slot>\n    </div>\n{% endblock %}\n'}}}]);

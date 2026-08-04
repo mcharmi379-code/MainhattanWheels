@@ -70,3 +70,5 @@ import './module/sw-cms/blocks/mw-hero-rotator';
 import './module/sw-cms/elements/mw-hero-rotator';
 import './module/sw-cms/blocks/mw-text-box';
 import './module/sw-cms/elements/mw-text-box';
+import './module/sw-cms/blocks/mw-portfolio-gallery';
+import './module/sw-cms/elements/mw-portfolio-gallery';

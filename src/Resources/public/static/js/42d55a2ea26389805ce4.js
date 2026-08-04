@@ -1,1 +1,0 @@
-"use strict";(window["webpackJsonpPluginmainhattan-wheels"]=window["webpackJsonpPluginmainhattan-wheels"]||[]).push([[3119],{73119:function(n,t,a){a.r(t),a.d(t,{default:function(){return e}});var e={template:'<div class="sw-cms-block-mw-load-capacity-table">\n    <slot name="content"></slot>\n</div>\n'}}}]);

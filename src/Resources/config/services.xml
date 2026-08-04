@@ -157,5 +157,10 @@
         <service id="MainhattanWheels\Core\Content\Cms\DataResolver\Element\MwTextBoxCmsElementResolver" public="true">
             <tag name="shopware.cms.data_resolver"/>
         </service>
+
+        <service id="MainhattanWheels\Core\Content\Cms\DataResolver\Element\MwPortfolioGalleryCmsElementResolver" public="true">
+            <argument type="service" id="Doctrine\DBAL\Connection"/>
+            <tag name="shopware.cms.data_resolver"/>
+        </service>
     </services>
 </container>

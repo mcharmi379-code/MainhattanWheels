@@ -81,6 +81,9 @@
             },
             "mwSubcategoryCards": {
                 "label": "MW Subcategory Cards"
+            },
+            "mwPortfolioGallery": {
+                "label": "MW Portfolio Gallery"
             }
         },
         "elements": {
@@ -403,6 +406,14 @@
             },
             "mwTestimonial": {
                 "label": "MW Testimonial"
+            },
+            "mwPortfolioGallery": {
+                "label": "MW Portfolio Gallery",
+                "config": {
+                    "headline": "Hint text above the filter",
+                    "ctaLabel": "CTA button text",
+                    "ctaUrl": "CTA button URL"
+                }
             }
         }
     },

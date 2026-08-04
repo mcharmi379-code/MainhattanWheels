@@ -1,0 +1,19 @@
+{% block sw_cms_el_config_mw_portfolio_gallery %}
+    <div class="sw-cms-el-config-mw-portfolio-gallery">
+        <sw-text-field
+            v-model:value="element.config.headline.value"
+            :label="$tc('mw-cms.elements.mwPortfolioGallery.config.headline')"
+            @update:value="onInput"
+        />
+        <sw-text-field
+            v-model:value="element.config.ctaLabel.value"
+            :label="$tc('mw-cms.elements.mwPortfolioGallery.config.ctaLabel')"
+            @update:value="onInput"
+        />
+        <sw-text-field
+            v-model:value="element.config.ctaUrl.value"
+            :label="$tc('mw-cms.elements.mwPortfolioGallery.config.ctaUrl')"
+            @update:value="onInput"
+        />
+    </div>
+{% endblock %}
