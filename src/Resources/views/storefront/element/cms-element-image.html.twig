@@ -1,0 +1,26 @@
+{% sw_extends '@Storefront/storefront/element/cms-element-image.html.twig' %}
+
+{% block element_image_container %}
+    {% if element.data.media.url %}
+        <div class="w-100 cms-image-container is-{{ element.translated.config.displayMode.value }}"{%
+            if element.translated.config.minHeight.value and isCover %} style="min-height: {{ element.translated.config.minHeight.value }}; --mw-image-hover-label: '{{ 'mw-cms.imageHoverLabel'|trans|striptags|e('html_attr') }}';"{%
+            else %} style="--mw-image-hover-label: '{{ 'mw-cms.imageHoverLabel'|trans|striptags|e('html_attr') }}';"{% endif %}>
+            {% block element_image_media %}
+                {% set attributes = {
+                    'class': 'cms-image',
+                    'alt': element.translated.config.isDecorative.value ? ' ' : (element.data.media.translated.alt ?: ''),
+                    'title': element.translated.config.isDecorative.value ? '' : (element.data.media.translated.title ?: ''),
+                    'loading': 'lazy'
+                } %}
+
+                {% if isCover or element.translated.config.displayMode.value == 'contain' %}
+                    {% set attributes = attributes|merge({ 'data-object-fit': element.translated.config.displayMode.value }) %}
+                {% endif %}
+
+                {% sw_thumbnails 'cms-image-thumbnails' with {
+                    media: element.data.media
+                } %}
+            {% endblock %}
+        </div>
+    {% endif %}
+{% endblock %}

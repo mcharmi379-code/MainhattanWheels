@@ -1,0 +1,17 @@
+{% block sw_cms_preview_mw_portfolio_gallery %}
+    <div class="sw-cms-preview-mw-portfolio-gallery">
+        <div style="padding:16px;text-align:center;background:#f5f5f5;border:1px dashed #ccc;">
+            <div style="font-weight:bold;margin-bottom:8px;">Portfolio Galerie</div>
+            <div style="display:flex;gap:4px;justify-content:center;margin-bottom:8px;">
+                <span style="background:#e85630;color:#fff;padding:2px 8px;border-radius:3px;font-size:11px;">Alle</span>
+                <span style="background:#eee;padding:2px 8px;border-radius:3px;font-size:11px;">Anthrazit</span>
+                <span style="background:#eee;padding:2px 8px;border-radius:3px;font-size:11px;">Kupfer</span>
+            </div>
+            <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:4px;">
+                {% for i in 1..5 %}
+                    <div style="background:#ddd;aspect-ratio:1;border-radius:3px;"></div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,244 @@
+{% block element_mw_portfolio_gallery %}
+{% set c = element.config %}
+{% set headline = c.headline.value ?? '' %}
+{% set ctaLabel = c.ctaLabel.value ?? 'Jetzt Angebot anfordern!' %}
+{% set ctaUrl = c.ctaUrl.value ?? '/anfrage-felgenbearbeitung' %}
+{% set colorFilters = ['Alle','Anthrazit','Beige','Blau','Bronze','Chrom','Gelb','Gold','Grün','Kupfer','Lila','Orange','Pink','Rot','Schwarz','Silber','Weiß'] %}
+{% set landingPages = element.data.landingPages ?? [] %}
+
+<div class="mw-portfolio-gallery" data-mw-portfolio-gallery="true">
+
+    {% if headline %}
+        <p class="mw-portfolio-gallery__headline">{{ headline }}</p>
+    {% endif %}
+
+    {# ── Color filter bar ── #}
+    <nav class="mw-portfolio-gallery__filters" aria-label="Farbfilter">
+        {% for color in colorFilters %}
+            <button
+                type="button"
+                class="mw-portfolio-gallery__filter-btn{% if loop.first %} is--active{% endif %}"
+                data-color="{{ color == 'Alle' ? 'alle' : color|lower }}"
+            >{{ color }}</button>
+        {% endfor %}
+    </nav>
+
+    {# ── Portfolio grid ── #}
+    <div class="mw-portfolio-gallery__grid" id="mw-portfolio-grid">
+        {% for item in landingPages %}
+            {% set colors = item.customFields.portfolio_colors ?? [] %}
+            {% set colorSlugs = [] %}
+            {% for col in colors %}
+                {% set colorSlugs = colorSlugs|merge([col|lower]) %}
+            {% endfor %}
+
+            <div
+                class="mw-portfolio-gallery__item"
+                data-colors="{{ colorSlugs|join(',') }}"
+                data-slug="{{ item.url }}"
+                data-detail-target="mw-portfolio-detail-{{ loop.index }}"
+            >
+                <div class="mw-portfolio-gallery__thumb">
+                    {% if item.imageUrl %}
+                        <img class="mw-portfolio-gallery__img" src="{{ item.imageUrl }}" alt="{{ item.name|e('html_attr') }}" loading="lazy">
+                    {% else %}
+                        <div class="mw-portfolio-gallery__img-placeholder"></div>
+                    {% endif %}
+                    <div class="mw-portfolio-gallery__item-label">{{ item.name }}</div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+
+    {# ── Detail panels — one native gallery per item, pre-rendered, only one ever visible ── #}
+    <div id="mw-portfolio-details">
+        {% for item in landingPages %}
+            {% set detail = item.detail ?? null %}
+            {% set images = item.images ?? [] %}
+            {% set imageCount = images|length %}
+
+            <div class="mw-portfolio-gallery__detail" id="mw-portfolio-detail-{{ loop.index }}" hidden>
+                <div class="mw-portfolio-gallery__detail-inner">
+                    <button type="button" class="mw-portfolio-gallery__detail-close" aria-label="Schließen">&times;</button>
+
+                    <div class="mw-portfolio-gallery__detail-left">
+                        {% block element_mw_portfolio_gallery_native_gallery %}
+                            <div class="row gallery-slider-row{% if imageCount == 1 %} is-single-image{% endif %} is-loading"
+                                 {% if imageCount > 1 %}
+                                     data-gallery-slider="true"
+                                     data-gallery-slider-options='{"slider":{"navPosition":"bottom","speed":500,"gutter":0,"controls":true,"autoHeight":false},"thumbnailSlider":{"items":6,"slideBy":5,"controls":true,"ariaLive":false}}'
+                                 {% endif %}>
+                                <div class="gallery-slider-col">
+                                    <div class="base-slider gallery-slider">
+                                        {% if imageCount > 1 %}
+                                            <div class="gallery-slider-container" data-gallery-slider-container="true">
+                                                {% for image in images %}
+                                                    <div class="gallery-slider-item-container">
+                                                        <div class="gallery-slider-item is-standard">
+                                                            <img class="img-fluid gallery-slider-image" src="{{ image }}" alt="{{ item.name|e('html_attr') }} {{ loop.index }}" loading="lazy">
+                                                        </div>
+                                                    </div>
+                                                {% endfor %}
+                                            </div>
+                                            <div class="gallery-slider-controls" data-gallery-slider-controls="true">
+                                                <button class="base-slider-controls-prev gallery-slider-controls-prev" aria-label="{{ 'general.previous'|trans|striptags }}">{% sw_icon 'arrow-head-left' %}</button>
+                                                <button class="base-slider-controls-next gallery-slider-controls-next" aria-label="{{ 'general.next'|trans|striptags }}">{% sw_icon 'arrow-head-right' %}</button>
+                                            </div>
+                                        {% else %}
+                                            <div class="gallery-slider-single-image is-standard">
+                                                {% if imageCount > 0 %}
+                                                    <img class="img-fluid gallery-slider-image" src="{{ images[0] }}" alt="{{ item.name|e('html_attr') }}" loading="lazy">
+                                                {% endif %}
+                                            </div>
+                                        {% endif %}
+                                    </div>
+                                </div>
+
+                                {% if imageCount > 1 %}
+                                    <div class="gallery-slider-thumbnails-col is-underneath">
+                                        <div class="gallery-slider-thumbnails-container is-underneath">
+                                            <div class="gallery-slider-thumbnails is-underneath" data-gallery-slider-thumbnails="true">
+                                                {% for image in images %}
+                                                    <div class="gallery-slider-thumbnails-item">
+                                                        <div class="gallery-slider-thumbnails-item-inner">
+                                                            <img class="gallery-slider-thumbnails-image" src="{{ image }}" alt="{{ item.name|e('html_attr') }} {{ loop.index }}" loading="lazy">
+                                                        </div>
+                                                    </div>
+                                                {% endfor %}
+                                            </div>
+                                            <div data-thumbnail-slider-controls="true" class="gallery-slider-thumbnails-controls">
+                                                <button class="base-slider-controls-prev gallery-slider-thumbnails-controls-prev" aria-label="{{ 'general.previous'|trans|striptags }}">{% sw_icon 'arrow-head-left' %}</button>
+                                                <button class="base-slider-controls-next gallery-slider-thumbnails-controls-next" aria-label="{{ 'general.next'|trans|striptags }}">{% sw_icon 'arrow-head-right' %}</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                {% endif %}
+                            </div>
+                        {% endblock %}
+                    </div>
+
+                    <div class="mw-portfolio-gallery__detail-right">
+                        <h2 class="mw-portfolio-gallery__detail-title">{{ item.name }}</h2>
+                        <div class="mw-portfolio-gallery__detail-body">
+                            {% if detail.title %}
+                                <h4 class="mw-portfolio-gallery__detail-subtitle">Felgen Pulverbeschichtung: {{ detail.title }}</h4>
+                                <hr>
+                            {% endif %}
+
+                            {% if detail.themenbereich or detail.farbkategorie or detail.oberflaechenaufbau %}
+                                <p class="mw-portfolio-gallery__detail-meta">
+                                    {% if detail.themenbereich %}<strong>Themenbereich:</strong> {{ detail.themenbereich }}<br>{% endif %}
+                                    {% if detail.farbkategorie %}<strong>Farbkategorie:</strong> {{ detail.farbkategorie }}<br>{% endif %}
+                                    {% if detail.oberflaechenaufbau %}<strong>Oberflächenaufbau:</strong> {{ detail.oberflaechenaufbau }}{% endif %}
+                                </p>
+                                <hr>
+                            {% endif %}
+
+                            {% if detail.steps is defined and detail.steps|length %}
+                                <p><strong>Bearbeitungsschritte</strong></p>
+                                <ul>
+                                    {% for step in detail.steps %}
+                                        <li>{{ step }}</li>
+                                    {% endfor %}
+                                </ul>
+                            {% endif %}
+
+                            {% if detail.price %}
+                                <p><strong>{{ detail.price }}</strong></p>
+                            {% endif %}
+                        </div>
+                        <a class="mw-portfolio-gallery__detail-cta" href="{{ ctaUrl }}">{{ ctaLabel }}</a>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+
+</div>
+
+<script>
+(function () {
+    const gallery = document.querySelector('[data-mw-portfolio-gallery="true"]');
+    if (!gallery || gallery.dataset.init === '1') return;
+    gallery.dataset.init = '1';
+
+    const grid       = gallery.querySelector('#mw-portfolio-grid');
+    const filterBtns = gallery.querySelectorAll('.mw-portfolio-gallery__filter-btn');
+    const items      = grid.querySelectorAll('.mw-portfolio-gallery__item');
+    const panels     = gallery.querySelectorAll('.mw-portfolio-gallery__detail');
+
+    // Captured once, before any panel gets moved out of `gallery` on open —
+    // querySelector against `gallery` would fail to find a panel once it has moved.
+    const panelsById = {};
+    panels.forEach(p => { panelsById[p.id] = p; });
+
+    let currentPanel = null;
+
+    function closeDetail() {
+        if (currentPanel) {
+            currentPanel.hidden = true;
+        }
+        currentPanel = null;
+        items.forEach(i => i.classList.remove('is--selected'));
+    }
+
+    function openDetail(item) {
+        const targetId = item.dataset.detailTarget;
+        const panel = panelsById[targetId];
+        if (!panel) return;
+
+        if (currentPanel && currentPanel !== panel) {
+            currentPanel.hidden = true;
+        }
+
+        const cmsBlock = gallery.closest('.cms-block');
+        if (cmsBlock && cmsBlock.parentNode) {
+            cmsBlock.parentNode.insertBefore(panel, cmsBlock);
+        }
+
+        panel.hidden = false;
+        currentPanel = panel;
+
+        if (window.PluginManager && panel.dataset.sliderInit !== '1') {
+            panel.dataset.sliderInit = '1';
+            const sliderRow = panel.querySelector('[data-gallery-slider="true"]');
+            if (sliderRow) {
+                window.PluginManager.initializePlugin('GallerySlider', sliderRow);
+            }
+        }
+
+        panel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+
+        items.forEach(i => i.classList.remove('is--selected'));
+        item.classList.add('is--selected');
+    }
+
+    // Filter
+    filterBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            filterBtns.forEach(b => b.classList.remove('is--active'));
+            btn.classList.add('is--active');
+            const color = btn.dataset.color;
+            items.forEach(item => {
+                const colors = item.dataset.colors ? item.dataset.colors.split(',') : [];
+                item.style.display = (color === 'alle' || colors.includes(color)) ? '' : 'none';
+            });
+            closeDetail();
+        });
+    });
+
+    items.forEach(item => {
+        item.addEventListener('click', () => openDetail(item));
+    });
+
+    panels.forEach(panel => {
+        const closeBtn = panel.querySelector('.mw-portfolio-gallery__detail-close');
+        if (closeBtn) {
+            closeBtn.addEventListener('click', closeDetail);
+        }
+    });
+
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeDetail(); });
+})();
+</script>
+{% endblock %}

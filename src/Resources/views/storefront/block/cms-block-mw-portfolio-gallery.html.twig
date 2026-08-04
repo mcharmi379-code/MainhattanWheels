@@ -1,0 +1,9 @@
+{% block cms_block_mw_portfolio_gallery %}
+<div class="cms-block cms-block-mw-portfolio-gallery">
+    {% for slot in block.slots %}
+        {% block cms_block_mw_portfolio_gallery_slot %}
+            {% sw_include '@Storefront/storefront/element/cms-element-' ~ slot.type ~ '.html.twig' ignore missing with { element: slot } %}
+        {% endblock %}
+    {% endfor %}
+</div>
+{% endblock %}

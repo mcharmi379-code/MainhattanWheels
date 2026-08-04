@@ -7,7 +7,8 @@
     "showcase": {
       "showAll": "VIEW ALL",
       "learnMore": "LEARN MORE"
-    }
+    },
+    "imageHoverLabel": "Example measurement report"
   },
   "header": {
     "topBar": {
