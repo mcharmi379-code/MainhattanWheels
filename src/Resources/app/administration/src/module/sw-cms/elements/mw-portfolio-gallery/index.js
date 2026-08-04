@@ -11,6 +11,7 @@ Shopware.Service('cmsService').registerCmsElement({
     defaultConfig: {
         headline: { source: 'static', value: 'Filtern Sie einfach durch das Anklicken Ihrer Wunschfarbe über den folgenden Abbildungen!' },
         ctaLabel: { source: 'static', value: 'Jetzt Angebot anfordern!' },
+        ctaLinkType: { source: 'static', value: 'external' },
         ctaUrl: { source: 'static', value: '/anfrage-felgenbearbeitung' },
     },
 });

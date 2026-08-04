@@ -412,6 +412,9 @@
                 "config": {
                     "headline": "Hint text above the filter",
                     "ctaLabel": "CTA button text",
+                    "linkType": "Link type",
+                    "linkTypeInternal": "Internal",
+                    "linkTypeExternal": "External",
                     "ctaUrl": "CTA button URL"
                 }
             }

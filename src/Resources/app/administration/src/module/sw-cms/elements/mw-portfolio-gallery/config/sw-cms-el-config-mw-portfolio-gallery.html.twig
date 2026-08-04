@@ -10,7 +10,21 @@
             :label="$tc('mw-cms.elements.mwPortfolioGallery.config.ctaLabel')"
             @update:value="onInput"
         />
+        <sw-single-select
+            v-model:value="element.config.ctaLinkType.value"
+            :label="$tc('mw-cms.elements.mwPortfolioGallery.config.linkType')"
+            :options="linkTypeOptions"
+            @update:value="onInput"
+        />
+
+        <sw-dynamic-url-field
+            v-if="element.config.ctaLinkType.value === 'internal'"
+            v-model:value="element.config.ctaUrl.value"
+            :label="$tc('mw-cms.elements.mwPortfolioGallery.config.ctaUrl')"
+            @update:value="onInput"
+        />
         <sw-text-field
+            v-else
             v-model:value="element.config.ctaUrl.value"
             :label="$tc('mw-cms.elements.mwPortfolioGallery.config.ctaUrl')"
             @update:value="onInput"
