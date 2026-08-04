@@ -1,7 +1,8 @@
-{# The standard Shopware category media is the dynamic flyout image. #}
+{# Dedicated category custom fields control flyout-only media and copy. #}
 {% set category = navigationTree.category %}
 {% set name = category.translated.name %}
 {% set flyoutIconId = category.customFields.mainhattan_flyout_icon|default(null) %}
+{% set showAllText = category.customFields.mainhattan_flyout_show_all_text|default('general.toCategory'|trans) %}
 {# Existing values from the former icon selector are ignored safely. #}
 {% set flyoutIconMedia = flyoutIconId and flyoutIconId|length == 32 ? searchMedia([flyoutIconId], context.context).get(flyoutIconId) : null %}
 
@@ -50,8 +51,8 @@
             </span>
             <span class="mainhattan-navigation-flyout__title">{{ name }}</span>
         </a>
-        <a class="mainhattan-navigation-flyout__all-link" href="{{ category_url(category) }}" title="{{ 'general.toCategory'|trans|striptags }} {{ name }}">
-            {{ 'general.toCategory'|trans|sw_sanitize }} {% sw_icon 'arrow-right' style { 'size': 'xs', 'pack': 'solid' } %}
+        <a class="mainhattan-navigation-flyout__all-link" href="{{ category_url(category) }}" title="{{ showAllText|striptags }} {{ name }}">
+            {{ showAllText|sw_sanitize }} {% sw_icon 'arrow-right' style { 'size': 'xs', 'pack': 'solid' } %}
         </a>
     </aside>
 
