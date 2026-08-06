@@ -53,7 +53,7 @@ final class MwProductQuickOrderCmsElementResolver extends AbstractCmsElementReso
             'product'        => $product,
             'buttonText'     => (string) ($config->get('buttonText')?->getStringValue() ?? 'View & order now'),
             'quantityLabel'  => (string) ($config->get('quantityLabel')?->getStringValue() ?? 'Crowd'),
-            'buttonBgColor'  => (string) ($config->get('buttonBgColor')?->getStringValue() ?? '#e8671a'),
+            'buttonBgColor'  => (string) ($config->get('buttonBgColor')?->getStringValue() ?? '#e85630'),
             'buttonTextColor' => (string) ($config->get('buttonTextColor')?->getStringValue() ?? '#ffffff'),
         ]));
     }

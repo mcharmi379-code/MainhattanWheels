@@ -39,7 +39,7 @@ export default {
                 afterImageUrl: null,
                 afterText: index === 0 ? 'AFTER' : 'AFTERWARDS',
                 afterTextColor: '#ffffff',
-                afterTextBackgroundColor: '#f97316',
+                afterTextBackgroundColor: '#e85630',
                 afterDescription: '',
             };
         },

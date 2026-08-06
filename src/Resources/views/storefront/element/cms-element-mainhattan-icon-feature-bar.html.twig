@@ -62,7 +62,7 @@
                             {% if item.heading is not empty %}
                                 <span
                                     class="mainhattan-icon-feature-bar__heading"
-                                    style="color: {{ c.headingColor.value ?: '#1a1a2e' }}; font-size: {{ c.headingSize.value ?: '13' }}px;"
+                                    style="color: {{ c.headingColor.value ?: '#1a1a2e' }}; font-size: {{ c.headingSize.value ? c.headingSize.value ~ 'px' : theme_config('sw-font-size-span') }};"
                                 >
                                     {{ item.heading }}
                                 </span>
@@ -71,7 +71,7 @@
                             {% if item.description is not empty %}
                                 <span
                                     class="mainhattan-icon-feature-bar__description"
-                                    style="color: {{ c.descriptionColor.value ?: '#6b7280' }}; font-size: {{ c.descriptionSize.value ?: '12' }}px;"
+                                    style="color: {{ c.descriptionColor.value ?: '#6b7280' }}; font-size: {{ c.descriptionSize.value ? c.descriptionSize.value ~ 'px' : theme_config('sw-font-size-span') }};"
                                 >
                                     {{ item.description }}
                                 </span>

@@ -40,7 +40,7 @@ function createAccordionConfig() {
         },
         activeColor: {
             source: 'static',
-            value: '#e30613',
+            value: '#e85630',
         },
     };
 }
@@ -66,7 +66,7 @@ export default {
         },
 
         activeColor() {
-            return this.element.config?.activeColor?.value || '#e30613';
+            return this.element.config?.activeColor?.value || '#e85630';
         },
 
         entries() {

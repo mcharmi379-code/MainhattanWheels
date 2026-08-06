@@ -42,7 +42,7 @@ final class MwHeroRotatorCmsElementResolver extends AbstractCmsElementResolver
             'titleText' => (string) ($config->get('titleText')?->getStringValue() ?? ''),
             'titleColor' => (string) ($config->get('titleColor')?->getStringValue() ?? '#ffffff'),
             'lines' => $lines,
-            'transformTextColor' => (string) ($config->get('transformTextColor')?->getStringValue() ?? '#e8540a'),
+            'transformTextColor' => (string) ($config->get('transformTextColor')?->getStringValue() ?? '#e85630'),
             'transitionDuration' => (int) ($config->get('transitionDuration')?->getValue() ?? 400),
             'rotationInterval' => (int) ($config->get('rotationInterval')?->getValue() ?? 3000),
         ]));

@@ -29,13 +29,13 @@
     }
 
     .mw-text-video-heading {
-        font-size: 2rem;
+        font-size: $sw-font-size-h2;
         font-weight: 700;
         line-height: 1.35;
         margin: 0;
 
         @media (max-width: 767px) {
-            font-size: 1.6rem;
+            font-size: $sw-font-size-h2;
         }
     }
 
@@ -183,7 +183,7 @@
         width: 72px;
         height: 72px;
         border-radius: 50%;
-        background-color: #e06600;
+        background-color: $sw-color-brand-secondary;
         display: flex;
         align-items: center;
         justify-content: center;

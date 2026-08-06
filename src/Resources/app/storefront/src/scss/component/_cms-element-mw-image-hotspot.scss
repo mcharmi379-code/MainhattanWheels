@@ -63,10 +63,10 @@
         }
 
         &.is--active {
-            border-color: #e8671a;
+            border-color: $sw-color-brand-secondary;
 
             .mw-hotspots-tab-text {
-                color: #e8671a;
+                color: $sw-color-brand-secondary;
             }
         }
 
@@ -110,7 +110,7 @@
     }
 
     .mw-hotspots-tab-text {
-        font-size: 0.95rem;
+        font-size: $sw-font-size-span;
         font-weight: 700;
         color: #6b7280;
         text-transform: uppercase;
@@ -188,7 +188,7 @@
         width: 32px;
         height: 32px;
         border-radius: 50%;
-        background-color: #e8671a;
+        background-color: $sw-color-brand-secondary;
         color: #ffffff;
         font-size: 0.95rem;
         font-weight: 700;
@@ -205,7 +205,7 @@
 
         &:hover {
             transform: scale(1.1);
-            background-color: darken(#e8671a, 8%);
+            background-color: darken($sw-color-brand-secondary, 8%);
         }
 
         &::after {
@@ -216,7 +216,7 @@
             right: -2px;
             bottom: -2px;
             border-radius: 50%;
-            border: 2px solid #e8671a;
+            border: 2px solid $sw-color-brand-secondary;
             animation: hotspot-pulse-storefront 2s infinite;
             pointer-events: none;
             opacity: 0;
@@ -265,26 +265,26 @@
     }
 
     .mw-hotspot-tooltip-title {
-        font-size: 0.925rem;
+        font-size: $sw-font-size-h4;
         font-weight: 700;
         margin: 0 0 6px 0;
         line-height: 1.3;
         color: #ffffff;
 
         @media (max-width: 575.98px) {
-            font-size: 0.825rem;
+            font-size: $sw-font-size-h4;
             margin-bottom: 4px;
         }
     }
 
     .mw-hotspot-tooltip-text {
-        font-size: 0.825rem;
+        font-size: $sw-font-size-content;
         line-height: 1.5;
         margin: 0;
         color: #d1d5db;
 
         @media (max-width: 575.98px) {
-            font-size: 0.75rem;
+            font-size: $sw-font-size-content;
             line-height: 1.4;
         }
     }

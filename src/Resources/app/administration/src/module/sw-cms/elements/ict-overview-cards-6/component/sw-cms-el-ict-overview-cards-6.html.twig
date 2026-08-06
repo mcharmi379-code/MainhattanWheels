@@ -168,8 +168,6 @@
                             v-if="hasText(card.headline)"
                             class="card-headline"
                             :style="{
-                                fontSize: getCssSizeValue(card.headlineSize, '24px'),
-                                lineHeight: getLineHeightValue(card.headlineLineHeight, getHeadlineLineHeight(card.headlineSize)),
                                 textAlign: getTextAlignment(card.headlineAlignment),
                                 color: card.headlineColor
                             }"
@@ -181,8 +179,6 @@
                             v-if="hasText(card.subheadline)"
                             class="card-subheadline"
                             :style="{
-                                fontSize: getCssSizeValue(card.subheadlineSize, '20px'),
-                                lineHeight: getLineHeightValue(card.subheadlineLineHeight, getSubheadlineLineHeight(card.subheadlineSize)),
                                 textAlign: getTextAlignment(card.subheadlineAlignment),
                                 color: card.subheadlineColor
                             }"
@@ -194,49 +190,11 @@
                             v-if="card.showBodyText && hasText(card.bodyText)"
                             class="card-body-text"
                             :style="{
-                                fontSize: getCssSizeValue(card.bodyTextSize, '16px'),
-                                lineHeight: getLineHeightValue(card.bodyTextLineHeight, '24px'),
                                 textAlign: getTextAlignment(card.bodyTextAlignment),
                                 color: card.bodyTextColor
                             }"
                             v-html="card.bodyText"
                         ></div>
-
-                        <div v-if="getCardDetailRows(card).length" class="card-detail-rows">
-                            <div
-                                v-for="(row, rowIndex) in getCardDetailRows(card)"
-                                :key="`${index}-${rowIndex}`"
-                                class="card-detail-row"
-                                :style="{
-                                    borderBottom: `${card.detailRowsOutlineThickness || 1}px solid ${card.detailRowsOutlineColor || '#E4E4E3'}`
-                                }"
-                            >
-                                <div
-                                    class="card-detail-row__title"
-                                    :style="{
-                                        textAlign: getTextAlignment(card.detailRowsTitleAlignment),
-                                        fontSize: getCssSizeValue(card.detailRowsTitleSize, '16px'),
-                                        lineHeight: getLineHeightValue(card.detailRowsTitleLineHeight, '24px'),
-                                        color: row.titleColor || '#262624',
-                                        fontWeight: card.detailRowsTitleFontWeight || '700'
-                                    }"
-                                >
-                                    {{ row.title }}
-                                </div>
-                                <div
-                                    class="card-detail-row__value"
-                                    :style="{
-                                        textAlign: getTextAlignment(card.detailRowsValueAlignment, 'right'),
-                                        fontSize: getCssSizeValue(card.detailRowsValueSize, '16px'),
-                                        lineHeight: getLineHeightValue(card.detailRowsValueLineHeight, '24px'),
-                                        color: row.valueColor || '#262624',
-                                        fontWeight: card.detailRowsValueFontWeight || '400'
-                                    }"
-                                >
-                                    {{ row.value }}
-                                </div>
-                            </div>
-                        </div>
 
                         <div
                             v-if="getCardButtons(card).length"
@@ -251,8 +209,10 @@
                                 <span
                                     class="card-button"
                                     :style="{
+                                        '--button-bg': button.buttonBackgroundColor || '#e85630',
+                                        '--button-hover-bg': button.buttonHoverBackgroundColor || 'transparent',
                                         '--button-text': button.buttonTextColor || '#FFFFFF',
-                                        '--button-hover-text': button.buttonHoverTextColor || '#000000',
+                                        '--button-hover-text': button.buttonHoverTextColor || 'transparent',
                                         '--button-border-width': getCssSizeValue(button.buttonBorderWidth, '0px'),
                                         '--button-border-style': button.buttonBorderStyle || 'solid',
                                         '--button-border-color': button.buttonBorderColor || 'transparent',
@@ -278,19 +238,17 @@
                             </div>
                         </div>
 
-                        <div
+                        <p
                             v-if="(card.infoText || '').trim()"
                             class="card-info-text"
                             :style="{
                                textAlign: getTextAlignment(card.infoTextAlignment),
-                                fontSize: getCssSizeValue(card.infoTextSize, '16px'),
-                                lineHeight: getLineHeightValue(card.infoTextLineHeight, '24px'),
                                 color: card.infoTextColor || '#262624',
                                 fontWeight: card.infoTextFontWeight || '700'
                             }"
                         >
                             {{ card.infoText }}
-                        </div>
+                        </p>
                     </div>
                 </div>
             </div>

@@ -16,15 +16,15 @@
         white-space: nowrap;
 
         &--solid {
-            background-color: #ff6600;
-            color: #ffffff;
-            border: 1px solid #ff6600;
+            background-color: var(--mw-btn-bg-color, #e85630);
+            color: var(--mw-btn-text-color, #ffffff);
+            border: 1px solid var(--mw-btn-bg-color, #e85630);
         }
 
         &--outline {
             background-color: transparent;
-            color: #ff6600;
-            border: 1px solid #ff6600;
+            color: var(--mw-btn-text-color, #e85630);
+            border: 1px solid var(--mw-btn-text-color, #e85630);
         }
     }
 }

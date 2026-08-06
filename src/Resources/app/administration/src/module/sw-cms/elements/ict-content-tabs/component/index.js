@@ -42,7 +42,7 @@ export default {
         },
 
         activeTabColor() {
-            return this.element.config?.activeTabColor?.value || '#e30613';
+            return this.element.config?.activeTabColor?.value || '#e85630';
         },
 
         navStyle() {

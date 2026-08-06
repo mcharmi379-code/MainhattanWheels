@@ -36,7 +36,7 @@ Shopware.Service('cmsService').registerCmsElement({
         midBtnNewTab:   { source: 'static', value: false },
         midBtnBgColor:  { source: 'static', value: '#ffffff' },
         midBtnBorderColor: { source: 'static', value: '' },
-        midBtnTextColor:   { source: 'static', value: '#ff6600' },
+        midBtnTextColor:   { source: 'static', value: '#e85630' },
         midIconId:      { source: 'static', value: null },
         midIconUrl:     { source: 'static', value: null },
         midIconText:    { source: 'static', value: '' },

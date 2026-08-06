@@ -34,11 +34,11 @@ Shopware.Service('cmsService').registerCmsElement({
             source: 'static',
             value: 'One base, multiple modules. Combine only what your business needs today, and expand seamlessly later.',
         },
-        subtitleColor: { source: 'static', value: '#e35630' },
+        subtitleColor: { source: 'static', value: '#e85630' },
         titleColor: { source: 'static', value: '#1f2024' },
         descriptionColor: { source: 'static', value: '#6e7480' },
         backgroundColor: { source: 'static', value: '#f5f4f3' },
-        activeColor: { source: 'static', value: '#ff6a1a' },
+        activeColor: { source: 'static', value: '#e85630' },
         tabs: { source: 'static', value: [createTab(1), createTab(2), createTab(3)] },
     },
 });

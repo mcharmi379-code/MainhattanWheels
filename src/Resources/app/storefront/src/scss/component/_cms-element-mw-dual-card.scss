@@ -31,7 +31,7 @@
     }
 
     .mw-dual-card__heading {
-        font-size: clamp(1.1rem, 2vw, 1.6rem);
+        font-size: $sw-font-size-h2;
         font-weight: 700;
         line-height: 1.2;
         margin: 0;
@@ -40,7 +40,7 @@
     }
 
     .mw-dual-card__description {
-        font-size: 0.9rem;
+        font-size: $sw-font-size-content;
         line-height: 1.6;
         margin: 0;
         color: inherit;
@@ -110,7 +110,7 @@
     }
 
     .mw-dual-card__feature-check {
-        font-size: 14px;
+        font-size: $sw-font-size-span;
         flex-shrink: 0;
     }
 

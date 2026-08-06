@@ -10,7 +10,7 @@
     &__title {
         margin: 0;
         color: $headings-color;
-        font-size: clamp(1.5rem, 2vw, 2rem);
+        font-size: $sw-font-size-h2;
         line-height: 1.2;
     }
 
@@ -34,7 +34,7 @@
 
     &__item {
         border: none;
-        border-left: 3px solid var(--ict-accordion-active-color, #e30613);
+        border-left: 3px solid var(--ict-accordion-active-color, #{$sw-color-brand-secondary});
         background: #ffffff;
         box-shadow: 0 3px 6px rgba(0,0,0,0.05);
         border-radius: 0;

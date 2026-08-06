@@ -3,9 +3,7 @@
         z-index: 999999;
         border-radius: 3px;
     }
-    .dropdown-header.account-menu-header {
-        font-family: 'opensans-semibold';
-    }
+ 
     .account-menu-links {
         font-family: $sw-font-family-base;
     }
@@ -17,13 +15,11 @@
     .account-aside-item{
         &.is-active{
             color: $sw-color-brand-secondary;
-            font-family: 'opensans-semibold';
         }
     }
     .account-menu-login{
         .account-menu-login-button{
             border-radius: 3px;
-            font-family: 'opensans-semibold';
             background-color: $sw-color-brand-secondary;
             color: #fff;
             border: 1px solid $sw-color-brand-secondary !important;
@@ -40,7 +36,6 @@
             align-items: center;
             padding: 8px 10px;
             border-radius: 3px;
-            font-family: 'opensans-semibold';
             background-color: #fff;
             justify-content: space-evenly;
             color: $sw-color-brand-secondary !important;
@@ -112,7 +107,6 @@
                     border-bottom: 1px solid $sw-border-color;
                     padding: 10px 0;
                     font-size: $sw-font-size-content;
-                    font-family: 'opensans-semibold';
                 }
                 .account-aside-list-group{
                     margin: 10px 0;
@@ -145,12 +139,11 @@
         .account-content-main{
             .account-welcome{
                 h1 {
-                    font-size: $sw-font-size-heading;
+                    font-size: $sw-font-size-h1;
                     font-family: $sw-font-secondary;
                 }
                 p{
-                    font-size: $sw-font-size-content;
-                    font-family: 'opensans-semibold';
+                    font-size: $sw-font-size-p;
                     color: #555;
                 }
             }
@@ -180,8 +173,8 @@
                     border: 1px solid #dadae5;
                     padding: 8px 8px;
                     border-radius: 3px;
-                    font-family: 'opensans-semibold';
-                    color: #555;
+                    
+                    color: $sw-color-brand-primary;
                     margin: 5px 0;
                     width: auto;
                     display: block;
@@ -202,7 +195,7 @@
 .account-recover-password-form-actions{
     .btn{
         border-radius: 3px;
-        font-family: 'opensans-semibold';
+        
         background-color: $sw-color-brand-secondary;
         color: #fff;
         border: 1px solid $sw-color-brand-secondary;
@@ -217,7 +210,7 @@
 .account-recover-password{
     .account-recover-password-submit{
         border-radius: 3px;
-        font-family: 'opensans-semibold';
+        
         background-color: #fff;
         color: $sw-color-brand-secondary;
         border: 1px solid $sw-color-brand-secondary;
@@ -231,7 +224,7 @@
 .card-title,
 .login-advantages-header,
 .form-label  {
-    font-family: 'opensans-semibold';
+    
 }
 
 .address-editor-modal{
@@ -255,7 +248,7 @@
     strong {
         font-family: $sw-color-brand-secondary;
     } a {
-        font-family: 'opensans-semibold';
+        
     }
 }
 .profile-content{
@@ -301,12 +294,11 @@
     }
     .request-product{
         b {
-            font-family: 'opensans-semibold';
+            
         }
     }
     label {
-        font-family: "opensans-semibold";
-        color: #555;
+        color: $sw-color-brand-primary;
     }
     .custom-checkbox{
         a{
@@ -318,7 +310,7 @@
     font-family: $sw-font-secondary;
 }
 .order-table-header-label {
-    font-family: 'opensans-semibold';
+    
 }
 .shipping-method,
 .payment-methods {

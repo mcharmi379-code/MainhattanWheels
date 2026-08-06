@@ -147,7 +147,7 @@
     }
 
     .mw-before-after-kicker {
-        font-size: 0.8rem;
+        font-size: $sw-font-size-content;
         font-weight: 700;
         letter-spacing: 0.18em;
         text-transform: uppercase;
@@ -156,7 +156,7 @@
     }
 
     .mw-before-after-heading {
-        font-size: 1.625rem;
+        font-size: $sw-font-size-h3;
         font-weight: 800;
         margin: 0;
         line-height: 1.15;
@@ -193,7 +193,7 @@
 
         &.is--dragging {
             .mw-before-after-handle-button {
-                background-color: darken(#e06600, 10%);
+                background-color: darken($sw-color-brand-secondary, 10%);
                 transform: scale(1.1);
             }
         }
@@ -285,7 +285,7 @@
             width: 42px;
             height: 42px;
             border-radius: 50%;
-            background-color: #e06600;
+            background-color: $sw-color-brand-secondary;
             color: #ffffff;
             display: flex;
             align-items: center;
@@ -300,7 +300,7 @@
             pointer-events: none;
 
             &:hover {
-                background-color: lighten(#e06600, 8%);
+                background-color: lighten($sw-color-brand-secondary, 8%);
                 transform: scale(1.08);
             }
 
@@ -331,7 +331,7 @@
         padding: 0.35rem 0.65rem;
         border-radius: 999px;
         background: rgba(224, 102, 0, 0.08);
-        font-size: 0.78rem;
+        font-size: $sw-font-size-content;
         font-weight: 800;
         letter-spacing: 0.04em;
         text-transform: uppercase;
@@ -374,7 +374,7 @@
     }
 
     .mw-before-after-text {
-        font-size: 0.92rem;
+        font-size: $sw-font-size-content;
         line-height: 1.65;
         color: #4b5563;
         margin: 0;
@@ -390,7 +390,7 @@
         }
 
         .mw-before-after-heading {
-            font-size: 1.35rem;
+            font-size: $sw-font-size-h3;
         }
 
         .mw-before-after-description {
@@ -398,7 +398,7 @@
         }
 
         .mw-before-after-text {
-            font-size: 0.9rem;
+            font-size: $sw-font-size-content;
         }
 
         .mw-before-after-slider {
@@ -406,7 +406,7 @@
         }
 
         .mw-before-after-overlay-tags .mw-before-after-text-tag {
-            font-size: 0.72rem;
+            font-size: $sw-font-size-span;
             padding: 0.3rem 0.55rem;
         }
     }

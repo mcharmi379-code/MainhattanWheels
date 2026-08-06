@@ -99,7 +99,7 @@ Shopware.Service('cmsService').registerCmsElement({
         },
         primaryButtonBackgroundColor: {
             source: 'static',
-            value: '#0064ff',
+            value: '#e85630',
         },
         primaryButtonTextColor: {
             source: 'static',
@@ -127,11 +127,11 @@ Shopware.Service('cmsService').registerCmsElement({
         },
         secondaryButtonBackgroundColor: {
             source: 'static',
-            value: '#6c757d',
+            value: '#ffffff',
         },
         secondaryButtonTextColor: {
             source: 'static',
-            value: '#ffffff',
+            value: '#e85630',
         },
     },
     defaultData: {

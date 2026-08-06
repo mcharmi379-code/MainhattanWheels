@@ -21,15 +21,15 @@
         line-height: 1.4;
 
         &.is--solid {
-            background-color: var(--mw-btn-bg-color, #ff6600);
+            background-color: var(--mw-btn-bg-color, #e85630);
             color: var(--mw-btn-text-color, #ffffff);
-            border: 2px solid var(--mw-btn-bg-color, #ff6600);
+            border: 2px solid var(--mw-btn-bg-color, #e85630);
         }
 
         &.is--outline {
             background-color: transparent;
-            color: var(--mw-btn-text-color, #ff6600);
-            border: 2px solid var(--mw-btn-text-color, #ff6600);
+            color: var(--mw-btn-text-color, #e85630);
+            border: 2px solid var(--mw-btn-text-color, #e85630);
         }
 
         &-text {

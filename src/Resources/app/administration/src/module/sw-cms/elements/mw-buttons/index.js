@@ -6,7 +6,7 @@ const createButton = () => ({
     label: '',
     variant: 'solid',
     textColor: '#ffffff',
-    bgColor: '#ff6600',
+    bgColor: '#e85630',
     linkType: 'internal',
     linkUrl: '',
     linkNewTab: false,

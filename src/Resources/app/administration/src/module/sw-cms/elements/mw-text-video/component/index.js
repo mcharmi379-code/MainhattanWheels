@@ -36,7 +36,7 @@ export default {
         },
 
         buttonStyle() {
-            const bg = this.element?.config?.buttonBgColor ? this.element.config.buttonBgColor.value : '#e06600';
+            const bg = this.element?.config?.buttonBgColor ? this.element.config.buttonBgColor.value : '#e85630';
             const text = this.element?.config?.buttonTextColor ? this.element.config.buttonTextColor.value : '#ffffff';
             return `background-color: ${bg}; color: ${text};`;
         },

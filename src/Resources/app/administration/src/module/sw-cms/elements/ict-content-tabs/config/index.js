@@ -29,7 +29,7 @@ export default {
 
         activeTabColor: {
             get() {
-                return this.element.config?.activeTabColor?.value || '#e30613';
+                return this.element.config?.activeTabColor?.value || '#e85630';
             },
             set(val) {
                 if (!this.element.config.activeTabColor) {

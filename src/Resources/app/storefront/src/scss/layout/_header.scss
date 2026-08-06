@@ -139,7 +139,8 @@ body {
                 height: 30px;
                 svg path,
                 svg use {
-                    color: #e85630;
+                    color: $sw-color-brand-secondary
+
                 }
             }
         }
@@ -162,7 +163,6 @@ body {
             .phone-info{
                 a {
                     color: $sw-color-brand-secondary;
-                    font-family: 'opensans-semibold';
                     font-size: 11px;
                     &:hover{
                         text-decoration: none;
@@ -189,7 +189,7 @@ body {
     padding: 20px;
     .header-minimal-contact {
         display: block;
-        font-family: 'opensans-semibold';
+        
         font-size: 16px;
     }
     .header-logo-main-img {
@@ -220,7 +220,7 @@ body {
             align-items: center;
             gap: 6px;
             color: #5d6671;
-            font-family: 'opensans-semibold';
+            
             font-size: 12px;
             text-decoration: none;
         }
@@ -404,9 +404,6 @@ body {
                 font-size: 16px;
                 &:focus {
                     box-shadow: none;
-                }
-                &::placeholder {
-                    font-family: 'arial-light';
                 }                
             }
             .header-search-btn {
@@ -444,7 +441,7 @@ body {
         color: $sw-color-brand-primary;
     }
     .search-suggest-total{
-        font-family: 'opensans-semibold';
+        
         a , 
         .search-suggest-total-count{
             color: $sw-color-brand-secondary;

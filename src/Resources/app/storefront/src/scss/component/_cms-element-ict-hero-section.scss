@@ -102,7 +102,7 @@
 
     &__headline {
         margin: 0;
-        font-size: clamp(26px, 3vw, 48px);
+        font-size: $sw-font-size-h2;
         line-height: 1.12;
         font-weight: 800;
         word-break: break-word;
@@ -208,7 +208,7 @@
         }
 
         &__headline {
-            font-size: clamp(24px, 2.8vw, 40px);
+            font-size: $sw-font-size-h2;
         }
     }
 }
@@ -235,7 +235,7 @@
         }
 
         &__headline {
-            font-size: clamp(22px, 3vw, 34px);
+            font-size: $sw-font-size-h2;
         }
 
         &__description {
@@ -262,7 +262,7 @@
         }
 
         &__headline {
-            font-size: clamp(18px, 4.5vw, 28px);
+            font-size: $sw-font-size-h2;
         }
 
         &__description {

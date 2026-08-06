@@ -19,7 +19,7 @@ Shopware.Service('cmsService').registerCmsElement({
         },
         accentColor: {
             source: 'static',
-            value: '#e8671a',
+            value: '#e85630',
         },
         stepCount: {
             source: 'static',

@@ -29,7 +29,7 @@
 
     &__name {
         margin: 6px 0 0;
-        font-size: 1.1rem;
+        font-size: $sw-font-size-h2;
         font-weight: 700;
         color: #111827;
     }
@@ -60,7 +60,7 @@
 
         &.is--active {
             color: #111827;
-            border-bottom-color: #e35630;
+            border-bottom-color: $sw-color-brand-secondary;
         }
     }
 
@@ -81,7 +81,7 @@
         margin-top: 24px;
         padding: 0 18px;
         border-radius: 2px;
-        background: #e35630;
+        background: $sw-color-brand-secondary;
         color: #fff;
         text-decoration: none;
         font-weight: 700;

@@ -19,7 +19,7 @@
                         {% if isSingleColumn %}
                             <div class="mw-before-after-card__hero">
                                 {% if showHeading and c.heading.value is not empty %}
-                                    <p class="mw-before-after-kicker" style="color: {{ c.headingColor.value ?: '#e06600' }};">
+                                    <p class="mw-before-after-kicker" style="color: {{ c.headingColor.value ?: '#e85630' }};">
                                         {{ c.heading.value }}
                                     </p>
                                 {% endif %}
@@ -38,7 +38,7 @@
                             </div>
                         {% else %}
                             {% if showHeading and c.heading.value is not empty %}
-                                <p class="mw-before-after-kicker" style="color: {{ c.headingColor.value ?: '#e06600' }};">
+                                <p class="mw-before-after-kicker" style="color: {{ c.headingColor.value ?: '#e85630' }};">
                                     {{ c.heading.value }}
                                 </p>
                             {% endif %}
@@ -66,7 +66,7 @@
                                     {% endif %}
 
                                     {% if item.afterText is not empty %}
-                                        <span class="mw-before-after-text-tag mw-before-after-text-tag--after" style="color: {{ item.afterTextColor ?: '#ffffff' }}; background-color: {{ item.afterTextBackgroundColor ?: '#f97316' }};">
+                                        <span class="mw-before-after-text-tag mw-before-after-text-tag--after" style="color: {{ item.afterTextColor ?: '#ffffff' }}; background-color: {{ item.afterTextBackgroundColor ?: '#e85630' }};">
                                             {{ item.afterText }}
                                         </span>
                                     {% endif %}
@@ -121,7 +121,7 @@
 
                             {% if not showTagsOnImage %}
                                 {% if item.afterText is not empty %}
-                                    <p class="mw-before-after-text-tag" style="color: {{ item.afterTextColor ?: '#ffffff' }}; background-color: {{ item.afterTextBackgroundColor ?: '#f97316' }};">
+                                    <p class="mw-before-after-text-tag" style="color: {{ item.afterTextColor ?: '#ffffff' }}; background-color: {{ item.afterTextBackgroundColor ?: '#e85630' }};">
                                         {{ item.afterText }}
                                     </p>
                                 {% endif %}

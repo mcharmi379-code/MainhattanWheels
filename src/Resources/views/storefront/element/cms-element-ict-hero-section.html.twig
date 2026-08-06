@@ -67,9 +67,9 @@
                     </span>
                 {% endif %}
 
-                <p class="cms-element-ict-hero-section__headline" style="color:{{ c.headlineColor.value ?: '#ffffff' }};">
+                <h2 class="cms-element-ict-hero-section__headline" style="color:{{ c.headlineColor.value ?: '#ffffff' }};">
                     {{ c.headlineText.value }}
-                </p>
+                </h2>
 
                 <div class="cms-element-ict-hero-section__description" style="color:{{ c.descriptionColor.value ?: '#e9ecef' }};">
                     {{ c.descriptionText.value|raw }}
@@ -85,7 +85,7 @@
                             href="{{ primaryUrl }}"
                             target="{{ c.primaryButtonTarget.value ?: '_self' }}"
                             class="cms-element-ict-hero-section__button cms-element-ict-hero-section__button--primary"
-                            style="background-color:{{ c.primaryButtonBackgroundColor.value ?: '#0064ff' }};color:{{ c.primaryButtonTextColor.value ?: '#ffffff' }};"
+                            style="background-color:{{ c.primaryButtonBackgroundColor.value ?: '#e85630' }};color:{{ c.primaryButtonTextColor.value ?: '#ffffff' }};"
                         >
                             {{ c.primaryButtonText.value }}
                         </a>
@@ -100,7 +100,7 @@
                             href="{{ secondaryUrl }}"
                             target="{{ c.secondaryButtonTarget.value ?: '_self' }}"
                             class="cms-element-ict-hero-section__button cms-element-ict-hero-section__button--secondary"
-                            style="background-color:{{ c.secondaryButtonBackgroundColor.value ?: 'transparent' }};color:{{ c.secondaryButtonTextColor.value ?: '#212529' }};border-color:{{ c.secondaryButtonTextColor.value ?: '#212529' }};"
+                            style="background-color:{{ c.secondaryButtonBackgroundColor.value ?: '#ffffff' }};color:{{ c.secondaryButtonTextColor.value ?: '#e85630' }};border-color:{{ c.secondaryButtonTextColor.value ?: '#e85630' }};"
                         >
                             {{ c.secondaryButtonText.value }}
                         </a>

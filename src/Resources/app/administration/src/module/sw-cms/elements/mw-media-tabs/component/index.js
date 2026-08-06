@@ -24,7 +24,7 @@ export default {
         wrapperStyle() {
             return {
                 backgroundColor: this.element?.config?.backgroundColor?.value || '#f5f4f3',
-                '--mw-media-tabs-active': this.element?.config?.activeColor?.value || '#ff6a1a',
+                '--mw-media-tabs-active': this.element?.config?.activeColor?.value || '#e85630',
             };
         },
     },

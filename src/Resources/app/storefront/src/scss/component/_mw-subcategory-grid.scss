@@ -3,7 +3,7 @@
 
     &__title {
         margin: 0 0 18px;
-        font-size: 1.55rem;
+        font-size: $sw-font-size-h2;
         line-height: 1.2;
         font-weight: 500;
         color: #202020;
@@ -37,12 +37,12 @@
     &__accent {
         width: 4px;
         margin-right: 14px;
-        background: #e35630;
+        background: $sw-color-brand-secondary;
         flex: 0 0 4px;
     }
 
     &__text {
-        font-size: 1rem;
+        font-size: $sw-font-size-span;
         line-height: 1.35;
         font-weight: 700;
         color: #1b1b1b;
@@ -62,7 +62,7 @@
         }
 
         &__title {
-            font-size: 1.3rem;
+            font-size: $sw-font-size-h2;
         }
     }
 }

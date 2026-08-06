@@ -35,7 +35,7 @@ Shopware.Service('cmsService').registerCmsElement({
         },
         headingColor: {
             source: 'static',
-            value: '#e06600',
+            value: '#e85630',
         },
         headingBackgroundColor: {
             source: 'static',

@@ -43,7 +43,6 @@
 				{% set cardMainImageMedia = slotData.cardMainImages[cardIndex] ?? null %}
 				{% set cardMainVideoMedia = slotData.cardMainVideos[cardIndex] ?? null %}
 				{% set iconImageMedia = slotData.iconImages[cardIndex] ?? null %}
-				{% set detailRows = card.showDetailRows and card.detailRows is defined and card.detailRows is iterable ? card.detailRows : [] %}
 				{% set headlineText = card.headline is defined and card.headline is not null ? (card.headline ~ '')|trim : '' %}
 				{% set subheadlineText = card.subheadline is defined and card.subheadline is not null ? (card.subheadline ~ '')|trim : '' %}
 				{% set bodyText = card.bodyText is defined and card.bodyText is not null ? (card.bodyText ~ '')|trim : '' %}
@@ -68,31 +67,6 @@
 				{% set mediaObjectFit = mediaDisplayMode == 'crop' ? 'cover' : (mediaDisplayMode == 'fill' ? 'fill' : 'contain') %}
 				{% set mediaHeightRaw = card.mediaHeight is defined and card.mediaHeight is not null ? (card.mediaHeight ~ '')|trim : '' %}
 				{% set mediaHeightCss = mediaHeightRaw ? (mediaHeightRaw matches '/^[0-9]+(\.[0-9]+)?$/' ? mediaHeightRaw ~ 'px' : mediaHeightRaw) : '345px' %}
-				{% set headlineSizeRaw = card.headlineSize is defined and card.headlineSize is not null ? (card.headlineSize ~ '')|trim : '' %}
-				{% set subheadlineSizeRaw = card.subheadlineSize is defined and card.subheadlineSize is not null ? (card.subheadlineSize ~ '')|trim : '' %}
-				{% set bodyTextSizeRaw = card.bodyTextSize is defined and card.bodyTextSize is not null ? (card.bodyTextSize ~ '')|trim : '' %}
-				{% set detailTitleSizeRaw = card.detailRowsTitleSize is defined and card.detailRowsTitleSize is not null ? (card.detailRowsTitleSize ~ '')|trim : '' %}
-				{% set detailValueSizeRaw = card.detailRowsValueSize is defined and card.detailRowsValueSize is not null ? (card.detailRowsValueSize ~ '')|trim : '' %}
-				{% set infoTextSizeRaw = card.infoTextSize is defined and card.infoTextSize is not null ? (card.infoTextSize ~ '')|trim : '' %}
-				{% set headlineCssSize = headlineSizeRaw ? (headlineSizeRaw matches '/^[0-9]+(\.[0-9]+)?$/' ? headlineSizeRaw ~ 'px' : headlineSizeRaw) : '24px' %}
-				{% set subheadlineCssSize = subheadlineSizeRaw ? (subheadlineSizeRaw matches '/^[0-9]+(\.[0-9]+)?$/' ? subheadlineSizeRaw ~ 'px' : subheadlineSizeRaw) : '20px' %}
-				{% set bodyTextCssSize = bodyTextSizeRaw ? (bodyTextSizeRaw matches '/^[0-9]+(\.[0-9]+)?$/' ? bodyTextSizeRaw ~ 'px' : bodyTextSizeRaw) : '16px' %}
-				{% set detailTitleCssSize = detailTitleSizeRaw ? (detailTitleSizeRaw matches '/^[0-9]+(\.[0-9]+)?$/' ? detailTitleSizeRaw ~ 'px' : detailTitleSizeRaw) : '16px' %}
-				{% set detailValueCssSize = detailValueSizeRaw ? (detailValueSizeRaw matches '/^[0-9]+(\.[0-9]+)?$/' ? detailValueSizeRaw ~ 'px' : detailValueSizeRaw) : '16px' %}
-				{% set infoTextCssSize = infoTextSizeRaw ? (infoTextSizeRaw matches '/^[0-9]+(\.[0-9]+)?$/' ? infoTextSizeRaw ~ 'px' : infoTextSizeRaw) : '16px' %}
-				{% set headlineLineHeightRaw = card.headlineLineHeight is defined and card.headlineLineHeight is not null ? (card.headlineLineHeight ~ '')|trim : '' %}
-				{% set subheadlineLineHeightRaw = card.subheadlineLineHeight is defined and card.subheadlineLineHeight is not null ? (card.subheadlineLineHeight ~ '')|trim : '' %}
-				{% set bodyTextLineHeightRaw = card.bodyTextLineHeight is defined and card.bodyTextLineHeight is not null ? (card.bodyTextLineHeight ~ '')|trim : '' %}
-				{% set detailTitleLineHeightRaw = card.detailRowsTitleLineHeight is defined and card.detailRowsTitleLineHeight is not null ? (card.detailRowsTitleLineHeight ~ '')|trim : '' %}
-				{% set detailValueLineHeightRaw = card.detailRowsValueLineHeight is defined and card.detailRowsValueLineHeight is not null ? (card.detailRowsValueLineHeight ~ '')|trim : '' %}
-				{% set infoTextLineHeightRaw = card.infoTextLineHeight is defined and card.infoTextLineHeight is not null ? (card.infoTextLineHeight ~ '')|trim : '' %}
-				{% set headlineLineHeightCss = headlineLineHeightRaw ? (headlineLineHeightRaw matches '/^[0-9]+(\.[0-9]+)?$/' ? headlineLineHeightRaw ~ 'px' : headlineLineHeightRaw) : '28px' %}
-				{% set subheadlineLineHeightCss = subheadlineLineHeightRaw ? (subheadlineLineHeightRaw matches '/^[0-9]+(\.[0-9]+)?$/' ? subheadlineLineHeightRaw ~ 'px' : subheadlineLineHeightRaw) : '25px' %}
-				{% set bodyTextLineHeightCss = bodyTextLineHeightRaw ? (bodyTextLineHeightRaw matches '/^[0-9]+(\.[0-9]+)?$/' ? bodyTextLineHeightRaw ~ 'px' : bodyTextLineHeightRaw) : '24px' %}
-				{% set detailTitleLineHeightCss = detailTitleLineHeightRaw ? (detailTitleLineHeightRaw matches '/^[0-9]+(\.[0-9]+)?$/' ? detailTitleLineHeightRaw ~ 'px' : detailTitleLineHeightRaw) : '24px' %}
-				{% set detailValueLineHeightCss = detailValueLineHeightRaw ? (detailValueLineHeightRaw matches '/^[0-9]+(\.[0-9]+)?$/' ? detailValueLineHeightRaw ~ 'px' : detailValueLineHeightRaw) : '24px' %}
-				{% set infoTextLineHeightCss = infoTextLineHeightRaw ? (infoTextLineHeightRaw matches '/^[0-9]+(\.[0-9]+)?$/' ? infoTextLineHeightRaw ~ 'px' : infoTextLineHeightRaw) : '24px' %}
-				{% set detailRowBorder = (card.detailRowsOutlineThickness ?? 1) ~ 'px solid ' ~ (card.detailRowsOutlineColor ?? '#E4E4E3') %}
 				<div class="ict-overview-card" style="
 						                        {% if card.cardMainBackgroundType == 'color' %}
 						                            background-color: {{ card.cardMainBackgroundColor ?? '#FFFFFF' }};
@@ -161,38 +135,19 @@
 							{% endif %}
 
 							{% if headlineText %}
-								<h3 class="card-headline" style="font-size: {{ headlineCssSize }}; line-height: {{ headlineLineHeightCss }}; text-align: {{ card.headlineAlignment ?? 'left' }}; color: {{ card.headlineColor ?? '#262624' }};">
+								<h3 class="card-headline" style="text-align: {{ card.headlineAlignment ?? 'left' }}; color: {{ card.headlineColor ?? '#262624' }};">
 									{{ headlineText }}
 								</h3>
 							{% endif %}
 							{% if subheadlineText %}
-								<h4 class="card-subheadline" style="font-size: {{ subheadlineCssSize }}; line-height: {{ subheadlineLineHeightCss }}; text-align: {{ card.subheadlineAlignment ?? 'left' }}; color: {{ card.subheadlineColor ?? '#262624' }};">
+								<h4 class="card-subheadline" style="text-align: {{ card.subheadlineAlignment ?? 'left' }}; color: {{ card.subheadlineColor ?? '#262624' }};">
 									{{ subheadlineText }}
 								</h4>
 							{% endif %}
 
 							{% if card.showBodyText and bodyText %}
-								<div class="card-body-text" style="font-size: {{ bodyTextCssSize }}; line-height: {{ bodyTextLineHeightCss }}; text-align: {{ card.bodyTextAlignment ?? 'left' }}; color: {{ card.bodyTextColor ?? '#262624' }};">
+								<div class="card-body-text" style="text-align: {{ card.bodyTextAlignment ?? 'left' }}; color: {{ card.bodyTextColor ?? '#262624' }};">
 									{{ bodyText|raw }}
-								</div>
-							{% endif %}
-
-							{% if detailRows|length > 0 %}
-								<div class="card-detail-rows">
-									{% for row in detailRows %}
-										{% set titleText = row.title is defined and row.title is not null ? (row.title ~ '')|trim : '' %}
-										{% set valueText = row.value is defined and row.value is not null ? (row.value ~ '')|trim : '' %}
-										{% if titleText or valueText %}
-											<div class="card-detail-row" style="border-bottom: {{ detailRowBorder }};">
-												<div class="card-detail-row__title" style="text-align: {{ card.detailRowsTitleAlignment ?? 'left' }}; font-size: {{ detailTitleCssSize }}; line-height: {{ detailTitleLineHeightCss }}; color: {{ row.titleColor ?? '#262624' }}; font-weight: {{ card.detailRowsTitleFontWeight ?? '700' }};">
-													{{ titleText }}
-												</div>
-												<div class="card-detail-row__value" style="text-align: {{ card.detailRowsValueAlignment ?? 'right' }}; font-size: {{ detailValueCssSize }}; line-height: {{ detailValueLineHeightCss }}; color: {{ row.valueColor ?? '#262624' }}; font-weight: {{ card.detailRowsValueFontWeight ?? '400' }};">
-													{{ valueText }}
-												</div>
-											</div>
-										{% endif %}
-									{% endfor %}
 								</div>
 							{% endif %}
 
@@ -215,10 +170,10 @@
 								<div class="card-buttons" style="justify-content: flex-start;">
 									<div class="card-button-wrapper">
 										<a href="{{ buttonUrl }}" target="{{ buttonTarget }}" {% if buttonTarget == '_blank' %} rel="noopener noreferrer" {% endif %} class="card-button" style="
-												                                                --button-bg: {{ activeButton.buttonBackgroundColor ?? '#005AE5' }};
-												                                                --button-hover-bg: {{ activeButton.buttonHoverBackgroundColor ?? '#00f5ff' }};
-												                                                --button-text: {{ activeButton.buttonTextColor ?? '#FFFFFF' }};
-												                                                --button-hover-text: {{ activeButton.buttonHoverTextColor ?? '#000000' }};
+												                                                --button-bg: {{ (activeButton.buttonBackgroundColor is defined and activeButton.buttonBackgroundColor is not empty) ? activeButton.buttonBackgroundColor : theme_config('sw-color-buy-button') }};
+												                                                --button-hover-bg: {{ (activeButton.buttonHoverBackgroundColor is defined and activeButton.buttonHoverBackgroundColor is not empty) ? activeButton.buttonHoverBackgroundColor : 'transparent' }};
+												                                                --button-text: {{ (activeButton.buttonTextColor is defined and activeButton.buttonTextColor is not empty) ? activeButton.buttonTextColor : theme_config('sw-color-buy-button-text') }};
+												                                                --button-hover-text: {{ (activeButton.buttonHoverTextColor is defined and activeButton.buttonHoverTextColor is not empty) ? activeButton.buttonHoverTextColor : 'transparent' }};
 												                                                --button-border-width: {{ activeButton.buttonBorderWidth ?? 0 }}px;
 												                                                --button-border-style: {{ activeButton.buttonBorderStyle ?? 'solid' }};
 												                                                --button-border-color: {{ activeButton.buttonBorderColor ?? 'transparent' }};
@@ -238,9 +193,9 @@
 							{% endif %}
 
 							{% if card.infoText is defined and (card.infoText ~ '')|trim %}
-								<div class="card-info-text" style="text-align: {{ card.infoTextAlignment ?? 'left' }}; font-size: {{ infoTextCssSize }}; line-height: {{ infoTextLineHeightCss }}; color: {{ card.infoTextColor ?? '#262624' }}; font-weight: {{ card.infoTextFontWeight ?? '700' }};">
+								<p class="card-info-text" style="text-align: {{ card.infoTextAlignment ?? 'left' }}; color: {{ card.infoTextColor ?? '#262624' }}; font-weight: {{ card.infoTextFontWeight ?? '700' }};">
 									{{ card.infoText }}
-								</div>
+								</p>
 							{% endif %}
 						</div>
 					</div>

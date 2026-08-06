@@ -36,11 +36,11 @@ export default {
         },
 
         buttonColor() {
-            return this.element?.config?.buttonColor?.value ?? '#ff6600';
+            return this.element?.config?.buttonColor?.value ?? '#e85630';
         },
 
         hoverColor() {
-            return this.element?.config?.hoverColor?.value ?? '#ff6600';
+            return this.element?.config?.hoverColor?.value ?? '#e85630';
         },
 
         gridStyle() {

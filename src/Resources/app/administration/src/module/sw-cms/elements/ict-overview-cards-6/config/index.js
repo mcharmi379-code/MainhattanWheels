@@ -121,18 +121,6 @@ export default {
                 { value: 'end', label: this.$tc('sw-cms.elements.ictOverviewCards.config.option.verticalAlignment.bottom') }
             ];
         },
-        headlineSizeOptions() {
-            return [
-                { value: '24', label: this.$tc('sw-cms.elements.ictOverviewCards.config.option.headlineSize.size1') },
-                { value: '42', label: this.$tc('sw-cms.elements.ictOverviewCards.config.option.headlineSize.size2') }
-            ];
-        },
-        subheadlineSizeOptions() {
-            return [
-                { value: '20', label: this.$tc('sw-cms.elements.ictOverviewCards.config.option.subheadlineSize.default') },
-                { value: '24', label: this.$tc('sw-cms.elements.ictOverviewCards.config.option.subheadlineSize.optional') }
-            ];
-        },
         alignmentOptions() {
             return [
                 { value: 'left', label: this.$tc('sw-cms.elements.ictOverviewCards.config.option.alignment.left') },
@@ -291,9 +279,9 @@ export default {
                 buttonUrl: '',
                 buttonTarget: '_self',
                 buttonTextColor: '#FFFFFF',
-                buttonHoverTextColor: '#000000',
-                buttonBackgroundColor: '#005AE5',
-                buttonHoverBackgroundColor: '#00f5ff',
+                buttonHoverTextColor: 'transparent',
+                buttonBackgroundColor: '#e85630',
+                buttonHoverBackgroundColor: 'transparent',
                 buttonBorderColor: '#00f5ff',
                 buttonHoverBorderColor: '#f3f4f6',
                 buttonBorderStyle: 'solid',
@@ -302,15 +290,6 @@ export default {
                 buttonAfterText: '',
                 buttonAfterTextColor: '#262624',
                 buttonAfterTextSize: '14'
-            }, overrides);
-        },
-
-        createDetailRow(overrides = {}) {
-            return Object.assign({
-                title: 'Title',
-                value: 'Value',
-                titleColor: '#262624',
-                valueColor: '#262624'
             }, overrides);
         },
 
@@ -400,9 +379,6 @@ export default {
             this.element.config.cards.value.forEach((card) => {
                 this.ensureCardButtons(card);
 
-                if (card.bodyTextSize === undefined || card.bodyTextSize === null || String(card.bodyTextSize).trim() === '') {
-                    card.bodyTextSize = '16';
-                }
                 if (card.mediaPosition === undefined || card.mediaPosition === null || String(card.mediaPosition).trim() === '') {
                     card.mediaPosition = 'center';
                 }
@@ -451,80 +427,17 @@ export default {
                 if (card.headlineAlignment === undefined || card.headlineAlignment === null || String(card.headlineAlignment).trim() === '') {
                     card.headlineAlignment = 'left';
                 }
-                if (card.headlineSize === undefined || card.headlineSize === null || String(card.headlineSize).trim() === '') {
-                    card.headlineSize = '24';
-                }
-                if (card.headlineLineHeight === undefined || card.headlineLineHeight === null || String(card.headlineLineHeight).trim() === '') {
-                    card.headlineLineHeight = '28';
-                }
                 if (card.subheadlineAlignment === undefined || card.subheadlineAlignment === null || String(card.subheadlineAlignment).trim() === '') {
                     card.subheadlineAlignment = 'left';
                 }
-                if (card.subheadlineSize === undefined || card.subheadlineSize === null || String(card.subheadlineSize).trim() === '') {
-                    card.subheadlineSize = '20';
-                }
-                if (card.subheadlineLineHeight === undefined || card.subheadlineLineHeight === null || String(card.subheadlineLineHeight).trim() === '') {
-                    card.subheadlineLineHeight = '25';
-                }
                 if (card.bodyTextAlignment === undefined || card.bodyTextAlignment === null || String(card.bodyTextAlignment).trim() === '') {
                     card.bodyTextAlignment = 'left';
-                }
-                if (card.bodyTextLineHeight === undefined || card.bodyTextLineHeight === null || String(card.bodyTextLineHeight).trim() === '') {
-                    card.bodyTextLineHeight = '24';
-                }
-                if (card.showDetailRows === undefined || card.showDetailRows === null) {
-                    card.showDetailRows = true;
-                }
-                if (!Array.isArray(card.detailRows) || card.detailRows.length === 0) {
-                    card.detailRows = [
-                        this.createDetailRow({ title: 'Title 1', value: 'Value 1' }),
-                        this.createDetailRow({ title: 'Title 2', value: 'Value 2' }),
-                        this.createDetailRow({ title: 'Title 3', value: 'Value 3' }),
-                        this.createDetailRow({ title: 'Title 4', value: 'Value 4' })
-                    ];
-                }
-                card.detailRows = card.detailRows.map((row) => this.createDetailRow(row));
-                if (card.detailRowsTitleAlignment === undefined || card.detailRowsTitleAlignment === null || String(card.detailRowsTitleAlignment).trim() === '') {
-                    card.detailRowsTitleAlignment = 'left';
-                }
-                if (card.detailRowsTitleSize === undefined || card.detailRowsTitleSize === null || String(card.detailRowsTitleSize).trim() === '') {
-                    card.detailRowsTitleSize = '16';
-                }
-                if (card.detailRowsTitleLineHeight === undefined || card.detailRowsTitleLineHeight === null || String(card.detailRowsTitleLineHeight).trim() === '') {
-                    card.detailRowsTitleLineHeight = '24';
-                }
-                if (card.detailRowsTitleFontWeight === undefined || card.detailRowsTitleFontWeight === null || String(card.detailRowsTitleFontWeight).trim() === '') {
-                    card.detailRowsTitleFontWeight = '700';
-                }
-                if (card.detailRowsValueAlignment === undefined || card.detailRowsValueAlignment === null || String(card.detailRowsValueAlignment).trim() === '') {
-                    card.detailRowsValueAlignment = 'right';
-                }
-                if (card.detailRowsValueSize === undefined || card.detailRowsValueSize === null || String(card.detailRowsValueSize).trim() === '') {
-                    card.detailRowsValueSize = '16';
-                }
-                if (card.detailRowsValueLineHeight === undefined || card.detailRowsValueLineHeight === null || String(card.detailRowsValueLineHeight).trim() === '') {
-                    card.detailRowsValueLineHeight = '24';
-                }
-                if (card.detailRowsValueFontWeight === undefined || card.detailRowsValueFontWeight === null || String(card.detailRowsValueFontWeight).trim() === '') {
-                    card.detailRowsValueFontWeight = '400';
-                }
-                if (card.detailRowsOutlineColor === undefined || card.detailRowsOutlineColor === null || String(card.detailRowsOutlineColor).trim() === '') {
-                    card.detailRowsOutlineColor = '#E4E4E3';
-                }
-                if (card.detailRowsOutlineThickness === undefined || card.detailRowsOutlineThickness === null || String(card.detailRowsOutlineThickness).trim() === '') {
-                    card.detailRowsOutlineThickness = '1';
                 }
                 if (card.infoText === undefined || card.infoText === null) {
                     card.infoText = '';
                 }
                 if (card.infoTextAlignment === undefined || card.infoTextAlignment === null || String(card.infoTextAlignment).trim() === '') {
                     card.infoTextAlignment = 'left';
-                }
-                if (card.infoTextSize === undefined || card.infoTextSize === null || String(card.infoTextSize).trim() === '') {
-                    card.infoTextSize = '16';
-                }
-                if (card.infoTextLineHeight === undefined || card.infoTextLineHeight === null || String(card.infoTextLineHeight).trim() === '') {
-                    card.infoTextLineHeight = '24';
                 }
                 if (card.infoTextColor === undefined || card.infoTextColor === null || String(card.infoTextColor).trim() === '') {
                     card.infoTextColor = '#262624';
@@ -594,42 +507,17 @@ export default {
                 iconImage: null,
                 iconHoverEffect: 'none',
                 headline: 'Headline',
-                headlineSize: '24',
-                headlineLineHeight: '28',
                 headlineAlignment: 'left',
                 headlineColor: '#262624',
                 subheadline: 'Subheadline',
-                subheadlineSize: '20',
-                subheadlineLineHeight: '25',
                 subheadlineAlignment: 'left',
                 subheadlineColor: '#262624',
                 showBodyText: true,
                 bodyText: 'Description',
-                bodyTextSize: '16',
-                bodyTextLineHeight: '24',
                 bodyTextAlignment: 'left',
                 bodyTextColor: '#262624',
-                showDetailRows: true,
-                detailRows: [
-                    this.createDetailRow({ title: 'Title 1', value: 'Value 1' }),
-                    this.createDetailRow({ title: 'Title 2', value: 'Value 2' }),
-                    this.createDetailRow({ title: 'Title 3', value: 'Value 3' }),
-                    this.createDetailRow({ title: 'Title 4', value: 'Value 4' })
-                ],
-                detailRowsTitleAlignment: 'left',
-                detailRowsTitleSize: '16',
-                detailRowsTitleLineHeight: '24',
-                detailRowsTitleFontWeight: '700',
-                detailRowsValueAlignment: 'right',
-                detailRowsValueSize: '16',
-                detailRowsValueLineHeight: '24',
-                detailRowsValueFontWeight: '400',
-                detailRowsOutlineColor: '#E4E4E3',
-                detailRowsOutlineThickness: '1',
                 infoText: '',
                 infoTextAlignment: 'left',
-                infoTextSize: '16',
-                infoTextLineHeight: '24',
                 infoTextColor: '#262624',
                 infoTextFontWeight: '700',
                 buttons: [
@@ -640,9 +528,9 @@ export default {
                 buttonUrl: '',
                 buttonTarget: '_self',
                 buttonTextColor: '#FFFFFF',
-                buttonHoverTextColor: '#000000',
-                buttonBackgroundColor: '#005AE5',
-                buttonHoverBackgroundColor: '#00f5ff',
+                buttonHoverTextColor: 'transparent',
+                buttonBackgroundColor: '#0042A0',
+                buttonHoverBackgroundColor: 'transparent',
                 buttonBorderColor: '#00f5ff',
                 buttonHoverBorderColor: '#f3f4f6',
                 buttonBorderStyle: 'solid',
@@ -684,12 +572,6 @@ export default {
                     headline: 'Headline',
                     subheadline: 'Subheadline',
                     bodyText: 'Description',
-                    detailRows: [
-                        this.createDetailRow({ title: 'Title 1', value: 'Value 1' }),
-                        this.createDetailRow({ title: 'Title 2', value: 'Value 2' }),
-                        this.createDetailRow({ title: 'Title 3', value: 'Value 3' }),
-                        this.createDetailRow({ title: 'Title 4', value: 'Value 4' })
-                    ],
                     infoText: '',
                     buttons: [
                         this.createButton()
@@ -699,11 +581,6 @@ export default {
                     headline: 'Headline',
                     subheadline: 'Subheadline',
                     bodyText: 'Description',
-                    detailRows: [
-                        this.createDetailRow({ title: 'Title 1', value: 'Value 1' }),
-                        this.createDetailRow({ title: 'Title 2', value: 'Value 2' }),
-                        this.createDetailRow({ title: 'Title 3', value: 'Value 3' })
-                    ],
                     infoText: '',
                     buttons: [
                         this.createButton()
@@ -713,12 +590,6 @@ export default {
                     headline: 'Headline',
                     subheadline: 'Subheadline',
                     bodyText: 'Description',
-                    detailRows: [
-                        this.createDetailRow({ title: 'Title 1', value: 'Value 1' }),
-                        this.createDetailRow({ title: 'Title 2', value: 'Value 2' }),
-                        this.createDetailRow({ title: 'Title 3', value: 'Value 3' }),
-                        this.createDetailRow({ title: 'Title 4', value: 'Value 4' })
-                    ],
                     infoText: '',
                     buttons: [
                         this.createButton()
@@ -839,24 +710,6 @@ export default {
                 this.activeCardIndex = Math.max(0, cards.length - 1);
             }
 
-            this.$emit('element-update', this.element);
-        },
-
-        addDetailRow(cardIndex) {
-            if (!this.element.config.cards.value[cardIndex].detailRows) {
-                this.element.config.cards.value[cardIndex].detailRows = [];
-            }
-            this.element.config.cards.value[cardIndex].detailRows.push(
-                this.createDetailRow({
-                    title: `Title ${this.element.config.cards.value[cardIndex].detailRows.length + 1}`,
-                    value: `Value ${this.element.config.cards.value[cardIndex].detailRows.length + 1}`
-                })
-            );
-            this.$emit('element-update', this.element);
-        },
-
-        removeDetailRow(cardIndex, rowIndex) {
-            this.element.config.cards.value[cardIndex].detailRows.splice(rowIndex, 1);
             this.$emit('element-update', this.element);
         },
 

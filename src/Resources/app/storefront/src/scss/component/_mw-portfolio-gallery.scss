@@ -3,7 +3,7 @@
 
     &__headline {
         text-align: center;
-        font-size: 14px;
+        font-size: $sw-font-size-content;
         color: #555;
         margin-bottom: 16px;
         padding: 0 16px;
@@ -42,7 +42,7 @@
 
         &:hover,
         &.is--active {
-            color: #e85630;
+            color: $sw-color-brand-secondary;
             font-weight: 600;
         }
     }
@@ -80,7 +80,7 @@
             content: '';
             position: absolute;
             inset: 0;
-            border: 3px solid #e85630;
+            border: 3px solid $sw-color-brand-secondary;
             pointer-events: none;
         }
     }
@@ -174,7 +174,7 @@
         z-index: 2;
 
         &:hover {
-            color: #e85630;
+            color: $sw-color-brand-secondary;
         }
     }
 
@@ -202,14 +202,14 @@
     }
 
     &__detail-title {
-        font-size: 18px;
+        font-size: $sw-font-size-h2;
         font-weight: 700;
         margin-bottom: 12px;
         color: #111;
     }
 
     &__detail-subtitle {
-        font-size: 15px;
+        font-size: $sw-font-size-h4;
         font-weight: 700;
         margin-bottom: 8px;
         color: #111;
@@ -239,7 +239,7 @@
     &__detail-cta {
         display: inline-block;
         background: none;
-        color: #e85630;
+        color: $sw-color-brand-secondary;
         padding: 0;
         text-decoration: none;
         font-size: 13px;
@@ -248,7 +248,7 @@
 
         &:hover {
             background: none;
-            color: #c94520;
+            color: darken($sw-color-brand-secondary, 8%);
             text-decoration: underline;
         }
     }

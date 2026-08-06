@@ -13,7 +13,7 @@ const createCard = () => ({
     descriptionColor: '',
     subheading: '',
     subheadingColor: '',
-    hoverColor: '#e35630',
+    hoverColor: '#e85630',
 });
 
 Shopware.Service('cmsService').registerCmsElement({

@@ -46,7 +46,7 @@
 .ict-two-column-card__eyebrow {
     margin: 0;
     color: #0b5ed7;
-    font-size: 12px;
+    font-size: $sw-font-size-content;
     font-weight: 700;
     letter-spacing: 0.12em;
     text-transform: uppercase;
@@ -55,7 +55,7 @@
 .ict-two-column-card__title {
     margin: 0;
     color: #0f172a;
-    font-size: 22px;
+    font-size: $sw-font-size-h3;
     font-weight: 700;
     line-height: 1.15;
 }
@@ -76,7 +76,7 @@
     border-radius: 999px;
     background: #0f172a;
     color: #ffffff;
-    font-size: 14px;
+    font-size: $sw-font-size-span;
     font-weight: 600;
     text-decoration: none;
 }

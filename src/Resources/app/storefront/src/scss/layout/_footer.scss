@@ -29,6 +29,12 @@ body {
     padding-bottom: 20px;
     color: $footer-text;
     font-family: $sw-font-family-base;
+    @media(max-width: 1299px) {
+        background-size: cover;
+    }
+    @media(max-width: 767px) {
+        padding-bottom: 0;
+    }
 }
 
 // ─── Newsletter Box ──────────────────────────────────────────
@@ -40,7 +46,9 @@ body {
     margin-bottom: 40px;
     position: relative;
     overflow: hidden;
-
+    @media(max-width: 767px) {
+        margin-bottom: 0;
+    }
     &__left {
         display: flex;
         align-items: center;
@@ -74,7 +82,7 @@ body {
     }
 
     &__title {
-        font-size: 17px;
+        font-size: $sw-font-size-h3;
         font-weight: 800;
         color: $footer-heading;
         letter-spacing: 0.5px;
@@ -83,7 +91,7 @@ body {
     }
 
     &__desc {
-        font-size: 13px;
+        font-size: $sw-font-size-p;
         color: $footer-text;
         margin: 0;
         line-height: 1.4;
@@ -158,9 +166,9 @@ body {
 
     .newsletter-submit-btn,
     button[type="submit"] {
-        background-color: $footer-accent !important;
-        border-color: $footer-accent !important;
-        color: #ffffff !important;
+        background-color: $sw-color-buy-button !important;
+        border-color: $sw-color-buy-button !important;
+        color: $sw-color-buy-button-text !important;
         font-weight: 800 !important;
         font-size: 13px !important;
         letter-spacing: 0.8px !important;
@@ -178,8 +186,8 @@ body {
         }
 
         &:hover {
-            background-color: $footer-accent-hover !important;
-            border-color: $footer-accent-hover !important;
+            background-color: darken($sw-color-buy-button, 8%) !important;
+            border-color: darken($sw-color-buy-button, 8%) !important;
         }
     }
 }
@@ -187,9 +195,41 @@ body {
 // ─── Footer Columns ───────────────────────────────────────────
 .footer-columns {
     margin-bottom: 20px;
-
+    @media (max-width: 767px) {
+        margin-bottom: 0;
+    }
     .footer-column {
         margin-bottom: 24px;
+        @media (max-width: 767px) {
+            margin-bottom: 0;
+        }
+        @media screen and (min-width: 768px) and (max-width: 992px) {
+            width: 25%;
+        }
+        &:nth-child(4) {
+           @media screen and (min-width: 768px) and (max-width: 992px) {
+                width: 100%;
+                order: 10;
+            } 
+            .footer-column-content {
+                @media screen and (min-width: 768px) and (max-width: 992px)  {
+                    display: flex;
+                    align-items: center;
+                    flex-wrap: wrap;
+                    margin-top: 15px;
+                }
+                .google-map {
+                    @media screen and (min-width: 768px) and (max-width: 992px) {
+                        width: 60%;
+                    }
+                    iframe {
+                        @media screen and (min-width: 768px) and (max-width: 992px) {
+                            height: 350px;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
 
@@ -242,7 +282,7 @@ body {
 }
 
 .footer__title {
-    font-size: 14px;
+    font-size: $sw-font-size-content;
     font-weight: 800;
     letter-spacing: 0.8px;
     text-transform: uppercase;
@@ -353,7 +393,7 @@ body {
 
     .footer-copyright-text {
         color: #888888;
-        font-size: 12px;
+        font-size: $sw-font-size-span;
     }
 
     .footer-back-to-top {

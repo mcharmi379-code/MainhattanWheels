@@ -43,11 +43,11 @@
         }
 
         &.is--active {
-            border-color: #f05a24;
+            border-color: #e85630;
             box-shadow: 0 4px 14px rgba(240, 90, 36, 0.2);
 
             .sw-cms-el-mw-tab-cards__card-title {
-                color: #f05a24;
+                color: #e85630;
             }
         }
     }
@@ -92,7 +92,7 @@
     }
 
     &__button {
-        background: #f05a24;
+        background: #e85630;
         color: #fff;
         border: none;
         border-radius: 6px;

@@ -3,17 +3,16 @@
     h2 {
         font-family: $sw-font-secondary;
         span {
-            font-size: $sw-font-size-content;
+            font-size: $sw-font-size-span;
         }
-    }    
+    }
     h3 {
-        font-family: 'lato-bold';
-        font-size: 22px;
+        font-size: $sw-font-size-h3;
         margin-top: 30px;
     }
     p {
         font-family: $sw-font-family-headline;
-        font-size: $sw-font-size-content;
+        font-size: $sw-font-size-p;
         strong {
             font-family: $sw-font-secondary;
             font-size: $sw-font-size-content;
@@ -41,12 +40,12 @@
         padding: 20px;
         border-radius: 3px;
         h1 {
-            font-size: $sw-font-size-heading;
+            font-size: $sw-font-size-h1;
             line-height: normal;
             font-family: $sw-font-secondary;
         }
         h2 {
-            font-size: $sw-font-size-sm;
+            font-size: $sw-font-size-h2;
             font-family: $sw-font-secondary;
         }
     }
@@ -55,7 +54,7 @@
     }
     .form-content{
         h1 {
-            font-size: $sw-font-size-content;
+            font-size: $sw-font-size-h1;
             line-height: normal;
             margin-bottom: 0;
             font-family: $sw-color-brand-secondary;
@@ -79,7 +78,7 @@
         padding: 0;
     }
     h1 {
-        font-size: $sw-font-size-sm;
+        font-size: $sw-font-size-h1;
         font-family: $sw-font-secondary;
         line-height: normal;
         margin-bottom: 0;
@@ -94,7 +93,7 @@
     }
     p {
         font-family: $sw-font-family-base;
-        font-size: 16px;
+        font-size: $sw-font-size-p;
     }
     .avia_textblock {
         font-size: 16px;
@@ -106,7 +105,7 @@
         font-family: $sw-font-secondary;
     }
     p {
-        font-size: $sw-font-size-content;
+        font-size: $sw-font-size-p;
         margin-bottom: 0;
     }
     .form-content{
@@ -124,7 +123,7 @@
         }
     }
     h1{
-        font-size: $sw-font-size-heading;
+        font-size: $sw-font-size-h1;
         font-family: $sw-font-secondary;
         margin-bottom: 0;
         line-height: normal;

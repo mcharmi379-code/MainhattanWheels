@@ -212,23 +212,11 @@
         }
     }
 
-    .card-detail-rows {
-    }
-
-    .card-detail-row {
-        padding: 8px 0;
-        display: grid;
-        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-        column-gap: 16px;
-        align-items: start;
-    }
-
-    .card-detail-row__title,
-    .card-detail-row__value,
     .card-info-text {
         min-width: 0;
         overflow-wrap: anywhere;
         word-break: break-word;
+        margin: 0;
     }
 
     .card-buttons {

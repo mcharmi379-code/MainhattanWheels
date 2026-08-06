@@ -23,8 +23,8 @@
 
     &__label {
         margin: 0 0 4px;
-        color: #e85630;
-        font-size: 11px;
+        color: $sw-color-brand-secondary;
+        font-size: $sw-font-size-content;
         font-weight: 800;
         letter-spacing: 0.15em;
         text-transform: uppercase;
@@ -34,7 +34,7 @@
     &__headline {
         margin: 0;
         color: #1f2024;
-        font-size: clamp(24px, 3.5vw, 36px);
+        font-size: $sw-font-size-h2;
         font-weight: 900;
         line-height: 1.1;
         text-transform: uppercase;
@@ -44,7 +44,7 @@
     &__subtitle {
         margin: 6px 0 0;
         color: #6e7480;
-        font-size: clamp(14px, 1.2vw, 16px);
+        font-size: $sw-font-size-content;
         line-height: 1.4;
     }
 
@@ -53,9 +53,9 @@
         align-items: center;
         min-height: 40px;
         padding: 0 20px;
-        border: 1px solid #e85630;
+        border: 1px solid $sw-color-brand-secondary;
         border-radius: 4px;
-        color: #e85630;
+        color: $sw-color-brand-secondary;
         font-weight: 700;
         font-size: 14px;
         text-decoration: none;
@@ -71,7 +71,7 @@
 
         &:hover {
             color: #fff;
-            background: #e85630;
+            background: $sw-color-brand-secondary;
             text-decoration: none;
         }
     }

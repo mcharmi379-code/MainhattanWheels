@@ -23,7 +23,7 @@ Shopware.Service('cmsService').registerCmsElement({
         },
         buttonBgColor: {
             source: 'static',
-            value: '#e8671a',
+            value: '#e85630',
         },
         buttonTextColor: {
             source: 'static',

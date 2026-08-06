@@ -98,13 +98,13 @@
     color: #222;
     font-weight: 400;
     padding-left: 5px;
-    font-size: 0.65rem;
+    font-size: $sw-font-size-span;
 }
 .product-box .product-price-wrapper .product-price span.list-price span.list-price-price {
-    font-size: 15px;
+    font-size: $sw-font-size-span;
 }
 .product-box .product-price-wrapper .product-price span.list-price span.list-price-percentage {
-    font-size: 14px;
+    font-size: $sw-font-size-span;
 }
 
 
@@ -141,9 +141,9 @@ body {
 .product-box {
     .product-action {
         button.btn.btn-buy {
-            background-color: #e85630 !important;
-            border: 1px solid #e85630 !important;
-            color: #ffffff !important;
+            background-color: $sw-color-buy-button !important;
+            border: 1px solid $sw-color-buy-button !important;
+            color: $sw-color-buy-button-text !important;
             border-radius: 4px !important;
             font-weight: 700 !important;
             height: 46px !important;
@@ -157,9 +157,9 @@ body {
             .btn-buy-icon {
                 display: inline-flex;
                 align-items: center;
-                
+
                 .icon {
-                    color: #ffffff !important;
+                    color: $sw-color-buy-button-text !important;
                     svg {
                         width: 16px;
                         height: 16px;
@@ -173,9 +173,9 @@ body {
             }
 
             &:hover {
-                background-color: #d14824 !important;
-                border-color: #d14824 !important;
-                color: #ffffff !important;
+                background-color: darken($sw-color-buy-button, 8%) !important;
+                border-color: darken($sw-color-buy-button, 8%) !important;
+                color: $sw-color-buy-button-text !important;
             }
         }
     }
@@ -187,7 +187,7 @@ body {
     }
 
     .product-detail-link {
-        color: #e85630 !important;
+        color: $sw-color-brand-primary !important;
         font-weight: 700 !important;
         font-size: 14px !important;
         text-decoration: none !important;
@@ -195,7 +195,7 @@ body {
 
         &:hover {
             text-decoration: underline !important;
-            color: #d14824 !important;
+            color: darken($sw-color-brand-secondary, 8%) !important;
         }
     }
 }

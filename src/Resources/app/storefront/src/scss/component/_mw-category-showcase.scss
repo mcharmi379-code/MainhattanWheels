@@ -19,7 +19,7 @@
     }
 
     &__main-title {
-        font-size: 2rem;
+        font-size: $sw-font-size-h2;
         font-weight: 800;
         letter-spacing: 0.02em;
         text-transform: uppercase;
@@ -28,7 +28,7 @@
         color: #1a1a1a;
 
         @media (max-width: 575.98px) {
-            font-size: 1.25rem;
+            font-size: $sw-font-size-h2;
         }
     }
 
@@ -164,7 +164,7 @@
 
     &__card-name {
         font-weight: 700;
-        font-size: 0.95rem;
+        font-size: $sw-font-size-content;
         letter-spacing: 0.03em;
         margin: 0;
         color: #1a1a1a;
@@ -172,7 +172,7 @@
     }
 
     &__card-desc {
-        font-size: 0.86rem;
+        font-size: $sw-font-size-content;
         color: #555;
         margin: 0;
         line-height: 1.5;
@@ -185,7 +185,7 @@
         gap: 4px;
         color: var(--mw-learn-more-color);
         font-weight: 700;
-        font-size: 0.75rem;
+        font-size: $sw-font-size-span;
         letter-spacing: 0.05em;
         text-transform: uppercase;
         margin-top: auto;

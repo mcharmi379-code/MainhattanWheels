@@ -50,7 +50,7 @@
                 </sw-switch-field>
 
                 <template v-if="element.config.showPrimaryButton.value">
-                    <p style="font-size: 13px; font-weight: 700; color: #e8671a; margin-top: 10px; margin-bottom: 10px;">Primary Button Settings</p>
+                    <p style="font-size: 13px; font-weight: 700; color: $sw-color-brand-secondary; margin-top: 10px; margin-bottom: 10px;">Primary Button Settings</p>
                     <sw-text-field
                         v-model:value="element.config.buttonText.value"
                         :label="$tc('mw-cms.elements.mwTextVideo.config.labels.buttonText')"

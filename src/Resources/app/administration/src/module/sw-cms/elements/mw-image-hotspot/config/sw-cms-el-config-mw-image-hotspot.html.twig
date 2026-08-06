@@ -47,7 +47,7 @@
                 @click="setActiveConfigTab(t === activeConfigTab ? 0 : t)"
             >
                 <div style="display: flex; align-items: center; gap: 8px;">
-                    <span style="font-weight: 700; color: #e8671a;">Tab {{ t }}</span>
+                    <span style="font-weight: 700; color: $sw-color-brand-secondary;">Tab {{ t }}</span>
                     <span style="font-size: 12px; color: #475569;">{{ element.config['tab' + t + 'Title'].value || 'Unnamed' }}</span>
                 </div>
                 <div style="display: flex; align-items: center; gap: 8px;">
@@ -124,7 +124,7 @@
                     :key="h" 
                     style="margin-bottom: 20px; padding: 12px; border: 1px solid #cbd5e1; border-radius: 6px; background: #f8fafc;"
                 >
-                    <h4 style="margin-top: 0; margin-bottom: 12px; color: #e8671a;">Hotspot {{ h }} Settings</h4>
+                    <h4 style="margin-top: 0; margin-bottom: 12px; color: $sw-color-brand-secondary;">Hotspot {{ h }} Settings</h4>
 
                     <!-- Position Inputs -->
                     <div style="display: flex; gap: 10px;">
@@ -180,7 +180,7 @@
                     style="margin-top: 14px; padding: 12px; border: 1px solid #cbd5e1; border-radius: 6px; background: #f8fafc;"
                 >
                     <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
-                        <h4 style="margin: 0; color: #e8671a;">Dynamic Element {{ d }}</h4>
+                        <h4 style="margin: 0; color: $sw-color-brand-secondary;">Dynamic Element {{ d }}</h4>
                         <sw-button
                             variant="ghost"
                             size="x-small"
@@ -215,7 +215,7 @@
                     v-if="parseInt(element.config['tab' + t + 'DynamicCount'].value || 0, 10) < 5"
                     variant="ghost"
                     size="small"
-                    style="color: #e8671a; border-color: #e8671a; margin-top: 10px;"
+                    style="color: $sw-color-brand-secondary; border-color: $sw-color-brand-secondary; margin-top: 10px;"
                     @click="addDynamicElement(t)"
                 >
                     + Add Dynamic Element
@@ -228,7 +228,7 @@
             v-if="tabCount < 8" 
             variant="ghost" 
             size="small" 
-            style="color: #e8671a; border-color: #e8671a;"
+            style="color: $sw-color-brand-secondary; border-color: $sw-color-brand-secondary;"
             @click="addTab"
         >
             + Add Tab

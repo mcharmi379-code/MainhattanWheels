@@ -46,7 +46,7 @@ Shopware.Service('cmsService').registerCmsElement({
         },
         activeColor: {
             source: 'static',
-            value: '#e30613',
+            value: '#e85630',
         },
     },
 });

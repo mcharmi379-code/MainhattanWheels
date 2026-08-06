@@ -47,7 +47,7 @@ final class MwProcessStepsCmsElementResolver extends AbstractCmsElementResolver
         $slot->setData(new ArrayStruct([
             'heading'     => (string) ($config->get('heading')?->getStringValue() ?? ''),
             'subheading'  => (string) ($config->get('subheading')?->getStringValue() ?? ''),
-            'accentColor' => (string) ($config->get('accentColor')?->getStringValue() ?? '#e8671a'),
+            'accentColor' => (string) ($config->get('accentColor')?->getStringValue() ?? '#e85630'),
             'stepCount'   => $stepCount,
             'steps'       => $steps,
         ]));

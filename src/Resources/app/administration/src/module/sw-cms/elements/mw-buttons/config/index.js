@@ -7,7 +7,7 @@ const createButton = () => ({
     label: '',
     variant: 'solid',
     textColor: '#ffffff',
-    bgColor: '#ff6600',
+    bgColor: '#e85630',
     linkType: 'internal',
     linkUrl: '',
     linkNewTab: false,
@@ -78,13 +78,13 @@ export default {
                     label: 'Button 1',
                     variant: 'solid',
                     textColor: '#ffffff',
-                    bgColor: '#ff6600',
+                    bgColor: '#e85630',
                 },
                 {
                     ...createButton(),
                     label: 'Button 2',
                     variant: 'outline',
-                    textColor: '#ff6600',
+                    textColor: '#e85630',
                     bgColor: 'transparent',
                 }
             ]);

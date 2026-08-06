@@ -13,7 +13,7 @@
     }
 
     &__main-heading {
-        font-size: 28px;
+        font-size: $sw-font-size-h2;
         font-weight: 800;
         color: #1a1a1a;
         margin-bottom: 8px;
@@ -21,7 +21,7 @@
     }
 
     &__sub-heading {
-        font-size: 15px;
+        font-size: $sw-font-size-content;
         color: #666666;
         margin-bottom: 0;
     }
@@ -74,12 +74,12 @@
         }
 
         &.is--active {
-            border-color: #f05a24;
+            border-color: $sw-color-brand-secondary;
             box-shadow: 0 6px 18px rgba(240, 90, 36, 0.25);
             background: #ffffff;
 
             .cms-element-mw-tab-cards__card-title {
-                color: #f05a24;
+                color: $sw-color-brand-secondary;
             }
         }
     }
@@ -152,7 +152,7 @@
     }
 
     &__tab-headline {
-        font-size: 22px;
+        font-size: $sw-font-size-h3;
         font-weight: 800;
         color: #1a1a1a;
         margin-bottom: 4px;
@@ -167,7 +167,7 @@
         display: inline-flex;
         align-items: center;
         justify-content: center;
-        background: #f05a24;
+        background: $sw-color-brand-secondary;
         color: #ffffff;
         font-weight: 700;
         font-size: 14px;
@@ -182,7 +182,7 @@
         }
 
         &:hover {
-            background: darken(#f05a24, 8%);
+            background: darken($sw-color-brand-secondary, 8%);
             color: #ffffff;
             text-decoration: none;
             box-shadow: 0 4px 12px rgba(240, 90, 36, 0.3);
@@ -222,18 +222,18 @@
         transition: color 0.2s ease;
 
         &:hover {
-            color: #f05a24;
+            color: $sw-color-brand-secondary;
             text-decoration: underline;
 
             .cms-element-mw-tab-cards__link-icon {
                 transform: translateX(3px);
-                color: #f05a24;
+                color: $sw-color-brand-secondary;
             }
         }
     }
 
     &__link-icon {
-        color: #f05a24;
+        color: $sw-color-brand-secondary;
         font-weight: 800;
         font-size: 18px;
         transition: transform 0.2s ease;

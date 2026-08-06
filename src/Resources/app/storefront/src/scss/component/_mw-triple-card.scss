@@ -50,7 +50,7 @@
     }
 
     &__headline {
-        font-size: 1.35rem;
+        font-size: $sw-font-size-h3;
         font-weight: 800;
         letter-spacing: 0.03em;
         text-transform: uppercase;
@@ -59,7 +59,7 @@
         color: inherit;
 
         @media (max-width: 575.98px) {
-            font-size: 1.1rem;
+            font-size: $sw-font-size-h3;
         }
     }
 
@@ -96,7 +96,7 @@
 
     &__icon-desc {
         margin: 0;
-        font-size: 0.95rem;
+        font-size: $sw-font-size-content;
         font-weight: 500;
         line-height: 1.45;
         color: inherit;
@@ -112,7 +112,7 @@
 
     &__sub-heading {
         margin: 0;
-        font-size: 0.75rem;
+        font-size: $sw-font-size-content;
         font-weight: 600;
         letter-spacing: 0.08em;
         text-transform: uppercase;
@@ -123,20 +123,20 @@
 
     &__heading {
         margin: 0;
-        font-size: 1.35rem;
+        font-size: $sw-font-size-h3;
         font-weight: 800;
         letter-spacing: 0.02em;
         line-height: 1.15;
         color: inherit;
 
         @media (max-width: 575.98px) {
-            font-size: 1.1rem;
+            font-size: $sw-font-size-h3;
         }
     }
 
     &__description {
         margin: 0;
-        font-size: 0.95rem;
+        font-size: $sw-font-size-content;
         line-height: 1.6;
         color: inherit;
         opacity: 0.95;

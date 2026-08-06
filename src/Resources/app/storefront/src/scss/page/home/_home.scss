@@ -68,8 +68,7 @@
         margin-bottom: 5px;
 
         h2 {
-            font-size: $sw-font-size-content;
-            font-family: 'opensans-bold';
+            font-size: $sw-font-size-h2;
             color: $sw-color-brand-primary;
             border-bottom: 1px solid $sw-border-color;
             padding-bottom: 10px;
@@ -87,7 +86,7 @@
         }
 
         p {
-            font-size: $sw-font-size-sm;
+            font-size: $sw-font-size-p;
             font-family: $sw-font-family-base;
             color: #5f7285;
         }
@@ -135,7 +134,7 @@
     margin: 5px 0;
 
     p {
-        font-size: $sw-font-size-content;
+        font-size: $sw-font-size-p;
         font-family: $sw-font-secondary;
         color: $sw-color-brand-secondary;
     }
@@ -149,7 +148,7 @@
     font-size: 14px;
 
     a {
-        font-family: 'opensans-semibold';
+        font-family: $sw-font-family-base;
         color: $sw-color-brand-secondary;
     }
 }
@@ -199,7 +198,7 @@
             }
 
             p {
-                font-size: $sw-font-size-content;
+                font-size: $sw-font-size-p;
                 font-family: $sw-font-family-headline;
             }
         }
@@ -216,7 +215,7 @@
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
-            font-size: $sw-font-size-content;
+            font-size: $sw-font-size-h1;
             font-family: $sw-font-secondary;
         }
 

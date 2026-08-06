@@ -67,7 +67,7 @@
     &__eyebrow {
         margin: 0;
         color: #0b5ed7;
-        font-size: 0.75rem;
+        font-size: $sw-font-size-content;
         font-weight: 700;
         letter-spacing: 0.12em;
         text-transform: uppercase;
@@ -76,7 +76,7 @@
     &__title {
         margin: 0;
         color: #0f172a;
-        font-size: 1.4rem;
+        font-size: $sw-font-size-h3;
         font-weight: 700;
         line-height: 1.15;
     }
@@ -98,7 +98,7 @@
         border-radius: 999px;
         background: #0f172a;
         color: #ffffff;
-        font-size: 0.875rem;
+        font-size: $sw-font-size-span;
         font-weight: 600;
         text-decoration: none;
     }
@@ -106,7 +106,7 @@
 
 @media (max-width: 991px) {
     .ict-three-column-card__title {
-        font-size: 1.15rem;
+        font-size: $sw-font-size-h3;
     }
     .ict-three-column-card__content {
         padding: 1rem;
@@ -116,6 +116,6 @@
 
 @media (max-width: 767px) {
     .ict-three-column-card__title {
-        font-size: 1.25rem;
+        font-size: $sw-font-size-h3;
     }
 }

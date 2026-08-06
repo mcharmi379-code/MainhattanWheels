@@ -72,17 +72,17 @@
         }
 
         &--solid {
-            background-color: var(--mw-btn-bg-color, #ff6600);
+            background-color: var(--mw-btn-bg-color, #{$sw-color-brand-secondary});
             color: var(--mw-btn-text-color, #ffffff);
-            border: 2px solid var(--mw-btn-bg-color, #ff6600);
-            box-shadow: 0 4px 14px 0 color-mix(in srgb, var(--mw-btn-bg-color, #ff6600) 25%, transparent);
+            border: 2px solid var(--mw-btn-bg-color, #{$sw-color-brand-secondary});
+            box-shadow: 0 4px 14px 0 color-mix(in srgb, var(--mw-btn-bg-color, #{$sw-color-brand-secondary}) 25%, transparent);
 
             &:hover, &:focus {
-                background-color: color-mix(in srgb, var(--mw-btn-bg-color, #ff6600) 85%, #000);
-                border-color: color-mix(in srgb, var(--mw-btn-bg-color, #ff6600) 85%, #000);
+                background-color: color-mix(in srgb, var(--mw-btn-bg-color, #{$sw-color-brand-secondary}) 85%, #000);
+                border-color: color-mix(in srgb, var(--mw-btn-bg-color, #{$sw-color-brand-secondary}) 85%, #000);
                 color: var(--mw-btn-text-color, #ffffff);
                 transform: translateY(-2px);
-                box-shadow: 0 6px 20px 0 color-mix(in srgb, var(--mw-btn-bg-color, #ff6600) 35%, transparent);
+                box-shadow: 0 6px 20px 0 color-mix(in srgb, var(--mw-btn-bg-color, #{$sw-color-brand-secondary}) 35%, transparent);
 
                 .mw-btn__icon,
                 .mw-btn__icon-default {
@@ -92,20 +92,20 @@
 
             &:active {
                 transform: translateY(0);
-                box-shadow: 0 2px 8px 0 color-mix(in srgb, var(--mw-btn-bg-color, #ff6600) 25%, transparent);
+                box-shadow: 0 2px 8px 0 color-mix(in srgb, var(--mw-btn-bg-color, #{$sw-color-brand-secondary}) 25%, transparent);
             }
         }
 
         &--outline {
             background-color: transparent;
-            color: var(--mw-btn-text-color, #e85630);
-            border: 2px solid var(--mw-btn-text-color, #e85630);
+            color: var(--mw-btn-text-color, #{$sw-color-brand-secondary});
+            border: 2px solid var(--mw-btn-text-color, #{$sw-color-brand-secondary});
 
             &:hover, &:focus {
-                background-color: var(--mw-btn-text-color, #e85630);
+                background-color: var(--mw-btn-text-color, #{$sw-color-brand-secondary});
                 color: #ffffff;
                 transform: translateY(-2px);
-                box-shadow: 0 6px 20px 0 color-mix(in srgb, var(--mw-btn-text-color, #ff6600) 25%, transparent);
+                box-shadow: 0 6px 20px 0 color-mix(in srgb, var(--mw-btn-text-color, #{$sw-color-brand-secondary}) 25%, transparent);
 
                 .mw-btn__icon,
                 .mw-btn__icon-default {
@@ -115,7 +115,7 @@
 
             &:active {
                 transform: translateY(0);
-                box-shadow: 0 2px 8px 0 color-mix(in srgb, var(--mw-btn-text-color, #ff6600) 25%, transparent);
+                box-shadow: 0 2px 8px 0 color-mix(in srgb, var(--mw-btn-text-color, #{$sw-color-brand-secondary}) 25%, transparent);
             }
         }
     }

@@ -20,7 +20,7 @@ Shopware.Service('cmsService').registerCmsElement({
         leftBtnLabel: { source: 'static', value: '' },
         leftBtnUrl: { source: 'static', value: '' },
         leftBtnNewTab: { source: 'static', value: false },
-        leftBtnBgColor: { source: 'static', value: '#ff6600' },
+        leftBtnBgColor: { source: 'static', value: '#e85630' },
         leftBtnTextColor: { source: 'static', value: '#ffffff' },
         leftBtnOutlineColor: { source: 'static', value: '' },
         // Right card
@@ -41,7 +41,7 @@ Shopware.Service('cmsService').registerCmsElement({
         rightBtnLabel: { source: 'static', value: '' },
         rightBtnUrl: { source: 'static', value: '' },
         rightBtnNewTab: { source: 'static', value: false },
-        rightBtnBgColor: { source: 'static', value: '#ff6600' },
+        rightBtnBgColor: { source: 'static', value: '#e85630' },
         rightBtnTextColor: { source: 'static', value: '#ffffff' },
         rightBtnOutlineColor: { source: 'static', value: '' },
     },

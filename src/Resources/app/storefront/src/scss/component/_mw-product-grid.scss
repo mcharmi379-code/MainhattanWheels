@@ -24,7 +24,7 @@
 
         &:hover,
         &:focus-within {
-            border-color: var(--mw-product-grid-hover-color, #ff6600);
+            border-color: var(--mw-product-grid-hover-color, #{$sw-color-brand-secondary});
             box-shadow: 0 0 24px rgba(0, 0, 0, 0.12);
             transform: translateY(-2px);
         }
@@ -114,7 +114,7 @@
         border: 0;
         border-radius: 6px;
         padding: 8px 12px;
-        background: var(--mw-product-grid-button-color, #ff6600);
+        background: var(--mw-product-grid-button-color, #{$sw-color-brand-secondary});
         color: #fff;
         font-size: 12px;
         line-height: 1;
@@ -124,7 +124,7 @@
 
     &__card:hover &__name,
     &__card:focus-within &__name {
-        color: var(--mw-product-grid-hover-color, #ff6600);
+        color: var(--mw-product-grid-hover-color, #{$sw-color-brand-secondary});
     }
 
     &__details {

@@ -25,7 +25,7 @@ export default {
             return this.element.config?.subheading?.value || '';
         },
         accentColor() {
-            return this.element.config?.accentColor?.value || '#e8671a';
+            return this.element.config?.accentColor?.value || '#e85630';
         },
         stepCount() {
             return parseInt(this.element.config?.stepCount?.value || 4, 10);

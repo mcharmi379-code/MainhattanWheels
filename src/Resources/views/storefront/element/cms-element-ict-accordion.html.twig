@@ -5,7 +5,7 @@
     {% set displayMode = config.displayMode.value|default('single') %}
     {% set entries = config.entries.value|default([]) %}
     {% set accordionId = 'ict-accordion-' ~ element.id %}
-    {% set activeColor = config.activeColor.value|default('#e30613') %}
+    {% set activeColor = config.activeColor.value|default(theme_config('sw-color-brand-secondary')) %}
 
     {% if entries is empty and (title or description) %}
         {% set entries = [{

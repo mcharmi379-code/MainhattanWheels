@@ -12,8 +12,8 @@ Shopware.Service('cmsService').registerCmsElement({
         columns: { source: 'static', value: 4 },
         layoutType: { source: 'static', value: 'standard' },
         showDetails: { source: 'static', value: false },
-        buttonColor: { source: 'static', value: '#ff6600' },
-        hoverColor: { source: 'static', value: '#ff6600' },
+        buttonColor: { source: 'static', value: '#e85630' },
+        hoverColor: { source: 'static', value: '#e85630' },
         cards: {
             source: 'static',
             value: [],

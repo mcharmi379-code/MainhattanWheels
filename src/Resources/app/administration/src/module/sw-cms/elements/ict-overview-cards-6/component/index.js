@@ -35,18 +35,14 @@ export default {
         createButton(overrides = {}) {
             return Object.assign({
                 show: true, buttonText: 'Learn More', buttonLinkType: 'internal', buttonUrl: '',
-                buttonTarget: '_self', buttonTextColor: '#FFFFFF',
-                buttonHoverTextColor: '#FFFFFF', buttonBorderColor: 'transparent',
+                buttonTarget: '_self', buttonTextColor: '#FFFFFF', buttonBackgroundColor: '#e85630',
+                buttonHoverTextColor: 'transparent', buttonHoverBackgroundColor: 'transparent', buttonBorderColor: 'transparent',
                 buttonHoverBorderColor: 'transparent', buttonBorderStyle: 'solid', buttonBorderWidth: 0,
                 buttonBorderRadius: 6,
                 buttonAfterText: '',
                 buttonAfterTextColor: '#262624',
                 buttonAfterTextSize: '14'
             }, overrides);
-        },
-
-        createDetailRow(overrides = {}) {
-            return Object.assign({ title: 'Title', value: 'Value', titleColor: '#1a1a2e', valueColor: '#52667a' }, overrides);
         },
 
         createTag(overrides = {}) {
@@ -81,7 +77,7 @@ export default {
             if (template && typeof template === 'object') {
                 return JSON.parse(JSON.stringify(template));
             }
-            return { detailRows: [], buttons: [this.createButton()] };
+            return { buttons: [this.createButton()] };
         },
 
         createCard(overrides = {}) {
@@ -125,21 +121,6 @@ export default {
             return this.isNumericSizeValue(s) ? `${s}px` : s;
         },
 
-        getHeadlineLineHeight(sizeValue) {
-            const s = sizeValue === null || sizeValue === undefined ? '' : String(sizeValue).trim();
-            if (!s) return '28px';
-            if (s === '24' || s === '24px') return '28px';
-            if (s === '42' || s === '42px') return '55px';
-            return this.isNumericSizeValue(s) ? `${s}px` : this.getCssSizeValue(s, '28px');
-        },
-
-        getSubheadlineLineHeight(sizeValue) {
-            const s = sizeValue === null || sizeValue === undefined ? '' : String(sizeValue).trim();
-            if (!s) return '25px';
-            if (s === '20' || s === '20px') return '25px';
-            return this.isNumericSizeValue(s) ? `${s}px` : this.getCssSizeValue(s, '25px');
-        },
-
         getTextAlignment(alignment, fallback = 'left') {
             return ['left', 'center', 'right'].includes(alignment) ? alignment : fallback;
         },
@@ -161,11 +142,6 @@ export default {
             }
             return [];
         },
-        getCardDetailRows(card) {
-            if (!card?.showDetailRows || !Array.isArray(card?.detailRows)) return [];
-            return card.detailRows.filter(r => r && typeof r === 'object' && (String(r.title || '').trim() || String(r.value || '').trim()));
-        },
-
         getMediaDisplayMode(card) {
             return ['fill', 'fit', 'crop', 'tile'].includes(card?.mediaDisplayMode) ? card.mediaDisplayMode : 'fill';
         },

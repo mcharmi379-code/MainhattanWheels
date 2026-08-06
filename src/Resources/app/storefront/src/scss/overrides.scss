@@ -96,6 +96,14 @@ https://getbootstrap.com/docs/4.0/getting-started/theming/#variable-defaults
 
 
 // override scss
+h1, h2, h3, h4, h5, h6 {
+    font-family: $sw-font-family-headline;
+}
+
+body, p, ul, li, a, span {
+    font-family: $sw-font-family-base;
+}
+
 body{
     font-family:  $sw-font-family-base !important;
     background: #e9e9f0;
@@ -164,12 +172,12 @@ body{
 		border-radius: 3px;
 		font-family: 'opensans-semibold';
 		background-color: $sw-color-buy-button;
-		color: #fff;
+		color: $sw-color-buy-button-text;
 		border-color: $sw-color-brand-secondary;
 		&:hover {
 			border-color: $sw-color-buy-button;
 			color: $sw-color-buy-button;
-			background: #fff;
+			background: $sw-color-secondary-button;
 		}
 	}
 	.container:has(.product-detail) {

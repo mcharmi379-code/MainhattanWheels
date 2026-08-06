@@ -1,7 +1,7 @@
 {% block element_ict_content_tabs %}
     {% set config = element.translated.config ?? element.config %}
     {% set tabs = element.data.tabs ?? config.tabs.value ?? [] %}
-    {% set activeTabColor = config.activeTabColor.value ?? '#e30613' %}
+    {% set activeTabColor = config.activeTabColor.value ?? '#e85630' %}
 
     {% if tabs|length > 0 %}
         <div

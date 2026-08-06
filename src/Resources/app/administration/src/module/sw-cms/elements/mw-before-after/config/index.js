@@ -81,7 +81,7 @@ export default {
                 afterImageUrl: null,
                 afterText: 'AFTER',
                 afterTextColor: '#ffffff',
-                afterTextBackgroundColor: '#f97316',
+                afterTextBackgroundColor: '#e85630',
                 afterDescription: '',
             };
         },
@@ -103,7 +103,7 @@ export default {
                 beforeTextColor: item.beforeTextColor ?? '#ffffff',
                 beforeTextBackgroundColor: item.beforeTextBackgroundColor ?? '#111827',
                 afterTextColor: item.afterTextColor ?? '#ffffff',
-                afterTextBackgroundColor: item.afterTextBackgroundColor ?? '#f97316',
+                afterTextBackgroundColor: item.afterTextBackgroundColor ?? '#e85630',
                 beforeDescription: item.beforeDescription ?? '',
                 afterDescription: item.afterDescription ?? '',
             };

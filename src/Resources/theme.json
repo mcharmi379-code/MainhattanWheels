@@ -121,6 +121,94 @@
         "block": "typography",
         "order": 900
       },
+      "sw-font-size-span": {
+        "label": {
+          "en-GB": "Font size for span",
+          "de-DE": "Schriftgröße für span"
+        },
+        "type": "text",
+        "value": "16px",
+        "editable": true,
+        "block": "typography",
+        "order": 905
+      },
+      "sw-font-size-h1": {
+        "label": {
+          "en-GB": "Font size for H1",
+          "de-DE": "Schriftgröße für H1"
+        },
+        "type": "text",
+        "value": "52px",
+        "editable": true,
+        "block": "typography",
+        "order": 910
+      },
+      "sw-font-size-h2": {
+        "label": {
+          "en-GB": "Font size for H2",
+          "de-DE": "Schriftgröße für H2"
+        },
+        "type": "text",
+        "value": "34px",
+        "editable": true,
+        "block": "typography",
+        "order": 920
+      },
+      "sw-font-size-h3": {
+        "label": {
+          "en-GB": "Font size for H3",
+          "de-DE": "Schriftgröße für H3"
+        },
+        "type": "text",
+        "value": "24px",
+        "editable": true,
+        "block": "typography",
+        "order": 930
+      },
+      "sw-font-size-h4": {
+        "label": {
+          "en-GB": "Font size for H4",
+          "de-DE": "Schriftgröße für H4"
+        },
+        "type": "text",
+        "value": "20px",
+        "editable": true,
+        "block": "typography",
+        "order": 940
+      },
+      "sw-font-size-h5": {
+        "label": {
+          "en-GB": "Font size for H5",
+          "de-DE": "Schriftgröße für H5"
+        },
+        "type": "text",
+        "value": "18px",
+        "editable": true,
+        "block": "typography",
+        "order": 950
+      },
+      "sw-font-size-h6": {
+        "label": {
+          "en-GB": "Font size for H6",
+          "de-DE": "Schriftgröße für H6"
+        },
+        "type": "text",
+        "value": "20px",
+        "editable": true,
+        "block": "typography",
+        "order": 960
+      },
+      "sw-font-size-p": {
+        "label": {
+          "en-GB": "Font size for P",
+          "de-DE": "Schriftgröße für P"
+        },
+        "type": "text",
+        "value": "16px",
+        "editable": true,
+        "block": "typography",
+        "order": 970
+      },
       "sw-font-weight-base": {
         "label": {
           "en-GB": "Base font weight",
@@ -522,6 +610,28 @@
         "tab": "footer",
         "block": "footer",
         "order": 100
+      },
+      "sw-color-secondary-button": {
+        "label": {
+          "en-GB": "Secondary button background color",
+          "de-DE": "Hintergrundfarbe des sekundären Buttons"
+        },
+        "type": "color",
+        "value": "#ffffff",
+        "editable": true,
+        "block": "eCommerce",
+        "order": 210
+      },
+      "sw-color-secondary-button-text": {
+        "label": {
+          "en-GB": "Secondary button text color",
+          "de-DE": "Textfarbe des sekundären Buttons"
+        },
+        "type": "color",
+        "value": "#e85630",
+        "editable": true,
+        "block": "eCommerce",
+        "order": 220
       }
     }
   }

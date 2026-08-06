@@ -16,12 +16,12 @@
     &__text {
         margin: 0;
         font-weight: 700;
-        font-size: 1rem;
+        font-size: $sw-font-size-p;
         color: #1f2937;
     }
 
     &__btn {
-        display: inline-flex;
+        display: inline-flex;   
         align-items: center;
         justify-content: center;
         flex-shrink: 0;

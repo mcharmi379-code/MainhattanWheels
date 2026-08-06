@@ -43,7 +43,7 @@ Shopware.Service('cmsService').registerCmsElement({
         },
         primaryButtonBgColor: {
             source: 'static',
-            value: '#e8540a',
+            value: '$sw-color-brand-secondary',
         },
         secondaryButtonText: {
             source: 'static',

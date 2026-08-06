@@ -21,7 +21,7 @@ Shopware.Service('cmsService').registerCmsElement({
         transformText4: { source: 'static', value: '' },
         transformText5: { source: 'static', value: '' },
         transformText6: { source: 'static', value: '' },
-        transformTextColor: { source: 'static', value: '#e8540a' },
+        transformTextColor: { source: 'static', value: ' $sw-color-brand-secondary' },
         transitionDuration: { source: 'static', value: 400 },
         rotationInterval: { source: 'static', value: 3000 },
     },

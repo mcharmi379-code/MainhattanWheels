@@ -297,18 +297,6 @@
                             </mt-text-field>
 
                             <div class="inline-fields">
-                                <mt-text-field
-                                    v-model="card.headlineSize"
-                                    :label="$tc('sw-cms.elements.ictOverviewCards.config.label.headlineSize')"
-                                    @update:value="onElementUpdate">
-                                </mt-text-field>
-
-                                <mt-text-field
-                                    v-model="card.headlineLineHeight"
-                                    label="Headline line height"
-                                    @update:value="onElementUpdate">
-                                </mt-text-field>
-
                                 <sw-single-select
                                     v-model:value="card.headlineAlignment"
                                     :label="$tc('sw-cms.elements.ictOverviewCards.config.label.headlineAlignment')"
@@ -338,18 +326,6 @@
                             </mt-text-field>
 
                             <div class="inline-fields">
-                                <mt-text-field
-                                    v-model="card.subheadlineSize"
-                                    :label="$tc('sw-cms.elements.ictOverviewCards.config.label.subheadlineSize')"
-                                    @update:value="onElementUpdate">
-                                </mt-text-field>
-
-                                <mt-text-field
-                                    v-model="card.subheadlineLineHeight"
-                                    label="Subheadline line height"
-                                    @update:value="onElementUpdate">
-                                </mt-text-field>
-
                                 <sw-single-select
                                     v-model:value="card.subheadlineAlignment"
                                     :label="$tc('sw-cms.elements.ictOverviewCards.config.label.subheadlineAlignment')"
@@ -384,18 +360,6 @@
                             </sw-text-editor>
 
                             <div class="inline-fields">
-                                <mt-text-field
-                                    v-model="card.bodyTextSize"
-                                    :label="$tc('sw-cms.elements.ictOverviewCards.config.label.bodyTextSize')"
-                                    @update:value="onElementUpdate">
-                                </mt-text-field>
-
-                                <mt-text-field
-                                    v-model="card.bodyTextLineHeight"
-                                    label="Body text line height"
-                                    @update:value="onElementUpdate">
-                                </mt-text-field>
-
                                 <sw-single-select
                                     v-model:value="card.bodyTextAlignment"
                                     :label="$tc('sw-cms.elements.ictOverviewCards.config.label.bodyTextAlignment')"
@@ -415,136 +379,6 @@
                     </div>
 
                     <div class="field-group">
-                        <h5 class="field-group-title">Detail Rows</h5>
-                        <mt-switch
-                            :checked="card.showDetailRows"
-                            label="Show detail rows"
-                            @change="card.showDetailRows = $event; onElementUpdate()">
-                        </mt-switch>
-
-                        <div v-if="card.showDetailRows" class="field-subgroup">
-                            <div class="inline-fields">
-                                <mt-select
-                                    v-model="card.detailRowsTitleAlignment"
-                                    label="Title alignment"
-                                    :options="alignmentOptions"
-                                    @update:value="onElementUpdate">
-                                </mt-select>
-
-                                <mt-select
-                                    v-model="card.detailRowsValueAlignment"
-                                    label="Value alignment"
-                                    :options="alignmentOptions"
-                                    @update:value="onElementUpdate">
-                                </mt-select>
-                            </div>
-
-                            <div class="inline-fields">
-                                <mt-text-field
-                                    v-model="card.detailRowsTitleSize"
-                                    label="Title size"
-                                    @update:value="onElementUpdate">
-                                </mt-text-field>
-
-                                <mt-text-field
-                                    v-model="card.detailRowsTitleLineHeight"
-                                    label="Title line height"
-                                    @update:value="onElementUpdate">
-                                </mt-text-field>
-
-                                <sw-single-select
-                                    v-model:value="card.detailRowsTitleFontWeight"
-                                    label="Title font weight"
-                                    :options="fontWeightOptions"
-                                    @update:value="onElementUpdate">
-                                </sw-single-select>
-                            </div>
-
-                            <div class="inline-fields">
-                                <mt-text-field
-                                    v-model="card.detailRowsValueSize"
-                                    label="Value size"
-                                    @update:value="onElementUpdate">
-                                </mt-text-field>
-
-                                <mt-text-field
-                                    v-model="card.detailRowsValueLineHeight"
-                                    label="Value line height"
-                                    @update:value="onElementUpdate">
-                                </mt-text-field>
-
-                                <sw-single-select
-                                    v-model:value="card.detailRowsValueFontWeight"
-                                    label="Value font weight"
-                                    :options="fontWeightOptions"
-                                    @update:value="onElementUpdate">
-                                </sw-single-select>
-                            </div>
-
-                            <div class="inline-fields">
-                                <sw-colorpicker
-                                    v-model:value="card.detailRowsOutlineColor"
-                                    color-output="hex"
-                                    :z-index="1000"
-                                    label="Outline color"
-                                    @update:value="onElementUpdate">
-                                </sw-colorpicker>
-
-                                <mt-text-field
-                                    v-model="card.detailRowsOutlineThickness"
-                                    label="Outline thickness"
-                                    @update:value="onElementUpdate">
-                                </mt-text-field>
-                            </div>
-
-                            <sw-button @click="addDetailRow(cardIndex)" variant="primary" size="small" class="add-feature-btn">
-                                Add detail row
-                            </sw-button>
-
-                            <div v-for="(row, rowIndex) in card.detailRows" :key="rowIndex" class="feature-item">
-                                <div class="feature-item-header">
-                                    <span>Row {{ rowIndex + 1 }}</span>
-                                    <sw-button @click="removeDetailRow(cardIndex, rowIndex)" variant="danger" size="small">
-                                        Remove row
-                                    </sw-button>
-                                </div>
-
-                                <div class="inline-fields">
-                                    <mt-text-field
-                                        v-model="row.title"
-                                        label="Title"
-                                        @update:value="onElementUpdate">
-                                    </mt-text-field>
-
-                                    <mt-text-field
-                                        v-model="row.value"
-                                        label="Value"
-                                        @update:value="onElementUpdate">
-                                    </mt-text-field>
-                                </div>
-
-                                <div class="inline-fields">
-                                    <sw-colorpicker
-                                        v-model:value="row.titleColor"
-                                        color-output="hex"
-                                        :z-index="1000"
-                                        label="Title color"
-                                        @update:value="onElementUpdate">
-                                    </sw-colorpicker>
-
-                                    <sw-colorpicker
-                                        v-model:value="row.valueColor"
-                                        color-output="hex"
-                                        :z-index="1000"
-                                        label="Value color"
-                                        @update:value="onElementUpdate">
-                                    </sw-colorpicker>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="field-group">
                         <h5 class="field-group-title">Info Text</h5>
 
                         <div class="field-subgroup">
@@ -555,18 +389,6 @@
                             </mt-text-field>
 
                             <div class="inline-fields">
-                                <mt-text-field
-                                    v-model="card.infoTextSize"
-                                    label="Info text size"
-                                    @update:value="onElementUpdate">
-                                </mt-text-field>
-
-                                <mt-text-field
-                                    v-model="card.infoTextLineHeight"
-                                    label="Info text line height"
-                                    @update:value="onElementUpdate">
-                                </mt-text-field>
-
                                 <sw-single-select
                                     v-model:value="card.infoTextAlignment"
                                     label="Info text alignment"
